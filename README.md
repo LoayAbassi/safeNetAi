@@ -5,18 +5,16 @@
 project/
 ├── frontend/ # React app: login, dashboard, transactions
 └── backend/
-├── user_service/ # Django REST API: auth, registration, JWT
-├── transaction_service/ # Receive & store transactions
-├── rules_service/ # Simple fraud detection rules
-├── ai_service/ # Dummy ML fraud scoring
-├── alert_service/ # Send email alerts on fraud
-├── dashboard_service/ # Admin dashboard data (alerts, logs)
-├── log_service/ # Store audit logs & events
-└── bank_simulator_service/ # Generate & send fake transactions
+    ├── user_service/ # Django REST API: auth, registration, JWT
+    ├── transaction_service/ # Receive & store transactions
+    ├── rules_service/ # Simple fraud detection rules
+    ├── ai_service/ # Dummy ML fraud scoring
+    ├── alert_service/ # Send email alerts on fraud
+    ├── dashboard_service/ # Admin dashboard data (alerts, logs)
+    ├── log_service/ # Store audit logs & events
+    └── bank_simulator_service/ # Generate & send fake transactions
 
-yaml
-Copy
-Edit
+
 
 ---
 
@@ -52,5 +50,3 @@ Edit
 - Start with user_service and frontend login page, then build others stepwise  
 - Use SQLite for fast prototyping  
 - No Docker needed now  
-
----
