@@ -1,35 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import PrivateRoute from './components/PrivateRoute';
-import Navbar from './components/Navbar';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import SubmitTransaction from './pages/SubmitTransaction';
+import React from 'react'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 
-function App() {
+export default function App(){
+  const nav = useNavigate()
+  function logout(){ localStorage.removeItem('token'); nav('/login') }
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-50">
-        <Navbar />
-        <main className="container mx-auto px-4 py-8">
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route element={<PrivateRoute />}>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/submit" element={<SubmitTransaction />} />
-            </Route>
-          </Routes>
-        </main>
-        <Toaster />
-      </div>
-    </Router>
-  );
+    <div style={{fontFamily:'sans-serif', padding:16}}>
+      <h2>AI Fraud Detection MVP</h2>
+      <nav style={{display:'flex', gap:12}}>
+        <Link to="/">Transfer</Link>
+        <Link to="/admin">Admin</Link>
+        <Link to="/login">Login</Link>
+        <button onClick={logout}>Logout</button>
+      </nav>
+      <hr/>
+      <Outlet/>
+    </div>
+  )
 }
-
-export default App;
