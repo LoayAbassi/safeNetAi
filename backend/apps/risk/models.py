@@ -1,6 +1,9 @@
+import random
 from django.db import models
 from django.conf import settings
 
+def generate_iban():
+    return str(random.randint(1000000000000000, 9999999999999999)) 
 class ClientProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     phone = models.CharField(max_length=30, blank=True)
@@ -16,14 +19,15 @@ class ClientProfile(models.Model):
         return f"Profile({self.user.username})"
 
 class Account(models.Model):
-    owner = models.ForeignKey(ClientProfile, on_delete=models.CASCADE, related_name="accounts")
-    iban = models.CharField(max_length=34, unique=True)
+    owner = models.ForeignKey("ClientProfile", on_delete=models.CASCADE, related_name="accounts")
+    iban = models.CharField(max_length=34, unique=True, default=generate_iban)
     currency = models.CharField(max_length=3, default="TND")
     balance = models.DecimalField(max_digits=14, decimal_places=2, default=0)
 
     def __str__(self):
         return f"{self.iban}"
 
+        
 class Transaction(models.Model):
     STATUS = [(s, s) for s in ["PENDING","ALLOWED","CHALLENGE","BLOCKED","EXECUTED"]]
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="transactions")
