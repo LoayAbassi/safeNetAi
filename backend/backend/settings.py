@@ -18,8 +18,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
-    "apps.risk",
     "apps.users",
+    "apps.risk",
+    "apps.transactions",
 ]
 
 MIDDLEWARE = [

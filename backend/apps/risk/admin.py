@@ -1,13 +1,31 @@
 from django.contrib import admin
-from .models import Account, ClientProfile, RiskEvent, Rule, Threshold
+from .models import Rule, Threshold
 
-class AccountAdmin(admin.ModelAdmin):
-    list_display = ('iban', 'owner', 'balance')
-    # autocomplete_fields = ['owner']
-    search_fields = ['owner__user__username'] 
+@admin.register(Rule)
+class RuleAdmin(admin.ModelAdmin):
+    list_display = ('key', 'description', 'enabled')
+    list_filter = ('enabled',)
+    search_fields = ('key', 'description')
+    ordering = ('key',)
+    
+    fieldsets = (
+        ('Rule Information', {
+            'fields': ('key', 'description', 'enabled')
+        }),
+        ('Parameters', {
+            'fields': ('params_json',),
+            'classes': ('collapse',)
+        }),
+    )
 
-admin.site.register(Account, AccountAdmin)
-admin.site.register(ClientProfile)
-admin.site.register(RiskEvent)
-admin.site.register(Rule)
-admin.site.register(Threshold)
+@admin.register(Threshold)
+class ThresholdAdmin(admin.ModelAdmin):
+    list_display = ('key', 'value', 'description')
+    search_fields = ('key', 'description')
+    ordering = ('key',)
+    
+    fieldsets = (
+        ('Threshold Information', {
+            'fields': ('key', 'value', 'description')
+        }),
+    )

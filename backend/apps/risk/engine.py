@@ -1,38 +1,96 @@
-from math import radians, sin, cos, asin, sqrt
+from django.db.models import Count
+from django.utils import timezone
+from datetime import timedelta
+from apps.transactions.models import Transaction, FraudAlert
+from apps.risk.models import Threshold, Rule
 
-def haversine_km(lat1, lon1, lat2, lon2):
-    if None in [lat1, lon1, lat2, lon2]:
-        return 0
-    R = 6371.0
-    dlat = radians(lat2-lat1); dlon = radians(lon2-lon1)
-    a = sin(dlat/2)**2 + cos(radians(lat1))*cos(radians(lat2))*sin(dlon/2)**2
-    return 2*R*asin(sqrt(a))
-
-def z_amount(amount, avg, std):
-    std = std if std and std>0 else 1.0
-    return (float(amount) - float(avg)) / float(std)
-
-def evaluate(tx, profile, thresholds, recent_count=0, new_device=False, ip_change=False):
-    T = thresholds
-    signals, reasons = {}, []
-    # geo signal
-    dist = haversine_km(tx.get("lat"), tx.get("lng"), profile.get("last_known_lat"), profile.get("last_known_lng"))
-    if dist > T.get("MAX_GEO_KM", 100):
-        signals["geo_far"] = 30; reasons.append(f"geo_far:{dist:.1f}km")
-    # amount outlier
-    z = abs(z_amount(tx["amount"], profile.get("avg_amount",0), profile.get("std_amount",1)))
-    if z > T.get("Z_AMOUNT", 2.5):
-        signals["amount_outlier"] = 40; reasons.append(f"amount_outlier:z={z:.2f}")
-    # velocity (placeholder)
-    if recent_count > T.get("MAX_TX_PER_HOUR", 5):
-        signals["velocity"] = 15; reasons.append("velocity")
-    # device/ip
-    if new_device or ip_change:
-        signals["new_device_ip"] = 20; reasons.append("new_device_ip")
-    score = min(100, sum(signals.values()))
-    decision = "ALLOW"
-    if score >= T.get("RISK_CHALLENGE", 50) and score < T.get("RISK_BLOCK", 80):
-        decision = "STEP_UP"
-    elif score >= T.get("RISK_BLOCK", 80):
-        decision = "BLOCK"
-    return {"score": score, "reasons": reasons, "decision": decision, "signals": signals}
+class FraudDetectionEngine:
+    """
+    Engine for detecting fraudulent transactions based on configurable rules
+    """
+    
+    def __init__(self):
+        self.thresholds = self._load_thresholds()
+        self.rules = self._load_rules()
+    
+    def _load_thresholds(self):
+        """Load all thresholds from database"""
+        thresholds = {}
+        for threshold in Threshold.objects.all():
+            thresholds[threshold.key] = threshold.value
+        return thresholds
+    
+    def _load_rules(self):
+        """Load all enabled rules from database"""
+        return Rule.objects.filter(enabled=True)
+    
+    def detect_fraud(self, transaction):
+        """
+        Analyze a transaction for potential fraud
+        Returns: (risk_level, message, risk_score)
+        """
+        risk_score = 0
+        triggered_rules = []
+        
+        # Rule 1: Large withdrawal amount
+        if transaction.transaction_type == 'withdraw':
+            large_withdrawal_threshold = self.thresholds.get('LARGE_WITHDRAWAL_AMOUNT', 10000)
+            if transaction.amount > large_withdrawal_threshold:
+                risk_score += 30
+                triggered_rules.append(f"Large withdrawal: {transaction.amount} > {large_withdrawal_threshold}")
+        
+        # Rule 2: Multiple transactions in short time
+        recent_transactions = Transaction.objects.filter(
+            client=transaction.client,
+            timestamp__gte=timezone.now() - timedelta(hours=1)
+        ).count()
+        
+        max_transactions_per_hour = self.thresholds.get('MAX_TRANSACTIONS_PER_HOUR', 5)
+        if recent_transactions > max_transactions_per_hour:
+            risk_score += 25
+            triggered_rules.append(f"High transaction frequency: {recent_transactions} in last hour")
+        
+        # Rule 3: Low balance after withdrawal
+        if transaction.transaction_type == 'withdraw':
+            low_balance_threshold = self.thresholds.get('LOW_BALANCE_THRESHOLD', 100)
+            remaining_balance = transaction.client.balance - transaction.amount
+            if remaining_balance < low_balance_threshold:
+                risk_score += 20
+                triggered_rules.append(f"Low balance after withdrawal: {remaining_balance} < {low_balance_threshold}")
+        
+        # Rule 4: Unusual transaction amount (statistical outlier)
+        avg_amount = self.thresholds.get('AVERAGE_TRANSACTION_AMOUNT', 1000)
+        std_amount = self.thresholds.get('TRANSACTION_STD_DEV', 500)
+        z_score = abs(transaction.amount - avg_amount) / std_amount if std_amount > 0 else 0
+        
+        if z_score > 2.5:  # More than 2.5 standard deviations
+            risk_score += 15
+            triggered_rules.append(f"Unusual amount: z-score = {z_score:.2f}")
+        
+        # Determine risk level
+        if risk_score >= 70:
+            risk_level = 'High'
+        elif risk_score >= 40:
+            risk_level = 'Medium'
+        else:
+            risk_level = 'Low'
+        
+        # Create message
+        if triggered_rules:
+            message = f"Fraud risk detected. Score: {risk_score}. Triggers: {'; '.join(triggered_rules)}"
+        else:
+            message = f"Transaction appears normal. Risk score: {risk_score}"
+        
+        return risk_level, message, risk_score
+    
+    def create_fraud_alert(self, transaction, risk_level, message):
+        """Create a fraud alert for the transaction"""
+        return FraudAlert.objects.create(
+            transaction=transaction,
+            risk_level=risk_level,
+            message=message
+        )
+    
+    def should_block_transaction(self, risk_level):
+        """Determine if transaction should be blocked based on risk level"""
+        return risk_level == 'High'
