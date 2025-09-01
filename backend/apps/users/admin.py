@@ -1,41 +1,34 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, ClientProfile
+from .models import User, EmailOTP
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'role', 'is_active', 'date_joined')
-    list_filter = ('role', 'is_active', 'date_joined')
-    search_fields = ('username', 'email')
-    ordering = ('-date_joined',)
-    
-    fieldsets = UserAdmin.fieldsets + (
-        ('Role', {'fields': ('role',)}),
-    )
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        ('Role', {'fields': ('role',)}),
-    )
-
-@admin.register(ClientProfile)
-class ClientProfileAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'national_id', 'bank_account_number', 'balance', 'risk_score', 'user', 'created_at')
-    list_filter = ('risk_score', 'created_at')
-    search_fields = ('full_name', 'national_id', 'bank_account_number')
-    readonly_fields = ('national_id', 'bank_account_number', 'created_at', 'updated_at')
-    ordering = ('-created_at',)
+    list_display = ('email', 'first_name', 'last_name', 'is_email_verified', 'is_staff', 'is_active')
+    list_filter = ('is_email_verified', 'is_staff', 'is_active')
+    search_fields = ('email', 'first_name', 'last_name')
+    ordering = ('email',)
     
     fieldsets = (
-        ('Basic Information', {
-            'fields': ('full_name', 'national_id', 'bank_account_number')
-        }),
-        ('Financial Information', {
-            'fields': ('balance', 'risk_score')
-        }),
-        ('User Account', {
-            'fields': ('user',)
-        }),
-        ('Timestamps', {
-            'fields': ('created_at', 'updated_at'),
-            'classes': ('collapse',)
+        (None, {'fields': ('email', 'password')}),
+        ('Personal info', {'fields': ('first_name', 'last_name')}),
+        ('Permissions', {'fields': ('is_email_verified', 'is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        ('Important dates', {'fields': ('last_login', 'date_joined')}),
+    )
+    
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'first_name', 'last_name', 'password1', 'password2'),
         }),
     )
+
+@admin.register(EmailOTP)
+class EmailOTPAdmin(admin.ModelAdmin):
+    list_display = ('user', 'otp', 'created_at', 'expires_at', 'attempts', 'used')
+    list_filter = ('used', 'created_at')
+    search_fields = ('user__email', 'otp')
+    readonly_fields = ('created_at',)
+    
+    def has_add_permission(self, request):
+        return False  # OTPs should only be created programmatically

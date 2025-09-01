@@ -2,7 +2,7 @@
 
 ## Authentication
 
-All API requests (except login and register) require a JWT token in the Authorization header:
+All API requests (except login, register, and verify-otp) require a JWT token in the Authorization header:
 
 ```
 Authorization: Bearer <your_jwt_token>
@@ -23,7 +23,7 @@ http://localhost:8000
 **Request Body:**
 ```json
 {
-    "username": "admin",
+    "email": "admin@safenetai.com",
     "password": "admin123"
 }
 ```
@@ -36,24 +36,74 @@ http://localhost:8000
 }
 ```
 
+**Error Response (Unverified Email):**
+```json
+{
+    "error": "Please verify your email first"
+}
+```
+
 #### Register
 **POST** `/api/auth/register/`
 
 **Request Body:**
 ```json
 {
-    "username": "newuser",
-    "password": "password123",
     "email": "user@example.com",
-    "national_id": "123456789"
+    "first_name": "John",
+    "last_name": "Doe",
+    "password": "password123",
+    "national_id": "123456789",
+    "bank_account_number": "12345678"
 }
 ```
 
 **Response:**
 ```json
 {
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+    "message": "OTP sent to your email"
+}
+```
+
+**Important:** Registration requires both `national_id` and `bank_account_number` to match an existing client profile created by an administrator. Users cannot register without a pre-existing profile. After registration, users must verify their email with the OTP before they can login.
+
+#### Verify OTP
+**POST** `/api/verify-otp/`
+
+**Request Body:**
+```json
+{
+    "email": "user@example.com",
+    "otp": "123456"
+}
+```
+
+**Success Response:**
+```json
+{
+    "message": "Email verified successfully"
+}
+```
+
+**Error Responses:**
+```json
+{
+    "error": "Invalid OTP"
+}
+```
+```json
+{
+    "error": "User with this email does not exist"
+}
+```
+```json
+{
+    "error": "Email is already verified"
+}
+```
+```json
+{
+    "error": "No OTP found for this user"
 }
 ```
 
@@ -66,6 +116,8 @@ http://localhost:8000
 ```json
 {
     "id": 1,
+    "first_name": "John",
+    "last_name": "Doe",
     "full_name": "John Doe",
     "national_id": "123456789",
     "bank_account_number": "12345678",
@@ -150,13 +202,16 @@ http://localhost:8000
 [
     {
         "id": 1,
+        "first_name": "John",
+        "last_name": "Doe",
         "full_name": "John Doe",
         "national_id": "123456789",
         "bank_account_number": "12345678",
         "balance": "5000.00",
         "risk_score": 75,
-        "user_username": "johndoe",
         "user_email": "john@example.com",
+        "user_first_name": "John",
+        "user_last_name": "Doe",
         "created_at": "2024-01-01T00:00:00Z"
     }
 ]
@@ -168,12 +223,14 @@ http://localhost:8000
 **Request Body:**
 ```json
 {
-    "full_name": "New Client",
+    "first_name": "New",
+    "last_name": "Client",
     "national_id": "111222333",
-    "bank_account_number": "11111111",
     "balance": 10000.00
 }
 ```
+
+**Important:** Only administrators can create client profiles. The `bank_account_number` is automatically generated and unique. Only `national_id` needs to be provided manually.
 
 #### Search Clients
 **GET** `/api/admin/clients/search/?q=john`
@@ -183,13 +240,16 @@ http://localhost:8000
 [
     {
         "id": 1,
+        "first_name": "John",
+        "last_name": "Doe",
         "full_name": "John Doe",
         "national_id": "123456789",
         "bank_account_number": "12345678",
         "balance": "5000.00",
         "risk_score": 75,
-        "user_username": "johndoe",
         "user_email": "john@example.com",
+        "user_first_name": "John",
+        "user_last_name": "Doe",
         "created_at": "2024-01-01T00:00:00Z"
     }
 ]
@@ -345,6 +405,33 @@ http://localhost:8000
 }
 ```
 
+## Registration Rules
+
+### Client Profile Creation (Admin Only)
+- **Only administrators** can create client profiles
+- **`first_name` and `last_name`** are required fields
+- **`national_id`** must be manually entered and unique
+- **`bank_account_number`** is automatically generated (8-digit unique number)
+- **No manual entry** of bank account numbers to prevent duplicates
+
+### User Registration
+- Users can only register if they have a **pre-existing client profile**
+- Registration requires **email, first_name, last_name, password, national_id, and bank_account_number**
+- Both `national_id` and `bank_account_number` must match the **same profile** in the database
+- Registration is **blocked** if:
+  - Profile doesn't exist
+  - National ID and account number don't match
+  - Profile is already linked to another user
+- **OTP is automatically generated** and sent to user's email
+- **Email verification is required** before login
+
+### Email Verification
+- **6-digit OTP** is generated during registration
+- **OTP is sent via Gmail SMTP** (requires GMAIL_EMAIL and GMAIL_APP_PASSWORD in .env)
+- **OTP verification** is required before login
+- **Login is blocked** for unverified users
+- **OTP is cleared** after successful verification
+
 ## Transaction Types
 
 - `deposit` - Money deposited into account
@@ -368,7 +455,7 @@ http://localhost:8000
 ```bash
 curl -X POST http://localhost:8000/api/auth/login/ \
   -H "Content-Type: application/json" \
-  -d '{"username": "admin", "password": "admin123"}' \
+  -d '{"email": "admin@safenetai.com", "password": "admin123"}' \
   | jq -r '.access'
 ```
 
@@ -376,9 +463,57 @@ curl -X POST http://localhost:8000/api/auth/login/ \
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:8000/api/auth/login/ \
   -H "Content-Type: application/json" \
-  -d '{"username": "admin", "password": "admin123"}' \
+  -d '{"email": "admin@safenetai.com", "password": "admin123"}' \
   | jq -r '.access')
 
 curl -X GET http://localhost:8000/api/admin/clients/ \
   -H "Authorization: Bearer $TOKEN"
 ```
+
+### Create a client profile (admin only)
+```bash
+curl -X POST http://localhost:8000/api/admin/clients/ \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "first_name": "New",
+    "last_name": "Client",
+    "national_id": "111222333",
+    "balance": 10000.00
+  }'
+```
+
+### Register a new user (requires existing profile)
+```bash
+curl -X POST http://localhost:8000/api/auth/register/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "first_name": "John",
+    "last_name": "Doe",
+    "password": "password123",
+    "national_id": "123456789",
+    "bank_account_number": "12345678"
+  }'
+```
+
+### Verify OTP
+```bash
+curl -X POST http://localhost:8000/api/verify-otp/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "otp": "123456"
+  }'
+```
+
+## Environment Variables
+
+For email functionality, add these to your `.env` file:
+
+```
+GMAIL_EMAIL=your-email@gmail.com
+GMAIL_APP_PASSWORD=your-app-password
+```
+
+**Note:** Use Gmail App Password, not your regular password. Enable 2FA and generate an App Password in your Google Account settings.

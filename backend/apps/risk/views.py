@@ -1,70 +1,46 @@
+from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
-from django.db.models import Count
-from .models import Transaction, Account, Threshold, RiskEvent
-from .serializers import QuoteSerializer, TransactionSerializer, ThresholdSerializer, AccountSerializer
-from .engine import evaluate
+from .ml import FraudMLModel
 
-@api_view(["GET"])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def my_accounts(request):
-    accounts = Account.objects.filter(owner__user=request.user)
-    return Response(AccountSerializer(accounts, many=True).data)
-
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def quote(request):
-    s = QuoteSerializer(data=request.data); s.is_valid(raise_exception=True)
-    data = s.validated_data
-    acc = get_object_or_404(Account, id=data["account_id"], owner__user=request.user)
-    profile = {
-        "avg_amount": acc.owner.avg_amount,
-        "std_amount": acc.owner.std_amount,
-        "last_known_lat": acc.owner.last_known_lat,
-        "last_known_lng": acc.owner.last_known_lng,
-    }
-    T = {t.key: t.value for t in Threshold.objects.all()}
-    result = evaluate(data, profile, T)
-    return Response({"decision": result["decision"], "risk_score": result["score"], "reasons": result["reasons"]})
-
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def initiate(request):
-    s = QuoteSerializer(data=request.data); s.is_valid(raise_exception=True)
-    data = s.validated_data
-    acc = get_object_or_404(Account, id=data["account_id"], owner__user=request.user)
-    T = {t.key: t.value for t in Threshold.objects.all()}
-    profile = {
-        "avg_amount": acc.owner.avg_amount,
-        "std_amount": acc.owner.std_amount,
-        "last_known_lat": acc.owner.last_known_lat,
-        "last_known_lng": acc.owner.last_known_lng,
-    }
-    result = evaluate(data, profile, T)
-    tx = Transaction.objects.create(account=acc, to_iban=data["to_iban"], amount=data["amount"], currency=data["currency"], lat=data.get("lat"), lng=data.get("lng"), device_id=data.get("device_id"), ip=data.get("ip"), status=result["decision"], risk_score=result["score"], decision_reason=result["reasons"])    
-    if result["decision"] == "STEP_UP":
-        request.session[f"otp:{tx.id}"] = "123456"
-        RiskEvent.objects.create(transaction=tx, signals_json=result["signals"], rules_triggered=result["reasons"], decision="STEP_UP")
-        return Response({"challenge_id": tx.id, "decision": "STEP_UP"})
-    elif result["decision"] == "BLOCK":
-        RiskEvent.objects.create(transaction=tx, signals_json=result["signals"], rules_triggered=result["reasons"], decision="BLOCK")
-        return Response({"decision": "BLOCK"}, status=403)
-    else:
-        acc.balance = acc.balance - data["amount"]; acc.save(update_fields=["balance"]) 
-        tx.status = "EXECUTED"; tx.save(update_fields=["status"]) 
-        return Response(TransactionSerializer(tx).data)
-
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def confirm(request):
-    tx_id = request.data.get("challenge_id"); otp = request.data.get("otp")
-    tx = get_object_or_404(Transaction, id=tx_id, account__owner__user=request.user)
-    good = request.session.get(f"otp:{tx.id}") == otp
-    if not good:
-        return Response({"detail":"Invalid OTP"}, status=400)
-    acc = tx.account
-    acc.balance = acc.balance - float(tx.amount); acc.save(update_fields=["balance"]) 
-    tx.status = "EXECUTED"; tx.save(update_fields=["status"]) 
-    return Response(TransactionSerializer(tx).data)
+def predict_fraud(request):
+    """AI endpoint for fraud prediction"""
+    try:
+        # Get transaction data from request
+        transaction_data = request.data
+        
+        # Create a mock transaction object for prediction
+        # In a real implementation, you'd get the actual transaction
+        from apps.transactions.models import Transaction
+        from apps.risk.models import ClientProfile
+        
+        # This is a simplified version - in practice you'd validate the data
+        # and create a proper transaction object
+        client_profile = ClientProfile.objects.get(user=request.user)
+        
+        # Create a temporary transaction for prediction
+        transaction = Transaction(
+            client=client_profile,
+            amount=transaction_data.get('amount', 0),
+            transaction_type=transaction_data.get('transaction_type', 'transfer'),
+            location_lat=transaction_data.get('location_lat'),
+            location_lng=transaction_data.get('location_lng'),
+        )
+        
+        # Get ML prediction
+        ml_model = FraudMLModel()
+        anomaly_score = ml_model.predict(transaction)
+        
+        return Response({
+            'anomaly_score': anomaly_score,
+            'is_anomalous': anomaly_score > 0.7,  # Threshold for anomaly
+            'confidence': 1 - anomaly_score
+        })
+        
+    except Exception as e:
+        return Response({
+            'error': str(e)
+        }, status=status.HTTP_400_BAD_REQUEST)
