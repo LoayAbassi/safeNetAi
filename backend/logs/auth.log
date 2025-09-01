@@ -1,0 +1,8 @@
+[2025-09-01 17:02:40] [INFO] [auth] Test authentication log message
+[2025-09-01 17:02:40] [INFO] [auth] User action: TEST_LOGIN | User ID: 999 | Email: test@example.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1", "user_agent": "Test Browser"}
+[2025-09-01 17:02:40] [WARNING] [auth] Security event: Test security event | User ID: 999 | IP: 127.0.0.1 | Data: {"suspicious_activity": "multiple_failed_logins", "user_id": 999, "ip_address": "127.0.0.1"}
+[2025-09-01 17:02:40] [INFO] [auth] Testing sensitive data logging | Data: {"password": "***REDACTED***", "token": "***REDACTED***", "api_key": "***REDACTED***", "normal_data": "this should be visible", "nested": {"secret_key": "***REDACTED***", "public_info": "visible_info"}}
+[2025-09-01 18:30:45] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-01 18:30:58] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "admin@safenetai.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
+[2025-09-01 18:31:05] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-01 18:31:41] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}

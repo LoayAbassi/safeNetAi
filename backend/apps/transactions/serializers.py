@@ -1,35 +1,72 @@
 from rest_framework import serializers
 from .models import Transaction, FraudAlert
-from apps.users.serializers import ClientProfileSerializer
+from apps.risk.models import ClientProfile
 
 class TransactionSerializer(serializers.ModelSerializer):
     client_name = serializers.CharField(source='client.full_name', read_only=True)
+    client_email = serializers.EmailField(source='client.user.email', read_only=True)
     
     class Meta:
         model = Transaction
-        fields = ['id', 'client', 'client_name', 'amount', 'transaction_type', 'timestamp']
-        read_only_fields = ['timestamp']
+        fields = ['id', 'client', 'client_name', 'client_email', 'amount', 'transaction_type',
+                 'from_account', 'to_account_number', 'status', 'device_fingerprint',
+                 'location_lat', 'location_lng', 'created_at']
+        read_only_fields = ['client', 'from_account', 'status', 'created_at']
+
+class CreateTransactionSerializer(serializers.ModelSerializer):
+    current_location = serializers.JSONField(required=False)
+    
+    class Meta:
+        model = Transaction
+        fields = ['amount', 'transaction_type', 'to_account_number', 'device_fingerprint', 'current_location']
+    
+    def validate(self, attrs):
+        user = self.context['request'].user
+        try:
+            client_profile = ClientProfile.objects.get(user=user)
+        except ClientProfile.DoesNotExist:
+            raise serializers.ValidationError("Client profile not found")
+        
+        # Validate funds for withdraw/transfer
+        if attrs['transaction_type'] in ['withdraw', 'transfer']:
+            if client_profile.balance < attrs['amount']:
+                raise serializers.ValidationError("Insufficient funds")
+        
+        # Extract location from current_location
+        current_location = attrs.pop('current_location', {})
+        if current_location:
+            attrs['location_lat'] = current_location.get('lat')
+            attrs['location_lng'] = current_location.get('lng')
+        
+        attrs['client'] = client_profile
+        attrs['from_account'] = client_profile.bank_account_number
+        
+        return attrs
+
+class AdminTransactionSerializer(serializers.ModelSerializer):
+    client_name = serializers.CharField(source='client.full_name', read_only=True)
+    client_email = serializers.EmailField(source='client.user.email', read_only=True)
+    
+    class Meta:
+        model = Transaction
+        fields = ['id', 'client', 'client_name', 'client_email', 'amount', 'transaction_type',
+                 'from_account', 'to_account_number', 'status', 'device_fingerprint',
+                 'location_lat', 'location_lng', 'created_at']
 
 class FraudAlertSerializer(serializers.ModelSerializer):
     transaction_details = TransactionSerializer(source='transaction', read_only=True)
     
     class Meta:
         model = FraudAlert
-        fields = ['id', 'transaction', 'transaction_details', 'risk_level', 'message', 'status', 'created_at']
-        read_only_fields = ['created_at']
+        fields = ['id', 'transaction', 'transaction_details', 'risk_score', 'level', 
+                 'message', 'triggers', 'status', 'created_at']
+        read_only_fields = ['transaction', 'risk_score', 'level', 'message', 'triggers', 'created_at']
 
-class TransactionCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Transaction
-        fields = ['amount', 'transaction_type']
+class AdminFraudAlertSerializer(serializers.ModelSerializer):
+    transaction_details = AdminTransactionSerializer(source='transaction', read_only=True)
     
-    def create(self, validated_data):
-        # Get the client profile from the authenticated user
-        user = self.context['request'].user
-        try:
-            client_profile = user.clientprofile
-        except:
-            raise serializers.ValidationError("No client profile found for this user.")
-        
-        validated_data['client'] = client_profile
-        return super().create(validated_data)
+    class Meta:
+        model = FraudAlert
+        fields = ['id', 'transaction', 'transaction_details', 'risk_score', 'level', 
+                 'message', 'triggers', 'status', 'created_at']
+        read_only_fields = ['transaction', 'risk_score', 'level', 'message', 'triggers', 'created_at']

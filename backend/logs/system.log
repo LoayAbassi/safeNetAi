@@ -1,0 +1,282 @@
+[2025-09-01 16:18:30] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:18:37] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\settings.py changed, reloading.
+[2025-09-01 16:18:37] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:18:44] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\settings.py changed, reloading.
+[2025-09-01 16:18:45] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:19:41] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\email_service.py changed, reloading.
+[2025-09-01 16:19:42] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:19:59] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\email_service.py changed, reloading.
+[2025-09-01 16:20:00] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:20:16] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\email_service.py changed, reloading.
+[2025-09-01 16:20:17] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:20:35] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\email_service.py changed, reloading.
+[2025-09-01 16:20:36] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:20:51] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\email_service.py changed, reloading.
+[2025-09-01 16:20:51] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:21:06] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\auth_views.py changed, reloading.
+[2025-09-01 16:21:07] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:21:18] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\auth_views.py changed, reloading.
+[2025-09-01 16:21:19] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:21:33] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\auth_views.py changed, reloading.
+[2025-09-01 16:21:34] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:21:52] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\auth_views.py changed, reloading.
+[2025-09-01 16:21:53] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:22:12] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\auth_views.py changed, reloading.
+[2025-09-01 16:22:13] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:22:28] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\transactions\views.py changed, reloading.
+[2025-09-01 16:22:29] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:22:58] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\transactions\views.py changed, reloading.
+[2025-09-01 16:22:59] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:23:10] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\risk\engine.py changed, reloading.
+[2025-09-01 16:23:11] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 16:23:18] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\risk\engine.py changed, reloading.
+[2025-09-01 16:23:19] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 17:02:40] [INFO] [system] Test system log message
+[2025-09-01 17:02:40] [INFO] [system] System event: Test system event | Component: test_component | Severity: INFO | Data: {"test_data": "test_value"}
+[2025-09-01 17:02:40] [ERROR] [system] Caught test error: Test error for logging
+[2025-09-01 17:25:57] [ERROR] [system] Error generating fake data: property 'full_name' of 'ClientProfile' object has no setter
+[2025-09-01 17:28:01] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:28:01] [ERROR] [system] Error generating fake data: 'Transaction' object has no attribute 'location_lat'
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 17:30:18] [INFO] [system] System event: Fake data generation completed | Component: management | Severity: INFO | Data: {"users_created": 6, "transactions_created": 20, "client_profiles_created": 5}
+[2025-09-01 18:11:18] [INFO] [system] Creating 30 specific Algerian client profiles...
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Amine Bensalem: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Amina Cherif: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Karim Haddad: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Samira Mecheri: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Sofiane Rahmani: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Nassima Bekhti: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Yacine Belkacem: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Naoual Boudiaf: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Rachid Ferhat: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Lila Haddouch: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Nabil Slimani: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Souad Zerguine: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Mourad Djellal: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Leila Chouikh: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Hakim Benyahia: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Fatiha Guemari: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Mehdi Kaci: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Imene Touati: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Zaki Benrabah: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Kahina Saadi: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Lotfi Cherfaoui: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Hanane Meziane: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Walid Ferhani: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Assia Boukercha: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Adel Djamai: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Naima Bouras: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Hocine Khoda: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Meriem Ziani: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Farid Amrani: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [ERROR] [system] Error creating profile for Salima Haddadi: User() got unexpected keyword arguments: 'username'
+[2025-09-01 18:11:18] [INFO] [system] Successfully created 0 Algerian client profiles
+[2025-09-01 18:11:18] [INFO] [system] System event: Fake data generation completed | Component: management | Severity: INFO | Data: {"users_created": 1, "algerian_profiles_created": 0, "additional_profiles_created": 0, "transactions_created": 0}
+[2025-09-01 18:11:41] [INFO] [system] Creating 30 specific Algerian client profiles...
+[2025-09-01 18:11:42] [INFO] [system] Created profile: Amine Bensalem (amine.bensalem@example.dz)
+[2025-09-01 18:11:43] [INFO] [system] Created profile: Amina Cherif (amina.cherif@example.dz)
+[2025-09-01 18:11:43] [INFO] [system] Created profile: Karim Haddad (karim.haddad@example.dz)
+[2025-09-01 18:11:44] [INFO] [system] Created profile: Samira Mecheri (samira.mecheri@example.dz)
+[2025-09-01 18:11:45] [INFO] [system] Created profile: Sofiane Rahmani (sofiane.rahmani@example.dz)
+[2025-09-01 18:11:46] [INFO] [system] Created profile: Nassima Bekhti (nassima.bekhti@example.dz)
+[2025-09-01 18:11:46] [INFO] [system] Created profile: Yacine Belkacem (yacine.belkacem@example.dz)
+[2025-09-01 18:11:47] [INFO] [system] Created profile: Naoual Boudiaf (naoual.boudiaf@example.dz)
+[2025-09-01 18:11:48] [INFO] [system] Created profile: Rachid Ferhat (rachid.ferhat@example.dz)
+[2025-09-01 18:11:49] [INFO] [system] Created profile: Lila Haddouch (lila.haddouch@example.dz)
+[2025-09-01 18:11:49] [INFO] [system] Created profile: Nabil Slimani (nabil.slimani@example.dz)
+[2025-09-01 18:11:50] [INFO] [system] Created profile: Souad Zerguine (souad.zerguine@example.dz)
+[2025-09-01 18:11:51] [INFO] [system] Created profile: Mourad Djellal (mourad.djellal@example.dz)
+[2025-09-01 18:11:52] [INFO] [system] Created profile: Leila Chouikh (leila.chouikh@example.dz)
+[2025-09-01 18:11:52] [INFO] [system] Created profile: Hakim Benyahia (hakim.benyahia@example.dz)
+[2025-09-01 18:11:53] [INFO] [system] Created profile: Fatiha Guemari (fatiha.guemari@example.dz)
+[2025-09-01 18:11:54] [INFO] [system] Created profile: Mehdi Kaci (mehdi.kaci@example.dz)
+[2025-09-01 18:11:55] [INFO] [system] Created profile: Imene Touati (imene.touati@example.dz)
+[2025-09-01 18:11:55] [INFO] [system] Created profile: Zaki Benrabah (zaki.benrabah@example.dz)
+[2025-09-01 18:11:56] [INFO] [system] Created profile: Kahina Saadi (kahina.saadi@example.dz)
+[2025-09-01 18:11:57] [INFO] [system] Created profile: Lotfi Cherfaoui (lotfi.cherfaoui@example.dz)
+[2025-09-01 18:11:58] [INFO] [system] Created profile: Hanane Meziane (hanane.meziane@example.dz)
+[2025-09-01 18:11:58] [INFO] [system] Created profile: Walid Ferhani (walid.ferhani@example.dz)
+[2025-09-01 18:11:59] [INFO] [system] Created profile: Assia Boukercha (assia.boukercha@example.dz)
+[2025-09-01 18:12:00] [INFO] [system] Created profile: Adel Djamai (adel.djamai@example.dz)
+[2025-09-01 18:12:01] [INFO] [system] Created profile: Naima Bouras (naima.bouras@example.dz)
+[2025-09-01 18:12:01] [INFO] [system] Created profile: Hocine Khoda (hocine.khodja@example.dz)
+[2025-09-01 18:12:02] [INFO] [system] Created profile: Meriem Ziani (meriem.ziani@example.dz)
+[2025-09-01 18:12:03] [INFO] [system] Created profile: Farid Amrani (farid.amrani@example.dz)
+[2025-09-01 18:12:03] [INFO] [system] Created profile: Salima Haddadi (salima.haddadi@example.dz)
+[2025-09-01 18:12:03] [INFO] [system] Successfully created 30 Algerian client profiles
+[2025-09-01 18:12:03] [INFO] [system] System event: Fake data generation completed | Component: management | Severity: INFO | Data: {"users_created": 1, "algerian_profiles_created": 30, "additional_profiles_created": 0, "transactions_created": 0}
+[2025-09-01 18:12:29] [INFO] [system] Creating 30 specific Algerian client profiles...
+[2025-09-01 18:12:29] [INFO] [system] User amine.bensalem@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User amina.cherif@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User karim.haddad@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User samira.mecheri@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User sofiane.rahmani@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User nassima.bekhti@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User yacine.belkacem@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User naoual.boudiaf@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User rachid.ferhat@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User lila.haddouch@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User nabil.slimani@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User souad.zerguine@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User mourad.djellal@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User leila.chouikh@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User hakim.benyahia@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User fatiha.guemari@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User mehdi.kaci@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User imene.touati@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User zaki.benrabah@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User kahina.saadi@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User lotfi.cherfaoui@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User hanane.meziane@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User walid.ferhani@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User assia.boukercha@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User adel.djamai@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User naima.bouras@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User hocine.khodja@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User meriem.ziani@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User farid.amrani@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] User salima.haddadi@example.dz already exists, skipping...
+[2025-09-01 18:12:29] [INFO] [system] Successfully created 0 Algerian client profiles
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:12:44] [ERROR] [system] Error generating fake data: non-integer stop for randrange()
+[2025-09-01 18:13:06] [INFO] [system] Creating 30 specific Algerian client profiles...
+[2025-09-01 18:13:06] [INFO] [system] User amine.bensalem@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User amina.cherif@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User karim.haddad@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User samira.mecheri@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User sofiane.rahmani@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User nassima.bekhti@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User yacine.belkacem@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User naoual.boudiaf@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User rachid.ferhat@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User lila.haddouch@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User nabil.slimani@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User souad.zerguine@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User mourad.djellal@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User leila.chouikh@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User hakim.benyahia@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User fatiha.guemari@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User mehdi.kaci@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User imene.touati@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User zaki.benrabah@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User kahina.saadi@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User lotfi.cherfaoui@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User hanane.meziane@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User walid.ferhani@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User assia.boukercha@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User adel.djamai@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User naima.bouras@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User hocine.khodja@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User meriem.ziani@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User farid.amrani@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] User salima.haddadi@example.dz already exists, skipping...
+[2025-09-01 18:13:06] [INFO] [system] Successfully created 0 Algerian client profiles
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 6, "rules_count": 4}
+[2025-09-01 18:13:20] [INFO] [system] System event: Fake data generation completed | Component: management | Severity: INFO | Data: {"users_created": 21, "algerian_profiles_created": 0, "additional_profiles_created": 20, "transactions_created": 20}
+[2025-09-01 18:14:13] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-01 18:14:22] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 45811
+[2025-09-01 18:14:22] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-01 18:14:22] [INFO] [django.server] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[2025-09-01 18:14:22] [INFO] [django.server] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+[2025-09-01 18:14:22] [INFO] [django.server] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+[2025-09-01 18:14:31] [INFO] [django.server] "GET /admin/users/user/ HTTP/1.1" 200 48744
+[2025-09-01 18:14:31] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /admin/users/user/35/change/ HTTP/1.1" 200 28776
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/js/SelectBox.js HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/img/selector-icons.svg HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+[2025-09-01 18:14:42] [INFO] [django.server] "GET /static/admin/img/icon-clock.svg HTTP/1.1" 304 0
+[2025-09-01 18:14:54] [INFO] [django.server] "GET /admin/users/user/ HTTP/1.1" 200 48744
+[2025-09-01 18:14:54] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-01 18:29:37] [INFO] [django.server] "OPTIONS /api/client/profile/me/ HTTP/1.1" 200 0
+[2025-09-01 18:29:37] [INFO] [django.server] "OPTIONS /api/client/profile/me/ HTTP/1.1" 200 0
+[2025-09-01 18:29:37] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:29:37] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:29:37] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:29:37] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:30:44] [INFO] [django.server] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+[2025-09-01 18:30:45] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 587
+[2025-09-01 18:30:45] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-09-01 18:30:45] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-09-01 18:30:45] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:30:45] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:30:45] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:30:45] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:30:45] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:30:45] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:30:58] [WARNING] [django.request] Bad Request: /api/auth/login/
+[2025-09-01 18:30:58] [WARNING] [django.server] "POST /api/auth/login/ HTTP/1.1" 400 44
+[2025-09-01 18:31:05] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 587
+[2025-09-01 18:31:05] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:31:05] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:31:05] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:31:05] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:31:05] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:31:05] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:31:13] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:31:13] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:31:13] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:31:13] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:31:13] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:31:13] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:31:17] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:31:17] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:31:17] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:31:17] [WARNING] [django.request] Not Found: /api/client/profile/me/
+[2025-09-01 18:31:17] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 404 30
+[2025-09-01 18:31:17] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2
+[2025-09-01 18:31:41] [WARNING] [django.request] Bad Request: /api/auth/login/
+[2025-09-01 18:31:41] [WARNING] [django.server] "POST /api/auth/login/ HTTP/1.1" 400 44

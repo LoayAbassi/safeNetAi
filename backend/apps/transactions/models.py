@@ -1,45 +1,96 @@
 from django.db import models
-from django.conf import settings
-from apps.users.models import ClientProfile
+from django.utils import timezone
+from apps.users.models import User
+from apps.risk.models import ClientProfile
+from decimal import Decimal
 
 class Transaction(models.Model):
     TRANSACTION_TYPES = [
         ('deposit', 'Deposit'),
-        ('withdraw', 'Withdraw'),
+        ('withdraw', 'Withdrawal'),
         ('transfer', 'Transfer'),
     ]
     
-    client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE, related_name='transactions')
-    amount = models.DecimalField(max_digits=14, decimal_places=2)
-    transaction_type = models.CharField(max_length=10, choices=TRANSACTION_TYPES)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"{self.client.full_name} - {self.transaction_type} - {self.amount}"
-    
-    class Meta:
-        ordering = ['-timestamp']
-
-class FraudAlert(models.Model):
-    RISK_LEVELS = [
-        ('Low', 'Low'),
-        ('Medium', 'Medium'),
-        ('High', 'High'),
-    ]
-    
     STATUS_CHOICES = [
-        ('Pending', 'Pending'),
-        ('Reviewed', 'Reviewed'),
+        ('pending', 'Pending'),
+        ('completed', 'Completed'),
+        ('failed', 'Failed'),
+        ('cancelled', 'Cancelled'),
     ]
     
-    transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE, related_name='fraud_alerts')
-    risk_level = models.CharField(max_length=10, choices=RISK_LEVELS)
-    message = models.TextField()
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Pending')
+    client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE, related_name='transactions')
+    transaction_type = models.CharField(max_length=20, choices=TRANSACTION_TYPES)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    to_account_number = models.CharField(max_length=20, blank=True, null=True)
+    description = models.TextField(blank=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    risk_score = models.IntegerField(default=0)
+    device_fingerprint = models.CharField(max_length=255, blank=True, null=True)
+    location_lat = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    location_lng = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"Alert for {self.transaction} - {self.risk_level}"
+    updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
         ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"{self.transaction_type.title()} - {self.amount} DZD - {self.status}"
+
+class TransactionOTP(models.Model):
+    """OTP model for transaction verification"""
+    transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE, related_name='otps')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transaction_otps')
+    otp = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    attempts = models.IntegerField(default=0)
+    used = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return f"Transaction OTP for {self.user.email} - Transaction #{self.transaction.id}"
+    
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+    
+    def is_valid(self):
+        return not self.used and not self.is_expired() and self.attempts < 3
+    
+    def increment_attempts(self):
+        self.attempts += 1
+        self.save()
+    
+    def mark_used(self):
+        self.used = True
+        self.save()
+    
+    class Meta:
+        ordering = ['-created_at']
+
+class FraudAlert(models.Model):
+    LEVEL_CHOICES = [
+        ('LOW', 'Low'),
+        ('MEDIUM', 'Medium'),
+        ('HIGH', 'High'),
+        ('CRITICAL', 'Critical'),
+    ]
+    
+    STATUS_CHOICES = [
+        ('Active', 'Active'),
+        ('Reviewed', 'Reviewed'),
+        ('Resolved', 'Resolved'),
+    ]
+    
+    transaction = models.OneToOneField(Transaction, on_delete=models.CASCADE, related_name='fraud_alert')
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES)
+    risk_score = models.IntegerField()
+    triggers = models.JSONField(default=list)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Active')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"Fraud Alert - {self.level} - Transaction #{self.transaction.id}"
