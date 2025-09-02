@@ -127,32 +127,9 @@ class RiskEngine:
                     triggers=[trigger_msg]
                 )
         
-        # Rule 4: Location anomaly
-        location_threshold_km = self.thresholds.get('location_anomaly_km', 50)
-        time_threshold_hours = self.thresholds.get('location_time_hours', 1)
-        
-        if (transaction.location_lat and transaction.location_lng and 
-            client.last_known_lat and client.last_known_lng):
-            
-            # Check if there's a recent transaction to compare location
-            recent_transaction = Transaction.objects.filter(
-                client=client,
-                created_at__gte=timezone.now() - timedelta(hours=time_threshold_hours),
-                location_lat__isnull=False,
-                location_lng__isnull=False
-            ).exclude(id=transaction.id).order_by('-created_at').first()
-            
-            if recent_transaction:
-                distance = haversine_distance(
-                    float(transaction.location_lat), float(transaction.location_lng),
-                    float(recent_transaction.location_lat), float(recent_transaction.location_lng)
-                )
-                
-                if distance > location_threshold_km:
-                    risk_score += 20
-                    trigger_msg = f"Location anomaly: {distance:.1f}km > {location_threshold_km}km"
-                    triggers.append(trigger_msg)
-                    logger.warning(f"Rule 4 triggered: {trigger_msg}")
+        # Rule 4: Location anomaly (temporarily disabled - location fields removed)
+        # TODO: Re-implement when location tracking is added back
+        # Currently skipped due to removed location_lat/lng fields
         
         # Rule 5: Statistical outlier
         if client.avg_amount > 0 and client.std_amount > 0:
@@ -174,13 +151,9 @@ class RiskEngine:
             triggers.append(trigger_msg)
             logger.info(f"Rule 6 triggered: {trigger_msg}")
         
-        # Rule 7: Device fingerprint anomaly
-        if transaction.device_fingerprint and client.device_fingerprint:
-            if transaction.device_fingerprint != client.device_fingerprint:
-                risk_score += 15
-                trigger_msg = "Device fingerprint mismatch"
-                triggers.append(trigger_msg)
-                logger.warning(f"Rule 7 triggered: {trigger_msg}")
+        # Rule 7: Device fingerprint anomaly (temporarily disabled - device_fingerprint field removed)
+        # TODO: Re-implement when device fingerprinting is added back
+        # Currently skipped due to removed device_fingerprint field
         
         # Determine if OTP is required
         high_risk_threshold = self.thresholds.get('high_risk_threshold', 70)
@@ -226,7 +199,6 @@ class RiskEngine:
             transaction=transaction,
             risk_score=risk_score,
             level=level,
-            message=message,
             triggers=triggers
         )
         

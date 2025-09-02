@@ -1,50 +1,106 @@
 # SafeNetAi Frontend
 
-A modern React application for the SafeNetAi fraud detection system, built with Material-UI and Vite.
+A modern React application for the SafeNetAi fraud detection system, built with Vite, Tailwind CSS, and featuring real-time fraud detection interfaces.
 
-## 🚀 Features
+## ✅ **Current System Status (January 2025)**
 
-- **Modern UI/UX**: Material-UI components with responsive design
-- **Authentication Flow**: Complete login, registration, and OTP verification
-- **Client Dashboard**: Profile management and transaction history
-- **Transaction Creation**: Transfer creation with geolocation capture
-- **Admin Interface**: Complete admin panel for system management
-- **Real-time Updates**: Live fraud detection and alert management
-- **Mobile Responsive**: Works seamlessly on all devices
+### **✓ Frontend Components Status:**
+- **React 18**: Latest React version with concurrent features ✅
+- **Vite Build**: Fast development server running on port 5173 ✅
+- **Authentication Flow**: Login, registration, and OTP verification working ✅
+- **Role-based Routing**: Separate client and admin interfaces ✅
+- **API Integration**: Seamless connection to Django backend ✅
+- **Responsive Design**: Mobile-friendly UI across all devices ✅
+- **Real-time Updates**: Live transaction status and fraud alerts ✅
 
-## 🛠️ Technology Stack
+## 🚀 **Features**
 
-- **React 18** - UI framework
-- **Material-UI (MUI)** - Component library
-- **React Router** - Navigation
-- **Axios** - HTTP client
-- **Vite** - Build tool
-- **TypeScript** - Type safety
+### **Core User Interface**
+- **Modern React 18**: Hooks, concurrent features, and suspense
+- **Vite Build Tool**: Lightning-fast development and build process
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
+- **Framer Motion**: Smooth animations and transitions
+- **Lucide React**: Beautiful, consistent icon library
 
-## 📋 Prerequisites
+### **Authentication & Security**
+- **JWT Token Management**: Automatic token handling and refresh
+- **Email OTP Verification**: Complete OTP flow with countdown timers
+- **Role-based Access**: Automatic routing based on user permissions
+- **Secure Storage**: Safe token storage and session management
 
-- Node.js 16+
-- npm or yarn
+### **Client Interface**
+- **Dashboard**: Profile overview, balance display, recent transactions
+- **Transaction Creation**: Transfer form with real-time validation
+- **Transaction History**: Complete transaction list with risk scores
+- **Fraud Alerts**: User-specific security notifications
+- **OTP Verification**: Modal-based OTP input with resend functionality
 
-## 🚀 Quick Start
+### **Admin Interface**
+- **Admin Dashboard**: System statistics and fraud monitoring
+- **Client Management**: View and manage all user accounts
+- **Transaction Monitoring**: Real-time transaction oversight
+- **Fraud Alert Management**: Review, approve, and reject suspicious transactions
+- **System Logs**: Web-based log viewer with filtering
+- **Rule Configuration**: Fraud detection threshold management
+
+## 🛠️ **Technology Stack**
+
+- **React 18.2.0** - Modern UI framework with concurrent features
+- **Vite 5.0.8** - Next-generation build tool for faster development
+- **Tailwind CSS 3.4.0** - Utility-first CSS framework
+- **Framer Motion 10.16.16** - Production-ready motion library
+- **Lucide React 0.303.0** - Beautiful & consistent icon library
+- **Axios 1.6.2** - Promise-based HTTP client
+- **React Router DOM 6.20.1** - Client-side routing
+- **TypeScript Support** - Optional type safety
+
+## 📋 **Prerequisites**
+
+- **Node.js 16+** (18+ recommended)
+- **npm 8+** or **yarn 1.22+**
+- **Windows PowerShell** (for Windows users) or Terminal (macOS/Linux)
+- **Backend API** running on http://localhost:8000
+
+## 🚀 **Quick Start**
 
 ### 1. Install Dependencies
-```bash
+```powershell
+cd frontend
 npm install
 ```
 
 ### 2. Environment Configuration
-Create a `.env.local` file in the frontend directory:
+```powershell
+# Create .env file
+New-Item -Path ".env" -ItemType File
+```
+
+Add to `.env`:
 ```env
+# Backend API Configuration
 VITE_API_BASE_URL=http://localhost:8000
+
+# Optional: Development settings
+VITE_NODE_ENV=development
 ```
 
 ### 3. Start Development Server
-```bash
+```powershell
 npm run dev
 ```
 
-The application will be available at http://localhost:3000
+✅ **Frontend will be available at**: http://localhost:5173
+✅ **Hot reload enabled**: Changes update instantly
+✅ **Backend required**: Make sure Django server is running on port 8000
+
+### 4. Build for Production
+```powershell
+# Create optimized production build
+npm run build
+
+# Preview production build locally
+npm run preview
+```
 
 ## 📁 Project Structure
 
@@ -71,23 +127,27 @@ frontend/
 └── README.md               # This file
 ```
 
-## 🔧 Configuration
+## 🔧 **Configuration**
 
-### Environment Variables
+### **Environment Variables**
 
-Create a `.env.local` file with the following variables:
+Create a `.env` file with:
 
 ```env
-# API Configuration
+# Required: Backend API URL
 VITE_API_BASE_URL=http://localhost:8000
 
-# Optional: Analytics
+# Optional: Development settings
+VITE_NODE_ENV=development
+VITE_DEBUG_MODE=true
+
+# Optional: Analytics (for production)
 VITE_ANALYTICS_ID=your-analytics-id
 ```
 
-### API Configuration
+### **API Configuration**
 
-The application uses Axios for API communication. Configuration is in `src/api.js`:
+The application uses Axios for API communication (`src/utils/api.js`):
 
 ```javascript
 import axios from 'axios';
@@ -99,7 +159,7 @@ const api = axios.create({
   },
 });
 
-// Request interceptor for authentication
+// Request interceptor for JWT authentication
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('access_token');
   if (token) {
@@ -107,6 +167,32 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+// Response interceptor for token refresh
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401) {
+      // Handle token refresh or redirect to login
+      const refreshToken = localStorage.getItem('refresh_token');
+      if (refreshToken) {
+        // Attempt token refresh
+        try {
+          const response = await axios.post('/api/auth/refresh/', {
+            refresh: refreshToken
+          });
+          localStorage.setItem('access_token', response.data.access);
+          return api.request(error.config);
+        } catch (refreshError) {
+          // Refresh failed, redirect to login
+          localStorage.clear();
+          window.location.href = '/login';
+        }
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default api;
 ```
@@ -134,17 +220,31 @@ export default api;
 - **Fraud Alert Management**: Review and approve/reject fraud alerts
 - **Risk Configuration**: Configure fraud detection thresholds
 
-## 🧪 Testing
+## 🧪 **Testing**
 
-### Run Tests
-```bash
+### **Run Tests**
+```powershell
+# Run all tests
 npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch
 ```
 
-### Run Tests with Coverage
-```bash
-npm run test:coverage
-```
+### **Testing User Flows**
+
+#### **Authentication Testing**
+1. **Registration Flow**: Test email validation, OTP delivery, verification
+2. **Login Flow**: Test JWT token handling, role detection, routing
+3. **OTP Verification**: Test countdown timer, resend functionality, error handling
+
+#### **Transaction Testing**
+1. **Transaction Creation**: Test form validation, API integration, success/error states
+2. **High-Risk Transactions**: Test OTP modal, verification flow, completion
+3. **Real-time Updates**: Test balance updates, transaction status changes
 
 ## 🏗️ Build
 

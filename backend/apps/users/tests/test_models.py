@@ -13,15 +13,15 @@ class UserModelTest(TestCase):
             first_name='Admin',
             last_name='User',
             password='admin123',
-            role='ADMIN'
+            is_staff=True,
+            is_superuser=True
         )
         
         self.client_user = User.objects.create_user(
             email='client@test.com',
             first_name='Client',
             last_name='User',
-            password='client123',
-            role='CLIENT'
+            password='client123'
         )
 
     def test_user_creation_with_email(self):
@@ -35,7 +35,6 @@ class UserModelTest(TestCase):
         self.assertEqual(user.email, 'test@example.com')
         self.assertEqual(user.first_name, 'Test')
         self.assertEqual(user.last_name, 'User')
-        self.assertEqual(user.role, 'CLIENT')  # Default role
 
     def test_user_creation_without_email_fails(self):
         """Test that user creation fails without email"""
@@ -68,7 +67,8 @@ class ClientProfileModelTest(TestCase):
             first_name='Admin',
             last_name='User',
             password='admin123',
-            role='ADMIN'
+            is_staff=True,
+            is_superuser=True
         )
         
         self.client_profile = ClientProfile.objects.create(

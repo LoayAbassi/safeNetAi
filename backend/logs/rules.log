@@ -81,3 +81,47 @@
 [2025-09-02 03:23:38] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
 [2025-09-02 03:23:38] [INFO] [rules] Risk assessment completed: Score=35, Triggers=2, Requires OTP=False, Decision=Approve
 [2025-09-02 03:23:39] [INFO] [rules] Creating fraud alert for transaction 288: Medium risk, score 55
+[2025-09-02 16:16:43] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:16:43] [INFO] [rules] Starting risk assessment for transaction 289
+[2025-09-02 16:16:43] [INFO] [rules] Transaction details: Amount=$1000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:16:43] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
+[2025-09-02 16:16:43] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:16:43] [INFO] [rules] Starting risk assessment for transaction 289
+[2025-09-02 16:16:43] [INFO] [rules] Transaction details: Amount=$1000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:16:43] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
+[2025-09-02 16:37:11] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:37:11] [INFO] [rules] Starting risk assessment for transaction 290
+[2025-09-02 16:37:11] [INFO] [rules] Transaction details: Amount=$1000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:37:11] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
+[2025-09-02 16:37:11] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:37:11] [INFO] [rules] Starting risk assessment for transaction 290
+[2025-09-02 16:37:11] [INFO] [rules] Transaction details: Amount=$1000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:37:11] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
+[2025-09-02 16:38:03] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:38:03] [INFO] [rules] Starting risk assessment for transaction 291
+[2025-09-02 16:38:03] [INFO] [rules] Transaction details: Amount=$11000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:38:03] [WARNING] [rules] Rule 1 triggered: Large transfer: $11000.00 > $10000.0
+[2025-09-02 16:38:03] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 291 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 291, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $11000.00 > $10000.0"]}
+[2025-09-02 16:38:03] [INFO] [rules] Risk assessment completed: Score=30, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 16:38:03] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:38:03] [INFO] [rules] Starting risk assessment for transaction 291
+[2025-09-02 16:38:03] [INFO] [rules] Transaction details: Amount=$11000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:38:03] [WARNING] [rules] Rule 1 triggered: Large transfer: $11000.00 > $10000.0
+[2025-09-02 16:38:03] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 291 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 291, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $11000.00 > $10000.0"]}
+[2025-09-02 16:38:03] [INFO] [rules] Risk assessment completed: Score=30, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 16:38:04] [INFO] [rules] Creating fraud alert for transaction 291: Medium risk, score 53
+[2025-09-02 16:38:04] [INFO] [rules] Fraud alert created: ID 131
+[2025-09-02 16:42:37] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:42:37] [INFO] [rules] Starting risk assessment for transaction 292
+[2025-09-02 16:42:37] [INFO] [rules] Transaction details: Amount=$1000000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:42:37] [WARNING] [rules] Rule 1 triggered: Large transfer: $1000000.00 > $10000.0
+[2025-09-02 16:42:37] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 292 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 292, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $1000000.00 > $10000.0"]}
+[2025-09-02 16:42:37] [INFO] [rules] Risk assessment completed: Score=30, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 16:42:37] [INFO] [rules] RiskEngine initialized with 12 thresholds and 4 rules
+[2025-09-02 16:42:37] [INFO] [rules] Starting risk assessment for transaction 292
+[2025-09-02 16:42:37] [INFO] [rules] Transaction details: Amount=$1000000.00, Type=transfer, Client=loay abassi
+[2025-09-02 16:42:37] [WARNING] [rules] Rule 1 triggered: Large transfer: $1000000.00 > $10000.0
+[2025-09-02 16:42:37] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 292 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 292, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $1000000.00 > $10000.0"]}
+[2025-09-02 16:42:37] [INFO] [rules] Risk assessment completed: Score=30, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 16:42:37] [INFO] [rules] Creating fraud alert for transaction 292: Medium risk, score 53
+[2025-09-02 16:42:37] [INFO] [rules] Fraud alert created: ID 132

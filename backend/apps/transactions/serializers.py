@@ -10,16 +10,14 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = ['id', 'client', 'client_name', 'client_email', 'amount', 'transaction_type',
-                 'from_account', 'to_account_number', 'status', 'device_fingerprint',
-                 'location_lat', 'location_lng', 'created_at']
-        read_only_fields = ['client', 'status', 'created_at']
+                 'from_account', 'to_account_number', 'status', 'description', 'risk_score', 'created_at']
+        read_only_fields = ['client', 'status', 'risk_score', 'created_at']
 
 class CreateTransactionSerializer(serializers.ModelSerializer):
-    current_location = serializers.JSONField(required=False)
     
     class Meta:
         model = Transaction
-        fields = ['amount', 'transaction_type', 'to_account_number', 'device_fingerprint', 'current_location']
+        fields = ['amount', 'transaction_type', 'to_account_number', 'description']
     
     def validate(self, attrs):
         user = self.context['request'].user
@@ -33,12 +31,6 @@ class CreateTransactionSerializer(serializers.ModelSerializer):
             if client_profile.balance < attrs['amount']:
                 raise serializers.ValidationError("Insufficient funds")
         
-        # Extract location from current_location
-        current_location = attrs.pop('current_location', {})
-        if current_location:
-            attrs['location_lat'] = current_location.get('lat')
-            attrs['location_lng'] = current_location.get('lng')
-        
         attrs['client'] = client_profile
         
         return attrs
@@ -51,8 +43,7 @@ class AdminTransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = ['id', 'client', 'client_name', 'client_email', 'amount', 'transaction_type',
-                 'from_account', 'to_account_number', 'status', 'device_fingerprint',
-                 'location_lat', 'location_lng', 'created_at']
+                 'from_account', 'to_account_number', 'status', 'description', 'risk_score', 'created_at']
 
 class FraudAlertSerializer(serializers.ModelSerializer):
     transaction_details = TransactionSerializer(source='transaction', read_only=True)

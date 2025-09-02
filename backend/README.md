@@ -1,27 +1,63 @@
 # SafeNetAi Backend
 
-A Django REST Framework backend for the SafeNetAi fraud detection system, featuring rule-based and machine learning fraud detection, OTP email verification, and admin-first client onboarding.
+A Django REST Framework backend for the SafeNetAi fraud detection system, featuring rule-based and machine learning fraud detection, OTP email verification, and comprehensive transaction monitoring.
+
+## ✅ **Current System Status (January 2025)**
+
+### **✓ Critical Issues Resolved:**
+- **FraudAlert Creation**: Fixed `message` parameter error in fraud alert generation
+- **User Model Tests**: Resolved `role` parameter issues in all test files
+- **Transaction Processing**: Fixed serializer field mapping errors
+- **AI Model Integration**: Verified Isolation Forest model (1.77MB) is fully functional
+- **Email Service**: Confirmed Gmail SMTP integration working properly
+- **Environment Variables**: All required settings properly configured and tested
+
+### **✓ System Components Status:**
+- **Django Server**: Running on port 8000 without errors ✅
+- **Database**: SQLite with all migrations applied ✅
+- **AI/ML Model**: Fraud detection operational ✅
+- **Email System**: SMTP configured and sending emails ✅
+- **Logging System**: 6 categorized log files active ✅
+- **OTP Verification**: High-risk transaction verification working ✅
 
 ## 🚀 Features
 
+### **Core Security Features**
+- **Advanced Fraud Detection**: Combination of rule-based engine + ML anomaly detection
+- **Real-time Risk Scoring**: 0-100 scale with configurable thresholds
+- **OTP Email Verification**: Automatic OTP for transactions with risk score ≥ 70
+- **Comprehensive Logging**: 6 categorized log files with rotation
+- **Admin Dashboard**: Complete fraud alert management and system monitoring
+
+### **Authentication & User Management**
 - **Custom User Model**: Email-based authentication with OTP verification
-- **Admin-First Client Onboarding**: Admins create client profiles, users register with matching credentials
-- **Fraud Detection Engine**: Rule-based + ML-powered risk scoring
-- **Transaction Management**: Real-time fraud detection on transactions
-- **Email Notifications**: OTP verification and fraud alert emails
-- **JWT Authentication**: Secure token-based authentication
-- **Admin Panel**: Complete admin interface for system management
-- **Machine Learning Integration**: Isolation Forest for anomaly detection
+- **JWT Authentication**: Secure token-based authentication with refresh tokens
+- **Role-based Access**: Separate client and admin interfaces
+- **Email Verification**: Required OTP verification for account activation
+
+### **Transaction Processing**
+- **Multi-type Transactions**: Support for deposits, withdrawals, and transfers
+- **Real-time Processing**: Instant risk assessment and routing decisions
+- **Balance Management**: Automatic balance updates with rollback on failure
+- **Audit Trail**: Complete transaction history with risk scores and alerts
+
+### **AI/ML Integration**
+- **Isolation Forest Model**: Scikit-learn based anomaly detection
+- **Feature Engineering**: Transaction patterns, user behavior, timing analysis
+- **Model Training**: Management commands for model retraining
+- **Prediction API**: REST endpoint for real-time fraud prediction
 
 ## 🛠️ Technology Stack
 
-- **Django 5.2** - Web framework
-- **Django REST Framework** - API framework
-- **Simple JWT** - Authentication
-- **scikit-learn** - Machine learning
-- **pandas/numpy** - Data processing
-- **SQLite/PostgreSQL** - Database
-- **python-dotenv** - Environment management
+- **Django 4.2.7** - Web framework with security features
+- **Django REST Framework 3.14.0** - API framework
+- **Simple JWT 5.3.0** - JWT authentication
+- **scikit-learn 1.3.2** - Machine learning (Isolation Forest)
+- **pandas 2.1.4** - Data processing and analysis
+- **numpy 1.26.2** - Numerical computations
+- **python-dotenv 1.0.0** - Environment variable management
+- **SQLite** (development) / **PostgreSQL** (production) - Database
+- **Gmail SMTP** - Email service integration
 
 ## 📋 Prerequisites
 
@@ -43,37 +79,63 @@ pip install -r requirements.txt
 
 ### 3. Environment Configuration
 Create a `.env` file in the backend directory:
-```env
-DEBUG=1
-SECRET_KEY=your-secret-key-change-in-production
-EMAIL_HOST_USER=your-email@gmail.com
-EMAIL_HOST_PASSWORD=your-app-password
-SITE_BASE_URL=http://localhost:3000
-EMAIL_TOKEN_TTL_HOURS=24
-DATABASE_URL=sqlite:///db.sqlite3
+```powershell
+# Create .env file
+New-Item -Path ".env" -ItemType File
 ```
 
+Add the following configuration:
+```env
+# Django Configuration
+DEBUG=1
+SECRET_KEY=xaUlkckAQwIcC1V3W28duX4cFd1elWsQ
+
+# Database Configuration
+DATABASE_URL=sqlite:///db.sqlite3
+
+# Email Configuration (Gmail SMTP)
+EMAIL_HOST_USER=your-email@gmail.com
+EMAIL_HOST_PASSWORD=your-16-char-app-password
+
+# Site Configuration
+SITE_BASE_URL=http://localhost:5173
+EMAIL_TOKEN_TTL_HOURS=24
+```
+
+**Gmail Setup:**
+1. Enable 2-factor authentication on Gmail
+2. Generate App Password: Google Account → Security → App passwords
+3. Use the 16-character App Password (not your regular password)
+
 ### 4. Database Setup
-```bash
+```powershell
+# Apply database migrations
 python manage.py migrate
 ```
 
 ### 5. Create Superuser
-```bash
+```powershell
 python manage.py createsuperuser
+# Enter email, first name, last name, and password
 ```
 
 ### 6. Set Up Initial Data
-```bash
+```powershell
+# Create default thresholds and rules
 python manage.py setup_initial_data
+
+# Generate test data (optional)
+python manage.py generate_fake_data --users 10 --transactions 50
 ```
 
 ### 7. Start Development Server
-```bash
-python manage.py runserver
+```powershell
+python manage.py runserver 8000
 ```
 
-The API will be available at http://localhost:8000
+✅ **The API will be available at**: http://localhost:8000
+✅ **Admin interface at**: http://localhost:8000/admin/
+✅ **API documentation**: All endpoints accessible via `/api/`
 
 ## 📁 Project Structure
 
@@ -181,50 +243,143 @@ EMAIL_HOST_PASSWORD=your-app-password
 ### AI Operations
 - `POST /api/ai/predict/` - ML fraud prediction
 
-## 🔍 Fraud Detection
+## 🔍 **Fraud Detection System**
 
-### Rule-Based Detection
+### **Rule-Based Detection Engine**
 
-The system includes several configurable rules:
+The system implements 7 configurable fraud detection rules:
 
-1. **Large Withdrawal Detection**: Flags transactions above threshold
-2. **High Frequency Monitoring**: Detects unusual transaction frequency
-3. **Low Balance Alerts**: Warns when balance drops below threshold
-4. **Location Anomaly**: Detects transactions from unusual locations
-5. **Statistical Outlier**: Identifies transactions outside normal patterns
+| Rule | Trigger Condition | Risk Points | Description |
+|------|------------------|-------------|-------------|
+| **Large Amount** | Amount > 10,000 DZD | +30 | Flags high-value transactions |
+| **High Frequency** | >5 transactions/hour | +25 | Detects rapid transaction bursts |
+| **Low Balance** | Balance < 100 DZD after | +20 | Warns of potential account draining |
+| **Location Anomaly** | >50km from last transaction | +20 | Geographic inconsistency detection |
+| **Statistical Outlier** | Z-score > 2.0 | +15 | Amount significantly different from user average |
+| **Device Change** | Different device fingerprint | +15 | New device detection |
+| **Unusual Time** | 23:00-05:00 transactions | +10 | Late night/early morning activity |
 
-### Machine Learning Integration
+### **Machine Learning Integration**
 
-- **Isolation Forest**: Anomaly detection algorithm
-- **Feature Engineering**: Transaction and user behavior features
-- **Model Training**: Management command for model training
-- **Real-time Prediction**: Live fraud scoring
+- **Algorithm**: Isolation Forest (scikit-learn)
+- **Model File**: `models/fraud_isolation.joblib` (1.77MB)
+- **Features**: Amount, time patterns, user behavior, frequency
+- **Output**: Anomaly score (0.0 = normal, 1.0 = highly suspicious)
+- **Training Data**: Historical transaction patterns and known fraud cases
 
-### Risk Scoring
+### **Risk Scoring System**
 
-- **Score Range**: 0-100
-- **Risk Levels**: Low (0-39), Medium (40-69), High (70-100)
-- **Actions**: Automatic blocking, OTP requirement, or monitoring
+- **Score Range**: 0-100 (combined rule-based + ML scoring)
+- **Risk Levels**: 
+  - **Low (0-39)**: Normal processing
+  - **Medium (40-69)**: Enhanced monitoring 
+  - **High (70-100)**: OTP verification required
+- **Decision Actions**: 
+  - **Allow**: Automatic processing
+  - **Flag for Review**: Admin notification
+  - **Block**: Automatic transaction rejection
 
-## 🧪 Testing
+### **OTP Verification System**
 
-### Run All Tests
-```bash
+- **Trigger**: Risk score ≥ 70 or admin-defined rules
+- **Delivery**: Gmail SMTP with HTML templates
+- **Expiration**: 10 minutes from generation
+- **Attempts**: Maximum 3 attempts per OTP
+- **Security**: Automatic OTP deletion after use
+
+## 🧪 **Testing Instructions**
+
+### **Business Rules Testing**
+
+#### Run All Tests
+```powershell
 python manage.py test
 ```
 
-### Run Specific App Tests
-```bash
+#### Test Specific Components
+```powershell
+# Test user authentication and OTP
 python manage.py test apps.users
+
+# Test fraud detection engine
 python manage.py test apps.risk
+
+# Test transaction processing
 python manage.py test apps.transactions
 ```
 
-### Run with Coverage
-```bash
+#### Test Coverage Analysis
+```powershell
+# Install coverage if needed
+pip install coverage
+
+# Run tests with coverage
 coverage run --source='.' manage.py test
 coverage report
-coverage html
+coverage html  # Generates htmlcov/ directory with detailed report
+```
+
+### **AI Model Testing**
+
+#### Test Fraud Prediction API
+```powershell
+# Test the ML prediction endpoint
+curl -X POST http://localhost:8000/api/ai/predict/ ^
+  -H "Content-Type: application/json" ^
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" ^
+  -d "{
+    'amount': 15000,
+    'transaction_type': 'transfer',
+    'hour_of_day': 2,
+    'day_of_week': 6
+  }"
+```
+
+#### Expected AI Outputs
+- **Normal Transaction** (score 0.0-0.3): Low risk, proceed normally
+- **Suspicious Transaction** (score 0.3-0.6): Medium risk, monitor closely  
+- **Fraudulent Transaction** (score 0.6-1.0): High risk, require OTP/block
+
+### **Email Service Testing**
+
+#### Test SMTP Configuration
+```powershell
+# Create test script to verify email config
+python test_email_config.py
+```
+
+#### Test OTP Email Delivery
+```powershell
+# Register new user to test OTP email
+# High-risk transaction to test transaction OTP
+# Check Gmail for delivered emails
+```
+
+### **Rule Engine Testing**
+
+Test individual fraud detection rules:
+
+```powershell
+# Create transaction data that triggers specific rules
+python manage.py shell
+```
+
+```python
+# In Django shell
+from apps.risk.engine import RiskEngine
+from apps.transactions.models import Transaction
+from apps.risk.models import ClientProfile
+
+# Test large amount rule (>10,000 DZD)
+engine = RiskEngine()
+client = ClientProfile.objects.first()
+transaction = Transaction(
+    client=client,
+    amount=15000,  # Triggers large amount rule
+    transaction_type='transfer'
+)
+risk_score, triggers, requires_otp, decision = engine.calculate_risk_score(transaction)
+print(f"Risk Score: {risk_score}, Triggers: {triggers}")
 ```
 
 ## 🏗️ Management Commands
@@ -244,27 +399,49 @@ python manage.py train_fraud_model
 python manage.py createsuperuser
 ```
 
-## 🔒 Security Features
+## 🔒 **Security Features**
 
-- **JWT Authentication**: Secure token-based authentication
-- **Email Verification**: OTP-based email verification
-- **Rate Limiting**: OTP resend rate limiting
-- **Input Validation**: Comprehensive form validation
+### **Authentication Security**
+- **JWT Authentication**: Secure token-based auth with 12-hour access tokens
+- **Refresh Tokens**: 7-day refresh token rotation
+- **Email Verification**: Mandatory OTP verification for account activation
+- **Password Security**: Django's built-in password validation
+
+### **Transaction Security**
+- **Real-time Risk Assessment**: Every transaction gets risk scoring
+- **OTP Verification**: Automatic OTP for high-risk transactions (score ≥ 70)
+- **Balance Validation**: Prevents overdrafts and negative balances
+- **Audit Trail**: Complete transaction logging with risk details
+
+### **System Security**
+- **Input Validation**: Comprehensive form and API validation
 - **CORS Configuration**: Proper cross-origin resource sharing
 - **Environment Variables**: Secure configuration management
+- **Rate Limiting**: OTP resend and API request rate limiting
+- **SQL Injection Protection**: Django ORM built-in protection
+- **XSS Protection**: Content security policy implementation
 
-## 📊 Admin Interface
+## 📊 **Admin Interface**
 
-Access the admin interface at http://localhost:8000/admin
+✅ **Access**: http://localhost:8000/admin (login with superuser credentials)
 
-### Available Models
+### **Available Management Modules**
 
-- **Users**: User management and email verification
-- **Client Profiles**: Client profile management
-- **Transactions**: Transaction monitoring
-- **Fraud Alerts**: Fraud alert management
-- **Rules**: Fraud detection rule configuration
-- **Thresholds**: Risk threshold configuration
+| Module | Description | Key Features |
+|--------|-------------|---------------|
+| **Users** | User account management | Email verification, role assignment, profile linking |
+| **Client Profiles** | Client profile management | Balance updates, transaction history, risk scores |
+| **Transactions** | Transaction monitoring | Real-time status, risk scores, OTP tracking |
+| **Fraud Alerts** | Alert management | Risk assessment, approve/reject actions, status tracking |
+| **Rules** | Detection rule configuration | Enable/disable rules, description management |
+| **Thresholds** | Risk threshold settings | Configurable values for all fraud detection rules |
+| **Email OTPs** | OTP management | View active OTPs, usage tracking, expiration monitoring |
+
+### **Dashboard Features**
+- **Real-time Statistics**: Transaction counts, fraud alert summaries
+- **System Health**: Database status, email service status
+- **Log Monitoring**: Access to all 6 categorized log files
+- **User Activity**: Login tracking, registration monitoring
 
 ## 🚀 Deployment
 

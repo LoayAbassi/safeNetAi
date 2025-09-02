@@ -34,3 +34,27 @@
 [2025-09-02 03:23:39] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
 [2025-09-02 03:23:39] [INFO] [ai] ML prediction: Raw score=-0.0017, Normalized score=0.5017
 [2025-09-02 03:23:39] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.50 | Time: 0.006s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5016621129486308, "confidence": 0.5016621129486308, "processing_time": 0.006001949310302734}
+[2025-09-02 16:16:44] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-02 16:16:44] [INFO] [ai] Making ML prediction for transaction 289
+[2025-09-02 16:16:44] [INFO] [ai] Preparing features for transaction 289
+[2025-09-02 16:16:44] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-02 16:16:44] [INFO] [ai] ML prediction: Raw score=0.0179, Normalized score=0.4821
+[2025-09-02 16:16:44] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.48 | Time: 0.009s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.4820730165374226, "confidence": 0.4820730165374226, "processing_time": 0.008999347686767578}
+[2025-09-02 16:37:13] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-02 16:37:13] [INFO] [ai] Making ML prediction for transaction 290
+[2025-09-02 16:37:13] [INFO] [ai] Preparing features for transaction 290
+[2025-09-02 16:37:13] [ERROR] [ai] Error preparing features for transaction 290: 'Transaction' object has no attribute 'location_lat'
+[2025-09-02 16:37:13] [INFO] [ai] ML prediction: Raw score=-0.0863, Normalized score=0.5863
+[2025-09-02 16:37:13] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.59 | Time: 0.014s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5863244002577356, "confidence": 0.5863244002577356, "processing_time": 0.01398777961730957}
+[2025-09-02 16:38:04] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-02 16:38:04] [INFO] [ai] Making ML prediction for transaction 291
+[2025-09-02 16:38:04] [INFO] [ai] Preparing features for transaction 291
+[2025-09-02 16:38:04] [ERROR] [ai] Error preparing features for transaction 291: 'Transaction' object has no attribute 'location_lat'
+[2025-09-02 16:38:04] [INFO] [ai] ML prediction: Raw score=-0.0863, Normalized score=0.5863
+[2025-09-02 16:38:04] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.59 | Time: 0.013s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5863244002577356, "confidence": 0.5863244002577356, "processing_time": 0.012593984603881836}
+[2025-09-02 16:42:37] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-02 16:42:37] [INFO] [ai] Making ML prediction for transaction 292
+[2025-09-02 16:42:37] [INFO] [ai] Preparing features for transaction 292
+[2025-09-02 16:42:37] [ERROR] [ai] Error preparing features for transaction 292: 'Transaction' object has no attribute 'location_lat'
+[2025-09-02 16:42:37] [INFO] [ai] ML prediction: Raw score=-0.0863, Normalized score=0.5863
+[2025-09-02 16:42:37] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.59 | Time: 0.010s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5863244002577356, "confidence": 0.5863244002577356, "processing_time": 0.009996175765991211}
