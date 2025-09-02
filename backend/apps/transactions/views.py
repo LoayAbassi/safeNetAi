@@ -15,6 +15,13 @@ from apps.risk.ml import FraudMLModel
 from apps.users.email_service import send_fraud_alert_email, send_transaction_notification
 from apps.transactions.services import create_transaction_otp, verify_transaction_otp, resend_transaction_otp
 from apps.utils.logger import get_transactions_logger, log_transaction, log_system_event
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from django.utils import timezone
+from datetime import timedelta
+import random
+import string
 
 # Set up logger
 logger = get_transactions_logger()
@@ -510,3 +517,136 @@ class AdminFraudAlertViewSet(viewsets.ModelViewSet):
         except Exception as e:
             logger.error(f"Error updating balances in admin view: {e}")
             raise
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def send_security_otp(request):
+    """Send security OTP for high-risk transactions"""
+    try:
+        transaction_id = request.data.get('transaction_id')
+        if not transaction_id:
+            return Response({'error': 'Transaction ID is required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Get transaction
+        try:
+            transaction = Transaction.objects.get(id=transaction_id, client__user=request.user)
+        except Transaction.DoesNotExist:
+            return Response({'error': 'Transaction not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Check if transaction is pending OTP
+        if transaction.status != 'pending':
+            return Response({'error': 'Transaction does not require OTP verification'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Generate OTP
+        otp = ''.join(random.choices(string.digits, k=6))
+        expires_at = timezone.now() + timedelta(minutes=10)
+        
+        # Create or update OTP
+        otp_obj, created = TransactionOTP.objects.update_or_create(
+            transaction=transaction,
+            user=request.user,
+            defaults={
+                'otp': otp,
+                'expires_at': expires_at,
+                'attempts': 0,
+                'used': False
+            }
+        )
+        
+        # Send OTP via email (in production, this would be SMS or push notification)
+        try:
+            from apps.users.email_service import send_security_otp_email
+            send_security_otp_email(request.user, otp, transaction)
+        except Exception as e:
+            logger.warning(f"Failed to send security OTP email: {e}")
+        
+        logger.info(f"Security OTP sent for transaction {transaction_id}")
+        
+        return Response({
+            'message': 'Security OTP sent successfully',
+            'expires_at': expires_at.isoformat()
+        })
+        
+    except Exception as e:
+        logger.error(f"Error sending security OTP: {e}")
+        return Response({'error': 'Failed to send OTP'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def verify_security_otp(request):
+    """Verify security OTP and complete transaction"""
+    try:
+        transaction_id = request.data.get('transaction_id')
+        otp_code = request.data.get('otp')
+        
+        if not transaction_id or not otp_code:
+            return Response({'error': 'Transaction ID and OTP are required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Get transaction
+        try:
+            transaction = Transaction.objects.get(id=transaction_id, client__user=request.user)
+        except Transaction.DoesNotExist:
+            return Response({'error': 'Transaction not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Check if transaction is pending OTP
+        if transaction.status != 'pending':
+            return Response({'error': 'Transaction does not require OTP verification'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Verify OTP
+        try:
+            otp_obj = TransactionOTP.objects.get(
+                transaction=transaction,
+                user=request.user,
+                otp=otp_code,
+                used=False
+            )
+        except TransactionOTP.DoesNotExist:
+            return Response({'error': 'Invalid OTP'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Check if OTP is expired
+        if otp_obj.is_expired():
+            return Response({'error': 'OTP has expired'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Check attempts
+        if otp_obj.attempts >= 3:
+            return Response({'error': 'Too many OTP attempts'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Mark OTP as used
+        otp_obj.mark_used()
+        
+        # Complete the transaction
+        try:
+            with transaction.atomic():
+                # Update balances using the TransactionViewSet method
+                viewset = TransactionViewSet()
+                viewset._update_balances(transaction, transaction.client)
+                
+                # Mark transaction as completed
+                transaction.status = 'completed'
+                transaction.save()
+                
+                logger.info(f"Transaction {transaction.id} completed after security OTP verification")
+                
+                # Send transaction notification email
+                if transaction.client.user:
+                    risk_level = "HIGH" if transaction.risk_score >= 70 else "MEDIUM"
+                    send_transaction_notification(
+                        transaction.client.user, 
+                        transaction, 
+                        "COMPLETED", 
+                        risk_level
+                    )
+                
+                return Response({
+                    'message': 'Transaction completed successfully after security verification.',
+                    'transaction_id': transaction.id,
+                    'status': 'completed'
+                })
+                
+        except Exception as e:
+            logger.error(f"Error completing transaction after OTP verification: {e}")
+            return Response({'error': 'Failed to complete transaction'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+    except Exception as e:
+        logger.error(f"Error verifying security OTP: {e}")
+        return Response({'error': 'Failed to verify OTP'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

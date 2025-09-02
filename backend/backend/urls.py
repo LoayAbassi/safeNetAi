@@ -7,7 +7,8 @@ from apps.risk.admin_views import (
     RuleViewSet, 
     ClientProfileAdminViewSet,
     TransactionAdminViewSet,
-    FraudAlertAdminViewSet
+    FraudAlertAdminViewSet,
+    DashboardViewSet
 )
 from apps.transactions.views import TransactionViewSet, FraudAlertViewSet
 from apps.users.views import ClientProfileViewSet, AdminClientProfileViewSet, VerifyOTPView
@@ -22,6 +23,7 @@ client_router.register(r'fraud-alerts', FraudAlertViewSet, basename='client-frau
 
 # Admin routers
 admin_router = DefaultRouter()
+admin_router.register(r'dashboard', DashboardViewSet, basename='admin-dashboard')
 admin_router.register(r'clients', AdminClientProfileViewSet, basename='admin-client')
 admin_router.register(r'thresholds', ThresholdViewSet, basename='threshold')
 admin_router.register(r'rules', RuleViewSet, basename='rule')

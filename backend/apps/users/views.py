@@ -18,9 +18,25 @@ class ClientProfileViewSet(viewsets.ReadOnlyModelViewSet):
     def me(self, request):
         """Get current user's profile"""
         try:
-            profile = ClientProfile.objects.get(user=request.user)
-            serializer = self.get_serializer(profile)
-            return Response(serializer.data)
+            # Check if user is admin/staff
+            if request.user.is_staff or request.user.is_superuser:
+                # Return user data directly for admin users
+                return Response({
+                    'id': request.user.id,
+                    'email': request.user.email,
+                    'first_name': request.user.first_name,
+                    'last_name': request.user.last_name,
+                    'is_staff': request.user.is_staff,
+                    'is_superuser': request.user.is_superuser,
+                    'role': 'admin',
+                    'full_name': f"{request.user.first_name} {request.user.last_name}".strip(),
+                    'balance': 0,  # Admin users don't have balance
+                })
+            else:
+                # Return client profile for regular users
+                profile = ClientProfile.objects.get(user=request.user)
+                serializer = self.get_serializer(profile)
+                return Response(serializer.data)
         except ClientProfile.DoesNotExist:
             return Response(
                 {'detail': 'Profile not found'}, 

@@ -8,3 +8,76 @@
 [2025-09-02 01:55:56] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=Amine Bensalem
 [2025-09-02 01:55:56] [INFO] [rules] Rule 6 triggered: Unusual time: 0:00
 [2025-09-02 01:55:56] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:17:52] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:17:52] [INFO] [rules] Starting risk assessment for transaction 282
+[2025-09-02 03:17:52] [INFO] [rules] Transaction details: Amount=$1500.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:17:52] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:17:52] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:17:52] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:17:52] [INFO] [rules] Starting risk assessment for transaction 282
+[2025-09-02 03:17:52] [INFO] [rules] Transaction details: Amount=$1500.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:17:52] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:17:52] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:18:43] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:18:43] [INFO] [rules] Starting risk assessment for transaction 283
+[2025-09-02 03:18:43] [INFO] [rules] Transaction details: Amount=$7500.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:18:43] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:18:43] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:18:43] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:18:43] [INFO] [rules] Starting risk assessment for transaction 283
+[2025-09-02 03:18:43] [INFO] [rules] Transaction details: Amount=$7500.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:18:43] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:18:43] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:18:59] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:18:59] [INFO] [rules] Starting risk assessment for transaction 284
+[2025-09-02 03:18:59] [INFO] [rules] Transaction details: Amount=$7999.99, Type=transfer, Client=loay abassi
+[2025-09-02 03:18:59] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:18:59] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:18:59] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:18:59] [INFO] [rules] Starting risk assessment for transaction 284
+[2025-09-02 03:18:59] [INFO] [rules] Transaction details: Amount=$7999.99, Type=transfer, Client=loay abassi
+[2025-09-02 03:18:59] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:18:59] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:19:10] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:19:10] [INFO] [rules] Starting risk assessment for transaction 285
+[2025-09-02 03:19:10] [INFO] [rules] Transaction details: Amount=$8888.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:19:10] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:19:10] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:19:10] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:19:10] [INFO] [rules] Starting risk assessment for transaction 285
+[2025-09-02 03:19:10] [INFO] [rules] Transaction details: Amount=$8888.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:19:10] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:19:10] [INFO] [rules] Risk assessment completed: Score=10, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-02 03:19:43] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:19:43] [INFO] [rules] Starting risk assessment for transaction 286
+[2025-09-02 03:19:43] [INFO] [rules] Transaction details: Amount=$75000.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:19:43] [WARNING] [rules] Rule 1 triggered: Large transfer: $75000.00 > $10000
+[2025-09-02 03:19:43] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 286 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 286, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $75000.00 > $10000"]}
+[2025-09-02 03:19:43] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:19:43] [INFO] [rules] Risk assessment completed: Score=40, Triggers=2, Requires OTP=False, Decision=Monitor
+[2025-09-02 03:19:43] [INFO] [rules] Creating fraud alert for transaction 286: Medium risk, score 40
+[2025-09-02 03:22:43] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:22:43] [INFO] [rules] Starting risk assessment for transaction 287
+[2025-09-02 03:22:43] [INFO] [rules] Transaction details: Amount=$75000.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:22:43] [WARNING] [rules] Rule 1 triggered: Large transfer: $75000.00 > $10000
+[2025-09-02 03:22:43] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 287 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 287, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $75000.00 > $10000"]}
+[2025-09-02 03:22:43] [WARNING] [rules] Rule 2 triggered: High frequency: 6 transactions in 2.0 hour(s)
+[2025-09-02 03:22:43] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 287 | Status: TRIGGERED | Risk Score: 55 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 287, "triggered": true, "risk_score": 55, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)"]}
+[2025-09-02 03:22:43] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:22:43] [INFO] [rules] Risk assessment completed: Score=65, Triggers=3, Requires OTP=False, Decision=Flag for Review
+[2025-09-02 03:22:43] [INFO] [rules] Creating fraud alert for transaction 287: Medium risk, score 65
+[2025-09-02 03:23:38] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:23:38] [INFO] [rules] Starting risk assessment for transaction 288
+[2025-09-02 03:23:38] [INFO] [rules] Transaction details: Amount=$750.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:23:38] [WARNING] [rules] Rule 2 triggered: High frequency: 7 transactions in 2.0 hour(s)
+[2025-09-02 03:23:38] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 288 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 288, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 7 transactions in 2.0 hour(s)"]}
+[2025-09-02 03:23:38] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:23:38] [INFO] [rules] Risk assessment completed: Score=35, Triggers=2, Requires OTP=False, Decision=Approve
+[2025-09-02 03:23:38] [INFO] [rules] RiskEngine initialized with 6 thresholds and 4 rules
+[2025-09-02 03:23:38] [INFO] [rules] Starting risk assessment for transaction 288
+[2025-09-02 03:23:38] [INFO] [rules] Transaction details: Amount=$750.00, Type=transfer, Client=loay abassi
+[2025-09-02 03:23:38] [WARNING] [rules] Rule 2 triggered: High frequency: 7 transactions in 2.0 hour(s)
+[2025-09-02 03:23:38] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 288 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 288, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 7 transactions in 2.0 hour(s)"]}
+[2025-09-02 03:23:38] [INFO] [rules] Rule 6 triggered: Unusual time: 2:00
+[2025-09-02 03:23:38] [INFO] [rules] Risk assessment completed: Score=35, Triggers=2, Requires OTP=False, Decision=Approve
+[2025-09-02 03:23:39] [INFO] [rules] Creating fraud alert for transaction 288: Medium risk, score 55
