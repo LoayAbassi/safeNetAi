@@ -6,8 +6,6 @@ from decimal import Decimal
 
 class Transaction(models.Model):
     TRANSACTION_TYPES = [
-        ('deposit', 'Deposit'),
-        ('withdraw', 'Withdrawal'),
         ('transfer', 'Transfer'),
     ]
     
@@ -19,7 +17,7 @@ class Transaction(models.Model):
     ]
     
     client = models.ForeignKey(ClientProfile, on_delete=models.CASCADE, related_name='transactions')
-    transaction_type = models.CharField(max_length=20, choices=TRANSACTION_TYPES)
+    transaction_type = models.CharField(max_length=20, choices=TRANSACTION_TYPES, default='transfer')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     to_account_number = models.CharField(max_length=20, blank=True, null=True)
     description = models.TextField(blank=True)
@@ -35,7 +33,7 @@ class Transaction(models.Model):
         ordering = ['-created_at']
     
     def __str__(self):
-        return f"{self.transaction_type.title()} - {self.amount} DZD - {self.status}"
+        return f"Transfer - {self.amount} DZD - {self.status}"
 
 class TransactionOTP(models.Model):
     """OTP model for transaction verification"""

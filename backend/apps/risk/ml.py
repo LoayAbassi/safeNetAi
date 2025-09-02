@@ -23,7 +23,9 @@ class FraudMLModel:
         """Load the trained model from disk with logging"""
         try:
             if os.path.exists(self.model_path):
-                self.model = joblib.load(self.model_path)
+                model_data = joblib.load(self.model_path)
+                self.model = model_data['model']
+                self.scaler = model_data['scaler']
                 logger.info(f"ML model loaded successfully from {self.model_path}")
                 log_system_event(
                     "ML model loaded successfully",
@@ -68,58 +70,16 @@ class FraudMLModel:
             
             logger.info(f"Preparing features for transaction {transaction.id}")
             
-            # Basic transaction features
+            # Basic transaction features (7 features to match our model)
             features = [
                 float(transaction.amount),
                 float(client.balance),
-                float(client.avg_amount) if client.avg_amount > 0 else 0,
-                float(client.std_amount) if client.std_amount > 0 else 0,
+                2,  # transaction type: transfer = 2
+                transaction.created_at.hour,
+                transaction.created_at.weekday(),
+                float(transaction.location_lat) if transaction.location_lat else 0,
+                float(transaction.location_lng) if transaction.location_lng else 0,
             ]
-            
-            # Transaction type encoding
-            type_encoding = {'deposit': 0, 'withdraw': 1, 'transfer': 2}
-            features.append(type_encoding.get(transaction.transaction_type, 0))
-            
-            # Time-based features
-            hour = transaction.created_at.hour
-            day_of_week = transaction.created_at.weekday()
-            features.extend([hour, day_of_week])
-            
-            # Location features (if available)
-            if transaction.location_lat and transaction.location_lng:
-                features.extend([float(transaction.location_lat), float(transaction.location_lng)])
-            else:
-                features.extend([0, 0])
-            
-            # Recent transaction count
-            recent_count = Transaction.objects.filter(
-                client=client,
-                created_at__gte=transaction.created_at - pd.Timedelta(hours=1)
-            ).count()
-            features.append(recent_count)
-            
-            # Additional features for better detection
-            # Time since last transaction
-            last_transaction = Transaction.objects.filter(
-                client=client
-            ).exclude(id=transaction.id).order_by('-created_at').first()
-            
-            if last_transaction:
-                time_diff = (transaction.created_at - last_transaction.created_at).total_seconds() / 3600  # hours
-                features.append(time_diff)
-            else:
-                features.append(24)  # Default to 24 hours if no previous transaction
-            
-            # Account age (days since creation)
-            account_age = (transaction.created_at - client.created_at).days
-            features.append(account_age)
-            
-            # Balance ratio (current balance / average transaction amount)
-            if client.avg_amount > 0:
-                balance_ratio = float(client.balance) / float(client.avg_amount)
-            else:
-                balance_ratio = 1.0
-            features.append(balance_ratio)
             
             feature_array = np.array(features).reshape(1, -1)
             logger.info(f"Features prepared: {len(features)} features, shape: {feature_array.shape}")
@@ -129,7 +89,7 @@ class FraudMLModel:
         except Exception as e:
             logger.error(f"Error preparing features for transaction {transaction.id}: {e}")
             # Return default features
-            return np.array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
+            return np.array([[0, 0, 2, 0, 0, 0, 0]])
     
     def train(self):
         """Train the fraud detection model with comprehensive logging"""

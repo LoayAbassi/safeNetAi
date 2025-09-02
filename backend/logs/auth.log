@@ -6,3 +6,9 @@
 [2025-09-01 18:30:58] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "admin@safenetai.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
 [2025-09-01 18:31:05] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
 [2025-09-01 18:31:41] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
+[2025-09-01 18:32:07] [WARNING] [auth] Security event: Failed registration attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Account verification failed. Contact admin."]}, "ip_address": "127.0.0.1"}
+[2025-09-01 18:33:32] [WARNING] [auth] Security event: Failed registration attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Account verification failed. Contact admin."]}, "ip_address": "127.0.0.1"}
+[2025-09-01 18:33:33] [WARNING] [auth] Security event: Failed registration attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Account verification failed. Contact admin."]}, "ip_address": "127.0.0.1"}
+[2025-09-01 18:33:48] [INFO] [auth] User action: REGISTRATION | User ID: 61 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-01 18:34:08] [INFO] [auth] User action: OTP_VERIFICATION | User ID: 61 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-01 18:43:13] [INFO] [auth] User action: LOGIN | User ID: 61 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
