@@ -596,3 +596,64 @@ def resend_otp_email(user):
             {"user_email": user.email, "user_id": user.id, "error": str(e)}
         )
         return False
+
+def send_security_otp_email(user, otp_code, transaction):
+    """Send security OTP email for high-risk transactions"""
+    try:
+        subject = f"Security Verification Required - Transaction #{transaction.id}"
+        
+        # Create email content
+        html_content = f"""
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="background-color: #f8f9fa; padding: 20px; text-align: center;">
+                <h2 style="color: #dc3545; margin: 0;">🔒 Security Verification Required</h2>
+            </div>
+            
+            <div style="padding: 20px; background-color: white;">
+                <p>Hello {user.first_name},</p>
+                
+                <p>We've detected unusual activity on your account that requires additional verification.</p>
+                
+                <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                    <h3 style="margin: 0; color: #856404;">Transaction Details:</h3>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li><strong>Transaction ID:</strong> #{transaction.id}</li>
+                        <li><strong>Amount:</strong> {transaction.amount} DZD</li>
+                        <li><strong>Type:</strong> {transaction.transaction_type}</li>
+                        <li><strong>Risk Score:</strong> {transaction.risk_score}</li>
+                    </ul>
+                </div>
+                
+                <p>To complete this transaction, please use the following verification code:</p>
+                
+                <div style="background-color: #e9ecef; padding: 20px; text-align: center; border-radius: 5px; margin: 20px 0;">
+                    <h2 style="margin: 0; color: #495057; font-size: 32px; letter-spacing: 5px;">{otp_code}</h2>
+                </div>
+                
+                <p><strong>Important:</strong></p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>This code expires in 10 minutes</li>
+                    <li>Do not share this code with anyone</li>
+                    <li>If you didn't initiate this transaction, contact support immediately</li>
+                </ul>
+                
+                <p>If you have any questions or concerns, please contact our support team.</p>
+                
+                <p>Best regards,<br>The SafeNetAi Team</p>
+            </div>
+            
+            <div style="background-color: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #6c757d;">
+                <p>This is an automated security message. Please do not reply to this email.</p>
+            </div>
+        </div>
+        """
+        
+        # Send email
+        send_html_email(subject, html_content, [user.email])
+        
+        logger.info(f"Security OTP email sent to {user.email} for transaction {transaction.id}")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Failed to send security OTP email: {e}")
+        return False

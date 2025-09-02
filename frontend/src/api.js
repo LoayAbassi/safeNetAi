@@ -42,12 +42,20 @@ api.interceptors.response.use(
           localStorage.setItem('access_token', access);
           api.defaults.headers.common['Authorization'] = `Bearer ${access}`;
 
+          // Retry the original request with new token
           return api(originalRequest);
+        } else {
+          // No refresh token, redirect to login
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
+          localStorage.removeItem('user_data');
+          window.location.href = '/login';
         }
       } catch (refreshError) {
         // Refresh token is invalid, redirect to login
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
+        localStorage.removeItem('user_data');
         window.location.href = '/login';
       }
     }

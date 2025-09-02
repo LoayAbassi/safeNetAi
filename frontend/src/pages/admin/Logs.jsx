@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+import { Badge } from '../../components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { Alert, AlertDescription } from '../../components/ui/alert';
 import { Loader2, Search, RefreshCw, Info, AlertTriangle, XCircle, CheckCircle } from 'lucide-react';
 import api from '../../api';
 
@@ -58,7 +58,7 @@ const Logs = () => {
       if (selectedLevel) params.append('level', selectedLevel);
       if (searchTerm) params.append('search', searchTerm);
       
-      const response = await api.get(`/system/logs/?${params}`);
+      const response = await api.get(`/api/system/logs/?${params}`);
       setLogs(response.data.entries);
       setTotalPages(response.data.total_pages);
       setTotalEntries(response.data.total_entries);
@@ -71,7 +71,7 @@ const Logs = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await api.get('/system/logs/stats/');
+      const response = await api.get('/api/system/logs/stats/');
       setStats(response.data);
     } catch (err) {
       console.error('Failed to fetch log stats:', err);
@@ -80,7 +80,7 @@ const Logs = () => {
 
   const fetchSystemInfo = async () => {
     try {
-      const response = await api.get('/system/info/');
+      const response = await api.get('/api/system/info/');
       setSystemInfo(response.data);
     } catch (err) {
       console.error('Failed to fetch system info:', err);
