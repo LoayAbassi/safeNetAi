@@ -146,8 +146,7 @@ class RegisterSerializerTest(TestCase):
             email='existinguser@example.com',
             first_name='Existing',
             last_name='User',
-            password='password123',
-            role='CLIENT'
+            password='password123'
         )
         self.client_profile.user = user
         self.client_profile.save()

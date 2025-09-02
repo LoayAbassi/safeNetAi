@@ -385,3 +385,147 @@
 [2025-09-02 03:23:39] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
 [2025-09-02 03:23:39] [ERROR] [django.request] Internal Server Error: /api/client/transactions/
 [2025-09-02 03:23:39] [ERROR] [django.server] "POST /api/client/transactions/ HTTP/1.1" 500 39
+[2025-09-02 15:38:20] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:16:17] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:16:23] [INFO] [django.server] "OPTIONS /api/client/profile/me/ HTTP/1.1" 200 0
+[2025-09-02 16:16:23] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-09-02 16:16:23] [INFO] [django.server] "OPTIONS /api/client/profile/me/ HTTP/1.1" 200 0
+[2025-09-02 16:16:23] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-09-02 16:16:24] [WARNING] [django.request] Unauthorized: /api/client/profile/me/
+[2025-09-02 16:16:24] [WARNING] [django.request] Unauthorized: /api/client/transactions/
+[2025-09-02 16:16:24] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 401 172
+[2025-09-02 16:16:24] [WARNING] [django.server] "GET /api/client/transactions/ HTTP/1.1" 401 172
+[2025-09-02 16:16:24] [WARNING] [django.request] Unauthorized: /api/client/profile/me/
+[2025-09-02 16:16:24] [WARNING] [django.request] Unauthorized: /api/client/transactions/
+[2025-09-02 16:16:24] [INFO] [django.server] "OPTIONS /api/auth/refresh/ HTTP/1.1" 200 0
+[2025-09-02 16:16:24] [WARNING] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 401 172
+[2025-09-02 16:16:24] [INFO] [django.server] "OPTIONS /api/auth/refresh/ HTTP/1.1" 200 0
+[2025-09-02 16:16:24] [WARNING] [django.server] "GET /api/client/transactions/ HTTP/1.1" 401 172
+[2025-09-02 16:16:24] [INFO] [django.server] "POST /api/auth/refresh/ HTTP/1.1" 200 245
+[2025-09-02 16:16:24] [INFO] [django.server] "POST /api/auth/refresh/ HTTP/1.1" 200 245
+[2025-09-02 16:16:24] [INFO] [django.server] "POST /api/auth/refresh/ HTTP/1.1" 200 245
+[2025-09-02 16:16:24] [INFO] [django.server] "POST /api/auth/refresh/ HTTP/1.1" 200 245
+[2025-09-02 16:16:24] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:16:24] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:16:24] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3905
+[2025-09-02 16:16:24] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3905
+[2025-09-02 16:16:43] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:16:43] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:16:44] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-02 16:16:44] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 289
+[2025-09-02 16:16:44] [ERROR] [email_service] Error sending transaction notification: 'risk_score'
+[2025-09-02 16:16:44] [ERROR] [system] System event: Error sending transaction notification | Component: email_service | Severity: ERROR | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 289, "error": "'risk_score'"}
+[2025-09-02 16:16:44] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 107
+[2025-09-02 16:23:05] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\email_service.py changed, reloading.
+[2025-09-02 16:23:06] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:23:22] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\email_service.py changed, reloading.
+[2025-09-02 16:23:22] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:35:19] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:35:26] [INFO] [django.server] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+[2025-09-02 16:35:27] [WARNING] [django.request] Bad Request: /api/auth/login/
+[2025-09-02 16:35:27] [WARNING] [django.server] "POST /api/auth/login/ HTTP/1.1" 400 44
+[2025-09-02 16:35:33] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 638
+[2025-09-02 16:35:33] [INFO] [django.server] "OPTIONS /api/admin/dashboard/stats/ HTTP/1.1" 200 0
+[2025-09-02 16:35:33] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-09-02 16:35:33] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-09-02 16:35:33] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-09-02 16:35:33] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 242
+[2025-09-02 16:35:33] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-09-02 16:35:33] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 242
+[2025-09-02 16:35:33] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-09-02 16:35:33] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8199
+[2025-09-02 16:35:33] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-09-02 16:35:33] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8199
+[2025-09-02 16:35:43] [INFO] [django.server] "OPTIONS /api/admin/transactions/ HTTP/1.1" 200 0
+[2025-09-02 16:35:43] [INFO] [django.server] "OPTIONS /api/admin/transactions/ HTTP/1.1" 200 0
+[2025-09-02 16:35:43] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 10100
+[2025-09-02 16:35:43] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 10100
+[2025-09-02 16:35:51] [INFO] [django.server] "OPTIONS /api/admin/fraud-alerts/ HTTP/1.1" 200 0
+[2025-09-02 16:35:51] [INFO] [django.server] "OPTIONS /api/admin/fraud-alerts/ HTTP/1.1" 200 0
+[2025-09-02 16:35:51] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 7322
+[2025-09-02 16:35:51] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 7322
+[2025-09-02 16:35:59] [INFO] [django.server] "OPTIONS /api/admin/thresholds/ HTTP/1.1" 200 0
+[2025-09-02 16:35:59] [INFO] [django.server] "OPTIONS /api/admin/thresholds/ HTTP/1.1" 200 0
+[2025-09-02 16:35:59] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-09-02 16:35:59] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-09-02 16:35:59] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 988
+[2025-09-02 16:35:59] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-09-02 16:35:59] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 988
+[2025-09-02 16:35:59] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-09-02 16:37:01] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 647
+[2025-09-02 16:37:01] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:37:01] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:37:01] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3513
+[2025-09-02 16:37:01] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3513
+[2025-09-02 16:37:11] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:37:11] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:37:13] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-02 16:37:13] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 290
+[2025-09-02 16:37:14] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-02 16:37:14] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 290, "status": "COMPLETED", "risk_level": "LOW", "risk_score": 23}
+[2025-09-02 16:37:14] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 107
+[2025-09-02 16:37:44] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:37:44] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:37:44] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3808
+[2025-09-02 16:37:44] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3808
+[2025-09-02 16:38:03] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:38:03] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:38:04] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-02 16:38:04] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 291
+[2025-09-02 16:38:08] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-02 16:38:08] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 291, "status": "COMPLETED", "risk_level": "MEDIUM", "risk_score": 53}
+[2025-09-02 16:38:08] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 117
+[2025-09-02 16:38:37] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:38:37] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:38:37] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4101
+[2025-09-02 16:38:37] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4101
+[2025-09-02 16:42:37] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:42:37] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 12, "rules_count": 4}
+[2025-09-02 16:42:37] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-02 16:42:37] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 292
+[2025-09-02 16:42:38] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-02 16:42:38] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 292, "status": "COMPLETED", "risk_level": "MEDIUM", "risk_score": 53}
+[2025-09-02 16:42:38] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 117
+[2025-09-02 16:42:41] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:42:41] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 432
+[2025-09-02 16:42:41] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4396
+[2025-09-02 16:42:42] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4396
+[2025-09-02 16:45:06] [INFO] [django.server] "GET /admin/ HTTP/1.1" 302 0
+[2025-09-02 16:45:06] [INFO] [django.server] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4170
+[2025-09-02 16:45:07] [INFO] [django.server] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[2025-09-02 16:45:07] [INFO] [django.server] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[2025-09-02 16:45:07] [INFO] [django.server] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[2025-09-02 16:45:07] [INFO] [django.server] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[2025-09-02 16:45:07] [INFO] [django.server] "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[2025-09-02 16:45:07] [INFO] [django.server] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[2025-09-02 16:45:07] [INFO] [django.server] "GET /static/admin/css/login.css HTTP/1.1" 200 951
+[2025-09-02 16:45:07] [WARNING] [django.request] Not Found: /favicon.ico
+[2025-09-02 16:45:07] [WARNING] [django.server] "GET /favicon.ico HTTP/1.1" 404 3746
+[2025-09-02 16:45:17] [INFO] [django.server] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-09-02 16:45:17] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 15503
+[2025-09-02 16:45:17] [INFO] [django.server] "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+[2025-09-02 16:45:17] [INFO] [django.server] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[2025-09-02 16:45:17] [INFO] [django.server] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+[2025-09-02 16:45:17] [INFO] [django.server] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 46944
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+[2025-09-02 16:45:21] [INFO] [django.server] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+[2025-09-02 16:45:23] [INFO] [django.server] "GET /admin/risk/clientprofile/80/change/ HTTP/1.1" 200 27762
+[2025-09-02 16:45:23] [INFO] [django.server] "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+[2025-09-02 16:45:23] [INFO] [django.server] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+[2025-09-02 16:45:23] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-02 16:45:23] [INFO] [django.server] "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+[2025-09-02 16:45:23] [INFO] [django.server] "GET /static/admin/js/change_form.js HTTP/1.1" 304 0

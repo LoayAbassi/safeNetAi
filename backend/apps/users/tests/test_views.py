@@ -14,7 +14,8 @@ class AdminViewsTest(APITestCase):
             first_name='Admin',
             last_name='User',
             password='admin123',
-            role='ADMIN'
+            is_staff=True,
+            is_superuser=True
         )
         
         # Create regular client user
@@ -22,8 +23,7 @@ class AdminViewsTest(APITestCase):
             email='client@test.com',
             first_name='Client',
             last_name='User',
-            password='client123',
-            role='CLIENT'
+            password='client123'
         )
         
         # Create a client profile

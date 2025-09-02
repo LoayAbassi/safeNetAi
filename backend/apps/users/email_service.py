@@ -88,6 +88,10 @@ def get_html_email_template(template_name, context):
                                 <td>Risk Level:</td>
                                 <td>{context['risk_level']}</td>
                             </tr>
+                            <tr>
+                                <td>Risk Score:</td>
+                                <td>{context.get('risk_score', 0)}</td>
+                            </tr>
                         </table>
                     </div>
                     
@@ -168,11 +172,11 @@ def get_html_email_template(template_name, context):
                             </tr>
                             <tr>
                                 <td>Risk Score:</td>
-                                <td>{context['risk_score']}%</td>
+                                <td>{context.get('risk_score', 0)}%</td>
                             </tr>
                             <tr>
                                 <td>Triggers:</td>
-                                <td>{', '.join(context['triggers'])}</td>
+                                <td>{', '.join(context.get('triggers', []))}</td>
                             </tr>
                         </table>
                     </div>
@@ -239,6 +243,7 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
             'status': status.lower(),
             'date': transaction.created_at.strftime('%B %d, %Y at %I:%M %p'),
             'risk_level': risk_level,
+            'risk_score': getattr(transaction, 'risk_score', 0),  # Add risk_score with default
             'dashboard_url': f"{settings.SITE_BASE_URL}/client-dashboard"
         }
         
@@ -260,6 +265,7 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
         - Status: {status.upper()}
         - Date: {context['date']}
         - Risk Level: {risk_level}
+        - Risk Score: {context['risk_score']}
         
         View your dashboard: {context['dashboard_url']}
         
@@ -286,7 +292,8 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
                     "user_id": user.id,
                     "transaction_id": transaction.id,
                     "status": status,
-                    "risk_level": risk_level
+                    "risk_level": risk_level,
+                    "risk_score": context['risk_score']
                 }
             )
             return True
