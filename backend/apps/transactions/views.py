@@ -108,8 +108,20 @@ class TransactionViewSet(viewsets.ModelViewSet):
                     risk_level=f"Score_{risk_score}"
                 )
                 
-                # Check if OTP is required (high risk transactions)
-                if risk_score >= 70 or requires_otp:
+                # Check if OTP is required (ANY risk rule trigger or high AI score)
+                # OTP required if:
+                # 1. Any business rules triggered (len(triggers) > 0)
+                # 2. High risk score (>= 70)
+                # 3. High AI score (ml_score >= 0.6)
+                # 4. Explicit requires_otp flag
+                requires_otp_final = (
+                    len(triggers) > 0 or           # ANY rule triggered
+                    risk_score >= 70 or            # High combined risk score
+                    ml_score >= 0.6 or             # High AI risk score
+                    requires_otp                   # Explicit OTP requirement
+                )
+                
+                if requires_otp_final:
                     # Set transaction to pending and require OTP
                     transaction_obj.status = 'pending'
                     transaction_obj.save()
@@ -118,35 +130,40 @@ class TransactionViewSet(viewsets.ModelViewSet):
                     otp_obj = create_transaction_otp(transaction_obj, request.user)
                     
                     if otp_obj:
-                        logger.info(f"High risk transaction requires OTP: ID {transaction_obj.id}, Risk score: {risk_score}")
+                        logger.info(f"Transaction requires OTP verification: ID {transaction_obj.id}, "
+                                  f"Risk score: {risk_score}, Triggers: {len(triggers)}, ML score: {ml_score:.3f}")
                         
                         # Create fraud alert
                         fraud_alert = risk_engine.create_fraud_alert(transaction_obj, risk_score, triggers)
                         
                         # Log high risk transaction
                         log_system_event(
-                            "High risk transaction requires OTP verification",
+                            "Transaction requires OTP verification due to risk rules or AI assessment",
                             "transactions",
                             "WARNING",
                             {
                                 "transaction_id": transaction_obj.id,
                                 "risk_score": risk_score,
                                 "triggers": triggers,
-                                "user_id": request.user.id
+                                "ml_score": ml_score,
+                                "user_id": request.user.id,
+                                "reason": "risk_rules" if len(triggers) > 0 else "ai_assessment" if ml_score >= 0.6 else "high_score"
                             }
                         )
                         
                         return Response({
-                            'message': 'Transaction created but requires OTP verification due to high risk.',
+                            'message': 'Transaction created but requires OTP verification due to risk assessment.',
                             'transaction_id': transaction_obj.id,
                             'risk_score': risk_score,
+                            'ml_score': ml_score,
+                            'triggers': triggers,
                             'status': 'pending',
                             'requires_otp': True,
                             'otp_sent': True
                         }, status=status.HTTP_201_CREATED)
                     else:
                         # OTP creation failed
-                        logger.error(f"Failed to create OTP for high risk transaction {transaction_obj.id}")
+                        logger.error(f"Failed to create OTP for risk-flagged transaction {transaction_obj.id}")
                         transaction_obj.status = 'failed'
                         transaction_obj.save()
                         
@@ -335,16 +352,66 @@ class TransactionViewSet(viewsets.ModelViewSet):
                 recipient_profile.balance += amount
                 recipient_profile.save()
                 logger.info(f"Transfer (recipient): Account {recipient_account}, New balance = {recipient_profile.balance}")
+                
+                # Update recipient's statistics as well
+                self._update_client_statistics(recipient_profile)
+                
             except ClientProfile.DoesNotExist:
                 logger.warning(f"Recipient account {recipient_account} not found for transfer")
             
             client_profile.save()
+            
+            # Update client statistics after balance change
+            self._update_client_statistics(client_profile)
+            
             logger.info(f"Balance update completed for client {client_profile.full_name}. "
                        f"New balance: {client_profile.balance} DZD")
             
         except Exception as e:
             logger.error(f"Error updating balances: {e}")
             raise
+    
+    def _update_client_statistics(self, client_profile):
+        """Update client profile statistics (avg_amount, std_amount) based on transaction history"""
+        try:
+            from django.db.models import Avg, StdDev, Count
+            from decimal import Decimal
+            import math
+            
+            logger.info(f"Updating statistics for client {client_profile.full_name}")
+            
+            # Get all completed transactions for this client
+            completed_transactions = Transaction.objects.filter(
+                client=client_profile,
+                status='completed'
+            )
+            
+            if completed_transactions.exists():
+                # Calculate statistics
+                stats = completed_transactions.aggregate(
+                    avg_amount=Avg('amount'),
+                    std_amount=StdDev('amount'),
+                    transaction_count=Count('id')
+                )
+                
+                # Update client profile with calculated statistics
+                client_profile.avg_amount = Decimal(str(stats['avg_amount'] or 0))
+                
+                # Handle standard deviation (can be None if only one transaction)
+                std_dev = stats['std_amount'] or 0
+                client_profile.std_amount = Decimal(str(std_dev))
+                
+                client_profile.save()
+                
+                logger.info(f"Statistics updated for {client_profile.full_name}: "
+                          f"avg_amount={client_profile.avg_amount}, "
+                          f"std_amount={client_profile.std_amount}, "
+                          f"transaction_count={stats['transaction_count']}")
+            else:
+                logger.info(f"No completed transactions found for client {client_profile.full_name}")
+                
+        except Exception as e:
+            logger.error(f"Error updating client statistics for {client_profile.full_name}: {e}")
 
 class FraudAlertViewSet(viewsets.ReadOnlyModelViewSet):
     """Fraud alert viewset for clients"""
@@ -508,15 +575,64 @@ class AdminFraudAlertViewSet(viewsets.ModelViewSet):
                     recipient_profile.balance += amount
                     recipient_profile.save()
                     logger.info(f"Transfer (recipient): Account {recipient_account}, New balance = {recipient_profile.balance}")
+                    
+                    # Update recipient's statistics
+                    self._update_client_statistics(recipient_profile)
+                    
                 except ClientProfile.DoesNotExist:
                     logger.warning(f"Recipient account {recipient_account} not found for transfer")
             
             client_profile.save()
+            
+            # Update client statistics after balance change
+            self._update_client_statistics(client_profile)
+            
             logger.info(f"Admin balance update completed for client {client_profile.full_name}")
             
         except Exception as e:
             logger.error(f"Error updating balances in admin view: {e}")
             raise
+    
+    def _update_client_statistics(self, client_profile):
+        """Update client profile statistics - same as in TransactionViewSet"""
+        try:
+            from django.db.models import Avg, StdDev, Count
+            from decimal import Decimal
+            
+            logger.info(f"Admin updating statistics for client {client_profile.full_name}")
+            
+            # Get all completed transactions for this client
+            completed_transactions = Transaction.objects.filter(
+                client=client_profile,
+                status='completed'
+            )
+            
+            if completed_transactions.exists():
+                # Calculate statistics
+                stats = completed_transactions.aggregate(
+                    avg_amount=Avg('amount'),
+                    std_amount=StdDev('amount'),
+                    transaction_count=Count('id')
+                )
+                
+                # Update client profile with calculated statistics
+                client_profile.avg_amount = Decimal(str(stats['avg_amount'] or 0))
+                
+                # Handle standard deviation (can be None if only one transaction)
+                std_dev = stats['std_amount'] or 0
+                client_profile.std_amount = Decimal(str(std_dev))
+                
+                client_profile.save()
+                
+                logger.info(f"Admin statistics updated for {client_profile.full_name}: "
+                          f"avg_amount={client_profile.avg_amount}, "
+                          f"std_amount={client_profile.std_amount}, "
+                          f"transaction_count={stats['transaction_count']}")
+            else:
+                logger.info(f"No completed transactions found for client {client_profile.full_name}")
+                
+        except Exception as e:
+            logger.error(f"Error updating client statistics for {client_profile.full_name}: {e}")
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])

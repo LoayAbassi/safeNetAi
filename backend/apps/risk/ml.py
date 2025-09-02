@@ -70,15 +70,19 @@ class FraudMLModel:
             
             logger.info(f"Preparing features for transaction {transaction.id}")
             
-            # Basic transaction features (7 features to match our model)
+            # Basic transaction features (5 features since location fields were removed)
+            # Use client's home/last known location if available, otherwise default to 0
+            client_lat = float(client.last_known_lat) if client.last_known_lat else 0
+            client_lng = float(client.last_known_lng) if client.last_known_lng else 0
+            
             features = [
                 float(transaction.amount),
                 float(client.balance),
                 2,  # transaction type: transfer = 2
                 transaction.created_at.hour,
                 transaction.created_at.weekday(),
-                float(transaction.location_lat) if transaction.location_lat else 0,
-                float(transaction.location_lng) if transaction.location_lng else 0,
+                client_lat,  # Use client's last known location
+                client_lng,  # Use client's last known location
             ]
             
             feature_array = np.array(features).reshape(1, -1)
@@ -88,7 +92,7 @@ class FraudMLModel:
             
         except Exception as e:
             logger.error(f"Error preparing features for transaction {transaction.id}: {e}")
-            # Return default features
+            # Return default features (7 features with safe defaults)
             return np.array([[0, 0, 2, 0, 0, 0, 0]])
     
     def train(self):
@@ -157,7 +161,14 @@ class FraudMLModel:
             return False
     
     def predict(self, transaction):
-        """Predict anomaly score for a transaction with logging"""
+        """Predict anomaly score for a transaction with logging
+        
+        Returns:
+            float: Normalized risk score between 0-1 where:
+                   0.0-0.3 = Low risk (normal transaction)
+                   0.3-0.6 = Medium risk (slightly suspicious)
+                   0.6-1.0 = High risk (anomalous, triggers OTP)
+        """
         if self.model is None:
             logger.warning("ML model not available, using fallback score")
             log_system_event(
@@ -187,8 +198,10 @@ class FraudMLModel:
             score = self.model.decision_function(features_scaled)[0]
             
             # Convert to 0-1 scale where 1 is most anomalous
-            normalized_score = 1 - (score + 0.5)  # Assuming scores are roughly in [-0.5, 0.5]
-            normalized_score = max(0, min(1, normalized_score))
+            # Isolation Forest scores typically range from -0.5 to +0.5
+            # Negative scores = anomalies, Positive scores = normal
+            normalized_score = 1 - (score + 0.5)  # Convert to 0-1 scale
+            normalized_score = max(0, min(1, normalized_score))  # Clamp to [0,1]
             
             processing_time = time.time() - start_time
             

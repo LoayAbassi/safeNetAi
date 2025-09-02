@@ -529,3 +529,12 @@
 [2025-09-02 16:45:23] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 [2025-09-02 16:45:23] [INFO] [django.server] "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
 [2025-09-02 16:45:23] [INFO] [django.server] "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+[2025-09-02 16:51:11] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\risk\ml.py changed, reloading.
+[2025-09-02 16:51:11] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:51:41] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\transactions\views.py changed, reloading.
+[2025-09-02 16:51:42] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:51:57] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\transactions\views.py changed, reloading.
+[2025-09-02 16:51:57] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 16:52:19] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\transactions\views.py changed, reloading.
+[2025-09-02 16:52:20] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-02 17:40:03] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
