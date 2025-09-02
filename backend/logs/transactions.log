@@ -2041,3 +2041,75 @@
 [2025-09-01 16:18:29,263] INFO django.utils.autoreload trigger_reload:265 - C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\settings.py changed, reloading.
 [2025-09-01 17:02:40] [INFO] [transactions] Test transaction log message
 [2025-09-01 17:02:40] [INFO] [transactions] Transaction | ID: 123 | Amount: $1000.0 | Type: transfer | Status: CREATED | Data: {"transaction_id": 123, "amount": 1000.0, "transaction_type": "transfer", "user_id": 999, "status": "CREATED", "risk_level": "HIGH"}
+[2025-09-01 18:34:20] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-01 18:34:20] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-01 18:34:20] [ERROR] [transactions] Error creating transaction: Got a `TypeError` when calling `Transaction.objects.create()`. This may be because you have a writable field on the serializer class that is not a valid argument to `Transaction.objects.create()`. You may need to make the field read-only, or override the CreateTransactionSerializer.create() method to handle this correctly.
+Original exception was:
+ Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\query.py", line 661, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Transaction() got unexpected keyword arguments: 'from_account'
+
+[2025-09-01 18:41:33] [INFO] [transactions] Transaction | ID: 999 | Amount: $100.00 | Type: test | Status: TEST | Data: {"transaction_id": 999, "amount": "100.00", "transaction_type": "test", "user_id": 1, "status": "TEST", "risk_level": null}
+[2025-09-01 18:42:07] [INFO] [transactions] Transaction | ID: 999 | Amount: $100.00 | Type: test | Status: TEST | Data: {"transaction_id": 999, "amount": "100.00", "transaction_type": "test", "user_id": 1, "status": "TEST", "risk_level": null}
+[2025-09-01 18:43:26] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-01 18:43:26] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-01 18:43:26] [INFO] [transactions] Transaction created: ID 276, Amount: 2500.00, Type: transfer
+[2025-09-01 18:43:26] [INFO] [transactions] Risk assessment: Score=0, Triggers=[], Requires OTP=False, Decision=Approve
+[2025-09-01 18:43:26] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 20
+[2025-09-01 18:43:26] [INFO] [transactions] Transaction details: ID=276, Client=loay abassi, Type=transfer, Amount=2500.00 DZD, Risk Score=20, Decision=Approve, Triggers=[]
+[2025-09-01 18:43:26] [INFO] [transactions] Transaction | ID: 276 | Amount: $2500.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 276, "amount": "2500.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_20"}
+[2025-09-01 18:43:26] [INFO] [transactions] Updating balances for transaction 276
+[2025-09-01 18:43:26] [INFO] [transactions] Current balance: 7500000.00, Amount: 2500.00, Type: transfer
+[2025-09-01 18:43:26] [INFO] [transactions] Transfer (sender): New balance = 7497500.00
+[2025-09-01 18:43:26] [WARNING] [transactions] Recipient account 11111111 not found for transfer
+[2025-09-01 18:43:26] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 7497500.00 DZD
+[2025-09-01 18:43:26] [INFO] [transactions] Low risk transaction completed: ID 276, Risk score: 20
+[2025-09-01 18:43:35] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-01 18:43:35] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-01 18:43:35] [INFO] [transactions] Transaction created: ID 277, Amount: 25500.00, Type: transfer
+[2025-09-01 18:43:35] [INFO] [transactions] Risk assessment: Score=30, Triggers=['Large transfer: $25500.00 > $10000'], Requires OTP=False, Decision=Approve
+[2025-09-01 18:43:35] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 50
+[2025-09-01 18:43:35] [INFO] [transactions] Transaction details: ID=277, Client=loay abassi, Type=transfer, Amount=25500.00 DZD, Risk Score=50, Decision=Approve, Triggers=['Large transfer: $25500.00 > $10000']
+[2025-09-01 18:43:35] [INFO] [transactions] Transaction | ID: 277 | Amount: $25500.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 277, "amount": "25500.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_50"}
+[2025-09-01 18:43:35] [INFO] [transactions] Updating balances for transaction 277
+[2025-09-01 18:43:35] [INFO] [transactions] Current balance: 7497500.00, Amount: 25500.00, Type: transfer
+[2025-09-01 18:43:35] [INFO] [transactions] Transfer (sender): New balance = 7472000.00
+[2025-09-01 18:43:35] [WARNING] [transactions] Recipient account 11111111 not found for transfer
+[2025-09-01 18:43:35] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 7472000.00 DZD
+[2025-09-01 18:43:35] [ERROR] [transactions] Error creating transaction: FraudAlert() got unexpected keyword arguments: 'message'
+[2025-09-01 18:44:03] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-01 18:44:03] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-01 18:44:03] [INFO] [transactions] Transaction created: ID 278, Amount: 25500.00, Type: transfer
+[2025-09-01 18:44:03] [INFO] [transactions] Risk assessment: Score=30, Triggers=['Large transfer: $25500.00 > $10000'], Requires OTP=False, Decision=Approve
+[2025-09-01 18:44:03] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 50
+[2025-09-01 18:44:03] [INFO] [transactions] Transaction details: ID=278, Client=loay abassi, Type=transfer, Amount=25500.00 DZD, Risk Score=50, Decision=Approve, Triggers=['Large transfer: $25500.00 > $10000']
+[2025-09-01 18:44:03] [INFO] [transactions] Transaction | ID: 278 | Amount: $25500.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 278, "amount": "25500.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_50"}
+[2025-09-01 18:44:03] [INFO] [transactions] Updating balances for transaction 278
+[2025-09-01 18:44:03] [INFO] [transactions] Current balance: 7472000.00, Amount: 25500.00, Type: transfer
+[2025-09-01 18:44:03] [INFO] [transactions] Transfer (sender): New balance = 7446500.00
+[2025-09-01 18:44:03] [WARNING] [transactions] Recipient account 11111111 not found for transfer
+[2025-09-01 18:44:03] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 7446500.00 DZD
+[2025-09-01 18:44:03] [ERROR] [transactions] Error creating transaction: FraudAlert() got unexpected keyword arguments: 'message'
+[2025-09-01 18:44:20] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-01 18:44:20] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-01 18:44:20] [INFO] [transactions] Transaction created: ID 279, Amount: 255000.00, Type: transfer
+[2025-09-01 18:44:20] [INFO] [transactions] Risk assessment: Score=30, Triggers=['Large transfer: $255000.00 > $10000'], Requires OTP=False, Decision=Approve
+[2025-09-01 18:44:20] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 50
+[2025-09-01 18:44:20] [INFO] [transactions] Transaction details: ID=279, Client=loay abassi, Type=transfer, Amount=255000.00 DZD, Risk Score=50, Decision=Approve, Triggers=['Large transfer: $255000.00 > $10000']
+[2025-09-01 18:44:20] [INFO] [transactions] Transaction | ID: 279 | Amount: $255000.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 279, "amount": "255000.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_50"}
+[2025-09-01 18:44:20] [INFO] [transactions] Updating balances for transaction 279
+[2025-09-01 18:44:20] [INFO] [transactions] Current balance: 7446500.00, Amount: 255000.00, Type: transfer
+[2025-09-01 18:44:20] [INFO] [transactions] Transfer (sender): New balance = 7191500.00
+[2025-09-01 18:44:20] [WARNING] [transactions] Recipient account 11111111 not found for transfer
+[2025-09-01 18:44:20] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 7191500.00 DZD
+[2025-09-01 18:44:20] [ERROR] [transactions] Error creating transaction: FraudAlert() got unexpected keyword arguments: 'message'

@@ -1,2 +1,6 @@
-[2025-09-01 17:02:40] [INFO] [ai] Test AI/ML log message
-[2025-09-01 17:02:40] [INFO] [ai] AI Prediction | Model: Test Fraud Model | Confidence: 0.92 | Time: 0.150s | Data: {"model_name": "Test Fraud Model", "prediction": 0.85, "confidence": 0.92, "processing_time": 0.15}
+[2025-09-02 01:55:56] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-02 01:55:56] [INFO] [ai] Making ML prediction for transaction 281
+[2025-09-02 01:55:56] [INFO] [ai] Preparing features for transaction 281
+[2025-09-02 01:55:56] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-02 01:55:56] [INFO] [ai] ML prediction: Raw score=-0.0382, Normalized score=0.5382
+[2025-09-02 01:55:56] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.54 | Time: 0.006s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5381529201083197, "confidence": 0.5381529201083197, "processing_time": 0.005601406097412109}

@@ -5,13 +5,14 @@ from apps.risk.models import ClientProfile
 class TransactionSerializer(serializers.ModelSerializer):
     client_name = serializers.CharField(source='client.full_name', read_only=True)
     client_email = serializers.EmailField(source='client.user.email', read_only=True)
+    from_account = serializers.CharField(source='client.bank_account_number', read_only=True)
     
     class Meta:
         model = Transaction
         fields = ['id', 'client', 'client_name', 'client_email', 'amount', 'transaction_type',
                  'from_account', 'to_account_number', 'status', 'device_fingerprint',
                  'location_lat', 'location_lng', 'created_at']
-        read_only_fields = ['client', 'from_account', 'status', 'created_at']
+        read_only_fields = ['client', 'status', 'created_at']
 
 class CreateTransactionSerializer(serializers.ModelSerializer):
     current_location = serializers.JSONField(required=False)
@@ -27,8 +28,8 @@ class CreateTransactionSerializer(serializers.ModelSerializer):
         except ClientProfile.DoesNotExist:
             raise serializers.ValidationError("Client profile not found")
         
-        # Validate funds for withdraw/transfer
-        if attrs['transaction_type'] in ['withdraw', 'transfer']:
+        # Validate funds for transfer
+        if attrs['transaction_type'] == 'transfer':
             if client_profile.balance < attrs['amount']:
                 raise serializers.ValidationError("Insufficient funds")
         
@@ -39,13 +40,13 @@ class CreateTransactionSerializer(serializers.ModelSerializer):
             attrs['location_lng'] = current_location.get('lng')
         
         attrs['client'] = client_profile
-        attrs['from_account'] = client_profile.bank_account_number
         
         return attrs
 
 class AdminTransactionSerializer(serializers.ModelSerializer):
     client_name = serializers.CharField(source='client.full_name', read_only=True)
     client_email = serializers.EmailField(source='client.user.email', read_only=True)
+    from_account = serializers.CharField(source='client.bank_account_number', read_only=True)
     
     class Meta:
         model = Transaction
@@ -59,8 +60,8 @@ class FraudAlertSerializer(serializers.ModelSerializer):
     class Meta:
         model = FraudAlert
         fields = ['id', 'transaction', 'transaction_details', 'risk_score', 'level', 
-                 'message', 'triggers', 'status', 'created_at']
-        read_only_fields = ['transaction', 'risk_score', 'level', 'message', 'triggers', 'created_at']
+                 'triggers', 'status', 'created_at']
+        read_only_fields = ['transaction', 'risk_score', 'level', 'triggers', 'created_at']
 
 class AdminFraudAlertSerializer(serializers.ModelSerializer):
     transaction_details = AdminTransactionSerializer(source='transaction', read_only=True)
@@ -68,5 +69,5 @@ class AdminFraudAlertSerializer(serializers.ModelSerializer):
     class Meta:
         model = FraudAlert
         fields = ['id', 'transaction', 'transaction_details', 'risk_score', 'level', 
-                 'message', 'triggers', 'status', 'created_at']
-        read_only_fields = ['transaction', 'risk_score', 'level', 'message', 'triggers', 'created_at']
+                 'triggers', 'status', 'created_at']
+        read_only_fields = ['transaction', 'risk_score', 'level', 'triggers', 'created_at']

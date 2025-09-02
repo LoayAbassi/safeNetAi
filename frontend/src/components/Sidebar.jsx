@@ -23,8 +23,6 @@ const Sidebar = ({ isOpen }) => {
   const clientNavItems = [
     { name: 'Dashboard', icon: Home, path: '/client-dashboard' },
     { name: 'Transfer', icon: CreditCard, path: '/transfer' },
-    { name: 'Transactions', icon: TrendingUp, path: '/transactions' },
-    { name: 'Fraud Alerts', icon: AlertTriangle, path: '/fraud-alerts' },
   ];
 
   const adminNavItems = [
@@ -33,7 +31,6 @@ const Sidebar = ({ isOpen }) => {
     { name: 'Transactions', icon: CreditCard, path: '/admin/transactions' },
     { name: 'Fraud Alerts', icon: AlertTriangle, path: '/admin/fraud-alerts' },
     { name: 'Rules & Thresholds', icon: Settings, path: '/admin/rules' },
-    { name: 'Analytics', icon: BarChart3, path: '/admin/analytics' },
     { name: 'System Logs', icon: FileText, path: '/admin/logs' },
   ];
 

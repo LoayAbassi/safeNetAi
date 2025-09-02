@@ -48,11 +48,11 @@ class TransactionViewSet(viewsets.ModelViewSet):
                 client_profile = ClientProfile.objects.get(user=request.user)
                 logger.info(f"Client profile found: {client_profile.full_name}")
                 
-                # Validate funds for withdraw/transfer
+                # Validate funds for transfer
                 transaction_type = serializer.validated_data.get('transaction_type')
                 amount = serializer.validated_data.get('amount')
                 
-                if transaction_type in ['withdraw', 'transfer']:
+                if transaction_type == 'transfer':
                     if client_profile.balance < amount:
                         logger.warning(f"Insufficient funds for user {request.user.email}. Balance: {client_profile.balance}, Required: {amount}")
                         log_transaction(
@@ -312,31 +312,24 @@ class TransactionViewSet(viewsets.ModelViewSet):
         """Update balances for completed transactions"""
         try:
             amount = transaction_obj.amount
-            transaction_type = transaction_obj.transaction_type
             
             logger.info(f"Updating balances for transaction {transaction_obj.id}")
-            logger.info(f"Current balance: {client_profile.balance}, Amount: {amount}, Type: {transaction_type}")
+            logger.info(f"Current balance: {client_profile.balance}, Amount: {amount}")
             
-            if transaction_type == 'deposit':
-                client_profile.balance += amount
-                logger.info(f"Deposit: New balance = {client_profile.balance}")
-            elif transaction_type == 'withdraw':
-                client_profile.balance -= amount
-                logger.info(f"Withdrawal: New balance = {client_profile.balance}")
-            elif transaction_type == 'transfer':
-                # Deduct from sender
-                client_profile.balance -= amount
-                logger.info(f"Transfer (sender): New balance = {client_profile.balance}")
-                
-                # Add to recipient if account exists
-                recipient_account = transaction_obj.to_account_number
-                try:
-                    recipient_profile = ClientProfile.objects.get(bank_account_number=recipient_account)
-                    recipient_profile.balance += amount
-                    recipient_profile.save()
-                    logger.info(f"Transfer (recipient): Account {recipient_account}, New balance = {recipient_profile.balance}")
-                except ClientProfile.DoesNotExist:
-                    logger.warning(f"Recipient account {recipient_account} not found for transfer")
+            # Only transfer logic remains
+            # Deduct from sender
+            client_profile.balance -= amount
+            logger.info(f"Transfer (sender): New balance = {client_profile.balance}")
+            
+            # Add to recipient if account exists
+            recipient_account = transaction_obj.to_account_number
+            try:
+                recipient_profile = ClientProfile.objects.get(bank_account_number=recipient_account)
+                recipient_profile.balance += amount
+                recipient_profile.save()
+                logger.info(f"Transfer (recipient): Account {recipient_account}, New balance = {recipient_profile.balance}")
+            except ClientProfile.DoesNotExist:
+                logger.warning(f"Recipient account {recipient_account} not found for transfer")
             
             client_profile.save()
             logger.info(f"Balance update completed for client {client_profile.full_name}. "
