@@ -143,7 +143,7 @@ LOGGING = {
         },
         'auth_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'auth.log',
+            'filename': BASE_DIR / 'logs' / 'auth' / 'auth.log',
             'formatter': 'detailed',
             'level': os.getenv('LOG_LEVEL_AUTH', 'INFO'),
             'when': 'midnight',
@@ -154,7 +154,7 @@ LOGGING = {
         },
         'ai_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'ai.log',
+            'filename': BASE_DIR / 'logs' / 'ai' / 'ai.log',
             'formatter': 'detailed',
             'level': os.getenv('LOG_LEVEL_AI', 'INFO'),
             'when': 'midnight',
@@ -165,7 +165,7 @@ LOGGING = {
         },
         'rules_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'rules.log',
+            'filename': BASE_DIR / 'logs' / 'rules' / 'rules.log',
             'formatter': 'detailed',
             'level': os.getenv('LOG_LEVEL_RULES', 'INFO'),
             'when': 'midnight',
@@ -176,7 +176,7 @@ LOGGING = {
         },
         'transactions_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'transactions.log',
+            'filename': BASE_DIR / 'logs' / 'transactions' / 'transactions.log',
             'formatter': 'detailed',
             'level': os.getenv('LOG_LEVEL_TRANSACTIONS', 'INFO'),
             'when': 'midnight',
@@ -187,7 +187,7 @@ LOGGING = {
         },
         'system_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'system.log',
+            'filename': BASE_DIR / 'logs' / 'system' / 'system.log',
             'formatter': 'detailed',
             'level': os.getenv('LOG_LEVEL_SYSTEM', 'INFO'),
             'when': 'midnight',
@@ -198,9 +198,20 @@ LOGGING = {
         },
         'error_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'errors.log',
+            'filename': BASE_DIR / 'logs' / 'errors' / 'errors.log',
             'formatter': 'detailed',
             'level': 'ERROR',
+            'when': 'midnight',
+            'interval': 1,
+            'backupCount': 7,
+            'encoding': 'utf-8',
+            'delay': True,  # Windows compatibility: delay file opening
+        },
+        'email_file': {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': BASE_DIR / 'logs' / 'email' / 'email.log',
+            'formatter': 'detailed',
+            'level': os.getenv('LOG_LEVEL_EMAIL', 'INFO'),
             'when': 'midnight',
             'interval': 1,
             'backupCount': 7,
@@ -281,8 +292,8 @@ LOGGING = {
         
         # Email service logging
         'email_service': {
-            'handlers': ['console', 'system_file', 'error_file'],
-            'level': os.getenv('LOG_LEVEL_SYSTEM', 'INFO'),
+            'handlers': ['console', 'email_file', 'error_file'],
+            'level': os.getenv('LOG_LEVEL_EMAIL', 'INFO'),
             'propagate': False,
         },
         
@@ -299,17 +310,28 @@ LOGGING = {
     },
 }
 
-# Create logs directory and log files if they don't exist
+# Create organized logs directory structure and log files if they don't exist
 LOGS_DIR = BASE_DIR / 'logs'
 LOGS_DIR.mkdir(exist_ok=True)
 
-# Ensure all log files exist (empty files)
-log_files = [
+# Create subdirectories for organized logging
+log_categories = ['auth', 'ai', 'rules', 'transactions', 'system', 'errors', 'email']
+for category in log_categories:
+    category_dir = LOGS_DIR / category
+    category_dir.mkdir(exist_ok=True)
+    
+    # Create the main log file for each category
+    log_file = category_dir / f'{category}.log'
+    if not log_file.exists():
+        log_file.touch()
+
+# Legacy: Also ensure the main logs directory has the files for backwards compatibility
+legacy_log_files = [
     'auth.log', 'ai.log', 'rules.log', 'transactions.log', 
     'system.log', 'errors.log'
 ]
 
-for log_file in log_files:
+for log_file in legacy_log_files:
     log_path = LOGS_DIR / log_file
     if not log_path.exists():
         log_path.touch()

@@ -142,7 +142,7 @@ def log_transaction(transaction_id: int, amount: float, transaction_type: str,
     Log transaction events
     """
     logger = get_transactions_logger()
-    message = f"Transaction | ID: {transaction_id} | Amount: ${amount} | Type: {transaction_type} | Status: {status}"
+    message = f"Transaction | ID: {transaction_id} | Amount: {amount} DZD | Type: {transaction_type} | Status: {status}"
     extra_data = {
         'transaction_id': transaction_id,
         'amount': amount,

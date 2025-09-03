@@ -70,7 +70,7 @@ def get_html_email_template(template_name, context):
                             </tr>
                             <tr>
                                 <td>Amount:</td>
-                                <td>${context['amount']:,.2f}</td>
+                                <td>{context['amount']:,.2f} DZD</td>
                             </tr>
                             <tr>
                                 <td>Type:</td>
@@ -160,7 +160,7 @@ def get_html_email_template(template_name, context):
                             </tr>
                             <tr>
                                 <td>Amount:</td>
-                                <td>${context['amount']:,.2f}</td>
+                                <td>{context['amount']:,.2f} DZD</td>
                             </tr>
                             <tr>
                                 <td>Type:</td>
@@ -260,7 +260,7 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
         
         Transaction Details:
         - ID: #{transaction.id}
-        - Amount: ${transaction.amount}
+        - Amount: {transaction.amount} DZD
         - Type: {transaction.transaction_type}
         - Status: {status.upper()}
         - Date: {context['date']}

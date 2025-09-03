@@ -377,3 +377,41 @@ apps.users.models.User.DoesNotExist: User matching query does not exist.
 [2025-09-03 18:03:49] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14772
 [2025-09-03 18:03:51] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 22974
 [2025-09-03 18:03:51] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 22974
+[2025-09-03 18:08:10] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 46944
+[2025-09-03 18:08:10] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:08:17] [INFO] [django.server] "GET /admin/authtoken/tokenproxy/ HTTP/1.1" 200 12932
+[2025-09-03 18:08:23] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 46944
+[2025-09-03 18:08:23] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:08:30] [INFO] [django.server] "GET /admin/risk/clientprofile/add/ HTTP/1.1" 200 27412
+[2025-09-03 18:08:30] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:09:06] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\utils\logger.py changed, reloading.
+[2025-09-03 18:09:06] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-03 18:09:26] [INFO] [django.server] "POST /admin/risk/clientprofile/add/ HTTP/1.1" 302 0
+[2025-09-03 18:09:26] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 47749
+[2025-09-03 18:09:26] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:10:17] [INFO] [django.server] "GET /admin/risk/clientprofile/86/change/ HTTP/1.1" 200 27784
+[2025-09-03 18:10:17] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:11:03] [INFO] [django.server] "OPTIONS /api/auth/register/ HTTP/1.1" 200 0
+[2025-09-03 18:11:03] [WARNING] [django.request] Bad Request: /api/auth/register/
+[2025-09-03 18:11:03] [WARNING] [django.server] "POST /api/auth/register/ HTTP/1.1" 400 68
+[2025-09-03 18:11:13] [WARNING] [django.request] Bad Request: /api/auth/register/
+[2025-09-03 18:11:13] [WARNING] [django.server] "POST /api/auth/register/ HTTP/1.1" 400 68
+[2025-09-03 18:11:22] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\utils\logger.py changed, reloading.
+[2025-09-03 18:11:23] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-03 18:11:34] [INFO] [email_service] Creating OTP for user abassi.loay90@gmail.com
+[2025-09-03 18:11:34] [INFO] [email_service] Created OTP 263220 for user abassi.loay90@gmail.com, expires at 2025-09-04 17:11:34.330266+00:00
+[2025-09-03 18:11:34] [INFO] [email_service] Attempting to send OTP email to abassi.loay90@gmail.com
+[2025-09-03 18:11:34] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-03 18:11:38] [INFO] [email_service] OTP email sent successfully to abassi.loay90@gmail.com. OTP: 263220
+[2025-09-03 18:11:38] [INFO] [system] System event: OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay90@gmail.com", "user_id": 66}
+[2025-09-03 18:11:38] [INFO] [email_service] OTP created and sent successfully for user abassi.loay90@gmail.com
+[2025-09-03 18:11:38] [INFO] [system] System event: OTP created and sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay90@gmail.com", "user_id": 66, "otp_id": 16}
+[2025-09-03 18:11:38] [INFO] [django.server] "POST /api/auth/register/ HTTP/1.1" 201 118
+[2025-09-03 18:11:47] [INFO] [django.server] "GET /admin/users/user/ HTTP/1.1" 200 50012
+[2025-09-03 18:11:47] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:11:52] [INFO] [django.server] "GET /admin/users/user/66/change/ HTTP/1.1" 200 28784
+[2025-09-03 18:11:52] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:11:54] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 47516
+[2025-09-03 18:11:54] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:11:55] [INFO] [django.server] "GET /admin/risk/clientprofile/86/change/ HTTP/1.1" 200 27911
+[2025-09-03 18:11:55] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
