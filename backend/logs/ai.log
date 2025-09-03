@@ -22,3 +22,39 @@
 [2025-09-03 16:00:37] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
 [2025-09-03 16:00:37] [INFO] [ai] ML prediction: Raw score=0.0198, Normalized score=0.4802
 [2025-09-03 16:00:37] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.48 | Time: 0.006s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.480161714929228, "confidence": 0.480161714929228, "processing_time": 0.006022453308105469}
+[2025-09-03 17:25:38] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-03 17:25:38] [INFO] [ai] Making ML prediction for transaction 303
+[2025-09-03 17:25:38] [INFO] [ai] Preparing features for transaction 303
+[2025-09-03 17:25:38] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-03 17:25:38] [INFO] [ai] ML prediction: Raw score=0.0183, Normalized score=0.4817
+[2025-09-03 17:25:38] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.48 | Time: 0.008s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.4816780705349232, "confidence": 0.4816780705349232, "processing_time": 0.007977724075317383}
+[2025-09-03 17:28:02] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-03 17:28:02] [INFO] [ai] Making ML prediction for transaction 304
+[2025-09-03 17:28:02] [INFO] [ai] Preparing features for transaction 304
+[2025-09-03 17:28:02] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-03 17:28:02] [INFO] [ai] ML prediction: Raw score=0.0339, Normalized score=0.4661
+[2025-09-03 17:28:02] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.47 | Time: 0.005s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.4660723144215201, "confidence": 0.4660723144215201, "processing_time": 0.005007028579711914}
+[2025-09-03 17:32:20] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-03 17:32:20] [INFO] [ai] Making ML prediction for transaction 305
+[2025-09-03 17:32:20] [INFO] [ai] Preparing features for transaction 305
+[2025-09-03 17:32:20] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-03 17:32:20] [INFO] [ai] ML prediction: Raw score=-0.0734, Normalized score=0.5734
+[2025-09-03 17:32:20] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.57 | Time: 0.005s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5734296907205079, "confidence": 0.5734296907205079, "processing_time": 0.005026102066040039}
+[2025-09-03 17:34:41] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-03 17:34:41] [INFO] [ai] Making ML prediction for transaction 305
+[2025-09-03 17:34:41] [INFO] [ai] Preparing features for transaction 305
+[2025-09-03 17:34:41] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-03 17:34:41] [INFO] [ai] ML prediction: Raw score=-0.0734, Normalized score=0.5734
+[2025-09-03 17:34:41] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.57 | Time: 0.005s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5734296907205079, "confidence": 0.5734296907205079, "processing_time": 0.004706144332885742}
+[2025-09-03 18:00:37] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-03 18:00:37] [INFO] [ai] Making ML prediction for transaction 305
+[2025-09-03 18:00:37] [INFO] [ai] Preparing features for transaction 305
+[2025-09-03 18:00:37] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-03 18:00:37] [INFO] [ai] ML prediction: Raw score=-0.0747, Normalized score=0.5747
+[2025-09-03 18:00:37] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.57 | Time: 0.007s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.5747112086171662, "confidence": 0.5747112086171662, "processing_time": 0.006997585296630859}
+[2025-09-03 18:01:57] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-03 18:01:57] [INFO] [ai] Making ML prediction for transaction 306
+[2025-09-03 18:01:57] [INFO] [ai] Preparing features for transaction 306
+[2025-09-03 18:01:57] [INFO] [ai] Features prepared: 7 features, shape: (1, 7)
+[2025-09-03 18:01:57] [INFO] [ai] ML prediction: Raw score=0.0203, Normalized score=0.4797
+[2025-09-03 18:01:57] [INFO] [ai] AI Prediction | Model: Fraud Detection Isolation Forest | Confidence: 0.48 | Time: 0.006s | Data: {"model_name": "Fraud Detection Isolation Forest", "prediction": 0.4797494320580509, "confidence": 0.4797494320580509, "processing_time": 0.00602412223815918}

@@ -74,3 +74,139 @@
 [2025-09-03 17:09:45] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 302 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 302, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)"]}
 [2025-09-03 17:09:45] [INFO] [rules] Distance check: Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Distance=0.00km, Threshold=50.0km
 [2025-09-03 17:09:45] [INFO] [rules] Distance check passed: 0.00km within 50.0km threshold
+[2025-09-03 17:25:37] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:25:37] [INFO] [rules] Starting risk assessment for transaction 303
+[2025-09-03 17:25:37] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:25:37] [WARNING] [rules] Rule 2 triggered: High frequency: 7 transactions in 2.0 hour(s)
+[2025-09-03 17:25:37] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 303 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 303, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 7 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:25:37] [INFO] [rules] Distance check: Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Distance=0.00km, Threshold=50.0km
+[2025-09-03 17:25:37] [INFO] [rules] Distance check passed: 0.00km within 50.0km threshold
+[2025-09-03 17:25:37] [INFO] [rules] Risk assessment completed: Score=25, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-03 17:25:37] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:25:37] [INFO] [rules] Starting risk assessment for transaction 303
+[2025-09-03 17:25:37] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:25:37] [WARNING] [rules] Rule 2 triggered: High frequency: 7 transactions in 2.0 hour(s)
+[2025-09-03 17:25:37] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 303 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 303, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 7 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:25:37] [INFO] [rules] Distance check: Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Distance=0.00km, Threshold=50.0km
+[2025-09-03 17:25:37] [INFO] [rules] Distance check passed: 0.00km within 50.0km threshold
+[2025-09-03 17:25:37] [INFO] [rules] Risk assessment completed: Score=25, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-03 17:25:40] [INFO] [rules] Creating fraud alert for transaction 303: Medium risk, score 44
+[2025-09-03 17:25:40] [INFO] [rules] Fraud alert created: ID 137
+[2025-09-03 17:28:02] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:28:02] [INFO] [rules] Starting risk assessment for transaction 304
+[2025-09-03 17:28:02] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:28:02] [WARNING] [rules] Rule 2 triggered: High frequency: 8 transactions in 2.0 hour(s)
+[2025-09-03 17:28:02] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 304 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 304, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 8 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:28:02] [INFO] [rules] Distance check: Home=(36.837786, 10.295706), Current=(36.75232184520521, 10.109483199923892), Distance=19.11km, Threshold=50.0km
+[2025-09-03 17:28:02] [INFO] [rules] Distance check passed: 19.11km within 50.0km threshold
+[2025-09-03 17:28:02] [INFO] [rules] Risk assessment completed: Score=25, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-03 17:28:02] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:28:02] [INFO] [rules] Starting risk assessment for transaction 304
+[2025-09-03 17:28:02] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:28:02] [WARNING] [rules] Rule 2 triggered: High frequency: 8 transactions in 2.0 hour(s)
+[2025-09-03 17:28:02] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 304 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 304, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 8 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:28:02] [INFO] [rules] Distance check: Home=(36.837786, 10.295706), Current=(36.75232184520521, 10.109483199923892), Distance=19.11km, Threshold=50.0km
+[2025-09-03 17:28:02] [INFO] [rules] Distance check passed: 19.11km within 50.0km threshold
+[2025-09-03 17:28:02] [INFO] [rules] Risk assessment completed: Score=25, Triggers=1, Requires OTP=False, Decision=Approve
+[2025-09-03 17:28:04] [INFO] [rules] Creating fraud alert for transaction 304: Medium risk, score 43
+[2025-09-03 17:28:04] [INFO] [rules] Fraud alert created: ID 138
+[2025-09-03 17:32:20] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:32:20] [INFO] [rules] Starting risk assessment for transaction 305
+[2025-09-03 17:32:20] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:32:20] [WARNING] [rules] Rule 2 triggered: High frequency: 9 transactions in 2.0 hour(s)
+[2025-09-03 17:32:20] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 305 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 305, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 9 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:32:20] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 17:32:20] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 17:32:20] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 305 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 305, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 17:32:20] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 305
+[2025-09-03 17:32:20] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 305 requires mandatory OTP
+[2025-09-03 17:32:20] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 17:32:20] [INFO] [rules] Creating fraud alert for transaction 305: High risk, score 75
+[2025-09-03 17:32:20] [INFO] [rules] Fraud alert created: ID 139
+[2025-09-03 17:32:20] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:32:20] [INFO] [rules] Starting risk assessment for transaction 305
+[2025-09-03 17:32:20] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:32:20] [WARNING] [rules] Rule 2 triggered: High frequency: 9 transactions in 2.0 hour(s)
+[2025-09-03 17:32:20] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 305 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 305, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 9 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:32:20] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 17:32:20] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 17:32:20] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 305 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 305, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 17:32:20] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 305
+[2025-09-03 17:32:20] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 305 requires mandatory OTP
+[2025-09-03 17:32:20] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 17:32:23] [INFO] [rules] Creating fraud alert for transaction 305: High risk, score 97
+[2025-09-03 17:34:41] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:34:41] [INFO] [rules] Starting risk assessment for transaction 305
+[2025-09-03 17:34:41] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:34:41] [WARNING] [rules] Rule 2 triggered: High frequency: 9 transactions in 2.0 hour(s)
+[2025-09-03 17:34:41] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 305 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 305, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 9 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:34:41] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 17:34:41] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 17:34:41] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 305 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 305, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 17:34:41] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 305
+[2025-09-03 17:34:41] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 305 requires mandatory OTP
+[2025-09-03 17:34:41] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 17:34:41] [INFO] [rules] Creating fraud alert for transaction 305: High risk, score 75
+[2025-09-03 17:34:41] [INFO] [rules] Fraud alert created: ID 139
+[2025-09-03 17:34:41] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 17:34:41] [INFO] [rules] Starting risk assessment for transaction 305
+[2025-09-03 17:34:41] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=loay abassi
+[2025-09-03 17:34:41] [WARNING] [rules] Rule 2 triggered: High frequency: 9 transactions in 2.0 hour(s)
+[2025-09-03 17:34:41] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 305 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 305, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 9 transactions in 2.0 hour(s)"]}
+[2025-09-03 17:34:41] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 17:34:41] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 17:34:41] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 305 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 305, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 17:34:41] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 305
+[2025-09-03 17:34:41] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 305 requires mandatory OTP
+[2025-09-03 17:34:41] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 17:34:42] [INFO] [rules] Creating fraud alert for transaction 305: High risk, score 97
+[2025-09-03 18:00:36] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 18:00:36] [INFO] [rules] Starting risk assessment for transaction 305
+[2025-09-03 18:00:36] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=loay abassi
+[2025-09-03 18:00:36] [WARNING] [rules] Rule 2 triggered: High frequency: 6 transactions in 2.0 hour(s)
+[2025-09-03 18:00:36] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 305 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 305, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)"]}
+[2025-09-03 18:00:36] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 18:00:36] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 18:00:36] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 305 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 305, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 18:00:36] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 305
+[2025-09-03 18:00:36] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 305 requires mandatory OTP
+[2025-09-03 18:00:36] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 18:00:36] [INFO] [rules] Creating fraud alert for transaction 305: High risk, score 75
+[2025-09-03 18:00:36] [INFO] [rules] Fraud alert created: ID 139
+[2025-09-03 18:00:36] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 18:00:36] [INFO] [rules] Starting risk assessment for transaction 305
+[2025-09-03 18:00:36] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=loay abassi
+[2025-09-03 18:00:36] [WARNING] [rules] Rule 2 triggered: High frequency: 6 transactions in 2.0 hour(s)
+[2025-09-03 18:00:36] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 305 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 305, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)"]}
+[2025-09-03 18:00:36] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 18:00:36] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 18:00:36] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 305 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 305, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 18:00:36] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 305
+[2025-09-03 18:00:36] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 305 requires mandatory OTP
+[2025-09-03 18:00:36] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 18:00:39] [INFO] [rules] Fraud alert already exists for transaction 305: ID 139
+[2025-09-03 18:01:57] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 18:01:57] [INFO] [rules] Starting risk assessment for transaction 306
+[2025-09-03 18:01:57] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-03 18:01:57] [WARNING] [rules] Rule 2 triggered: High frequency: 6 transactions in 2.0 hour(s)
+[2025-09-03 18:01:57] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 306 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 306, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)"]}
+[2025-09-03 18:01:57] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 18:01:57] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 18:01:57] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 306 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 306, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 18:01:57] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 306
+[2025-09-03 18:01:57] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 306 requires mandatory OTP
+[2025-09-03 18:01:57] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 18:01:57] [INFO] [rules] Creating fraud alert for transaction 306: High risk, score 75
+[2025-09-03 18:01:57] [INFO] [rules] Fraud alert created: ID 140
+[2025-09-03 18:01:57] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-03 18:01:57] [INFO] [rules] Starting risk assessment for transaction 306
+[2025-09-03 18:01:57] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-03 18:01:57] [WARNING] [rules] Rule 2 triggered: High frequency: 6 transactions in 2.0 hour(s)
+[2025-09-03 18:01:57] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 306 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 306, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)"]}
+[2025-09-03 18:01:57] [INFO] [rules] Distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance=85.51km, Threshold=50.0km
+[2025-09-03 18:01:57] [WARNING] [rules] Rule 4 triggered: Max distance exceeded: 85.51km > 50.0km from home
+[2025-09-03 18:01:57] [INFO] [rules] Rule evaluation: Max Distance from Home | Transaction: 306 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Max Distance from Home", "transaction_id": 306, "triggered": true, "risk_score": 75, "triggers": ["Max distance exceeded: 85.51km > 50.0km from home"]}
+[2025-09-03 18:01:57] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction 306
+[2025-09-03 18:01:57] [CRITICAL] [rules] Distance-based OTP enforcement: Transaction 306 requires mandatory OTP
+[2025-09-03 18:01:57] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
+[2025-09-03 18:01:59] [INFO] [rules] Fraud alert already exists for transaction 306: ID 140

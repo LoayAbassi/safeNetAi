@@ -41,8 +41,9 @@ def create_transaction_otp(transaction, user):
         
         logger.info(f"Created transaction OTP {otp.otp} for transaction {transaction.id}, expires at {otp.expires_at}")
         
-        # Send email
-        success = send_otp_email(user, otp.otp)
+        # Send security OTP email
+        from apps.users.email_service import send_security_otp_email
+        success = send_security_otp_email(user, otp.otp, transaction)
         
         if success:
             logger.info(f"Transaction OTP created and sent successfully for transaction {transaction.id}")
@@ -214,7 +215,9 @@ def resend_transaction_otp(transaction_id, user):
         
         if existing_otp and not existing_otp.is_expired():
             logger.info(f"Resending existing transaction OTP {existing_otp.otp} for transaction {transaction_id}")
-            success = send_otp_email(user, existing_otp.otp)
+            # Get transaction for email template
+            from apps.users.email_service import send_security_otp_email
+            success = send_security_otp_email(user, existing_otp.otp, existing_otp.transaction)
             if success:
                 log_system_event(
                     "Transaction OTP resent successfully",

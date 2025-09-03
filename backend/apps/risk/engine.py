@@ -242,8 +242,14 @@ class RiskEngine:
             return 'Low'
     
     def create_fraud_alert(self, transaction, risk_score, triggers):
-        """Create a fraud alert for the transaction with logging"""
+        """Create a fraud alert for the transaction with logging (prevent duplicates)"""
         from apps.transactions.models import FraudAlert
+        
+        # Check if fraud alert already exists for this transaction
+        existing_alert = FraudAlert.objects.filter(transaction=transaction).first()
+        if existing_alert:
+            logger.info(f"Fraud alert already exists for transaction {transaction.id}: ID {existing_alert.id}")
+            return existing_alert
         
         level = self.get_risk_level(risk_score)
         message = f"Transaction flagged with {level} risk (Score: {risk_score}). Triggers: {', '.join(triggers)}"

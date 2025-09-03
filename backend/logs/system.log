@@ -200,3 +200,180 @@ apps.users.models.User.DoesNotExist: User matching query does not exist.
 [2025-09-03 17:09:45] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
 [2025-09-03 17:09:45] [ERROR] [django.request] Internal Server Error: /api/client/transactions/
 [2025-09-03 17:09:45] [ERROR] [django.server] "POST /api/client/transactions/ HTTP/1.1" 500 39
+[2025-09-03 17:24:53] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-03 17:25:22] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:25:22] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:25:22] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7019
+[2025-09-03 17:25:22] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7019
+[2025-09-03 17:25:37] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:25:37] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:25:38] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-03 17:25:38] [INFO] [email_service] Attempting to send OTP email to abassi.loay@gmail.com
+[2025-09-03 17:25:38] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-03 17:25:40] [INFO] [email_service] OTP email sent successfully to abassi.loay@gmail.com. OTP: 198108
+[2025-09-03 17:25:40] [INFO] [system] System event: OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61}
+[2025-09-03 17:25:40] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 303, "otp_id": 18}
+[2025-09-03 17:25:40] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 303, "risk_score": 44, "triggers": ["High frequency: 7 transactions in 2.0 hour(s)"], "ml_score": 0.4816780705349232, "user_id": 61, "distance_violation": false, "otp_reasons": ["Business rules triggered: 1"], "reason": "risk_rules"}
+[2025-09-03 17:25:40] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 343
+[2025-09-03 17:26:11] [INFO] [django.server] "OPTIONS /api/client/transactions/303/verify_otp/ HTTP/1.1" 200 0
+[2025-09-03 17:26:11] [INFO] [system] System event: Transaction OTP verified successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 303, "otp_id": 18}
+[2025-09-03 17:26:11] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 303
+[2025-09-03 17:26:13] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-03 17:26:13] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 303, "status": "COMPLETED", "risk_level": "MEDIUM", "risk_score": 44}
+[2025-09-03 17:26:13] [INFO] [django.server] "POST /api/client/transactions/303/verify_otp/ HTTP/1.1" 200 114
+[2025-09-03 17:26:18] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:26:18] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:26:18] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7310
+[2025-09-03 17:26:18] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7310
+[2025-09-03 17:26:29] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:26:29] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:26:29] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7310
+[2025-09-03 17:26:29] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7310
+[2025-09-03 17:26:33] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:26:33] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:26:33] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7310
+[2025-09-03 17:26:33] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7310
+[2025-09-03 17:28:02] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:28:02] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:28:02] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-03 17:28:02] [INFO] [email_service] Attempting to send OTP email to abassi.loay@gmail.com
+[2025-09-03 17:28:02] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-03 17:28:04] [INFO] [email_service] OTP email sent successfully to abassi.loay@gmail.com. OTP: 707581
+[2025-09-03 17:28:04] [INFO] [system] System event: OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61}
+[2025-09-03 17:28:04] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 304, "otp_id": 19}
+[2025-09-03 17:28:04] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 304, "risk_score": 43, "triggers": ["High frequency: 8 transactions in 2.0 hour(s)"], "ml_score": 0.4660723144215201, "user_id": 61, "distance_violation": false, "otp_reasons": ["Business rules triggered: 1"], "reason": "risk_rules"}
+[2025-09-03 17:28:04] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 343
+[2025-09-03 17:29:18] [INFO] [django.server] "OPTIONS /api/client/transactions/304/verify_otp/ HTTP/1.1" 200 0
+[2025-09-03 17:29:18] [INFO] [system] System event: Transaction OTP verified successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 304, "otp_id": 19}
+[2025-09-03 17:29:18] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 304
+[2025-09-03 17:29:20] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-03 17:29:20] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 304, "status": "COMPLETED", "risk_level": "MEDIUM", "risk_score": 43}
+[2025-09-03 17:29:20] [INFO] [django.server] "POST /api/client/transactions/304/verify_otp/ HTTP/1.1" 200 114
+[2025-09-03 17:29:24] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:29:25] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:29:25] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:29:25] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:29:53] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:29:53] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:29:53] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:29:53] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:31:59] [INFO] [django.server] "POST /admin/risk/clientprofile/80/change/ HTTP/1.1" 302 0
+[2025-09-03 17:32:00] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 47174
+[2025-09-03 17:32:00] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 17:32:02] [INFO] [django.server] "GET /admin/risk/clientprofile/80/change/ HTTP/1.1" 200 27843
+[2025-09-03 17:32:02] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 17:32:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:32:20] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:32:20] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-03 17:32:20] [INFO] [email_service] Attempting to send OTP email to abassi.loay@gmail.com
+[2025-09-03 17:32:20] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-03 17:32:23] [INFO] [email_service] OTP email sent successfully to abassi.loay@gmail.com. OTP: 248480
+[2025-09-03 17:32:23] [INFO] [system] System event: OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61}
+[2025-09-03 17:32:23] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 305, "otp_id": 20}
+[2025-09-03 17:32:23] [ERROR] [django.request] Internal Server Error: /api/client/transactions/
+[2025-09-03 17:32:23] [ERROR] [django.server] "POST /api/client/transactions/ HTTP/1.1" 500 39
+[2025-09-03 17:34:30] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:34:30] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:34:30] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:34:30] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:34:41] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:34:41] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 17:34:41] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-03 17:34:41] [INFO] [email_service] Attempting to send OTP email to abassi.loay@gmail.com
+[2025-09-03 17:34:41] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-03 17:34:42] [INFO] [email_service] OTP email sent successfully to abassi.loay@gmail.com. OTP: 736801
+[2025-09-03 17:34:42] [INFO] [system] System event: OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61}
+[2025-09-03 17:34:42] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 305, "otp_id": 20}
+[2025-09-03 17:34:42] [ERROR] [django.request] Internal Server Error: /api/client/transactions/
+[2025-09-03 17:34:42] [ERROR] [django.server] "POST /api/client/transactions/ HTTP/1.1" 500 39
+[2025-09-03 17:34:46] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:34:46] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 17:34:46] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:34:46] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 17:44:07] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 638
+[2025-09-03 17:44:07] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-09-03 17:44:07] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 243
+[2025-09-03 17:44:07] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-09-03 17:44:07] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 7910
+[2025-09-03 17:44:07] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-09-03 17:44:07] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 243
+[2025-09-03 17:44:07] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-09-03 17:44:07] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 7910
+[2025-09-03 17:44:18] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14188
+[2025-09-03 17:44:18] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14188
+[2025-09-03 17:44:19] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 10734
+[2025-09-03 17:44:19] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 10734
+[2025-09-03 17:44:20] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14188
+[2025-09-03 17:44:20] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14188
+[2025-09-03 17:44:22] [INFO] [django.server] "OPTIONS /api/admin/thresholds/ HTTP/1.1" 200 0
+[2025-09-03 17:44:22] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-09-03 17:44:22] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-09-03 17:44:22] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1092
+[2025-09-03 17:44:22] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-09-03 17:44:22] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1092
+[2025-09-03 17:44:22] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-09-03 17:47:15] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\risk\engine.py changed, reloading.
+[2025-09-03 17:47:16] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-03 17:47:19] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\risk\engine.py changed, reloading.
+[2025-09-03 17:47:20] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-03 17:59:56] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-09-03 17:59:59] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14188
+[2025-09-03 18:00:00] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14188
+[2025-09-03 18:00:24] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 647
+[2025-09-03 18:00:25] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 18:00:25] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 18:00:25] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 18:00:25] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7601
+[2025-09-03 18:00:36] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 18:00:36] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 18:00:37] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-03 18:00:39] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 305
+[2025-09-03 18:00:39] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 305, "otp_code": "108557"}
+[2025-09-03 18:00:39] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 305, "otp_id": 20}
+[2025-09-03 18:00:39] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 305, "risk_score": 97, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)", "Max distance exceeded: 85.51km > 50.0km from home"], "ml_score": 0.5747112086171662, "user_id": 61, "distance_violation": true, "otp_reasons": ["Business rules triggered: 2", "High risk score: 97", "Risk engine explicit requirement", "MANDATORY distance violation"], "reason": "distance_violation"}
+[2025-09-03 18:00:39] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 482
+[2025-09-03 18:01:09] [INFO] [django.server] "OPTIONS /api/client/transactions/305/verify_otp/ HTTP/1.1" 200 0
+[2025-09-03 18:01:09] [INFO] [system] System event: Transaction OTP verified successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 305, "otp_id": 20}
+[2025-09-03 18:01:09] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 305
+[2025-09-03 18:01:10] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-03 18:01:10] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 305, "status": "COMPLETED", "risk_level": "HIGH", "risk_score": 97}
+[2025-09-03 18:01:10] [INFO] [django.server] "POST /api/client/transactions/305/verify_otp/ HTTP/1.1" 200 114
+[2025-09-03 18:01:12] [INFO] [django.server] "GET /admin/users/emailotp/ HTTP/1.1" 200 19768
+[2025-09-03 18:01:12] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:01:16] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 18:01:16] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 18:01:16] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7893
+[2025-09-03 18:01:16] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 7893
+[2025-09-03 18:01:17] [INFO] [django.server] "GET /admin/users/emailotp/ HTTP/1.1" 200 19768
+[2025-09-03 18:01:17] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:01:18] [INFO] [django.server] "GET /admin/users/emailotp/ HTTP/1.1" 200 19768
+[2025-09-03 18:01:18] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:01:41] [INFO] [django.server] "GET /admin/risk/clientprofile/ HTTP/1.1" 200 46944
+[2025-09-03 18:01:42] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:01:43] [INFO] [django.server] "GET /admin/risk/clientprofile/80/change/ HTTP/1.1" 200 27843
+[2025-09-03 18:01:43] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-09-03 18:01:57] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 18:01:57] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-09-03 18:01:57] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-09-03 18:01:59] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 306
+[2025-09-03 18:01:59] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 306, "otp_code": "925166"}
+[2025-09-03 18:01:59] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 61, "transaction_id": 306, "otp_id": 21}
+[2025-09-03 18:01:59] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 306, "risk_score": 94, "triggers": ["High frequency: 6 transactions in 2.0 hour(s)", "Max distance exceeded: 85.51km > 50.0km from home"], "ml_score": 0.4797494320580509, "user_id": 61, "distance_violation": true, "otp_reasons": ["Business rules triggered: 2", "High risk score: 94", "Risk engine explicit requirement", "MANDATORY distance violation"], "reason": "distance_violation"}
+[2025-09-03 18:01:59] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 482
+[2025-09-03 18:03:31] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 18:03:31] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 469
+[2025-09-03 18:03:32] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 8185
+[2025-09-03 18:03:32] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 8185
+[2025-09-03 18:03:42] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 638
+[2025-09-03 18:03:42] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-09-03 18:03:42] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 243
+[2025-09-03 18:03:42] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-09-03 18:03:42] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 7956
+[2025-09-03 18:03:42] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-09-03 18:03:42] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 243
+[2025-09-03 18:03:42] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-09-03 18:03:42] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 7956
+[2025-09-03 18:03:49] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14772
+[2025-09-03 18:03:49] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 14772
+[2025-09-03 18:03:51] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 22974
+[2025-09-03 18:03:51] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 22974
