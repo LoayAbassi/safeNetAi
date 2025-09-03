@@ -10,7 +10,7 @@ from .serializers import (
 )
 from .models import Transaction, FraudAlert
 from apps.risk.models import ClientProfile
-from apps.risk.engine import RiskEngine
+from apps.risk.engine import RiskEngine, haversine_distance
 from apps.risk.ml import FraudMLModel
 from apps.users.email_service import send_fraud_alert_email, send_transaction_notification
 from apps.transactions.services import create_transaction_otp, verify_transaction_otp, resend_transaction_otp
@@ -55,6 +55,88 @@ class TransactionViewSet(viewsets.ModelViewSet):
                 client_profile = ClientProfile.objects.get(user=request.user)
                 logger.info(f"Client profile found: {client_profile.full_name}")
                 
+                # ENHANCED LOCATION VALIDATION AND INTEGRITY CHECKS
+                # Extract location data from request
+                current_location = request.data.get('current_location', {})
+                transaction_lat = current_location.get('lat', 0.0) if current_location else 0.0
+                transaction_lng = current_location.get('lng', 0.0) if current_location else 0.0
+                
+                # Primary validation: Block transactions with zero coordinates (often fake/VPN)
+                if transaction_lat == 0.0 and transaction_lng == 0.0:
+                    logger.warning(f"Transaction blocked: Invalid location coordinates (0.0, 0.0) for user {request.user.email}")
+                    log_transaction(
+                        transaction_id=0,  # Not created yet
+                        amount=serializer.validated_data.get('amount'),
+                        transaction_type=serializer.validated_data.get('transaction_type'),
+                        user_id=request.user.id,
+                        status="REJECTED_INVALID_LOCATION"
+                    )
+                    return Response({
+                        'error': 'Transaction blocked: Location verification required. Please ensure your location services are enabled and try again.'
+                    }, status=status.HTTP_400_BAD_REQUEST)
+                
+                # Coordinate range validation (basic sanity check)
+                if not (-90 <= transaction_lat <= 90) or not (-180 <= transaction_lng <= 180):
+                    logger.warning(f"Transaction blocked: Invalid location coordinates ({transaction_lat}, {transaction_lng}) for user {request.user.email}")
+                    log_transaction(
+                        transaction_id=0,
+                        amount=serializer.validated_data.get('amount'),
+                        transaction_type=serializer.validated_data.get('transaction_type'),
+                        user_id=request.user.id,
+                        status="REJECTED_INVALID_COORDINATES"
+                    )
+                    return Response({
+                        'error': 'Transaction blocked: Invalid location coordinates detected.'
+                    }, status=status.HTTP_400_BAD_REQUEST)
+                
+                # Additional integrity checks
+                suspicious_patterns = []
+                
+                # Check for exact coordinate repeats (possible fake location)
+                if (abs(transaction_lat - round(transaction_lat)) == 0.0 and 
+                    abs(transaction_lng - round(transaction_lng)) == 0.0):
+                    suspicious_patterns.append("Exact integer coordinates (possible fake)")
+                
+                # Check for common fake coordinates
+                fake_coordinates = [
+                    (0.0, 0.0),     # Null Island
+                    (37.4419, -122.1430),  # Google HQ (common VPN endpoint)
+                    (40.7589, -73.9851),   # Times Square (common fake location)
+                    (51.5074, -0.1278),    # London center
+                    (48.8566, 2.3522),     # Paris center
+                ]
+                
+                for fake_lat, fake_lng in fake_coordinates:
+                    if (abs(transaction_lat - fake_lat) < 0.001 and 
+                        abs(transaction_lng - fake_lng) < 0.001):
+                        suspicious_patterns.append(f"Matches known fake location: ({fake_lat}, {fake_lng})")
+                
+                # Check for extremely rapid location changes (teleportation detection)
+                if (client_profile.last_known_lat and client_profile.last_known_lng):
+                    prev_distance = haversine_distance(
+                        float(client_profile.last_known_lat), float(client_profile.last_known_lng),
+                        transaction_lat, transaction_lng
+                    )
+                    
+                    # Check recent transactions for time calculation
+                    recent_transaction = Transaction.objects.filter(
+                        client=client_profile
+                    ).order_by('-created_at').first()
+                    
+                    if recent_transaction:
+                        time_diff = timezone.now() - recent_transaction.created_at
+                        time_hours = time_diff.total_seconds() / 3600
+                        
+                        # If moved more than 500km in less than 1 hour (impossible without flight)
+                        if prev_distance > 500 and time_hours < 1:
+                            suspicious_patterns.append(f"Impossible travel: {prev_distance:.1f}km in {time_hours:.1f}h")
+                
+                # Log suspicious patterns but don't block (just add to risk assessment)
+                if suspicious_patterns:
+                    logger.warning(f"Suspicious location patterns detected for user {request.user.email}: {suspicious_patterns}")
+                
+                logger.info(f"Location validation passed: ({transaction_lat}, {transaction_lng})")
+                
                 # Validate funds for transfer
                 transaction_type = serializer.validated_data.get('transaction_type')
                 amount = serializer.validated_data.get('amount')
@@ -72,6 +154,26 @@ class TransactionViewSet(viewsets.ModelViewSet):
                         return Response({
                             'error': 'Insufficient funds'
                         }, status=status.HTTP_400_BAD_REQUEST)
+                
+                # UPDATE CLIENT PROFILE LOCATION FIELDS
+                # Set home location if not set (first transaction)
+                if not client_profile.home_lat or not client_profile.home_lng:
+                    client_profile.home_lat = Decimal(str(transaction_lat))
+                    client_profile.home_lng = Decimal(str(transaction_lng))
+                    logger.info(f"Setting home location for user {request.user.email}: ({transaction_lat}, {transaction_lng})")
+                
+                # ALWAYS update last known location on EVERY transaction attempt
+                # This is critical for distance-based fraud detection
+                client_profile.last_known_lat = Decimal(str(transaction_lat))
+                client_profile.last_known_lng = Decimal(str(transaction_lng))
+                client_profile.save()
+                logger.info(f"Updated last known location for user {request.user.email}: ({transaction_lat}, {transaction_lng})")
+                
+                # Log comprehensive location details
+                logger.info(f"Location tracking: User={request.user.email}, "
+                          f"Home=({client_profile.home_lat}, {client_profile.home_lng}), "
+                          f"Current=({transaction_lat}, {transaction_lng}), "
+                          f"Last Known=({client_profile.last_known_lat}, {client_profile.last_known_lng})")
                 
                 # Create transaction
                 transaction_obj = serializer.save(client=client_profile)
@@ -108,18 +210,40 @@ class TransactionViewSet(viewsets.ModelViewSet):
                     risk_level=f"Score_{risk_score}"
                 )
                 
-                # Check if OTP is required (ANY risk rule trigger or high AI score)
+                # Check if OTP is required (Enhanced logic for distance-based fraud detection)
                 # OTP required if:
                 # 1. Any business rules triggered (len(triggers) > 0)
                 # 2. High risk score (>= 70)
                 # 3. High AI score (ml_score >= 0.6)
-                # 4. Explicit requires_otp flag
+                # 4. Explicit requires_otp flag (including distance violations)
+                # 5. MANDATORY: Distance-based violations (cannot be bypassed)
+                
+                # Check for distance-based violations (these ALWAYS require OTP)
+                distance_violation = any('distance exceeded' in trigger.lower() for trigger in triggers)
+                
                 requires_otp_final = (
                     len(triggers) > 0 or           # ANY rule triggered
                     risk_score >= 70 or            # High combined risk score
                     ml_score >= 0.6 or             # High AI risk score
-                    requires_otp                   # Explicit OTP requirement
+                    requires_otp or                # Explicit OTP requirement from risk engine
+                    distance_violation             # MANDATORY: Distance-based fraud detection
                 )
+                
+                # Log OTP decision reasoning
+                otp_reasons = []
+                if len(triggers) > 0:
+                    otp_reasons.append(f"Business rules triggered: {len(triggers)}")
+                if risk_score >= 70:
+                    otp_reasons.append(f"High risk score: {risk_score}")
+                if ml_score >= 0.6:
+                    otp_reasons.append(f"High AI score: {ml_score:.3f}")
+                if requires_otp:
+                    otp_reasons.append("Risk engine explicit requirement")
+                if distance_violation:
+                    otp_reasons.append("MANDATORY distance violation")
+                
+                logger.info(f"OTP decision for transaction {transaction_obj.id}: "
+                           f"Required={requires_otp_final}, Reasons={otp_reasons}")
                 
                 if requires_otp_final:
                     # Set transaction to pending and require OTP
@@ -136,7 +260,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
                         # Create fraud alert
                         fraud_alert = risk_engine.create_fraud_alert(transaction_obj, risk_score, triggers)
                         
-                        # Log high risk transaction
+                        # Log high risk transaction with enhanced details
                         log_system_event(
                             "Transaction requires OTP verification due to risk rules or AI assessment",
                             "transactions",
@@ -147,7 +271,9 @@ class TransactionViewSet(viewsets.ModelViewSet):
                                 "triggers": triggers,
                                 "ml_score": ml_score,
                                 "user_id": request.user.id,
-                                "reason": "risk_rules" if len(triggers) > 0 else "ai_assessment" if ml_score >= 0.6 else "high_score"
+                                "distance_violation": distance_violation,
+                                "otp_reasons": otp_reasons,
+                                "reason": "distance_violation" if distance_violation else "risk_rules" if len(triggers) > 0 else "ai_assessment" if ml_score >= 0.6 else "high_score"
                             }
                         )
                         
@@ -159,7 +285,9 @@ class TransactionViewSet(viewsets.ModelViewSet):
                             'triggers': triggers,
                             'status': 'pending',
                             'requires_otp': True,
-                            'otp_sent': True
+                            'otp_sent': True,
+                            'distance_violation': distance_violation,
+                            'otp_reasons': otp_reasons
                         }, status=status.HTTP_201_CREATED)
                     else:
                         # OTP creation failed

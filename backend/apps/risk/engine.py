@@ -61,8 +61,10 @@ class RiskEngine:
         logger.info(f"Starting risk assessment for transaction {transaction.id}")
         logger.info(f"Transaction details: Amount=${transaction.amount}, Type={transaction.transaction_type}, Client={transaction.client.full_name}")
         
+        # Initialize variables
         risk_score = 0
         triggers = []
+        requires_otp = False  # Initialize to False to prevent UnboundLocalError
         
         # Get client profile
         client = transaction.client
@@ -127,11 +129,52 @@ class RiskEngine:
                     triggers=[trigger_msg]
                 )
         
-        # Rule 4: Location anomaly (temporarily disabled - location fields removed)
-        # TODO: Re-implement when location tracking is added back
-        # Currently skipped due to removed location_lat/lng fields
+        # Rule 4: Max Distance from Home Location (New Enhanced Rule)
+        max_distance_threshold = self.thresholds.get('max_distance_km', 50)  # Default 50km
+        if (client.home_lat and client.home_lng and 
+            client.last_known_lat and client.last_known_lng):
+            
+            distance_km = haversine_distance(
+                float(client.home_lat), float(client.home_lng),
+                float(client.last_known_lat), float(client.last_known_lng)
+            )
+            
+            logger.info(f"Distance check: Home=({client.home_lat}, {client.home_lng}), "
+                       f"Current=({client.last_known_lat}, {client.last_known_lng}), "
+                       f"Distance={distance_km:.2f}km, Threshold={max_distance_threshold}km")
+            
+            if distance_km > max_distance_threshold:
+                risk_score += 50  # High risk score for location anomaly
+                trigger_msg = f"Max distance exceeded: {distance_km:.2f}km > {max_distance_threshold}km from home"
+                triggers.append(trigger_msg)
+                logger.warning(f"Rule 4 triggered: {trigger_msg}")
+                
+                # Log rule evaluation
+                log_rule_evaluation(
+                    rule_name="Max Distance from Home",
+                    transaction_id=transaction.id,
+                    triggered=True,
+                    risk_score=risk_score,
+                    triggers=[trigger_msg]
+                )
+                
+                # This rule ALWAYS requires OTP - don't rely on high_risk_threshold
+                requires_otp = True
+                logger.critical(f"MANDATORY OTP REQUIRED: Distance-based fraud detection triggered for transaction {transaction.id}")
+            else:
+                logger.info(f"Distance check passed: {distance_km:.2f}km within {max_distance_threshold}km threshold")
+        else:
+            logger.warning(f"Distance check skipped: Missing location data for client {client.id}")
+            # Log missing location data
+            log_rule_evaluation(
+                rule_name="Max Distance from Home",
+                transaction_id=transaction.id,
+                triggered=False,
+                risk_score=risk_score,
+                triggers=["Skipped: Missing location data"]
+            )
         
-        # Rule 5: Statistical outlier
+        # Rule 5: Statistical outlier (previously Rule 5)
         if client.avg_amount > 0 and client.std_amount > 0:
             z_score_threshold = self.thresholds.get('z_score_threshold', 2.0)
             z_score = abs((transaction.amount - client.avg_amount) / client.std_amount)
@@ -142,7 +185,7 @@ class RiskEngine:
                 triggers.append(trigger_msg)
                 logger.warning(f"Rule 5 triggered: {trigger_msg}")
         
-        # Rule 6: Unusual time of day
+        # Rule 6: Unusual time of day (previously Rule 6)
         hour = transaction.created_at.hour
         unusual_hours = [23, 0, 1, 2, 3, 4, 5]  # Late night/early morning
         if hour in unusual_hours:
@@ -155,9 +198,21 @@ class RiskEngine:
         # TODO: Re-implement when device fingerprinting is added back
         # Currently skipped due to removed device_fingerprint field
         
-        # Determine if OTP is required
+        # ENHANCED OTP LOGIC: Distance-based mandatory OTP
+        # If distance rule triggered, OTP is MANDATORY regardless of other thresholds
         high_risk_threshold = self.thresholds.get('high_risk_threshold', 70)
-        requires_otp = risk_score >= high_risk_threshold
+        
+        # Check if any distance-based trigger exists
+        distance_triggered = any('distance exceeded' in trigger.lower() for trigger in triggers)
+        
+        if distance_triggered:
+            requires_otp = True  # Force OTP for distance violations
+            logger.critical(f"Distance-based OTP enforcement: Transaction {transaction.id} requires mandatory OTP")
+        else:
+            # Check other conditions for OTP requirement
+            requires_otp = risk_score >= high_risk_threshold
+            if requires_otp:
+                logger.warning(f"High risk score OTP requirement: Transaction {transaction.id} requires OTP (Score: {risk_score})")
         
         # Determine AI decision
         decision = self._get_ai_decision(risk_score, triggers)

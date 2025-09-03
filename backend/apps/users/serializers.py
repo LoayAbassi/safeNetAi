@@ -1,8 +1,13 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
+from decimal import Decimal
 from .models import User, EmailOTP
 from apps.risk.models import ClientProfile
+from apps.utils.logger import get_auth_logger
+
+# Set up logger
+logger = get_auth_logger()
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, validators=[validate_password])
@@ -11,11 +16,12 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField(max_length=30)
     national_id = serializers.CharField(max_length=20)
     bank_account_number = serializers.CharField(max_length=20)
+    registration_location = serializers.JSONField(required=False, allow_null=True, write_only=True)
     
     class Meta:
         model = User
         fields = ['email', 'password', 'password_confirm', 'first_name', 'last_name', 
-                 'national_id', 'bank_account_number']
+                 'national_id', 'bank_account_number', 'registration_location']
     
     def validate(self, attrs):
         if attrs['password'] != attrs['password_confirm']:
@@ -47,10 +53,13 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return attrs
     
     def create(self, validated_data):
-        # Remove extra fields
+        # Extract location data
+        registration_location = validated_data.pop('registration_location', None)
+        national_id = validated_data.pop('national_id')
+        bank_account_number = validated_data.pop('bank_account_number')
         validated_data.pop('password_confirm')
-        validated_data.pop('national_id')
-        validated_data.pop('bank_account_number')
+        
+        logger.info(f"Creating user with registration location: {registration_location}")
         
         # Create user with email verification required
         user = User.objects.create_user(
@@ -60,6 +69,36 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             last_name=validated_data['last_name'],
             is_email_verified=False
         )
+        
+        # Set home location in client profile if location data is provided
+        if registration_location and 'lat' in registration_location and 'lng' in registration_location:
+            try:
+                # Find the matching client profile
+                profile = ClientProfile.objects.get(
+                    national_id=national_id,
+                    bank_account_number=bank_account_number
+                )
+                
+                # Set home location from registration
+                reg_lat = registration_location.get('lat', 0.0)
+                reg_lng = registration_location.get('lng', 0.0)
+                
+                # Only set location if coordinates are valid (not 0,0)
+                if reg_lat != 0.0 or reg_lng != 0.0:
+                    profile.home_lat = Decimal(str(reg_lat))
+                    profile.home_lng = Decimal(str(reg_lng))
+                    profile.last_known_lat = Decimal(str(reg_lat))
+                    profile.last_known_lng = Decimal(str(reg_lng))
+                    profile.save()
+                    
+                    logger.info(f"Set home location for profile {profile.id}: ({reg_lat}, {reg_lng})")
+                else:
+                    logger.warning(f"Invalid registration coordinates (0,0) for user {user.email}")
+                    
+            except ClientProfile.DoesNotExist:
+                logger.error(f"Client profile not found during registration for {user.email}")
+        else:
+            logger.warning(f"No registration location provided for user {user.email}")
         
         return user
 

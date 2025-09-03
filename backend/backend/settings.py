@@ -150,6 +150,7 @@ LOGGING = {
             'interval': 1,
             'backupCount': 7,
             'encoding': 'utf-8',
+            'delay': True,  # Windows compatibility: delay file opening
         },
         'ai_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -160,6 +161,7 @@ LOGGING = {
             'interval': 1,
             'backupCount': 7,
             'encoding': 'utf-8',
+            'delay': True,  # Windows compatibility: delay file opening
         },
         'rules_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -170,6 +172,7 @@ LOGGING = {
             'interval': 1,
             'backupCount': 7,
             'encoding': 'utf-8',
+            'delay': True,  # Windows compatibility: delay file opening
         },
         'transactions_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -180,6 +183,7 @@ LOGGING = {
             'interval': 1,
             'backupCount': 7,
             'encoding': 'utf-8',
+            'delay': True,  # Windows compatibility: delay file opening
         },
         'system_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -190,6 +194,7 @@ LOGGING = {
             'interval': 1,
             'backupCount': 7,
             'encoding': 'utf-8',
+            'delay': True,  # Windows compatibility: delay file opening
         },
         'error_file': {
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -200,6 +205,7 @@ LOGGING = {
             'interval': 1,
             'backupCount': 7,
             'encoding': 'utf-8',
+            'delay': True,  # Windows compatibility: delay file opening
         },
     },
     'loggers': {

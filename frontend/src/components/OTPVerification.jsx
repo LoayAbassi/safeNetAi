@@ -49,7 +49,7 @@ const OTPVerification = ({ transactionId, onSuccess, onCancel, onResend }) => {
     setError('');
 
     try {
-      const response = await api.post(`/api/transactions/${transactionId}/verify_otp/`, {
+      const response = await api.post(`/api/client/transactions/${transactionId}/verify_otp/`, {
         otp: otp
       });
 
@@ -70,7 +70,7 @@ const OTPVerification = ({ transactionId, onSuccess, onCancel, onResend }) => {
     setError('');
 
     try {
-      await api.post(`/api/transactions/${transactionId}/resend_otp/`);
+      await api.post(`/api/client/transactions/${transactionId}/resend_otp/`);
       setTimeLeft(600); // Reset timer
       setOtp('');
       if (onResend) onResend();
