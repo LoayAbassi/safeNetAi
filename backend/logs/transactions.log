@@ -95,3 +95,125 @@
 [2025-09-03 17:09:45] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.8377856, 10.2957056)
 [2025-09-03 17:09:45] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
 [2025-09-03 17:09:45] [ERROR] [transactions] Error creating transaction: cannot access local variable 'requires_otp' where it is not associated with a value
+[2025-09-03 17:25:37] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-03 17:25:37] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-03 17:25:37] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 17:25:37] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 17:25:37] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 17:25:37] [INFO] [transactions] Transaction created: ID 303, Amount: 500.00, Type: transfer
+[2025-09-03 17:25:37] [INFO] [transactions] Risk assessment: Score=25, Triggers=['High frequency: 7 transactions in 2.0 hour(s)'], Requires OTP=False, Decision=Approve
+[2025-09-03 17:25:38] [INFO] [transactions] ML score: 0.4816780705349232, Contribution: 19, Final risk score: 44
+[2025-09-03 17:25:38] [INFO] [transactions] Transaction details: ID=303, Client=loay abassi, Type=transfer, Amount=500.00 DZD, Risk Score=44, Decision=Approve, Triggers=['High frequency: 7 transactions in 2.0 hour(s)']
+[2025-09-03 17:25:38] [INFO] [transactions] Transaction | ID: 303 | Amount: $500.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 303, "amount": "500.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_44"}
+[2025-09-03 17:25:38] [INFO] [transactions] OTP decision for transaction 303: Required=True, Reasons=['Business rules triggered: 1']
+[2025-09-03 17:25:38] [INFO] [transactions] Creating transaction OTP for transaction 303, user abassi.loay@gmail.com
+[2025-09-03 17:25:38] [INFO] [transactions] Created transaction OTP 198108 for transaction 303, expires at 2025-09-03 16:35:38.476290+00:00
+[2025-09-03 17:25:40] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 303
+[2025-09-03 17:25:40] [INFO] [transactions] Transaction requires OTP verification: ID 303, Risk score: 44, Triggers: 1, ML score: 0.482
+[2025-09-03 17:26:11] [INFO] [transactions] Verifying transaction OTP for transaction 303, user abassi.loay@gmail.com
+[2025-09-03 17:26:11] [INFO] [transactions] Transaction OTP verified successfully for transaction 303
+[2025-09-03 17:26:11] [INFO] [transactions] Updating balances for transaction 303
+[2025-09-03 17:26:11] [INFO] [transactions] Current balance: 6112862.04, Amount: 500.00
+[2025-09-03 17:26:11] [INFO] [transactions] Transfer (sender): New balance = 6112362.04
+[2025-09-03 17:26:11] [WARNING] [transactions] Recipient account 8999999 not found for transfer
+[2025-09-03 17:26:11] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-09-03 17:26:11] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=69356.8980000000, std_amount=220326.828010158, transaction_count=20
+[2025-09-03 17:26:11] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 6112362.04 DZD
+[2025-09-03 17:26:11] [INFO] [transactions] Transaction 303 completed after OTP verification
+[2025-09-03 17:28:02] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-03 17:28:02] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-03 17:28:02] [INFO] [transactions] Location validation passed: (36.75232184520521, 10.109483199923892)
+[2025-09-03 17:28:02] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.75232184520521, 10.109483199923892)
+[2025-09-03 17:28:02] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.837786, 10.295706), Current=(36.75232184520521, 10.109483199923892), Last Known=(36.75232184520521, 10.109483199923892)
+[2025-09-03 17:28:02] [INFO] [transactions] Transaction created: ID 304, Amount: 500.00, Type: transfer
+[2025-09-03 17:28:02] [INFO] [transactions] Risk assessment: Score=25, Triggers=['High frequency: 8 transactions in 2.0 hour(s)'], Requires OTP=False, Decision=Approve
+[2025-09-03 17:28:02] [INFO] [transactions] ML score: 0.4660723144215201, Contribution: 18, Final risk score: 43
+[2025-09-03 17:28:02] [INFO] [transactions] Transaction details: ID=304, Client=loay abassi, Type=transfer, Amount=500.00 DZD, Risk Score=43, Decision=Approve, Triggers=['High frequency: 8 transactions in 2.0 hour(s)']
+[2025-09-03 17:28:02] [INFO] [transactions] Transaction | ID: 304 | Amount: $500.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 304, "amount": "500.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_43"}
+[2025-09-03 17:28:02] [INFO] [transactions] OTP decision for transaction 304: Required=True, Reasons=['Business rules triggered: 1']
+[2025-09-03 17:28:02] [INFO] [transactions] Creating transaction OTP for transaction 304, user abassi.loay@gmail.com
+[2025-09-03 17:28:02] [INFO] [transactions] Created transaction OTP 707581 for transaction 304, expires at 2025-09-03 16:38:02.507815+00:00
+[2025-09-03 17:28:04] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 304
+[2025-09-03 17:28:04] [INFO] [transactions] Transaction requires OTP verification: ID 304, Risk score: 43, Triggers: 1, ML score: 0.466
+[2025-09-03 17:29:18] [INFO] [transactions] Verifying transaction OTP for transaction 304, user abassi.loay@gmail.com
+[2025-09-03 17:29:18] [INFO] [transactions] Transaction OTP verified successfully for transaction 304
+[2025-09-03 17:29:18] [INFO] [transactions] Updating balances for transaction 304
+[2025-09-03 17:29:18] [INFO] [transactions] Current balance: 6112362.04, Amount: 500.00
+[2025-09-03 17:29:18] [INFO] [transactions] Transfer (sender): New balance = 6111862.04
+[2025-09-03 17:29:18] [WARNING] [transactions] Recipient account 5555555 not found for transfer
+[2025-09-03 17:29:18] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-09-03 17:29:18] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=66077.9980952381, std_amount=215516.403126276, transaction_count=21
+[2025-09-03 17:29:18] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 6111862.04 DZD
+[2025-09-03 17:29:18] [INFO] [transactions] Transaction 304 completed after OTP verification
+[2025-09-03 17:32:20] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-03 17:32:20] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-03 17:32:20] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 17:32:20] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 17:32:20] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 17:32:20] [INFO] [transactions] Transaction created: ID 305, Amount: 5000.00, Type: transfer
+[2025-09-03 17:32:20] [INFO] [transactions] Risk assessment: Score=75, Triggers=['High frequency: 9 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home'], Requires OTP=True, Decision=Flag for Review
+[2025-09-03 17:32:20] [INFO] [transactions] ML score: 0.5734296907205079, Contribution: 22, Final risk score: 97
+[2025-09-03 17:32:20] [INFO] [transactions] Transaction details: ID=305, Client=loay abassi, Type=transfer, Amount=5000.00 DZD, Risk Score=97, Decision=Flag for Review, Triggers=['High frequency: 9 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home']
+[2025-09-03 17:32:20] [INFO] [transactions] Transaction | ID: 305 | Amount: $5000.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 305, "amount": "5000.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_97"}
+[2025-09-03 17:32:20] [INFO] [transactions] OTP decision for transaction 305: Required=True, Reasons=['Business rules triggered: 2', 'High risk score: 97', 'Risk engine explicit requirement', 'MANDATORY distance violation']
+[2025-09-03 17:32:20] [INFO] [transactions] Creating transaction OTP for transaction 305, user abassi.loay@gmail.com
+[2025-09-03 17:32:20] [INFO] [transactions] Created transaction OTP 248480 for transaction 305, expires at 2025-09-03 16:42:20.622269+00:00
+[2025-09-03 17:32:23] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 305
+[2025-09-03 17:32:23] [INFO] [transactions] Transaction requires OTP verification: ID 305, Risk score: 97, Triggers: 2, ML score: 0.573
+[2025-09-03 17:32:23] [ERROR] [transactions] Error creating transaction: UNIQUE constraint failed: transactions_fraudalert.transaction_id
+[2025-09-03 17:34:41] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-03 17:34:41] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-03 17:34:41] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 17:34:41] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 17:34:41] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 17:34:41] [INFO] [transactions] Transaction created: ID 305, Amount: 5000.00, Type: transfer
+[2025-09-03 17:34:41] [INFO] [transactions] Risk assessment: Score=75, Triggers=['High frequency: 9 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home'], Requires OTP=True, Decision=Flag for Review
+[2025-09-03 17:34:41] [INFO] [transactions] ML score: 0.5734296907205079, Contribution: 22, Final risk score: 97
+[2025-09-03 17:34:41] [INFO] [transactions] Transaction details: ID=305, Client=loay abassi, Type=transfer, Amount=5000.00 DZD, Risk Score=97, Decision=Flag for Review, Triggers=['High frequency: 9 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home']
+[2025-09-03 17:34:41] [INFO] [transactions] Transaction | ID: 305 | Amount: $5000.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 305, "amount": "5000.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_97"}
+[2025-09-03 17:34:41] [INFO] [transactions] OTP decision for transaction 305: Required=True, Reasons=['Business rules triggered: 2', 'High risk score: 97', 'Risk engine explicit requirement', 'MANDATORY distance violation']
+[2025-09-03 17:34:41] [INFO] [transactions] Creating transaction OTP for transaction 305, user abassi.loay@gmail.com
+[2025-09-03 17:34:41] [INFO] [transactions] Created transaction OTP 736801 for transaction 305, expires at 2025-09-03 16:44:41.296982+00:00
+[2025-09-03 17:34:42] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 305
+[2025-09-03 17:34:42] [INFO] [transactions] Transaction requires OTP verification: ID 305, Risk score: 97, Triggers: 2, ML score: 0.573
+[2025-09-03 17:34:42] [ERROR] [transactions] Error creating transaction: UNIQUE constraint failed: transactions_fraudalert.transaction_id
+[2025-09-03 18:00:36] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-03 18:00:36] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-03 18:00:36] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 18:00:36] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 18:00:36] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 18:00:36] [INFO] [transactions] Transaction created: ID 305, Amount: 5000.00, Type: transfer
+[2025-09-03 18:00:36] [INFO] [transactions] Risk assessment: Score=75, Triggers=['High frequency: 6 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home'], Requires OTP=True, Decision=Flag for Review
+[2025-09-03 18:00:37] [INFO] [transactions] ML score: 0.5747112086171662, Contribution: 22, Final risk score: 97
+[2025-09-03 18:00:37] [INFO] [transactions] Transaction details: ID=305, Client=loay abassi, Type=transfer, Amount=5000.00 DZD, Risk Score=97, Decision=Flag for Review, Triggers=['High frequency: 6 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home']
+[2025-09-03 18:00:37] [INFO] [transactions] Transaction | ID: 305 | Amount: $5000.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 305, "amount": "5000.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_97"}
+[2025-09-03 18:00:37] [INFO] [transactions] OTP decision for transaction 305: Required=True, Reasons=['Business rules triggered: 2', 'High risk score: 97', 'Risk engine explicit requirement', 'MANDATORY distance violation']
+[2025-09-03 18:00:37] [INFO] [transactions] Creating transaction OTP for transaction 305, user abassi.loay@gmail.com
+[2025-09-03 18:00:37] [INFO] [transactions] Created transaction OTP 108557 for transaction 305, expires at 2025-09-03 17:10:37.395008+00:00
+[2025-09-03 18:00:39] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 305
+[2025-09-03 18:00:39] [INFO] [transactions] Transaction requires OTP verification: ID 305, Risk score: 97, Triggers: 2, ML score: 0.575
+[2025-09-03 18:01:09] [INFO] [transactions] Verifying transaction OTP for transaction 305, user abassi.loay@gmail.com
+[2025-09-03 18:01:09] [INFO] [transactions] Transaction OTP verified successfully for transaction 305
+[2025-09-03 18:01:09] [INFO] [transactions] Updating balances for transaction 305
+[2025-09-03 18:01:09] [INFO] [transactions] Current balance: 6112862.04, Amount: 5000.00
+[2025-09-03 18:01:09] [INFO] [transactions] Transfer (sender): New balance = 6107862.04
+[2025-09-03 18:01:09] [WARNING] [transactions] Recipient account 8999999 not found for transfer
+[2025-09-03 18:01:09] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-09-03 18:01:09] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=63097.1800000000, std_amount=211003.954949691, transaction_count=22
+[2025-09-03 18:01:09] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 6107862.04 DZD
+[2025-09-03 18:01:09] [INFO] [transactions] Transaction 305 completed after OTP verification
+[2025-09-03 18:01:57] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-03 18:01:57] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-03 18:01:57] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 18:01:57] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 18:01:57] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 18:01:57] [INFO] [transactions] Transaction created: ID 306, Amount: 500.00, Type: transfer
+[2025-09-03 18:01:57] [INFO] [transactions] Risk assessment: Score=75, Triggers=['High frequency: 6 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home'], Requires OTP=True, Decision=Flag for Review
+[2025-09-03 18:01:57] [INFO] [transactions] ML score: 0.4797494320580509, Contribution: 19, Final risk score: 94
+[2025-09-03 18:01:57] [INFO] [transactions] Transaction details: ID=306, Client=loay abassi, Type=transfer, Amount=500.00 DZD, Risk Score=94, Decision=Flag for Review, Triggers=['High frequency: 6 transactions in 2.0 hour(s)', 'Max distance exceeded: 85.51km > 50.0km from home']
+[2025-09-03 18:01:57] [INFO] [transactions] Transaction | ID: 306 | Amount: $500.00 | Type: transfer | Status: CREATED | Data: {"transaction_id": 306, "amount": "500.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_94"}
+[2025-09-03 18:01:57] [INFO] [transactions] OTP decision for transaction 306: Required=True, Reasons=['Business rules triggered: 2', 'High risk score: 94', 'Risk engine explicit requirement', 'MANDATORY distance violation']
+[2025-09-03 18:01:57] [INFO] [transactions] Creating transaction OTP for transaction 306, user abassi.loay@gmail.com
+[2025-09-03 18:01:57] [INFO] [transactions] Created transaction OTP 925166 for transaction 306, expires at 2025-09-03 17:11:57.793510+00:00
+[2025-09-03 18:01:59] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 306
+[2025-09-03 18:01:59] [INFO] [transactions] Transaction requires OTP verification: ID 306, Risk score: 94, Triggers: 2, ML score: 0.480

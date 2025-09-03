@@ -425,11 +425,96 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
         return False
 
 def send_otp_email(user, otp):
-    """Send OTP email to user with comprehensive logging"""
+    """Send elegant HTML OTP email to user with comprehensive logging"""
     subject = "SafeNetAi - Email Verification OTP"
     
-    message = f"""
-    Hello {user.first_name},
+    # Create elegant HTML content
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SafeNetAi - Email Verification</title>
+        <style>
+            body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; margin: 0; padding: 0; background-color: #f8fafc; }}
+            .container {{ max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }}
+            .header {{ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 30px; text-align: center; }}
+            .header h1 {{ color: white; margin: 0; font-size: 28px; font-weight: 600; }}
+            .header p {{ color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 16px; }}
+            .content {{ padding: 40px 30px; text-align: center; }}
+            .otp-container {{ background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; padding: 30px; margin: 30px 0; }}
+            .otp-code {{ font-family: 'Courier New', monospace; font-size: 36px; font-weight: bold; color: white; letter-spacing: 8px; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }}
+            .otp-label {{ color: rgba(255,255,255,0.9); font-size: 14px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }}
+            .instructions {{ background-color: #f8fafc; border-radius: 8px; padding: 20px; margin: 30px 0; text-align: left; }}
+            .instructions h3 {{ color: #2d3748; margin-top: 0; }}
+            .instructions ul {{ color: #4a5568; margin: 15px 0; padding-left: 20px; }}
+            .security-note {{ background-color: #fed7d7; border-left: 4px solid #e53e3e; padding: 15px; margin: 20px 0; text-align: left; }}
+            .footer {{ background-color: #2d3748; color: white; padding: 30px; text-align: center; font-size: 14px; }}
+            .footer p {{ margin: 5px 0; }}
+            .logo {{ width: 50px; height: 50px; background-color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 24px; }}
+            .timer {{ background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 6px; padding: 15px; margin: 20px 0; }}
+            .timer strong {{ color: #856404; }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="logo">🔐</div>
+                <h1>Email Verification</h1>
+                <p>Secure your SafeNetAi account</p>
+            </div>
+            
+            <div class="content">
+                <h2 style="color: #2d3748; margin-bottom: 20px;">Hello {user.first_name or 'User'}!</h2>
+                
+                <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+                    Welcome to SafeNetAi! Please use the verification code below to complete your email verification and activate your account.
+                </p>
+                
+                <div class="otp-container">
+                    <div class="otp-label">Your Verification Code</div>
+                    <div class="otp-code">{otp}</div>
+                </div>
+                
+                <div class="timer">
+                    <strong>⏰ This code expires in {settings.EMAIL_TOKEN_TTL_HOURS} hours</strong>
+                </div>
+                
+                <div class="instructions">
+                    <h3>How to verify your email:</h3>
+                    <ul>
+                        <li>Copy the 6-digit code above</li>
+                        <li>Return to the SafeNetAi verification page</li>
+                        <li>Enter the code in the verification field</li>
+                        <li>Click "Verify" to complete the process</li>
+                    </ul>
+                </div>
+                
+                <div class="security-note">
+                    <strong>🔒 Security Notice:</strong> If you didn't request this verification, please ignore this email. Your account security is our top priority.
+                </div>
+                
+                <p style="color: #718096; font-size: 14px; margin-top: 40px;">
+                    Need help? Contact our support team at support@safenetai.com
+                </p>
+            </div>
+            
+            <div class="footer">
+                <p><strong>&copy; 2025 SafeNetAi. All rights reserved.</strong></p>
+                <p>Advanced AI-Powered Financial Security</p>
+                <p style="font-size: 12px; margin-top: 15px; opacity: 0.8;">This is an automated message, please do not reply.</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    
+    # Text fallback
+    text_content = f"""
+    SafeNetAi - Email Verification
+    
+    Hello {user.first_name or 'User'},
     
     Your email verification OTP is: {otp}
     
@@ -458,16 +543,15 @@ def send_otp_email(user, otp):
             logger.error("EMAIL_HOST not configured")
             return False
         
-        # Send email
-        result = send_mail(
+        # Send HTML email instead of plain text
+        success = send_html_email(
             subject=subject,
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
+            html_content=html_content,
             recipient_list=[user.email],
-            fail_silently=False,
+            text_content=text_content
         )
         
-        if result:
+        if success:
             logger.info(f"OTP email sent successfully to {user.email}. OTP: {otp}")
             log_system_event(
                 "OTP email sent successfully",
@@ -605,55 +689,203 @@ def resend_otp_email(user):
         return False
 
 def send_security_otp_email(user, otp_code, transaction):
-    """Send security OTP email for high-risk transactions"""
+    """Send elegant security OTP email for high-risk transactions"""
     try:
-        subject = f"Security Verification Required - Transaction #{transaction.id}"
+        subject = f"🔒 Security Verification Required - Transaction #{transaction.id}"
         
-        # Create email content
+        # Create elegant HTML content for transaction OTP
         html_content = f"""
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <div style="background-color: #f8f9fa; padding: 20px; text-align: center;">
-                <h2 style="color: #dc3545; margin: 0;">🔒 Security Verification Required</h2>
-            </div>
-            
-            <div style="padding: 20px; background-color: white;">
-                <p>Hello {user.first_name},</p>
-                
-                <p>We've detected unusual activity on your account that requires additional verification.</p>
-                
-                <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                    <h3 style="margin: 0; color: #856404;">Transaction Details:</h3>
-                    <ul style="margin: 10px 0; padding-left: 20px;">
-                        <li><strong>Transaction ID:</strong> #{transaction.id}</li>
-                        <li><strong>Amount:</strong> {transaction.amount} DZD</li>
-                        <li><strong>Type:</strong> {transaction.transaction_type}</li>
-                        <li><strong>Risk Score:</strong> {transaction.risk_score}</li>
-                    </ul>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>SafeNetAi - Security Verification</title>
+            <style>
+                body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background-color: #f8fafc; }}
+                .container {{ max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }}
+                .header {{ background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%); padding: 40px 30px; text-align: center; }}
+                .header h1 {{ color: white; margin: 0; font-size: 28px; font-weight: 600; }}
+                .header p {{ color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 16px; }}
+                .content {{ padding: 40px 30px; }}
+                .alert-banner {{ background-color: #fed7d7; border: 2px solid #e53e3e; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center; }}
+                .alert-banner h3 {{ color: #c53030; margin: 0 0 10px 0; }}
+                .transaction-details {{ background-color: #f8fafc; border-radius: 8px; padding: 25px; margin: 25px 0; }}
+                .transaction-details table {{ width: 100%; border-collapse: collapse; }}
+                .transaction-details td {{ padding: 12px 0; border-bottom: 1px solid #e2e8f0; }}
+                .transaction-details td:first-child {{ font-weight: 600; color: #2d3748; width: 40%; }}
+                .transaction-details td:last-child {{ color: #4a5568; }}
+                .otp-container {{ background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%); border-radius: 12px; padding: 30px; margin: 30px 0; text-align: center; }}
+                .otp-label {{ color: rgba(255,255,255,0.9); font-size: 14px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }}
+                .otp-code {{ font-family: 'Courier New', monospace; font-size: 42px; font-weight: bold; color: white; letter-spacing: 10px; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }}
+                .instructions {{ background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 20px; margin: 25px 0; }}
+                .instructions h4 {{ color: #856404; margin-top: 0; }}
+                .instructions ol {{ color: #856404; margin: 15px 0; padding-left: 20px; }}
+                .security-warning {{ background-color: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; margin: 25px 0; }}
+                .cta-button {{ display: inline-block; background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; margin: 20px 0; font-weight: 600; }}
+                .footer {{ background-color: #2d3748; color: white; padding: 30px; text-align: center; font-size: 14px; }}
+                .footer p {{ margin: 5px 0; }}
+                .logo {{ width: 50px; height: 50px; background-color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 24px; }}
+                .timer {{ background-color: #fed7d7; border: 1px solid #e53e3e; border-radius: 6px; padding: 15px; margin: 20px 0; text-align: center; }}
+                .timer strong {{ color: #c53030; }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <div class="logo">🔒</div>
+                    <h1>Security Verification Required</h1>
+                    <p>Protect your SafeNetAi account</p>
                 </div>
                 
-                <p>To complete this transaction, please use the following verification code:</p>
-                
-                <div style="background-color: #e9ecef; padding: 20px; text-align: center; border-radius: 5px; margin: 20px 0;">
-                    <h2 style="margin: 0; color: #495057; font-size: 32px; letter-spacing: 5px;">{otp_code}</h2>
+                <div class="content">
+                    <div class="alert-banner">
+                        <h3>⚠️ Unusual Activity Detected</h3>
+                        <p style="color: #c53030; margin: 0;">We've detected suspicious activity and need to verify this transaction.</p>
+                    </div>
+                    
+                    <p style="font-size: 16px; color: #2d3748; margin-bottom: 25px;">
+                        Hello <strong>{user.first_name or 'User'}</strong>,
+                    </p>
+                    
+                    <p style="color: #4a5568; line-height: 1.6; margin-bottom: 25px;">
+                        Our AI-powered security system has flagged a transaction on your account that requires additional verification before processing.
+                    </p>
+                    
+                    <div class="transaction-details">
+                        <h4 style="color: #2d3748; margin-top: 0; margin-bottom: 20px;">💳 Transaction Details</h4>
+                        <table>
+                            <tr>
+                                <td>Transaction ID:</td>
+                                <td><strong>#{transaction.id}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Amount:</td>
+                                <td><strong>{transaction.amount:,.2f} DZD</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td><strong>{transaction.transaction_type.title()}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Risk Score:</td>
+                                <td><strong style="color: #e53e3e;">{transaction.risk_score}/100</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Status:</td>
+                                <td><strong style="color: #d69e2e;">Pending Verification</strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="otp-container">
+                        <div class="otp-label">Your Security Code</div>
+                        <div class="otp-code">{otp_code}</div>
+                    </div>
+                    
+                    <div class="timer">
+                        <strong>⏰ This code expires in 10 minutes</strong>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h4>Complete your transaction:</h4>
+                        <ol>
+                            <li>Copy the 6-digit security code above</li>
+                            <li>Return to your SafeNetAi transaction page</li>
+                            <li>Enter the code when prompted</li>
+                            <li>Click "Verify" to complete your transaction</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="security-warning">
+                        <strong>🔒 Security Notice:</strong> If you didn't initiate this transaction, please contact our security team immediately at security@safenetai.com or call +213-XXX-XXXX.
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="{settings.SITE_BASE_URL}/client-dashboard" class="cta-button">
+                            Access Your Dashboard
+                        </a>
+                    </div>
+                    
+                    <p style="color: #718096; font-size: 14px; margin-top: 40px; text-align: center;">
+                        Need assistance? Our security team is available 24/7 to help protect your account.
+                    </p>
                 </div>
                 
-                <p><strong>Important:</strong></p>
-                <ul style="margin: 10px 0; padding-left: 20px;">
-                    <li>This code expires in 10 minutes</li>
-                    <li>Do not share this code with anyone</li>
-                    <li>If you didn't initiate this transaction, contact support immediately</li>
-                </ul>
-                
-                <p>If you have any questions or concerns, please contact our support team.</p>
-                
-                <p>Best regards,<br>The SafeNetAi Team</p>
+                <div class="footer">
+                    <p><strong>&copy; 2025 SafeNetAi Security Team</strong></p>
+                    <p>Advanced AI-Powered Financial Protection</p>
+                    <p style="font-size: 12px; margin-top: 15px; opacity: 0.8;">This security alert was automatically generated. Please do not reply to this email.</p>
+                </div>
             </div>
-            
-            <div style="background-color: #f8f9fa; padding: 15px; text-align: center; font-size: 12px; color: #6c757d;">
-                <p>This is an automated security message. Please do not reply to this email.</p>
-            </div>
-        </div>
+        </body>
+        </html>
         """
+        
+        # Text fallback
+        text_content = f"""
+        SafeNetAi - Security Verification Required
+        
+        Hello {user.first_name or 'User'},
+        
+        We've detected unusual activity on your account that requires verification.
+        
+        Transaction Details:
+        - ID: #{transaction.id}
+        - Amount: {transaction.amount:,.2f} DZD
+        - Type: {transaction.transaction_type}
+        - Risk Score: {transaction.risk_score}/100
+        
+        Your Security Code: {otp_code}
+        
+        This code expires in 10 minutes.
+        
+        If you didn't initiate this transaction, contact security@safenetai.com immediately.
+        
+        Best regards,
+        SafeNetAi Security Team
+        """
+        
+        # Send HTML email
+        success = send_html_email(
+            subject=subject,
+            html_content=html_content,
+            recipient_list=[user.email],
+            text_content=text_content
+        )
+        
+        if success:
+            logger.info(f"Security OTP email sent successfully to {user.email} for transaction {transaction.id}")
+            log_system_event(
+                "Security OTP email sent successfully",
+                "email_service",
+                "INFO",
+                {
+                    "user_email": user.email,
+                    "user_id": user.id,
+                    "transaction_id": transaction.id,
+                    "otp_code": otp_code
+                }
+            )
+            return True
+        else:
+            logger.error(f"Failed to send security OTP email to {user.email}")
+            return False
+            
+    except Exception as e:
+        logger.error(f"Error sending security OTP email: {e}")
+        log_system_event(
+            "Error sending security OTP email",
+            "email_service",
+            "ERROR",
+            {
+                "user_email": user.email,
+                "user_id": user.id,
+                "transaction_id": transaction.id,
+                "error": str(e)
+            }
+        )
+        return False
         
         # Send email
         send_html_email(subject, html_content, [user.email])

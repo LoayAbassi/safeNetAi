@@ -2,3 +2,6 @@
 [2025-09-03 17:04:23] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "admin@safenetai.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
 [2025-09-03 17:04:29] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
 [2025-09-03 17:05:50] [INFO] [auth] User action: LOGIN | User ID: 61 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-03 17:44:07] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-03 18:00:24] [INFO] [auth] User action: LOGIN | User ID: 61 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-03 18:03:42] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
