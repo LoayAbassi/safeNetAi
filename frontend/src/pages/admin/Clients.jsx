@@ -203,7 +203,11 @@ const Clients = () => {
                   </td>
                   <td className="table-cell">
                     <span className="text-lg font-semibold text-primary-600">
-                      ${client.balance}
+                      {new Intl.NumberFormat('ar-DZ', {
+                        style: 'currency',
+                        currency: 'DZD',
+                        minimumFractionDigits: 2
+                      }).format(client.balance)}
                     </span>
                   </td>
                   <td className="table-cell">

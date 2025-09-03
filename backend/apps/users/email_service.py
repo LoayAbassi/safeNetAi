@@ -358,7 +358,7 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
         
         Transaction Details:
         - ID: #{fraud_alert.transaction.id}
-        - Amount: ${fraud_alert.transaction.amount}
+        - Amount: {fraud_alert.transaction.amount} DZD
         - Type: {fraud_alert.transaction.transaction_type}
         - Risk Level: {fraud_alert.level}
         - Risk Score: {fraud_alert.risk_score}%

@@ -158,7 +158,13 @@ const Transactions = () => {
                 <TableRow key={transaction.id}>
                   <TableCell>{transaction.client_name}</TableCell>
                   <TableCell>{transaction.transaction_type}</TableCell>
-                  <TableCell>${transaction.amount}</TableCell>
+                  <TableCell>
+                    {new Intl.NumberFormat('ar-DZ', {
+                      style: 'currency',
+                      currency: 'DZD',
+                      minimumFractionDigits: 2
+                    }).format(transaction.amount)}
+                  </TableCell>
                   <TableCell>
                     <Typography color={getStatusColor(transaction.status)}>
                       {transaction.status}
