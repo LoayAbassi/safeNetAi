@@ -50,10 +50,21 @@ const Transfer = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
+          console.log('Location captured for transaction:', {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            accuracy: position.coords.accuracy
+          });
         },
         (error) => {
           console.log('Geolocation error:', error);
+          setError('Location access is required for secure transactions. Please enable location services and refresh the page.');
           setCurrentLocation({ lat: 0, lng: 0 });
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 300000 // 5 minutes
         }
       );
     } else {
@@ -87,7 +98,13 @@ const Transfer = () => {
         // Transaction requires OTP verification
         setPendingTransaction(response.data);
         setShowOTP(true);
-        setSuccess('Transaction created. Please verify with the OTP sent to your email.');
+        
+        // Enhanced message for distance violations
+        if (response.data.distance_violation) {
+          setSuccess('⚠️ SECURITY ALERT: Transaction location is far from your home address. OTP verification is mandatory for your protection.');
+        } else {
+          setSuccess('Transaction created. Please verify with the OTP sent to your email.');
+        }
       } else if (response.data.status === 'pending') {
         setSuccess(`Transaction created but flagged for review. Risk Score: ${response.data.risk_score}. Please check your email for approval.`);
         // Reset form
@@ -276,19 +293,35 @@ const Transfer = () => {
               </motion.div>
             )}
 
-            {/* Location Info */}
-            <div className="p-4 bg-gray-50 rounded-lg">
+            {/* Enhanced Location Info */}
+            <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
               <div className="flex items-center mb-2">
-                <MapPin className="h-4 w-4 text-gray-500 mr-2" />
-                <span className="text-sm font-medium text-gray-700">Location</span>
+                <MapPin className="h-5 w-5 text-blue-600 mr-2" />
+                <span className="text-sm font-medium text-blue-900">Location-Based Security</span>
               </div>
-              <p className="text-xs text-gray-600">
-                {currentLocation ? (
-                  `Lat: ${currentLocation.lat.toFixed(4)}, Lng: ${currentLocation.lng.toFixed(4)}`
-                ) : (
-                  'Getting location...'
-                )}
-              </p>
+              
+              {currentLocation ? (
+                <div>
+                  <div className="flex items-center text-sm text-blue-700 mb-1">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                    <span className="font-medium">Location verified</span>
+                  </div>
+                  <p className="text-xs text-blue-600 mb-2">
+                    Coordinates: {currentLocation.lat.toFixed(4)}, {currentLocation.lng.toFixed(4)}
+                  </p>
+                  <div className="bg-blue-100 rounded p-2">
+                    <p className="text-xs text-blue-800">
+                      🔒 Your location helps protect against unauthorized transactions.
+                      If you're far from your home address, additional verification may be required.
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center text-sm text-amber-700">
+                  <div className="w-2 h-2 bg-amber-500 rounded-full mr-2 animate-pulse"></div>
+                  <span>Getting location for enhanced security...</span>
+                </div>
+              )}
             </div>
 
             {/* Submit Button */}

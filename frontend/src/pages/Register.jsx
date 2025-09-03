@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
@@ -10,7 +10,9 @@ import {
   CreditCard, 
   IdCard, 
   AlertCircle,
-  CheckCircle
+  CheckCircle,
+  MapPin,
+  Loader
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -24,12 +26,50 @@ const Register = () => {
     national_id: '',
     bank_account_number: '',
   });
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [locationLoading, setLocationLoading] = useState(true);
+  const [locationError, setLocationError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getCurrentLocation();
+  }, []);
+
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          setCurrentLocation(location);
+          setLocationLoading(false);
+          console.log('Location captured for registration:', location);
+        },
+        (error) => {
+          console.error('Geolocation error during registration:', error);
+          setLocationError('Location access denied. You can still register, but location-based security features will be limited.');
+          setCurrentLocation({ lat: 0, lng: 0 }); // Fallback coordinates
+          setLocationLoading(false);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 300000 // 5 minutes
+        }
+      );
+    } else {
+      setLocationError('Geolocation is not supported by this browser.');
+      setCurrentLocation({ lat: 0, lng: 0 });
+      setLocationLoading(false);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -54,9 +94,21 @@ const Register = () => {
       return;
     }
 
+    // Ensure location is captured
+    if (!currentLocation) {
+      setError('Location access is required for enhanced security. Please allow location access and try again.');
+      return;
+    }
+
     setLoading(true);
 
-    const result = await register(formData);
+    // Include location data in registration
+    const registrationData = {
+      ...formData,
+      registration_location: currentLocation
+    };
+
+    const result = await register(registrationData);
     
     if (result.success) {
       // Redirect to OTP verification
@@ -305,11 +357,45 @@ const Register = () => {
               </div>
             </div>
 
+            {/* Location Information */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="flex items-center mb-2">
+                <MapPin className="h-5 w-5 text-blue-600 mr-2" />
+                <h3 className="text-sm font-medium text-blue-900">Location Security</h3>
+              </div>
+              
+              {locationLoading ? (
+                <div className="flex items-center text-sm text-blue-700">
+                  <Loader className="h-4 w-4 animate-spin mr-2" />
+                  <span>Getting your location for enhanced security...</span>
+                </div>
+              ) : currentLocation ? (
+                <div>
+                  <p className="text-sm text-blue-700 mb-1">
+                    Location captured successfully for home address setup.
+                  </p>
+                  <p className="text-xs text-blue-600">
+                    Coordinates: {currentLocation.lat.toFixed(4)}, {currentLocation.lng.toFixed(4)}
+                  </p>
+                </div>
+              ) : (
+                <div className="text-sm text-red-600">
+                  <p>❌ Location not available</p>
+                  {locationError && <p className="text-xs mt-1">{locationError}</p>}
+                </div>
+              )}
+              
+              <p className="text-xs text-blue-600 mt-2">
+                Your location will be used to set up your home address for fraud detection.
+                This helps protect your account from unauthorized access.
+              </p>
+            </div>
+
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              disabled={loading}
+              disabled={loading || locationLoading}
               className="btn-primary w-full flex justify-center items-center py-3"
             >
               {loading ? (

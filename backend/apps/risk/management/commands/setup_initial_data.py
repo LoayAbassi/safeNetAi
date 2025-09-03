@@ -14,6 +14,7 @@ class Command(BaseCommand):
             ('high_frequency_count', 5, 'High frequency transaction count'),
             ('high_frequency_hours', 1, 'High frequency time window (hours)'),
             ('low_balance', 100, 'Low balance threshold'),
+            ('max_distance_km', 50, 'Maximum distance from home location (km) - triggers mandatory OTP'),
             ('location_anomaly_km', 50, 'Location anomaly threshold (km)'),
             ('location_time_hours', 1, 'Location time window (hours)'),
             ('z_score_threshold', 2.0, 'Z-score threshold for statistical outliers'),
