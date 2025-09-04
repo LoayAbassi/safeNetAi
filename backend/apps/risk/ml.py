@@ -85,7 +85,7 @@ class FraudMLModel:
                 transaction.created_at.hour,                           # 3: Hour of day
                 transaction.created_at.weekday(),                      # 4: Day of week
                 location_features['distance_from_home'],               # 5: Distance from home
-                location_features['distance_from_last_known'],         # 6: Distance from last known
+                location_features['distance_from_last_verified'],      # 6: Distance from last verified
                 location_features['effective_distance'],               # 7: Effective distance (min of above)
                 float(location_features['has_location_data']),         # 8: Location data availability flag
             ]
@@ -94,7 +94,7 @@ class FraudMLModel:
             
             logger.info(f"Enhanced ML features prepared: {len(features)} features")
             logger.info(f"Location intelligence - Distance from home: {location_features['distance_from_home']:.2f}km, "
-                       f"Distance from last known: {location_features['distance_from_last_known']:.2f}km, "
+                       f"Distance from last verified: {location_features['distance_from_last_verified']:.2f}km, "
                        f"Effective distance: {location_features['effective_distance']:.2f}km")
             
             return feature_array
@@ -221,7 +221,7 @@ class FraudMLModel:
             
             logger.info(f"Enhanced ML prediction: Raw score={score:.4f}, Normalized score={normalized_score:.4f}")
             logger.info(f"Location analysis - Distance from home: {location_features['distance_from_home']:.2f}km, "
-                       f"Distance from last known: {location_features['distance_from_last_known']:.2f}km, "
+                       f"Distance from last verified: {location_features['distance_from_last_verified']:.2f}km, "
                        f"Effective distance: {location_features['effective_distance']:.2f}km")
             
             # Enhanced prediction logging with detailed location intelligence
@@ -232,9 +232,9 @@ class FraudMLModel:
                     "amount": transaction.amount,
                     "type": transaction.transaction_type,
                     "distance_from_home": location_features['distance_from_home'],
-                    "distance_from_last_known": location_features['distance_from_last_known'],
+                    "distance_from_last_verified": location_features['distance_from_last_verified'],
                     "effective_distance": location_features['effective_distance'],
-                    "location_intelligence": f"Closest to {'HOME' if location_features['distance_from_home'] <= location_features['distance_from_last_known'] else 'LAST_KNOWN'}"
+                    "location_intelligence": f"Closest to {'HOME' if location_features['distance_from_home'] <= location_features['distance_from_last_verified'] else 'LAST_VERIFIED'}"
                 },
                 prediction=normalized_score,
                 confidence=normalized_score,

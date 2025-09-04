@@ -160,24 +160,28 @@ class TransactionViewSet(viewsets.ModelViewSet):
                 if not client_profile.home_lat or not client_profile.home_lng:
                     client_profile.home_lat = Decimal(str(transaction_lat))
                     client_profile.home_lng = Decimal(str(transaction_lng))
+                    client_profile.save()  # Save home location immediately
                     logger.info(f"Setting home location for user {request.user.email}: ({transaction_lat}, {transaction_lng})")
                 
-                # ALWAYS update last known location on EVERY transaction attempt
-                # This is critical for distance-based fraud detection
-                client_profile.last_known_lat = Decimal(str(transaction_lat))
-                client_profile.last_known_lng = Decimal(str(transaction_lng))
-                client_profile.save()
-                logger.info(f"Updated last known location for user {request.user.email}: ({transaction_lat}, {transaction_lng})")
+                # DO NOT UPDATE last_known_lat/lng here - only update after successful OTP verification
+                # This is critical for the effective distance logic to work correctly
+                logger.info(f"Current transaction location: ({transaction_lat}, {transaction_lng})")
+                logger.info(f"Preserved last known location: ({client_profile.last_known_lat}, {client_profile.last_known_lng})")
                 
                 # Log comprehensive location details
                 logger.info(f"Location tracking: User={request.user.email}, "
                           f"Home=({client_profile.home_lat}, {client_profile.home_lng}), "
-                          f"Current=({transaction_lat}, {transaction_lng}), "
-                          f"Last Known=({client_profile.last_known_lat}, {client_profile.last_known_lng})")
+                          f"Current transaction=({transaction_lat}, {transaction_lng}), "
+                          f"Last verified=({client_profile.last_known_lat}, {client_profile.last_known_lng})")
                 
-                # Create transaction
-                transaction_obj = serializer.save(client=client_profile)
+                # Create transaction with current location data
+                transaction_obj = serializer.save(
+                    client=client_profile,
+                    current_lat=Decimal(str(transaction_lat)),
+                    current_lng=Decimal(str(transaction_lng))
+                )
                 logger.info(f"Transaction created: ID {transaction_obj.id}, Amount: {amount}, Type: {transaction_type}")
+                logger.info(f"Transaction location stored: ({transaction_obj.current_lat}, {transaction_obj.current_lng})")
                 
                 # Run fraud detection
                 risk_engine = RiskEngine()
@@ -390,6 +394,17 @@ class TransactionViewSet(viewsets.ModelViewSet):
                 # OTP verified - complete the transaction
                 try:
                     with transaction.atomic():
+                        # IMPORTANT: Update last known location ONLY after successful OTP verification
+                        # This ensures the effective distance logic works correctly
+                        if transaction_obj.current_lat and transaction_obj.current_lng:
+                            client_profile = transaction_obj.client
+                            client_profile.last_known_lat = transaction_obj.current_lat
+                            client_profile.last_known_lng = transaction_obj.current_lng
+                            client_profile.save()
+                            
+                            logger.info(f"🔐 OTP SUCCESS: Updated last known location to ({transaction_obj.current_lat}, {transaction_obj.current_lng}) "
+                                       f"for user {request.user.email} after successful OTP verification")
+                        
                         # Update balances
                         self._update_balances(transaction_obj, transaction_obj.client)
                         
