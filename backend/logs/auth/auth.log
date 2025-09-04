@@ -1,8 +1,22 @@
-[2025-09-03 18:49:09] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
-[2025-09-03 18:53:43] [INFO] [auth] User action: LOGIN | User ID: 61 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
-[2025-09-03 19:02:05] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "loayabassi90@gmail.com", "errors": {"non_field_errors": ["Email not verified. Please verify your email first."]}, "ip_address": "127.0.0.1"}
-[2025-09-03 19:02:58] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "loayabassi90@gmail.com", "errors": {"non_field_errors": ["Email not verified. Please verify your email first."]}, "ip_address": "127.0.0.1"}
-[2025-09-03 19:04:10] [INFO] [auth] Creating user with registration location: {'lat': 36.8377856, 'lng': 10.2957056}
-[2025-09-03 19:04:11] [INFO] [auth] Set home location for profile 86: (36.8377856, 10.2957056)
-[2025-09-03 19:04:11] [INFO] [auth] User action: REGISTRATION | User ID: 67 | Email: loayabassi90@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
-[2025-09-03 19:05:09] [INFO] [auth] User action: OTP_VERIFICATION | User ID: 67 | Email: loayabassi90@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 13:54:00] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 13:56:00] [INFO] [auth] User action: LOGIN | User ID: 61 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:27:48] [WARNING] [auth] Security event: Failed registration attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Account verification failed. Contact admin."]}, "ip_address": "127.0.0.1"}
+[2025-09-04 14:29:18] [INFO] [auth] Creating user with registration location: {'lat': 0, 'lng': 0}
+[2025-09-04 14:29:19] [WARNING] [auth] Invalid registration coordinates (0,0) for user abassi.loay@gmail.com
+[2025-09-04 14:29:19] [INFO] [auth] User action: REGISTRATION | User ID: 69 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:29:44] [INFO] [auth] User action: OTP_VERIFICATION | User ID: 69 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:31:29] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
+[2025-09-04 14:32:03] [INFO] [auth] Creating user with registration location: {'lat': 35.6286464, 'lng': 10.8986368}
+[2025-09-04 14:32:04] [INFO] [auth] Set home location for profile 89: (35.6286464, 10.8986368)
+[2025-09-04 14:32:04] [INFO] [auth] User action: REGISTRATION | User ID: 70 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:32:42] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Email not verified. Please verify your email first."]}, "ip_address": "127.0.0.1"}
+[2025-09-04 14:34:29] [INFO] [auth] Creating user with registration location: {'lat': 35.6286464, 'lng': 10.8986368}
+[2025-09-04 14:34:30] [INFO] [auth] Set home location for profile 89: (35.6286464, 10.8986368)
+[2025-09-04 14:34:30] [INFO] [auth] User action: REGISTRATION | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:34:41] [INFO] [auth] User action: OTP_VERIFICATION | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:35:41] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:37:19] [INFO] [auth] User action: LOGIN | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:40:20] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:40:49] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "admin@safenetai.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
+[2025-09-04 14:40:59] [INFO] [auth] User action: LOGIN | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-09-04 14:50:27] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}

@@ -1,0 +1,125 @@
+[2025-09-03 18:54:03] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-03 18:54:03] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-03 18:54:03] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 18:54:03] [INFO] [transactions] Updated last known location for user abassi.loay@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 18:54:03] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 18:54:03] [INFO] [transactions] Transaction created: ID 307, Amount: 500.00, Type: transfer
+[2025-09-03 18:54:03] [INFO] [transactions] Risk assessment: Score=75, Triggers=['High frequency: 7 transactions in 2.0 hour(s)', 'Enhanced distance rule: 85.51km from home > 50.0km threshold'], Requires OTP=True, Decision=Flag for Review
+[2025-09-03 18:54:04] [INFO] [transactions] ML score: 0.4797494320580509, Contribution: 19, Final risk score: 94
+[2025-09-03 18:54:04] [INFO] [transactions] Transaction details: ID=307, Client=loay abassi, Type=transfer, Amount=500.00 DZD, Risk Score=94, Decision=Flag for Review, Triggers=['High frequency: 7 transactions in 2.0 hour(s)', 'Enhanced distance rule: 85.51km from home > 50.0km threshold']
+[2025-09-03 18:54:04] [INFO] [transactions] Transaction | ID: 307 | Amount: 500.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 307, "amount": "500.00", "transaction_type": "transfer", "user_id": 61, "status": "CREATED", "risk_level": "Score_94"}
+[2025-09-03 18:54:04] [INFO] [transactions] OTP decision for transaction 307: Required=True, Reasons=['Business rules triggered: 2', 'High risk score: 94', 'Risk engine explicit requirement']
+[2025-09-03 18:54:04] [INFO] [transactions] Creating transaction OTP for transaction 307, user abassi.loay@gmail.com
+[2025-09-03 18:54:04] [INFO] [transactions] Created transaction OTP 122056 for transaction 307, expires at 2025-09-03 18:04:04.583517+00:00
+[2025-09-03 18:54:08] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 307
+[2025-09-03 18:54:08] [INFO] [transactions] Transaction requires OTP verification: ID 307, Risk score: 94, Triggers: 2, ML score: 0.480
+[2025-09-03 18:54:26] [INFO] [transactions] Verifying transaction OTP for transaction 307, user abassi.loay@gmail.com
+[2025-09-03 18:54:26] [INFO] [transactions] Transaction OTP verified successfully for transaction 307
+[2025-09-03 18:54:26] [INFO] [transactions] Updating balances for transaction 307
+[2025-09-03 18:54:26] [INFO] [transactions] Current balance: 6107862.04, Amount: 500.00
+[2025-09-03 18:54:26] [INFO] [transactions] Transfer (sender): New balance = 6107362.04
+[2025-09-03 18:54:26] [WARNING] [transactions] Recipient account 8999999 not found for transfer
+[2025-09-03 18:54:26] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-09-03 18:54:26] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=60571.2156521739, std_amount=206705.761159023, transaction_count=23
+[2025-09-03 18:54:26] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 6107362.04 DZD
+[2025-09-03 18:54:26] [INFO] [transactions] Transaction 307 completed after OTP verification
+[2025-09-03 19:05:24] [INFO] [transactions] Creating transaction for user loayabassi90@gmail.com
+[2025-09-03 19:05:24] [INFO] [transactions] Client profile found: younes chettouh
+[2025-09-03 19:05:24] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 19:05:24] [INFO] [transactions] Updated last known location for user loayabassi90@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 19:05:24] [INFO] [transactions] Location tracking: User=loayabassi90@gmail.com, Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 19:05:24] [INFO] [transactions] Transaction created: ID 308, Amount: 5000.00, Type: transfer
+[2025-09-03 19:05:24] [INFO] [transactions] Risk assessment: Score=0, Triggers=[], Requires OTP=False, Decision=Approve
+[2025-09-03 19:05:25] [INFO] [transactions] ML score: 0.5728514100253528, Contribution: 22, Final risk score: 22
+[2025-09-03 19:05:25] [INFO] [transactions] Transaction details: ID=308, Client=younes chettouh, Type=transfer, Amount=5000.00 DZD, Risk Score=22, Decision=Approve, Triggers=[]
+[2025-09-03 19:05:25] [INFO] [transactions] Transaction | ID: 308 | Amount: 5000.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 308, "amount": "5000.00", "transaction_type": "transfer", "user_id": 67, "status": "CREATED", "risk_level": "Score_22"}
+[2025-09-03 19:05:25] [INFO] [transactions] OTP decision for transaction 308: Required=False, Reasons=[]
+[2025-09-03 19:05:25] [INFO] [transactions] Updating balances for transaction 308
+[2025-09-03 19:05:25] [INFO] [transactions] Current balance: 700000000.00, Amount: 5000.00
+[2025-09-03 19:05:25] [INFO] [transactions] Transfer (sender): New balance = 699995000.00
+[2025-09-03 19:05:25] [WARNING] [transactions] Recipient account 8987897995 not found for transfer
+[2025-09-03 19:05:25] [INFO] [transactions] Updating statistics for client younes chettouh
+[2025-09-03 19:05:25] [INFO] [transactions] No completed transactions found for client younes chettouh
+[2025-09-03 19:05:25] [INFO] [transactions] Balance update completed for client younes chettouh. New balance: 699995000.00 DZD
+[2025-09-03 19:05:25] [INFO] [transactions] Low risk transaction completed: ID 308, Risk score: 22
+[2025-09-03 19:06:04] [INFO] [transactions] Creating transaction for user loayabassi90@gmail.com
+[2025-09-03 19:06:04] [INFO] [transactions] Client profile found: younes chettouh
+[2025-09-03 19:06:04] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 19:06:04] [INFO] [transactions] Updated last known location for user loayabassi90@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 19:06:04] [INFO] [transactions] Location tracking: User=loayabassi90@gmail.com, Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 19:06:04] [INFO] [transactions] Transaction created: ID 309, Amount: 11000.00, Type: transfer
+[2025-09-03 19:06:04] [INFO] [transactions] Risk assessment: Score=30, Triggers=['Large transfer: $11000.00 > $10000.0'], Requires OTP=False, Decision=Approve
+[2025-09-03 19:06:04] [INFO] [transactions] ML score: 0.5835364425332044, Contribution: 23, Final risk score: 53
+[2025-09-03 19:06:04] [INFO] [transactions] Transaction details: ID=309, Client=younes chettouh, Type=transfer, Amount=11000.00 DZD, Risk Score=53, Decision=Approve, Triggers=['Large transfer: $11000.00 > $10000.0']
+[2025-09-03 19:06:04] [INFO] [transactions] Transaction | ID: 309 | Amount: 11000.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 309, "amount": "11000.00", "transaction_type": "transfer", "user_id": 67, "status": "CREATED", "risk_level": "Score_53"}
+[2025-09-03 19:06:04] [INFO] [transactions] OTP decision for transaction 309: Required=True, Reasons=['Business rules triggered: 1']
+[2025-09-03 19:06:04] [INFO] [transactions] Creating transaction OTP for transaction 309, user loayabassi90@gmail.com
+[2025-09-03 19:06:04] [INFO] [transactions] Created transaction OTP 605736 for transaction 309, expires at 2025-09-03 18:16:04.742798+00:00
+[2025-09-03 19:06:06] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 309
+[2025-09-03 19:06:06] [INFO] [transactions] Transaction requires OTP verification: ID 309, Risk score: 53, Triggers: 1, ML score: 0.584
+[2025-09-03 19:06:32] [INFO] [transactions] Verifying transaction OTP for transaction 309, user loayabassi90@gmail.com
+[2025-09-03 19:06:32] [INFO] [transactions] Transaction OTP verified successfully for transaction 309
+[2025-09-03 19:06:32] [INFO] [transactions] Updating balances for transaction 309
+[2025-09-03 19:06:32] [INFO] [transactions] Current balance: 699995000.00, Amount: 11000.00
+[2025-09-03 19:06:32] [INFO] [transactions] Transfer (sender): New balance = 699984000.00
+[2025-09-03 19:06:32] [WARNING] [transactions] Recipient account 11111111 not found for transfer
+[2025-09-03 19:06:32] [INFO] [transactions] Updating statistics for client younes chettouh
+[2025-09-03 19:06:32] [INFO] [transactions] Statistics updated for younes chettouh: avg_amount=5000, std_amount=0, transaction_count=1
+[2025-09-03 19:06:32] [INFO] [transactions] Balance update completed for client younes chettouh. New balance: 699984000.00 DZD
+[2025-09-03 19:06:32] [INFO] [transactions] Transaction 309 completed after OTP verification
+[2025-09-03 19:07:50] [INFO] [transactions] Creating transaction for user loayabassi90@gmail.com
+[2025-09-03 19:07:50] [INFO] [transactions] Client profile found: younes chettouh
+[2025-09-03 19:07:50] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 19:07:50] [INFO] [transactions] Updated last known location for user loayabassi90@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 19:07:50] [INFO] [transactions] Location tracking: User=loayabassi90@gmail.com, Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 19:07:50] [INFO] [transactions] Transaction created: ID 310, Amount: 5.00, Type: transfer
+[2025-09-03 19:07:50] [INFO] [transactions] Risk assessment: Score=50, Triggers=['Enhanced distance rule: 293.82km from home > 50.0km threshold'], Requires OTP=False, Decision=Monitor
+[2025-09-03 19:07:50] [INFO] [transactions] ML score: 0.4965019126729858, Contribution: 19, Final risk score: 69
+[2025-09-03 19:07:50] [INFO] [transactions] Transaction details: ID=310, Client=younes chettouh, Type=transfer, Amount=5.00 DZD, Risk Score=69, Decision=Monitor, Triggers=['Enhanced distance rule: 293.82km from home > 50.0km threshold']
+[2025-09-03 19:07:50] [INFO] [transactions] Transaction | ID: 310 | Amount: 5.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 310, "amount": "5.00", "transaction_type": "transfer", "user_id": 67, "status": "CREATED", "risk_level": "Score_69"}
+[2025-09-03 19:07:50] [INFO] [transactions] OTP decision for transaction 310: Required=True, Reasons=['Business rules triggered: 1']
+[2025-09-03 19:07:50] [INFO] [transactions] Creating transaction OTP for transaction 310, user loayabassi90@gmail.com
+[2025-09-03 19:07:50] [INFO] [transactions] Created transaction OTP 851066 for transaction 310, expires at 2025-09-03 18:17:50.171703+00:00
+[2025-09-03 19:07:54] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 310
+[2025-09-03 19:07:54] [INFO] [transactions] Transaction requires OTP verification: ID 310, Risk score: 69, Triggers: 1, ML score: 0.497
+[2025-09-03 19:08:39] [INFO] [transactions] Creating transaction for user loayabassi90@gmail.com
+[2025-09-03 19:08:39] [INFO] [transactions] Client profile found: younes chettouh
+[2025-09-03 19:08:39] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 19:08:39] [INFO] [transactions] Updated last known location for user loayabassi90@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 19:08:39] [INFO] [transactions] Location tracking: User=loayabassi90@gmail.com, Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 19:08:39] [INFO] [transactions] Transaction created: ID 311, Amount: 5.00, Type: transfer
+[2025-09-03 19:08:39] [INFO] [transactions] Risk assessment: Score=50, Triggers=['Enhanced distance rule: 293.82km from home > 50.0km threshold'], Requires OTP=False, Decision=Monitor
+[2025-09-03 19:08:39] [INFO] [transactions] ML score: 0.4965019126729858, Contribution: 19, Final risk score: 69
+[2025-09-03 19:08:39] [INFO] [transactions] Transaction details: ID=311, Client=younes chettouh, Type=transfer, Amount=5.00 DZD, Risk Score=69, Decision=Monitor, Triggers=['Enhanced distance rule: 293.82km from home > 50.0km threshold']
+[2025-09-03 19:08:39] [INFO] [transactions] Transaction | ID: 311 | Amount: 5.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 311, "amount": "5.00", "transaction_type": "transfer", "user_id": 67, "status": "CREATED", "risk_level": "Score_69"}
+[2025-09-03 19:08:39] [INFO] [transactions] OTP decision for transaction 311: Required=True, Reasons=['Business rules triggered: 1']
+[2025-09-03 19:08:39] [INFO] [transactions] Creating transaction OTP for transaction 311, user loayabassi90@gmail.com
+[2025-09-03 19:08:39] [INFO] [transactions] Created transaction OTP 782779 for transaction 311, expires at 2025-09-03 18:18:39.089905+00:00
+[2025-09-03 19:08:41] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 311
+[2025-09-03 19:08:41] [INFO] [transactions] Transaction requires OTP verification: ID 311, Risk score: 69, Triggers: 1, ML score: 0.497
+[2025-09-03 19:09:05] [INFO] [transactions] Verifying transaction OTP for transaction 311, user loayabassi90@gmail.com
+[2025-09-03 19:09:05] [INFO] [transactions] Transaction OTP verified successfully for transaction 311
+[2025-09-03 19:09:05] [INFO] [transactions] Updating balances for transaction 311
+[2025-09-03 19:09:05] [INFO] [transactions] Current balance: 699984000.00, Amount: 5.00
+[2025-09-03 19:09:05] [INFO] [transactions] Transfer (sender): New balance = 699983995.00
+[2025-09-03 19:09:05] [WARNING] [transactions] Recipient account 11111111 not found for transfer
+[2025-09-03 19:09:05] [INFO] [transactions] Updating statistics for client younes chettouh
+[2025-09-03 19:09:05] [INFO] [transactions] Statistics updated for younes chettouh: avg_amount=8000, std_amount=3000, transaction_count=2
+[2025-09-03 19:09:05] [INFO] [transactions] Balance update completed for client younes chettouh. New balance: 699983995.00 DZD
+[2025-09-03 19:09:05] [INFO] [transactions] Transaction 311 completed after OTP verification
+[2025-09-03 19:09:51] [INFO] [transactions] Creating transaction for user loayabassi90@gmail.com
+[2025-09-03 19:09:51] [INFO] [transactions] Client profile found: younes chettouh
+[2025-09-03 19:09:51] [INFO] [transactions] Location validation passed: (36.8377856, 10.2957056)
+[2025-09-03 19:09:51] [INFO] [transactions] Updated last known location for user loayabassi90@gmail.com: (36.8377856, 10.2957056)
+[2025-09-03 19:09:51] [INFO] [transactions] Location tracking: User=loayabassi90@gmail.com, Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Last Known=(36.8377856, 10.2957056)
+[2025-09-03 19:09:51] [INFO] [transactions] Transaction created: ID 312, Amount: 10.00, Type: transfer
+[2025-09-03 19:09:51] [INFO] [transactions] Risk assessment: Score=65, Triggers=['Enhanced distance rule: 293.82km from home > 50.0km threshold', 'Statistical outlier: z-score 2.66 > 2.0'], Requires OTP=False, Decision=Flag for Review
+[2025-09-03 19:09:51] [INFO] [transactions] ML score: 0.4965019126729858, Contribution: 19, Final risk score: 84
+[2025-09-03 19:09:51] [INFO] [transactions] Transaction details: ID=312, Client=younes chettouh, Type=transfer, Amount=10.00 DZD, Risk Score=84, Decision=Flag for Review, Triggers=['Enhanced distance rule: 293.82km from home > 50.0km threshold', 'Statistical outlier: z-score 2.66 > 2.0']
+[2025-09-03 19:09:51] [INFO] [transactions] Transaction | ID: 312 | Amount: 10.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 312, "amount": "10.00", "transaction_type": "transfer", "user_id": 67, "status": "CREATED", "risk_level": "Score_84"}
+[2025-09-03 19:09:51] [INFO] [transactions] OTP decision for transaction 312: Required=True, Reasons=['Business rules triggered: 2', 'High risk score: 84']
+[2025-09-03 19:09:51] [INFO] [transactions] Creating transaction OTP for transaction 312, user loayabassi90@gmail.com
+[2025-09-03 19:09:51] [INFO] [transactions] Created transaction OTP 612506 for transaction 312, expires at 2025-09-03 18:19:51.969446+00:00
+[2025-09-03 19:09:54] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 312
+[2025-09-03 19:09:54] [INFO] [transactions] Transaction requires OTP verification: ID 312, Risk score: 84, Triggers: 2, ML score: 0.497
+[2025-09-03 23:06:45] [INFO] [transactions] PERFECTION TEST: Transaction processing test

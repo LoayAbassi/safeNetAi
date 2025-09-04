@@ -64,36 +64,45 @@ class FraudMLModel:
             return False
     
     def prepare_features(self, transaction):
-        """Prepare features for a single transaction with logging"""
+        """Prepare enhanced features for a single transaction with effective distance logic"""
         try:
             client = transaction.client
             
-            logger.info(f"Preparing features for transaction {transaction.id}")
+            logger.info(f"Preparing enhanced features for transaction {transaction.id}")
             
-            # Basic transaction features (5 features since location fields were removed)
-            # Use client's home/last known location if available, otherwise default to 0
-            client_lat = float(client.last_known_lat) if client.last_known_lat else 0
-            client_lng = float(client.last_known_lng) if client.last_known_lng else 0
+            # Import here to avoid circular imports
+            from apps.risk.engine import RiskEngine
             
+            # Get enhanced location features
+            risk_engine = RiskEngine()
+            location_features = risk_engine.calculate_enhanced_location_features(transaction)
+            
+            # Enhanced feature set with 9 features including effective distance
             features = [
-                float(transaction.amount),
-                float(client.balance),
-                2,  # transaction type: transfer = 2
-                transaction.created_at.hour,
-                transaction.created_at.weekday(),
-                client_lat,  # Use client's last known location
-                client_lng,  # Use client's last known location
+                float(transaction.amount),                              # 0: Transaction amount
+                float(client.balance),                                  # 1: Client balance
+                2 if transaction.transaction_type == 'transfer' else 1, # 2: Transaction type (transfer=2, withdraw=1)
+                transaction.created_at.hour,                           # 3: Hour of day
+                transaction.created_at.weekday(),                      # 4: Day of week
+                location_features['distance_from_home'],               # 5: Distance from home
+                location_features['distance_from_last_known'],         # 6: Distance from last known
+                location_features['effective_distance'],               # 7: Effective distance (min of above)
+                float(location_features['has_location_data']),         # 8: Location data availability flag
             ]
             
             feature_array = np.array(features).reshape(1, -1)
-            logger.info(f"Features prepared: {len(features)} features, shape: {feature_array.shape}")
+            
+            logger.info(f"Enhanced ML features prepared: {len(features)} features")
+            logger.info(f"Location intelligence - Distance from home: {location_features['distance_from_home']:.2f}km, "
+                       f"Distance from last known: {location_features['distance_from_last_known']:.2f}km, "
+                       f"Effective distance: {location_features['effective_distance']:.2f}km")
             
             return feature_array
             
         except Exception as e:
-            logger.error(f"Error preparing features for transaction {transaction.id}: {e}")
-            # Return default features (7 features with safe defaults)
-            return np.array([[0, 0, 2, 0, 0, 0, 0]])
+            logger.error(f"Error preparing enhanced features for transaction {transaction.id}: {e}")
+            # Return default features (9 features with safe defaults)
+            return np.array([[0, 0, 2, 0, 0, 0, 0, 0, 0]])
     
     def train(self):
         """Train the fraud detection model with comprehensive logging"""
@@ -180,10 +189,15 @@ class FraudMLModel:
             return 0.5  # Neutral score
         
         try:
-            logger.info(f"Making ML prediction for transaction {transaction.id}")
+            logger.info(f"Making enhanced ML prediction for transaction {transaction.id}")
             start_time = time.time()
             
             features = self.prepare_features(transaction)
+            
+            # Get enhanced location features for logging
+            from apps.risk.engine import RiskEngine
+            risk_engine = RiskEngine()
+            location_features = risk_engine.calculate_enhanced_location_features(transaction)
             
             # Scale features using the same scaler from training
             if self.scaler is not None:
@@ -205,12 +219,23 @@ class FraudMLModel:
             
             processing_time = time.time() - start_time
             
-            logger.info(f"ML prediction: Raw score={score:.4f}, Normalized score={normalized_score:.4f}")
+            logger.info(f"Enhanced ML prediction: Raw score={score:.4f}, Normalized score={normalized_score:.4f}")
+            logger.info(f"Location analysis - Distance from home: {location_features['distance_from_home']:.2f}km, "
+                       f"Distance from last known: {location_features['distance_from_last_known']:.2f}km, "
+                       f"Effective distance: {location_features['effective_distance']:.2f}km")
             
-            # Log prediction using structured logging
+            # Enhanced prediction logging with detailed location intelligence
             log_prediction(
-                model_name="Fraud Detection Isolation Forest",
-                input_data={"transaction_id": transaction.id, "amount": transaction.amount, "type": transaction.transaction_type},
+                model_name="Enhanced Fraud Detection with Effective Distance",
+                input_data={
+                    "transaction_id": transaction.id,
+                    "amount": transaction.amount,
+                    "type": transaction.transaction_type,
+                    "distance_from_home": location_features['distance_from_home'],
+                    "distance_from_last_known": location_features['distance_from_last_known'],
+                    "effective_distance": location_features['effective_distance'],
+                    "location_intelligence": f"Closest to {'HOME' if location_features['distance_from_home'] <= location_features['distance_from_last_known'] else 'LAST_KNOWN'}"
+                },
                 prediction=normalized_score,
                 confidence=normalized_score,
                 processing_time=processing_time

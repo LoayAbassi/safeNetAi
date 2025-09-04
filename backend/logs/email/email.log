@@ -1,19 +1,33 @@
-[2025-09-03 18:54:08] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 307
-[2025-09-03 18:54:26] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 307
-[2025-09-03 18:54:28] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
-[2025-09-03 19:04:11] [INFO] [email_service] Creating OTP for user loayabassi90@gmail.com
-[2025-09-03 19:04:11] [INFO] [email_service] Created OTP 366425 for user loayabassi90@gmail.com, expires at 2025-09-04 18:04:11.045445+00:00
-[2025-09-03 19:04:11] [INFO] [email_service] Attempting to send OTP email to loayabassi90@gmail.com
-[2025-09-03 19:04:11] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
-[2025-09-03 19:04:12] [INFO] [email_service] OTP email sent successfully to loayabassi90@gmail.com. OTP: 366425
-[2025-09-03 19:04:12] [INFO] [email_service] OTP created and sent successfully for user loayabassi90@gmail.com
-[2025-09-03 19:05:25] [INFO] [email_service] Sending transaction notification to loayabassi90@gmail.com for transaction 308
-[2025-09-03 19:05:28] [INFO] [email_service] Transaction notification sent successfully to loayabassi90@gmail.com
-[2025-09-03 19:06:06] [INFO] [email_service] Security OTP email sent successfully to loayabassi90@gmail.com for transaction 309
-[2025-09-03 19:06:32] [INFO] [email_service] Sending transaction notification to loayabassi90@gmail.com for transaction 309
-[2025-09-03 19:06:36] [INFO] [email_service] Transaction notification sent successfully to loayabassi90@gmail.com
-[2025-09-03 19:07:54] [INFO] [email_service] Security OTP email sent successfully to loayabassi90@gmail.com for transaction 310
-[2025-09-03 19:08:41] [INFO] [email_service] Security OTP email sent successfully to loayabassi90@gmail.com for transaction 311
-[2025-09-03 19:09:05] [INFO] [email_service] Sending transaction notification to loayabassi90@gmail.com for transaction 311
-[2025-09-03 19:09:07] [INFO] [email_service] Transaction notification sent successfully to loayabassi90@gmail.com
-[2025-09-03 19:09:54] [INFO] [email_service] Security OTP email sent successfully to loayabassi90@gmail.com for transaction 312
+[2025-09-04 13:52:03] [INFO] [email_service] PERFECTION TEST: Email service notification test
+[2025-09-04 13:56:51] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 315
+[2025-09-04 13:58:04] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 315
+[2025-09-04 13:58:17] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-04 13:59:20] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 316
+[2025-09-04 14:01:05] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 317
+[2025-09-04 14:01:24] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 317
+[2025-09-04 14:01:33] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-04 14:29:19] [INFO] [email_service] Creating OTP for user abassi.loay@gmail.com
+[2025-09-04 14:29:19] [INFO] [email_service] Created OTP 227755 for user abassi.loay@gmail.com, expires at 2025-09-05 13:29:19.625355+00:00
+[2025-09-04 14:29:19] [INFO] [email_service] Attempting to send OTP email to abassi.loay@gmail.com
+[2025-09-04 14:29:19] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-04 14:29:22] [INFO] [email_service] OTP email sent successfully to abassi.loay@gmail.com. OTP: 227755
+[2025-09-04 14:29:22] [INFO] [email_service] OTP created and sent successfully for user abassi.loay@gmail.com
+[2025-09-04 14:32:04] [INFO] [email_service] Creating OTP for user abassi.loay@gmail.com
+[2025-09-04 14:32:04] [INFO] [email_service] Created OTP 853958 for user abassi.loay@gmail.com, expires at 2025-09-05 13:32:04.717361+00:00
+[2025-09-04 14:32:04] [INFO] [email_service] Attempting to send OTP email to abassi.loay@gmail.com
+[2025-09-04 14:32:04] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-04 14:32:07] [INFO] [email_service] OTP email sent successfully to abassi.loay@gmail.com. OTP: 853958
+[2025-09-04 14:32:07] [INFO] [email_service] OTP created and sent successfully for user abassi.loay@gmail.com
+[2025-09-04 14:34:30] [INFO] [email_service] Creating OTP for user abassi.loay@gmail.com
+[2025-09-04 14:34:30] [INFO] [email_service] Created OTP 121859 for user abassi.loay@gmail.com, expires at 2025-09-05 13:34:30.085390+00:00
+[2025-09-04 14:34:30] [INFO] [email_service] Attempting to send OTP email to abassi.loay@gmail.com
+[2025-09-04 14:34:30] [INFO] [email_service] Email settings - Backend: django.core.mail.backends.smtp.EmailBackend, Host: smtp.gmail.com, Port: 587, User: abassi.loay23@gmail.com, TLS: True, SSL: False
+[2025-09-04 14:34:31] [INFO] [email_service] OTP email sent successfully to abassi.loay@gmail.com. OTP: 121859
+[2025-09-04 14:34:31] [INFO] [email_service] OTP created and sent successfully for user abassi.loay@gmail.com
+[2025-09-04 14:37:44] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 318
+[2025-09-04 14:37:45] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-04 14:39:57] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 319
+[2025-09-04 14:42:02] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 320
+[2025-09-04 14:43:03] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 320
+[2025-09-04 14:43:05] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-09-04 14:43:22] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 321

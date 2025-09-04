@@ -1,118 +1,230 @@
-[2025-09-03 18:54:03] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 18:54:03] [INFO] [rules] Starting risk assessment for transaction 307
-[2025-09-03 18:54:03] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
-[2025-09-03 18:54:03] [WARNING] [rules] Rule 2 triggered: High frequency: 7 transactions in 2.0 hour(s)
-[2025-09-03 18:54:03] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 307 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 307, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 7 transactions in 2.0 hour(s)"]}
-[2025-09-03 18:54:03] [INFO] [rules] Enhanced distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance from home=85.51km, Threshold=50.0km
-[2025-09-03 18:54:03] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 85.51km from home > 50.0km threshold
-[2025-09-03 18:54:03] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 307 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 307, "triggered": true, "risk_score": 75, "triggers": ["Enhanced distance rule: 85.51km from home > 50.0km threshold"]}
-[2025-09-03 18:54:03] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 307
-[2025-09-03 18:54:03] [WARNING] [rules] High risk score OTP requirement: Transaction 307 requires OTP (Score: 75)
-[2025-09-03 18:54:03] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
-[2025-09-03 18:54:03] [INFO] [rules] Creating fraud alert for transaction 307: High risk, score 75
-[2025-09-03 18:54:03] [INFO] [rules] Fraud alert created: ID 141
-[2025-09-03 18:54:03] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 18:54:03] [INFO] [rules] Starting risk assessment for transaction 307
-[2025-09-03 18:54:03] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
-[2025-09-03 18:54:03] [WARNING] [rules] Rule 2 triggered: High frequency: 7 transactions in 2.0 hour(s)
-[2025-09-03 18:54:03] [INFO] [rules] Rule evaluation: High Frequency Transactions | Transaction: 307 | Status: TRIGGERED | Risk Score: 25 | Data: {"rule_name": "High Frequency Transactions", "transaction_id": 307, "triggered": true, "risk_score": 25, "triggers": ["High frequency: 7 transactions in 2.0 hour(s)"]}
-[2025-09-03 18:54:03] [INFO] [rules] Enhanced distance check: Home=(36.068951, 10.275907), Current=(36.8377856, 10.2957056), Distance from home=85.51km, Threshold=50.0km
-[2025-09-03 18:54:03] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 85.51km from home > 50.0km threshold
-[2025-09-03 18:54:03] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 307 | Status: TRIGGERED | Risk Score: 75 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 307, "triggered": true, "risk_score": 75, "triggers": ["Enhanced distance rule: 85.51km from home > 50.0km threshold"]}
-[2025-09-03 18:54:03] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 307
-[2025-09-03 18:54:03] [WARNING] [rules] High risk score OTP requirement: Transaction 307 requires OTP (Score: 75)
-[2025-09-03 18:54:03] [INFO] [rules] Risk assessment completed: Score=75, Triggers=2, Requires OTP=True, Decision=Flag for Review
-[2025-09-03 18:54:08] [INFO] [rules] Fraud alert already exists for transaction 307: ID 141
-[2025-09-03 19:05:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:05:24] [INFO] [rules] Starting risk assessment for transaction 308
-[2025-09-03 19:05:24] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:05:24] [INFO] [rules] Enhanced distance check: Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Distance from home=0.00km, Threshold=50.0km
-[2025-09-03 19:05:24] [INFO] [rules] Location approved: 0.00km from home (within 50.0km threshold)
-[2025-09-03 19:05:24] [INFO] [rules] Rule evaluation: Enhanced Location Validation | Transaction: 308 | Status: NOT_TRIGGERED | Risk Score: 0 | Data: {"rule_name": "Enhanced Location Validation", "transaction_id": 308, "triggered": false, "risk_score": 0, "triggers": ["Location approved: 0.00km from home location (within threshold)"]}
-[2025-09-03 19:05:24] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
-[2025-09-03 19:05:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:05:24] [INFO] [rules] Starting risk assessment for transaction 308
-[2025-09-03 19:05:24] [INFO] [rules] Transaction details: Amount=$5000.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:05:24] [INFO] [rules] Enhanced distance check: Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Distance from home=0.00km, Threshold=50.0km
-[2025-09-03 19:05:24] [INFO] [rules] Location approved: 0.00km from home (within 50.0km threshold)
-[2025-09-03 19:05:24] [INFO] [rules] Rule evaluation: Enhanced Location Validation | Transaction: 308 | Status: NOT_TRIGGERED | Risk Score: 0 | Data: {"rule_name": "Enhanced Location Validation", "transaction_id": 308, "triggered": false, "risk_score": 0, "triggers": ["Location approved: 0.00km from home location (within threshold)"]}
-[2025-09-03 19:05:24] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
-[2025-09-03 19:06:04] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:06:04] [INFO] [rules] Starting risk assessment for transaction 309
-[2025-09-03 19:06:04] [INFO] [rules] Transaction details: Amount=$11000.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:06:04] [WARNING] [rules] Rule 1 triggered: Large transfer: $11000.00 > $10000.0
-[2025-09-03 19:06:04] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 309 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 309, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $11000.00 > $10000.0"]}
-[2025-09-03 19:06:04] [INFO] [rules] Enhanced distance check: Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Distance from home=0.00km, Threshold=50.0km
-[2025-09-03 19:06:04] [INFO] [rules] Location approved: 0.00km from home (within 50.0km threshold)
-[2025-09-03 19:06:04] [INFO] [rules] Rule evaluation: Enhanced Location Validation | Transaction: 309 | Status: NOT_TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Enhanced Location Validation", "transaction_id": 309, "triggered": false, "risk_score": 30, "triggers": ["Location approved: 0.00km from home location (within threshold)"]}
-[2025-09-03 19:06:04] [INFO] [rules] Risk assessment completed: Score=30, Triggers=1, Requires OTP=False, Decision=Approve
-[2025-09-03 19:06:04] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:06:04] [INFO] [rules] Starting risk assessment for transaction 309
-[2025-09-03 19:06:04] [INFO] [rules] Transaction details: Amount=$11000.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:06:04] [WARNING] [rules] Rule 1 triggered: Large transfer: $11000.00 > $10000.0
-[2025-09-03 19:06:04] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 309 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 309, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: $11000.00 > $10000.0"]}
-[2025-09-03 19:06:04] [INFO] [rules] Enhanced distance check: Home=(36.837786, 10.295706), Current=(36.8377856, 10.2957056), Distance from home=0.00km, Threshold=50.0km
-[2025-09-03 19:06:04] [INFO] [rules] Location approved: 0.00km from home (within 50.0km threshold)
-[2025-09-03 19:06:04] [INFO] [rules] Rule evaluation: Enhanced Location Validation | Transaction: 309 | Status: NOT_TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Enhanced Location Validation", "transaction_id": 309, "triggered": false, "risk_score": 30, "triggers": ["Location approved: 0.00km from home location (within threshold)"]}
-[2025-09-03 19:06:04] [INFO] [rules] Risk assessment completed: Score=30, Triggers=1, Requires OTP=False, Decision=Approve
-[2025-09-03 19:06:06] [INFO] [rules] Creating fraud alert for transaction 309: Medium risk, score 53
-[2025-09-03 19:06:06] [INFO] [rules] Fraud alert created: ID 142
-[2025-09-03 19:07:50] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:07:50] [INFO] [rules] Starting risk assessment for transaction 310
-[2025-09-03 19:07:50] [INFO] [rules] Transaction details: Amount=$5.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:07:50] [INFO] [rules] Enhanced distance check: Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Distance from home=293.82km, Threshold=50.0km
-[2025-09-03 19:07:50] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 293.82km from home > 50.0km threshold
-[2025-09-03 19:07:50] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 310 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 310, "triggered": true, "risk_score": 50, "triggers": ["Enhanced distance rule: 293.82km from home > 50.0km threshold"]}
-[2025-09-03 19:07:50] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 310
-[2025-09-03 19:07:50] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
-[2025-09-03 19:07:50] [INFO] [rules] Creating fraud alert for transaction 310: Medium risk, score 50
-[2025-09-03 19:07:50] [INFO] [rules] Fraud alert created: ID 143
-[2025-09-03 19:07:50] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:07:50] [INFO] [rules] Starting risk assessment for transaction 310
-[2025-09-03 19:07:50] [INFO] [rules] Transaction details: Amount=$5.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:07:50] [INFO] [rules] Enhanced distance check: Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Distance from home=293.82km, Threshold=50.0km
-[2025-09-03 19:07:50] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 293.82km from home > 50.0km threshold
-[2025-09-03 19:07:50] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 310 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 310, "triggered": true, "risk_score": 50, "triggers": ["Enhanced distance rule: 293.82km from home > 50.0km threshold"]}
-[2025-09-03 19:07:50] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 310
-[2025-09-03 19:07:50] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
-[2025-09-03 19:07:54] [INFO] [rules] Fraud alert already exists for transaction 310: ID 143
-[2025-09-03 19:08:39] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:08:39] [INFO] [rules] Starting risk assessment for transaction 311
-[2025-09-03 19:08:39] [INFO] [rules] Transaction details: Amount=$5.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:08:39] [INFO] [rules] Enhanced distance check: Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Distance from home=293.82km, Threshold=50.0km
-[2025-09-03 19:08:39] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 293.82km from home > 50.0km threshold
-[2025-09-03 19:08:39] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 311 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 311, "triggered": true, "risk_score": 50, "triggers": ["Enhanced distance rule: 293.82km from home > 50.0km threshold"]}
-[2025-09-03 19:08:39] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 311
-[2025-09-03 19:08:39] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
-[2025-09-03 19:08:39] [INFO] [rules] Creating fraud alert for transaction 311: Medium risk, score 50
-[2025-09-03 19:08:39] [INFO] [rules] Fraud alert created: ID 144
-[2025-09-03 19:08:39] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:08:39] [INFO] [rules] Starting risk assessment for transaction 311
-[2025-09-03 19:08:39] [INFO] [rules] Transaction details: Amount=$5.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:08:39] [INFO] [rules] Enhanced distance check: Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Distance from home=293.82km, Threshold=50.0km
-[2025-09-03 19:08:39] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 293.82km from home > 50.0km threshold
-[2025-09-03 19:08:39] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 311 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 311, "triggered": true, "risk_score": 50, "triggers": ["Enhanced distance rule: 293.82km from home > 50.0km threshold"]}
-[2025-09-03 19:08:39] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 311
-[2025-09-03 19:08:39] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
-[2025-09-03 19:08:41] [INFO] [rules] Fraud alert already exists for transaction 311: ID 144
-[2025-09-03 19:09:51] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:09:51] [INFO] [rules] Starting risk assessment for transaction 312
-[2025-09-03 19:09:51] [INFO] [rules] Transaction details: Amount=$10.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:09:51] [INFO] [rules] Enhanced distance check: Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Distance from home=293.82km, Threshold=50.0km
-[2025-09-03 19:09:51] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 293.82km from home > 50.0km threshold
-[2025-09-03 19:09:51] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 312 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 312, "triggered": true, "risk_score": 50, "triggers": ["Enhanced distance rule: 293.82km from home > 50.0km threshold"]}
-[2025-09-03 19:09:51] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 312
-[2025-09-03 19:09:51] [WARNING] [rules] Rule 5 triggered: Statistical outlier: z-score 2.66 > 2.0
-[2025-09-03 19:09:51] [INFO] [rules] Risk assessment completed: Score=65, Triggers=2, Requires OTP=False, Decision=Flag for Review
-[2025-09-03 19:09:51] [INFO] [rules] Creating fraud alert for transaction 312: Medium risk, score 65
-[2025-09-03 19:09:51] [INFO] [rules] Fraud alert created: ID 145
-[2025-09-03 19:09:51] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
-[2025-09-03 19:09:51] [INFO] [rules] Starting risk assessment for transaction 312
-[2025-09-03 19:09:51] [INFO] [rules] Transaction details: Amount=$10.00, Type=transfer, Client=younes chettouh
-[2025-09-03 19:09:51] [INFO] [rules] Enhanced distance check: Home=(35.075443, 7.863114), Current=(36.8377856, 10.2957056), Distance from home=293.82km, Threshold=50.0km
-[2025-09-03 19:09:51] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 293.82km from home > 50.0km threshold
-[2025-09-03 19:09:51] [INFO] [rules] Rule evaluation: Enhanced Distance from Home/Last Known | Transaction: 312 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home/Last Known", "transaction_id": 312, "triggered": true, "risk_score": 50, "triggers": ["Enhanced distance rule: 293.82km from home > 50.0km threshold"]}
-[2025-09-03 19:09:51] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 312
-[2025-09-03 19:09:51] [WARNING] [rules] Rule 5 triggered: Statistical outlier: z-score 2.66 > 2.0
-[2025-09-03 19:09:51] [INFO] [rules] Risk assessment completed: Score=65, Triggers=2, Requires OTP=False, Decision=Flag for Review
-[2025-09-03 19:09:54] [INFO] [rules] Fraud alert already exists for transaction 312: ID 145
+[2025-09-04 13:56:33] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 13:56:33] [INFO] [rules] Starting risk assessment for transaction 315
+[2025-09-04 13:56:33] [INFO] [rules] Transaction details: Amount=$2500.00, Type=transfer, Client=loay abassi
+[2025-09-04 13:56:33] [INFO] [rules] Enhanced distance check: Home=(35.523487, 10.172494), Transaction=(35.6286464, 10.8986368), Distance from home=66.70km, Threshold=50.0km
+[2025-09-04 13:56:33] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 66.70km from home > 50.0km threshold
+[2025-09-04 13:56:33] [INFO] [rules] Rule evaluation: Enhanced Distance from Home Location | Transaction: 315 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home Location", "transaction_id": 315, "triggered": true, "risk_score": 50, "triggers": ["Distance violation: 66.70km from HOME location > 50.0km threshold"]}
+[2025-09-04 13:56:33] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 315 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 13:56:33] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
+[2025-09-04 13:56:33] [INFO] [rules] Creating fraud alert for transaction 315: Medium risk, score 50
+[2025-09-04 13:56:33] [INFO] [rules] Fraud alert created: ID 147
+[2025-09-04 13:56:33] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 13:56:33] [INFO] [rules] Starting risk assessment for transaction 315
+[2025-09-04 13:56:33] [INFO] [rules] Transaction details: Amount=$2500.00, Type=transfer, Client=loay abassi
+[2025-09-04 13:56:33] [INFO] [rules] Enhanced distance check: Home=(35.523487, 10.172494), Transaction=(35.6286464, 10.8986368), Distance from home=66.70km, Threshold=50.0km
+[2025-09-04 13:56:33] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 66.70km from home > 50.0km threshold
+[2025-09-04 13:56:33] [INFO] [rules] Rule evaluation: Enhanced Distance from Home Location | Transaction: 315 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home Location", "transaction_id": 315, "triggered": true, "risk_score": 50, "triggers": ["Distance violation: 66.70km from HOME location > 50.0km threshold"]}
+[2025-09-04 13:56:33] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 315 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 13:56:33] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
+[2025-09-04 13:56:51] [INFO] [rules] Fraud alert already exists for transaction 315: ID 147
+[2025-09-04 13:59:13] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 13:59:13] [INFO] [rules] Starting risk assessment for transaction 316
+[2025-09-04 13:59:13] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 13:59:13] [INFO] [rules] Enhanced distance check: Home=(35.523487, 10.172494), Transaction=(35.6286464, 10.8986368), Distance from home=66.70km, Threshold=50.0km
+[2025-09-04 13:59:13] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 66.70km from home > 50.0km threshold
+[2025-09-04 13:59:13] [INFO] [rules] Rule evaluation: Enhanced Distance from Home Location | Transaction: 316 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home Location", "transaction_id": 316, "triggered": true, "risk_score": 50, "triggers": ["Distance violation: 66.70km from HOME location > 50.0km threshold"]}
+[2025-09-04 13:59:13] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 316 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 13:59:13] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
+[2025-09-04 13:59:13] [INFO] [rules] Creating fraud alert for transaction 316: Medium risk, score 50
+[2025-09-04 13:59:13] [INFO] [rules] Fraud alert created: ID 148
+[2025-09-04 13:59:13] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 13:59:13] [INFO] [rules] Starting risk assessment for transaction 316
+[2025-09-04 13:59:13] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 13:59:13] [INFO] [rules] Enhanced distance check: Home=(35.523487, 10.172494), Transaction=(35.6286464, 10.8986368), Distance from home=66.70km, Threshold=50.0km
+[2025-09-04 13:59:13] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 66.70km from home > 50.0km threshold
+[2025-09-04 13:59:13] [INFO] [rules] Rule evaluation: Enhanced Distance from Home Location | Transaction: 316 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home Location", "transaction_id": 316, "triggered": true, "risk_score": 50, "triggers": ["Distance violation: 66.70km from HOME location > 50.0km threshold"]}
+[2025-09-04 13:59:13] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 316 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 13:59:13] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
+[2025-09-04 13:59:20] [INFO] [rules] Fraud alert already exists for transaction 316: ID 148
+[2025-09-04 14:01:00] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:01:00] [INFO] [rules] Starting risk assessment for transaction 317
+[2025-09-04 14:01:00] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:01:00] [INFO] [rules] Enhanced distance check: Home=(35.523487, 10.172494), Transaction=(35.6286464, 10.8986368), Distance from home=66.70km, Threshold=50.0km
+[2025-09-04 14:01:00] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 66.70km from home > 50.0km threshold
+[2025-09-04 14:01:00] [INFO] [rules] Rule evaluation: Enhanced Distance from Home Location | Transaction: 317 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home Location", "transaction_id": 317, "triggered": true, "risk_score": 50, "triggers": ["Distance violation: 66.70km from HOME location > 50.0km threshold"]}
+[2025-09-04 14:01:00] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 317 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 14:01:00] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
+[2025-09-04 14:01:00] [INFO] [rules] Creating fraud alert for transaction 317: Medium risk, score 50
+[2025-09-04 14:01:00] [INFO] [rules] Fraud alert created: ID 149
+[2025-09-04 14:01:00] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:01:00] [INFO] [rules] Starting risk assessment for transaction 317
+[2025-09-04 14:01:00] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:01:00] [INFO] [rules] Enhanced distance check: Home=(35.523487, 10.172494), Transaction=(35.6286464, 10.8986368), Distance from home=66.70km, Threshold=50.0km
+[2025-09-04 14:01:00] [WARNING] [rules] Rule 4 triggered: Enhanced distance rule: 66.70km from home > 50.0km threshold
+[2025-09-04 14:01:00] [INFO] [rules] Rule evaluation: Enhanced Distance from Home Location | Transaction: 317 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance from Home Location", "transaction_id": 317, "triggered": true, "risk_score": 50, "triggers": ["Distance violation: 66.70km from HOME location > 50.0km threshold"]}
+[2025-09-04 14:01:00] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 317 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 14:01:00] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=False, Decision=Monitor
+[2025-09-04 14:01:05] [INFO] [rules] Fraud alert already exists for transaction 317: ID 149
+[2025-09-04 14:37:42] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:37:42] [INFO] [rules] Starting risk assessment for transaction 318
+[2025-09-04 14:37:42] [INFO] [rules] Transaction details: Amount=$9500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:37:42] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:37:42] [INFO] [rules]   Home location: (35.628646, 10.898637)
+[2025-09-04 14:37:42] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:37:42] [INFO] [rules]   Distance from home: 0.00km
+[2025-09-04 14:37:42] [INFO] [rules]   Distance from last known: 0.00km
+[2025-09-04 14:37:42] [INFO] [rules]   Effective distance: 0.00km (minimum distance)
+[2025-09-04 14:37:42] [INFO] [rules]   Closest reference point: HOME
+[2025-09-04 14:37:42] [INFO] [rules]   Threshold: 50.0km
+[2025-09-04 14:37:42] [INFO] [rules] ✅ LOCATION APPROVED: Effective distance 0.00km (closest to HOME) is within 50.0km threshold
+[2025-09-04 14:37:42] [INFO] [rules] Rule evaluation: Enhanced Location Validation - Effective Distance | Transaction: 318 | Status: NOT_TRIGGERED | Risk Score: 0 | Data: {"rule_name": "Enhanced Location Validation - Effective Distance", "transaction_id": 318, "triggered": false, "risk_score": 0, "triggers": ["\u2705 Location approved by effective distance: 0.00km \u2264 50.0km", "Distance from home: 0.00km", "Distance from last known: 0.00km", "Effective distance (minimum): 0.00km", "Closest reference point: HOME"]}
+[2025-09-04 14:37:42] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
+[2025-09-04 14:37:42] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:37:42] [INFO] [rules] Starting risk assessment for transaction 318
+[2025-09-04 14:37:42] [INFO] [rules] Transaction details: Amount=$9500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:37:42] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:37:42] [INFO] [rules]   Home location: (35.628646, 10.898637)
+[2025-09-04 14:37:42] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:37:42] [INFO] [rules]   Distance from home: 0.00km
+[2025-09-04 14:37:42] [INFO] [rules]   Distance from last known: 0.00km
+[2025-09-04 14:37:42] [INFO] [rules]   Effective distance: 0.00km (minimum distance)
+[2025-09-04 14:37:42] [INFO] [rules]   Closest reference point: HOME
+[2025-09-04 14:37:42] [INFO] [rules]   Threshold: 50.0km
+[2025-09-04 14:37:42] [INFO] [rules] ✅ LOCATION APPROVED: Effective distance 0.00km (closest to HOME) is within 50.0km threshold
+[2025-09-04 14:37:42] [INFO] [rules] Rule evaluation: Enhanced Location Validation - Effective Distance | Transaction: 318 | Status: NOT_TRIGGERED | Risk Score: 0 | Data: {"rule_name": "Enhanced Location Validation - Effective Distance", "transaction_id": 318, "triggered": false, "risk_score": 0, "triggers": ["\u2705 Location approved by effective distance: 0.00km \u2264 50.0km", "Distance from home: 0.00km", "Distance from last known: 0.00km", "Effective distance (minimum): 0.00km", "Closest reference point: HOME"]}
+[2025-09-04 14:37:42] [INFO] [rules] Risk assessment completed: Score=0, Triggers=0, Requires OTP=False, Decision=Approve
+[2025-09-04 14:37:44] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:37:44] [INFO] [rules] Location features for ML: Home=0.00km, LastKnown=0.00km, Effective=0.00km
+[2025-09-04 14:37:44] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:37:44] [INFO] [rules] Location features for ML: Home=0.00km, LastKnown=0.00km, Effective=0.00km
+[2025-09-04 14:39:55] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:39:55] [INFO] [rules] Starting risk assessment for transaction 319
+[2025-09-04 14:39:55] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:39:55] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:39:55] [INFO] [rules]   Home location: (34.931003, 9.357500)
+[2025-09-04 14:39:55] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:39:55] [INFO] [rules]   Distance from home: 159.96km
+[2025-09-04 14:39:55] [INFO] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:39:55] [INFO] [rules]   Effective distance: 159.83km (minimum distance)
+[2025-09-04 14:39:55] [INFO] [rules]   Closest reference point: LAST_KNOWN
+[2025-09-04 14:39:55] [INFO] [rules]   Threshold: 50.0km
+[2025-09-04 14:39:55] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 159.83km > 50.0km threshold
+[2025-09-04 14:39:55] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 159.83km exceeds 50.0km threshold
+[2025-09-04 14:39:55] [WARNING] [rules]   Distance from home: 159.96km
+[2025-09-04 14:39:55] [WARNING] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:39:55] [WARNING] [rules]   Both distances exceed threshold - OTP required
+[2025-09-04 14:39:55] [INFO] [rules] Rule evaluation: Enhanced Distance Violation - Effective Distance | Transaction: 319 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance Violation - Effective Distance", "transaction_id": 319, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 159.83km > 50.0km", "Distance from home: 159.96km", "Distance from last known: 159.83km", "Effective distance (minimum): 159.83km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 50.0km threshold for transaction 319
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 319 requires mandatory OTP
+[2025-09-04 14:39:55] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-09-04 14:39:55] [INFO] [rules] Creating fraud alert for transaction 319: Medium risk, score 50
+[2025-09-04 14:39:55] [INFO] [rules] Fraud alert created: ID 150
+[2025-09-04 14:39:55] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:39:55] [INFO] [rules] Starting risk assessment for transaction 319
+[2025-09-04 14:39:55] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:39:55] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:39:55] [INFO] [rules]   Home location: (34.931003, 9.357500)
+[2025-09-04 14:39:55] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:39:55] [INFO] [rules]   Distance from home: 159.96km
+[2025-09-04 14:39:55] [INFO] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:39:55] [INFO] [rules]   Effective distance: 159.83km (minimum distance)
+[2025-09-04 14:39:55] [INFO] [rules]   Closest reference point: LAST_KNOWN
+[2025-09-04 14:39:55] [INFO] [rules]   Threshold: 50.0km
+[2025-09-04 14:39:55] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 159.83km > 50.0km threshold
+[2025-09-04 14:39:55] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 159.83km exceeds 50.0km threshold
+[2025-09-04 14:39:55] [WARNING] [rules]   Distance from home: 159.96km
+[2025-09-04 14:39:55] [WARNING] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:39:55] [WARNING] [rules]   Both distances exceed threshold - OTP required
+[2025-09-04 14:39:55] [INFO] [rules] Rule evaluation: Enhanced Distance Violation - Effective Distance | Transaction: 319 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance Violation - Effective Distance", "transaction_id": 319, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 159.83km > 50.0km", "Distance from home: 159.96km", "Distance from last known: 159.83km", "Effective distance (minimum): 159.83km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 50.0km threshold for transaction 319
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 319 requires mandatory OTP
+[2025-09-04 14:39:55] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-09-04 14:39:56] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:39:56] [INFO] [rules] Location features for ML: Home=159.96km, LastKnown=159.83km, Effective=159.83km
+[2025-09-04 14:39:56] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:39:56] [INFO] [rules] Location features for ML: Home=159.96km, LastKnown=159.83km, Effective=159.83km
+[2025-09-04 14:39:57] [INFO] [rules] Fraud alert already exists for transaction 319: ID 150
+[2025-09-04 14:42:00] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:42:00] [INFO] [rules] Starting risk assessment for transaction 320
+[2025-09-04 14:42:00] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:42:00] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:42:00] [INFO] [rules]   Home location: (34.931003, 9.357500)
+[2025-09-04 14:42:00] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:42:00] [INFO] [rules]   Distance from home: 159.96km
+[2025-09-04 14:42:00] [INFO] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:42:00] [INFO] [rules]   Effective distance: 159.83km (minimum distance)
+[2025-09-04 14:42:00] [INFO] [rules]   Closest reference point: LAST_KNOWN
+[2025-09-04 14:42:00] [INFO] [rules]   Threshold: 60.0km
+[2025-09-04 14:42:00] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 159.83km > 60.0km threshold
+[2025-09-04 14:42:00] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 159.83km exceeds 60.0km threshold
+[2025-09-04 14:42:00] [WARNING] [rules]   Distance from home: 159.96km
+[2025-09-04 14:42:00] [WARNING] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:42:00] [WARNING] [rules]   Both distances exceed threshold - OTP required
+[2025-09-04 14:42:00] [INFO] [rules] Rule evaluation: Enhanced Distance Violation - Effective Distance | Transaction: 320 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance Violation - Effective Distance", "transaction_id": 320, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 159.83km > 60.0km", "Distance from home: 159.96km", "Distance from last known: 159.83km", "Effective distance (minimum): 159.83km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 320
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 320 requires mandatory OTP
+[2025-09-04 14:42:00] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-09-04 14:42:00] [INFO] [rules] Creating fraud alert for transaction 320: Medium risk, score 50
+[2025-09-04 14:42:00] [INFO] [rules] Fraud alert created: ID 151
+[2025-09-04 14:42:00] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:42:00] [INFO] [rules] Starting risk assessment for transaction 320
+[2025-09-04 14:42:00] [INFO] [rules] Transaction details: Amount=$500.00, Type=transfer, Client=loay abassi
+[2025-09-04 14:42:00] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:42:00] [INFO] [rules]   Home location: (34.931003, 9.357500)
+[2025-09-04 14:42:00] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:42:00] [INFO] [rules]   Distance from home: 159.96km
+[2025-09-04 14:42:00] [INFO] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:42:00] [INFO] [rules]   Effective distance: 159.83km (minimum distance)
+[2025-09-04 14:42:00] [INFO] [rules]   Closest reference point: LAST_KNOWN
+[2025-09-04 14:42:00] [INFO] [rules]   Threshold: 60.0km
+[2025-09-04 14:42:00] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 159.83km > 60.0km threshold
+[2025-09-04 14:42:00] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 159.83km exceeds 60.0km threshold
+[2025-09-04 14:42:00] [WARNING] [rules]   Distance from home: 159.96km
+[2025-09-04 14:42:00] [WARNING] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:42:00] [WARNING] [rules]   Both distances exceed threshold - OTP required
+[2025-09-04 14:42:00] [INFO] [rules] Rule evaluation: Enhanced Distance Violation - Effective Distance | Transaction: 320 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance Violation - Effective Distance", "transaction_id": 320, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 159.83km > 60.0km", "Distance from home: 159.96km", "Distance from last known: 159.83km", "Effective distance (minimum): 159.83km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 320
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 320 requires mandatory OTP
+[2025-09-04 14:42:00] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-09-04 14:42:00] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:42:00] [INFO] [rules] Location features for ML: Home=159.96km, LastKnown=159.83km, Effective=159.83km
+[2025-09-04 14:42:00] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:42:00] [INFO] [rules] Location features for ML: Home=159.96km, LastKnown=159.83km, Effective=159.83km
+[2025-09-04 14:42:02] [INFO] [rules] Fraud alert already exists for transaction 320: ID 151
+[2025-09-04 14:43:20] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:43:20] [INFO] [rules] Starting risk assessment for transaction 321
+[2025-09-04 14:43:20] [INFO] [rules] Transaction details: Amount=$499.98, Type=transfer, Client=loay abassi
+[2025-09-04 14:43:20] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:43:20] [INFO] [rules]   Home location: (34.931003, 9.357500)
+[2025-09-04 14:43:20] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:43:20] [INFO] [rules]   Distance from home: 159.96km
+[2025-09-04 14:43:20] [INFO] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:43:20] [INFO] [rules]   Effective distance: 159.83km (minimum distance)
+[2025-09-04 14:43:20] [INFO] [rules]   Closest reference point: LAST_KNOWN
+[2025-09-04 14:43:20] [INFO] [rules]   Threshold: 60.0km
+[2025-09-04 14:43:20] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 159.83km > 60.0km threshold
+[2025-09-04 14:43:20] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 159.83km exceeds 60.0km threshold
+[2025-09-04 14:43:20] [WARNING] [rules]   Distance from home: 159.96km
+[2025-09-04 14:43:20] [WARNING] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:43:20] [WARNING] [rules]   Both distances exceed threshold - OTP required
+[2025-09-04 14:43:20] [INFO] [rules] Rule evaluation: Enhanced Distance Violation - Effective Distance | Transaction: 321 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance Violation - Effective Distance", "transaction_id": 321, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 159.83km > 60.0km", "Distance from home: 159.96km", "Distance from last known: 159.83km", "Effective distance (minimum): 159.83km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 321
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 321 requires mandatory OTP
+[2025-09-04 14:43:20] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-09-04 14:43:20] [INFO] [rules] Creating fraud alert for transaction 321: Medium risk, score 50
+[2025-09-04 14:43:20] [INFO] [rules] Fraud alert created: ID 152
+[2025-09-04 14:43:20] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:43:20] [INFO] [rules] Starting risk assessment for transaction 321
+[2025-09-04 14:43:20] [INFO] [rules] Transaction details: Amount=$499.98, Type=transfer, Client=loay abassi
+[2025-09-04 14:43:20] [INFO] [rules] Enhanced effective distance analysis:
+[2025-09-04 14:43:20] [INFO] [rules]   Home location: (34.931003, 9.357500)
+[2025-09-04 14:43:20] [INFO] [rules]   Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 14:43:20] [INFO] [rules]   Distance from home: 159.96km
+[2025-09-04 14:43:20] [INFO] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:43:20] [INFO] [rules]   Effective distance: 159.83km (minimum distance)
+[2025-09-04 14:43:20] [INFO] [rules]   Closest reference point: LAST_KNOWN
+[2025-09-04 14:43:20] [INFO] [rules]   Threshold: 60.0km
+[2025-09-04 14:43:20] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 159.83km > 60.0km threshold
+[2025-09-04 14:43:20] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 159.83km exceeds 60.0km threshold
+[2025-09-04 14:43:20] [WARNING] [rules]   Distance from home: 159.96km
+[2025-09-04 14:43:20] [WARNING] [rules]   Distance from last known: 159.83km
+[2025-09-04 14:43:20] [WARNING] [rules]   Both distances exceed threshold - OTP required
+[2025-09-04 14:43:20] [INFO] [rules] Rule evaluation: Enhanced Distance Violation - Effective Distance | Transaction: 321 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Enhanced Distance Violation - Effective Distance", "transaction_id": 321, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 159.83km > 60.0km", "Distance from home: 159.96km", "Distance from last known: 159.83km", "Effective distance (minimum): 159.83km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 321
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 321 requires mandatory OTP
+[2025-09-04 14:43:20] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-09-04 14:43:20] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:43:20] [INFO] [rules] Location features for ML: Home=159.96km, LastKnown=159.83km, Effective=159.83km
+[2025-09-04 14:43:20] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-09-04 14:43:20] [INFO] [rules] Location features for ML: Home=159.96km, LastKnown=159.83km, Effective=159.83km
+[2025-09-04 14:43:22] [INFO] [rules] Fraud alert already exists for transaction 321: ID 152
