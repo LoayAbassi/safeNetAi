@@ -1,8 +1,151 @@
-[2025-09-03 18:54:03] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 307
-[2025-09-03 18:54:03] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 307
-[2025-09-03 19:07:50] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 310
-[2025-09-03 19:07:50] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 310
-[2025-09-03 19:08:39] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 311
-[2025-09-03 19:08:39] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 311
-[2025-09-03 19:09:51] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 312
-[2025-09-03 19:09:51] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 312
+[2025-09-04 13:56:33] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 315 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 13:56:33] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 315 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 13:59:13] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 316 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 13:59:13] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 316 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 14:01:00] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 317 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 14:01:00] [CRITICAL] [rules] MANDATORY OTP REQUIRED: Enhanced distance-based fraud detection triggered for transaction 317 - Location 66.70km from HOME exceeds 50.0km threshold
+[2025-09-04 14:31:20] [ERROR] [django.request] Internal Server Error: /api/auth/refresh/
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 116, in validate
+    user := get_user_model().objects.get(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\query.py", line 633, in get
+    raise self.model.DoesNotExist(
+apps.users.models.User.DoesNotExist: User matching query does not exist.
+[2025-09-04 14:31:20] [ERROR] [django.server] "POST /api/auth/refresh/ HTTP/1.1" 500 134465
+[2025-09-04 14:31:20] [ERROR] [django.request] Internal Server Error: /api/auth/refresh/
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 116, in validate
+    user := get_user_model().objects.get(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\query.py", line 633, in get
+    raise self.model.DoesNotExist(
+apps.users.models.User.DoesNotExist: User matching query does not exist.
+[2025-09-04 14:31:20] [ERROR] [django.server] "POST /api/auth/refresh/ HTTP/1.1" 500 134465
+[2025-09-04 14:31:20] [ERROR] [django.request] Internal Server Error: /api/auth/refresh/
+Traceback (most recent call last):
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework_simplejwt\views.py", line 46, in post
+    serializer.is_valid(raise_exception=True)
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\rest_framework_simplejwt\serializers.py", line 116, in validate
+    user := get_user_model().objects.get(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\Desktop\projects\safeNetAi\backend\venv\Lib\site-packages\django\db\models\query.py", line 633, in get
+    raise self.model.DoesNotExist(
+apps.users.models.User.DoesNotExist: User matching query does not exist.
+[2025-09-04 14:37:44] [ERROR] [ai] Error making ML prediction for transaction 318: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 14:37:44] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 318, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 50.0km threshold for transaction 319
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 319 requires mandatory OTP
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 50.0km threshold for transaction 319
+[2025-09-04 14:39:55] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 319 requires mandatory OTP
+[2025-09-04 14:39:56] [ERROR] [ai] Error making ML prediction for transaction 319: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 14:39:56] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 319, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 320
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 320 requires mandatory OTP
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 320
+[2025-09-04 14:42:00] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 320 requires mandatory OTP
+[2025-09-04 14:42:00] [ERROR] [ai] Error making ML prediction for transaction 320: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 14:42:00] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 320, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 321
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 321 requires mandatory OTP
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 159.83km exceeds 60.0km threshold for transaction 321
+[2025-09-04 14:43:20] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 321 requires mandatory OTP
+[2025-09-04 14:43:20] [ERROR] [ai] Error making ML prediction for transaction 321: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 14:43:20] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 321, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
