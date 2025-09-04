@@ -138,3 +138,52 @@
 [2025-09-04 14:43:20] [INFO] [transactions] Created transaction OTP 151127 for transaction 321, expires at 2025-09-04 13:53:20.691497+00:00
 [2025-09-04 14:43:22] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 321
 [2025-09-04 14:43:22] [INFO] [transactions] Transaction requires OTP verification: ID 321, Risk score: 70, Triggers: 1, ML score: 0.500
+[2025-09-04 16:02:56] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-04 16:02:56] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-04 16:02:56] [INFO] [transactions] Location validation passed: (35.6286464, 10.8986368)
+[2025-09-04 16:02:56] [INFO] [transactions] Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 16:02:56] [INFO] [transactions] Preserved last known location: (35.628646, 10.898637)
+[2025-09-04 16:02:56] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(34.931003, 9.357500), Current transaction=(35.6286464, 10.8986368), Last verified=(35.628646, 10.898637)
+[2025-09-04 16:02:56] [INFO] [transactions] Transaction created: ID 322, Amount: 500.00, Type: transfer
+[2025-09-04 16:02:56] [INFO] [transactions] Transaction location stored: (35.6286464, 10.8986368)
+[2025-09-04 16:02:56] [INFO] [transactions] Risk assessment: Score=0, Triggers=[], Requires OTP=False, Decision=Approve
+[2025-09-04 16:02:57] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 20
+[2025-09-04 16:02:57] [INFO] [transactions] Transaction details: ID=322, Client=loay abassi, Type=transfer, Amount=500.00 DZD, Risk Score=20, Decision=Approve, Triggers=[]
+[2025-09-04 16:02:57] [INFO] [transactions] Transaction | ID: 322 | Amount: 500.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 322, "amount": "500.00", "transaction_type": "transfer", "user_id": 71, "status": "CREATED", "risk_level": "Score_20"}
+[2025-09-04 16:02:57] [INFO] [transactions] OTP decision for transaction 322: Required=False, Reasons=[]
+[2025-09-04 16:02:57] [INFO] [transactions] Updating balances for transaction 322
+[2025-09-04 16:02:57] [INFO] [transactions] Current balance: 699990000.00, Amount: 500.00
+[2025-09-04 16:02:57] [INFO] [transactions] Transfer (sender): New balance = 699989500.00
+[2025-09-04 16:02:57] [WARNING] [transactions] Recipient account 55555555 not found for transfer
+[2025-09-04 16:02:57] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-09-04 16:02:57] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=5000, std_amount=4500, transaction_count=2
+[2025-09-04 16:02:57] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 699989500.00 DZD
+[2025-09-04 16:02:57] [INFO] [transactions] Low risk transaction completed: ID 322, Risk score: 20
+[2025-09-04 16:03:15] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-09-04 16:03:15] [INFO] [transactions] Client profile found: loay abassi
+[2025-09-04 16:03:15] [INFO] [transactions] Location validation passed: (35.6286464, 10.8986368)
+[2025-09-04 16:03:15] [INFO] [transactions] Current transaction location: (35.6286464, 10.8986368)
+[2025-09-04 16:03:15] [INFO] [transactions] Preserved last known location: (35.628646, 10.898637)
+[2025-09-04 16:03:15] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(34.931003, 9.357500), Current transaction=(35.6286464, 10.8986368), Last verified=(35.628646, 10.898637)
+[2025-09-04 16:03:15] [INFO] [transactions] Transaction created: ID 323, Amount: 5100.00, Type: transfer
+[2025-09-04 16:03:15] [INFO] [transactions] Transaction location stored: (35.6286464, 10.8986368)
+[2025-09-04 16:03:15] [INFO] [transactions] Risk assessment: Score=55, Triggers=['Large transfer: $5100.00 > $5000.0', 'High frequency: 6 transactions in 2.0 hour(s)'], Requires OTP=False, Decision=Monitor
+[2025-09-04 16:03:15] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 75
+[2025-09-04 16:03:15] [INFO] [transactions] Transaction details: ID=323, Client=loay abassi, Type=transfer, Amount=5100.00 DZD, Risk Score=75, Decision=Monitor, Triggers=['Large transfer: $5100.00 > $5000.0', 'High frequency: 6 transactions in 2.0 hour(s)']
+[2025-09-04 16:03:15] [INFO] [transactions] Transaction | ID: 323 | Amount: 5100.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 323, "amount": "5100.00", "transaction_type": "transfer", "user_id": 71, "status": "CREATED", "risk_level": "Score_75"}
+[2025-09-04 16:03:15] [INFO] [transactions] OTP decision for transaction 323: Required=True, Reasons=['Business rules triggered: 2', 'High risk score: 75']
+[2025-09-04 16:03:15] [INFO] [transactions] Creating transaction OTP for transaction 323, user abassi.loay@gmail.com
+[2025-09-04 16:03:15] [INFO] [transactions] Created transaction OTP 680081 for transaction 323, expires at 2025-09-04 15:13:15.669234+00:00
+[2025-09-04 16:03:19] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 323
+[2025-09-04 16:03:19] [INFO] [transactions] Transaction requires OTP verification: ID 323, Risk score: 75, Triggers: 2, ML score: 0.500
+[2025-09-04 16:04:22] [INFO] [transactions] Verifying transaction OTP for transaction 323, user abassi.loay@gmail.com
+[2025-09-04 16:04:22] [INFO] [transactions] Transaction OTP verified successfully for transaction 323
+[2025-09-04 16:04:22] [INFO] [transactions] 🔐 OTP SUCCESS: Updated last known location to (35.628646, 10.898637) for user abassi.loay@gmail.com after successful OTP verification
+[2025-09-04 16:04:22] [INFO] [transactions] Updating balances for transaction 323
+[2025-09-04 16:04:22] [INFO] [transactions] Current balance: 699989500.00, Amount: 5100.00
+[2025-09-04 16:04:22] [INFO] [transactions] Transfer (sender): New balance = 699984400.00
+[2025-09-04 16:04:22] [WARNING] [transactions] Recipient account 55555555 not found for transfer
+[2025-09-04 16:04:22] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-09-04 16:04:22] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=3500, std_amount=4242.64068711928, transaction_count=3
+[2025-09-04 16:04:22] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 699984400.00 DZD
+[2025-09-04 16:04:22] [INFO] [transactions] Transaction 323 completed after OTP verification

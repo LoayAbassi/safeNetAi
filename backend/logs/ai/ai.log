@@ -40,3 +40,15 @@
 [2025-09-04 14:43:20] [INFO] [ai] Enhanced ML features prepared: 9 features
 [2025-09-04 14:43:20] [INFO] [ai] Location intelligence - Distance from home: 159.96km, Distance from last known: 159.83km, Effective distance: 159.83km
 [2025-09-04 14:43:20] [ERROR] [ai] Error making ML prediction for transaction 321: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 16:02:57] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-04 16:02:57] [INFO] [ai] Making enhanced ML prediction for transaction 322
+[2025-09-04 16:02:57] [INFO] [ai] Preparing enhanced features for transaction 322
+[2025-09-04 16:02:57] [INFO] [ai] Enhanced ML features prepared: 9 features
+[2025-09-04 16:02:57] [INFO] [ai] Location intelligence - Distance from home: 159.96km, Distance from last verified: 0.00km, Effective distance: 0.00km
+[2025-09-04 16:02:57] [ERROR] [ai] Error making ML prediction for transaction 322: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 16:03:15] [INFO] [ai] ML model loaded successfully from C:\Users\HP\Desktop\projects\safeNetAi\backend\models\fraud_isolation.joblib
+[2025-09-04 16:03:15] [INFO] [ai] Making enhanced ML prediction for transaction 323
+[2025-09-04 16:03:15] [INFO] [ai] Preparing enhanced features for transaction 323
+[2025-09-04 16:03:15] [INFO] [ai] Enhanced ML features prepared: 9 features
+[2025-09-04 16:03:15] [INFO] [ai] Location intelligence - Distance from home: 159.96km, Distance from last verified: 0.00km, Effective distance: 0.00km
+[2025-09-04 16:03:15] [ERROR] [ai] Error making ML prediction for transaction 323: X has 9 features, but StandardScaler is expecting 7 features as input.
