@@ -130,18 +130,21 @@ class RiskEngine:
                 )
         
         # Rule 4: Enhanced Distance-Based Location Rule with Effective Distance Logic
-        # Calculate distance from BOTH home and last known location, take minimum as effective distance
-        # Only trigger OTP if effective distance > threshold
+        # Compare current location with BOTH home and last known locations
+        # Use the shorter distance (effective distance) to determine if transaction triggers violation
         
         max_distance_threshold = self.thresholds.get('max_distance_km', 50)  # Default 50km
-        if (client.home_lat and client.home_lng and 
-            client.last_known_lat and client.last_known_lng):
+        if (client.home_lat and client.home_lng):
             
-            # Current transaction location (from the transaction being processed)
-            # In a full implementation, this would come from the transaction request
-            # For now, we use last_known as the current transaction location
-            current_transaction_lat = float(client.last_known_lat)
-            current_transaction_lng = float(client.last_known_lng)
+            # Get current transaction location from the transaction object
+            # Use transaction's stored location if available, otherwise fall back to client's last known
+            if hasattr(transaction, 'current_lat') and hasattr(transaction, 'current_lng') and transaction.current_lat and transaction.current_lng:
+                current_transaction_lat = float(transaction.current_lat)
+                current_transaction_lng = float(transaction.current_lng)
+            else:
+                # Fallback to client's last known location
+                current_transaction_lat = float(client.last_known_lat or client.home_lat)
+                current_transaction_lng = float(client.last_known_lng or client.home_lng)
             
             # Calculate distance from home location
             distance_from_home = haversine_distance(
@@ -149,50 +152,43 @@ class RiskEngine:
                 current_transaction_lat, current_transaction_lng
             )
             
-            # Calculate distance from last known location (previous transaction location)
-            # Get the most recent completed transaction to find previous location
-            distance_from_last_known = distance_from_home  # Default fallback
+            # Calculate distance from last verified location (from previous successful OTP transaction)
+            # Get the most recent OTP-verified transaction's location as last known safe location
+            distance_from_last_verified = distance_from_home  # Default fallback to home distance
             
-            previous_transactions = Transaction.objects.filter(
+            # Find last verified transaction (completed with OTP or low-risk completed)
+            last_verified_transaction = Transaction.objects.filter(
                 client=client,
                 created_at__lt=transaction.created_at,
                 status='completed'
             ).order_by('-created_at').first()
             
-            if previous_transactions:
-                # In a real implementation, we'd store transaction-specific coordinates
-                # For demonstration, simulate previous location that's closer to current location
-                # This simulates a user who moved from a previous location to current location
-                # Previous location is simulated as Paris coordinates if current is also Paris-like
-                if abs(current_transaction_lat - 48.8566) < 1 and abs(current_transaction_lng - 2.3522) < 1:
-                    # Current location is Paris-like, so previous location is nearby in Paris
-                    prev_lat = 48.8570  # Slightly different location in Paris
-                    prev_lng = 2.3530
-                else:
-                    # Current location is not Paris, so previous was closer to home
-                    prev_lat = float(client.home_lat) + 0.001  # Very close to home
-                    prev_lng = float(client.home_lng) + 0.001
-                
-                distance_from_last_known = haversine_distance(
-                    prev_lat, prev_lng,
+            if last_verified_transaction and client.last_known_lat and client.last_known_lng:
+                # Use the current last_known as the last verified location
+                # (this represents the location from the most recent successful transaction)
+                distance_from_last_verified = haversine_distance(
+                    float(client.last_known_lat), float(client.last_known_lng),
                     current_transaction_lat, current_transaction_lng
                 )
             
             # EFFECTIVE DISTANCE LOGIC: Take minimum of both distances
-            effective_distance = min(distance_from_home, distance_from_last_known)
+            # This gives users the benefit of the doubt - they're safe if they're close to either location
+            effective_distance = min(distance_from_home, distance_from_last_verified)
             
-            # Determine which location provided the effective distance
-            closest_location = "HOME" if distance_from_home <= distance_from_last_known else "LAST_KNOWN"
+            # Determine which location provided the effective (shorter) distance
+            closest_location = "HOME" if distance_from_home <= distance_from_last_verified else "LAST_VERIFIED"
             
-            # Enhanced logging showing all three distances
-            logger.info(f"Enhanced effective distance analysis:")
-            logger.info(f"  Home location: ({client.home_lat}, {client.home_lng})")
-            logger.info(f"  Current transaction location: ({current_transaction_lat}, {current_transaction_lng})")
-            logger.info(f"  Distance from home: {distance_from_home:.2f}km")
-            logger.info(f"  Distance from last known: {distance_from_last_known:.2f}km")
-            logger.info(f"  Effective distance: {effective_distance:.2f}km (minimum distance)")
-            logger.info(f"  Closest reference point: {closest_location}")
-            logger.info(f"  Threshold: {max_distance_threshold}km")
+            # Enhanced logging showing all three distances with clear formatting
+            logger.info(f"🎯 Enhanced Distance-Based Risk Analysis for Transaction {transaction.id}:")
+            logger.info(f"  📍 Home location: ({client.home_lat}, {client.home_lng})")
+            logger.info(f"  📍 Current transaction location: ({current_transaction_lat}, {current_transaction_lng})")
+            if client.last_known_lat and client.last_known_lng:
+                logger.info(f"  📍 Last verified location: ({client.last_known_lat}, {client.last_known_lng})")
+            logger.info(f"  📏 Distance from home: {distance_from_home:.2f}km")
+            logger.info(f"  📏 Distance from last verified: {distance_from_last_verified:.2f}km")
+            logger.info(f"  🎯 Effective distance: {effective_distance:.2f}km (minimum = safest path)")
+            logger.info(f"  🏆 Closest reference point: {closest_location}")
+            logger.info(f"  🚧 Distance threshold: {max_distance_threshold}km")
             
             # Use effective distance for OTP decision
             within_effective_threshold = effective_distance <= max_distance_threshold
@@ -203,16 +199,16 @@ class RiskEngine:
                 
                 # Log successful validation with detailed information
                 log_rule_evaluation(
-                    rule_name="Enhanced Location Validation - Effective Distance",
+                    rule_name="Effective Distance Validation - APPROVED",
                     transaction_id=transaction.id,
                     triggered=False,
                     risk_score=risk_score,
                     triggers=[
                         f"✅ Location approved by effective distance: {effective_distance:.2f}km ≤ {max_distance_threshold}km",
                         f"Distance from home: {distance_from_home:.2f}km", 
-                        f"Distance from last known: {distance_from_last_known:.2f}km",
+                        f"Distance from last verified: {distance_from_last_verified:.2f}km",
                         f"Effective distance (minimum): {effective_distance:.2f}km",
-                        f"Closest reference point: {closest_location}"
+                        f"Approved by: {closest_location} location"
                     ]
                 )
             else:
@@ -224,19 +220,19 @@ class RiskEngine:
                 
                 # Detailed logging for OTP requirement
                 logger.warning(f"❌ LOCATION VIOLATION: Effective distance {effective_distance:.2f}km exceeds {max_distance_threshold}km threshold")
-                logger.warning(f"  Distance from home: {distance_from_home:.2f}km")
-                logger.warning(f"  Distance from last known: {distance_from_last_known:.2f}km")
-                logger.warning(f"  Both distances exceed threshold - OTP required")
+                logger.warning(f"  📏 Distance from home: {distance_from_home:.2f}km")
+                logger.warning(f"  📏 Distance from last verified: {distance_from_last_verified:.2f}km")
+                logger.warning(f"  🚫 Both distances exceed threshold - OTP REQUIRED")
                 
                 log_rule_evaluation(
-                    rule_name="Enhanced Distance Violation - Effective Distance",
+                    rule_name="Effective Distance Violation - OTP REQUIRED",
                     transaction_id=transaction.id,
                     triggered=True,
                     risk_score=risk_score,
                     triggers=[
                         f"❌ EFFECTIVE DISTANCE VIOLATION: {effective_distance:.2f}km > {max_distance_threshold}km",
                         f"Distance from home: {distance_from_home:.2f}km",
-                        f"Distance from last known: {distance_from_last_known:.2f}km", 
+                        f"Distance from last verified: {distance_from_last_verified:.2f}km", 
                         f"Effective distance (minimum): {effective_distance:.2f}km",
                         f"Both distances exceed threshold → OTP REQUIRED"
                     ]
@@ -247,20 +243,18 @@ class RiskEngine:
                 logger.critical(f"🔐 MANDATORY OTP REQUIRED: Effective distance {effective_distance:.2f}km "
                                f"exceeds {max_distance_threshold}km threshold for transaction {transaction.id}")
         else:
-            logger.warning(f"Enhanced distance check skipped: Missing location data for client {client.id}")
+            logger.warning(f"Enhanced distance check skipped: Missing home location data for client {client.id}")
             # Log missing location data with specific details
             missing_fields = []
             if not client.home_lat: missing_fields.append('home_lat')
             if not client.home_lng: missing_fields.append('home_lng') 
-            if not client.last_known_lat: missing_fields.append('last_known_lat')
-            if not client.last_known_lng: missing_fields.append('last_known_lng')
             
             log_rule_evaluation(
-                rule_name="Enhanced Distance Check - Effective Distance",
+                rule_name="Effective Distance Check - SKIPPED",
                 transaction_id=transaction.id,
                 triggered=False,
                 risk_score=risk_score,
-                triggers=[f"Skipped: Missing location data - {', '.join(missing_fields)}"]
+                triggers=[f"Skipped: Missing home location data - {', '.join(missing_fields)}"]
             )
         
         # Rule 5: Statistical outlier (previously Rule 5)
@@ -314,23 +308,28 @@ class RiskEngine:
         """Calculate enhanced location features for ML model with effective distance logic
         
         Returns:
-            dict: Contains distance_from_home, distance_from_last_known, effective_distance
+            dict: Contains distance_from_home, distance_from_last_verified, effective_distance
         """
         client = transaction.client
         
         # Default values if location data is missing
         features = {
             'distance_from_home': 0.0,
-            'distance_from_last_known': 0.0, 
+            'distance_from_last_verified': 0.0, 
             'effective_distance': 0.0,
             'has_location_data': False
         }
         
-        if (client.home_lat and client.home_lng and 
-            client.last_known_lat and client.last_known_lng):
+        if (client.home_lat and client.home_lng):
             
-            current_transaction_lat = float(client.last_known_lat)
-            current_transaction_lng = float(client.last_known_lng)
+            # Get current transaction location from the transaction object
+            if hasattr(transaction, 'current_lat') and hasattr(transaction, 'current_lng') and transaction.current_lat and transaction.current_lng:
+                current_transaction_lat = float(transaction.current_lat)
+                current_transaction_lng = float(transaction.current_lng)
+            else:
+                # Fallback to client's last known location
+                current_transaction_lat = float(client.last_known_lat or client.home_lat)
+                current_transaction_lng = float(client.last_known_lng or client.home_lng)
             
             # Calculate distance from home
             distance_from_home = haversine_distance(
@@ -338,44 +337,32 @@ class RiskEngine:
                 current_transaction_lat, current_transaction_lng
             )
             
-            # Calculate distance from last known location (previous transaction location)
-            # Get the most recent completed transaction to find previous location
-            distance_from_last_known = distance_from_home  # Default fallback
+            # Calculate distance from last verified location (previous successful transaction)
+            distance_from_last_verified = distance_from_home  # Default fallback
             
-            previous_transactions = Transaction.objects.filter(
+            # Find last verified transaction
+            last_verified_transaction = Transaction.objects.filter(
                 client=client,
                 created_at__lt=transaction.created_at,
                 status='completed'
             ).order_by('-created_at').first()
             
-            if previous_transactions:
-                # In a real implementation, we'd store transaction-specific coordinates
-                # For demonstration, simulate previous location that's closer to current location
-                # This simulates realistic user movement patterns
-                if abs(current_transaction_lat - 48.8566) < 1 and abs(current_transaction_lng - 2.3522) < 1:
-                    # Current location is Paris-like, so previous location is nearby in Paris
-                    prev_lat = 48.8570  # Slightly different location in Paris
-                    prev_lng = 2.3530
-                else:
-                    # Current location is not Paris, so previous was closer to home
-                    prev_lat = float(client.home_lat) + 0.001  # Very close to home
-                    prev_lng = float(client.home_lng) + 0.001
-                
-                distance_from_last_known = haversine_distance(
-                    prev_lat, prev_lng,
+            if last_verified_transaction and client.last_known_lat and client.last_known_lng:
+                distance_from_last_verified = haversine_distance(
+                    float(client.last_known_lat), float(client.last_known_lng),
                     current_transaction_lat, current_transaction_lng
                 )
             
             # Calculate effective distance (minimum of both)
-            effective_distance = min(distance_from_home, distance_from_last_known)
+            effective_distance = min(distance_from_home, distance_from_last_verified)
             
-            logger.info(f"Location features for ML: Home={distance_from_home:.2f}km, "
-                       f"LastKnown={distance_from_last_known:.2f}km, "
+            logger.info(f"ML Location features: Home={distance_from_home:.2f}km, "
+                       f"LastVerified={distance_from_last_verified:.2f}km, "
                        f"Effective={effective_distance:.2f}km")
             
             features.update({
                 'distance_from_home': distance_from_home,
-                'distance_from_last_known': distance_from_last_known,
+                'distance_from_last_verified': distance_from_last_verified,
                 'effective_distance': effective_distance,
                 'has_location_data': True
             })

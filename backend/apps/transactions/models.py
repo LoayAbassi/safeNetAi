@@ -23,6 +23,11 @@ class Transaction(models.Model):
     description = models.TextField(blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     risk_score = models.IntegerField(default=0)
+    
+    # Transaction location fields (for current transaction location)
+    current_lat = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True, help_text="Current transaction latitude")
+    current_lng = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True, help_text="Current transaction longitude")
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
