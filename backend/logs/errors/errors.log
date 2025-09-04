@@ -738,3 +738,7 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 django.db.utils.OperationalError: no such column: transactions_transaction.current_lat
 [2025-09-04 15:53:48] [ERROR] [django.server] "GET /admin/transactions/transaction/ HTTP/1.1" 500 208054
+[2025-09-04 16:02:57] [ERROR] [ai] Error making ML prediction for transaction 322: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 16:02:57] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 322, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-09-04 16:03:15] [ERROR] [ai] Error making ML prediction for transaction 323: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-09-04 16:03:15] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 323, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
