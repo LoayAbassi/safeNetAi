@@ -12,9 +12,11 @@ import {
   BarChart3
 } from 'lucide-react';
 import api from '../../api';
+import { useTranslation } from 'react-i18next';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [stats, setStats] = useState({
     totalClients: 0,
     totalTransactions: 0,
@@ -55,7 +57,6 @@ const AdminDashboard = () => {
         changes: dashboardStats.changes || { clients: 0, transactions: 0 }
       });
     } catch (error) {
-      console.error('Error fetching dashboard data:', error);
       setError('Failed to load dashboard data. Please try again.');
     } finally {
       setLoading(false);
@@ -154,8 +155,8 @@ const AdminDashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p className="text-gray-600 mt-2">Welcome to the SafeNetAi administration panel</p>
+        <h1 className="text-3xl font-bold text-gray-900">{t('admin_dashboard')}</h1>
+        <p className="text-gray-600 mt-2">{t('welcome_admin_panel')}</p>
       </motion.div>
 
       {/* Statistics Cards */}
@@ -196,7 +197,7 @@ const AdminDashboard = () => {
         >
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">Recent Transactions</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('recent_transactions')}</h2>
               <TrendingUp className="h-5 w-5 text-gray-400" />
             </div>
           </div>
@@ -210,7 +211,7 @@ const AdminDashboard = () => {
                         {transaction.client?.first_name} {transaction.client?.last_name}
                       </p>
                       <p className="text-sm text-gray-600">
-                        Transfer • {formatDate(transaction.created_at)}
+                        {t('transfer')} • {formatDate(transaction.created_at)}
                       </p>
                     </div>
                     <div className="text-right">
@@ -229,7 +230,7 @@ const AdminDashboard = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 text-center py-4">No recent transactions</p>
+              <p className="text-gray-500 text-center py-4">{t('no_recent_transactions')}</p>
             )}
           </div>
         </motion.div>
@@ -243,7 +244,7 @@ const AdminDashboard = () => {
         >
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">Fraud Alerts</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('fraud_alerts')}</h2>
               <AlertTriangle className="h-5 w-5 text-red-500" />
             </div>
           </div>
@@ -257,21 +258,21 @@ const AdminDashboard = () => {
                         Transaction #{alert.transaction?.id}
                       </p>
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getRiskLevelColor(alert.level)}`}>
-                        {alert.level} Risk
+                        {alert.level} {t('risk')}
                       </span>
                     </div>
                     <p className="text-sm text-gray-600 mb-2">
-                      Risk Score: {alert.risk_score}
+                      {t('risk_score')}: {alert.risk_score}
                     </p>
                     <div className="flex items-center justify-between text-xs text-gray-500">
-                      <span>Score: {alert.risk_score}</span>
+                      <span>{t('score')}: {alert.risk_score}</span>
                       <span>{formatDate(alert.created_at)}</span>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500 text-center py-4">No fraud alerts</p>
+              <p className="text-gray-500 text-center py-4">{t('no_fraud_alerts')}</p>
             )}
           </div>
         </motion.div>
@@ -284,28 +285,28 @@ const AdminDashboard = () => {
         transition={{ duration: 0.5, delay: 0.6 }}
         className="bg-white rounded-lg shadow-md border border-gray-200 p-6"
       >
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('quick_actions')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button 
             onClick={() => navigate('/admin/clients')}
             className="flex items-center justify-center space-x-2 p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200"
           >
             <Users className="h-5 w-5 text-blue-600" />
-            <span className="font-medium text-blue-900">Manage Clients</span>
+            <span className="font-medium text-blue-900">{t('manage_clients')}</span>
           </button>
           <button 
             onClick={() => navigate('/admin/transactions')}
             className="flex items-center justify-center space-x-2 p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-colors duration-200"
           >
             <CreditCard className="h-5 w-5 text-green-600" />
-            <span className="font-medium text-green-900">View Transactions</span>
+            <span className="font-medium text-green-900">{t('view_transactions')}</span>
           </button>
           <button 
             onClick={() => navigate('/admin/fraud-alerts')}
             className="flex items-center justify-center space-x-2 p-4 bg-red-50 hover:bg-red-100 rounded-lg transition-colors duration-200"
           >
             <AlertTriangle className="h-5 w-5 text-red-600" />
-            <span className="font-medium text-red-900">Review Alerts</span>
+            <span className="font-medium text-red-900">{t('review_alerts')}</span>
           </button>
         </div>
       </motion.div>

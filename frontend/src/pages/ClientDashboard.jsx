@@ -21,7 +21,7 @@ const ClientDashboard = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     fetchData();
@@ -39,7 +39,7 @@ const ClientDashboard = () => {
       setTransactions(transactionsRes.data.slice(0, 5)); // Get last 5 transactions
     } catch (error) {
       setError('Failed to load dashboard data');
-      console.error('Error fetching dashboard data:', error);
+      // Removed console.error for production
     } finally {
       setLoading(false);
     }
@@ -71,8 +71,8 @@ const ClientDashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-3xl font-bold text-gray-900">Client Dashboard</h1>
-        <p className="text-gray-600 mt-2">Welcome back, {user?.first_name}!</p>
+        <h1 className="text-3xl font-bold text-gray-900">{t('dashboard')}</h1>
+        <p className="text-gray-600 mt-2">{t('welcome')}, {user?.first_name}!</p>
       </motion.div>
 
       {error && (
@@ -97,25 +97,25 @@ const ClientDashboard = () => {
           <div className="p-6 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-900 flex items-center">
               <User className="h-5 w-5 mr-2" />
-              Profile
+              {t('profile')}
             </h2>
           </div>
           {profile && (
             <div className="p-6 space-y-4">
               <div>
-                <label className="text-sm font-medium text-gray-500">Name</label>
+                <label className="text-sm font-medium text-gray-500">{t('name')}</label>
                 <p className="text-gray-900">{profile.full_name}</p>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-500">Email</label>
+                <label className="text-sm font-medium text-gray-500">{t('email')}</label>
                 <p className="text-gray-900">{user?.email}</p>
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-500">Account Number</label>
+                <label className="text-sm font-medium text-gray-500">{t('bank_account_number')}</label>
                 <p className="text-gray-900 font-mono">{profile.bank_account_number}</p>
               </div>
               <div className="pt-4 border-t border-gray-200">
-                <label className="text-sm font-medium text-gray-500">Balance</label>
+                <label className="text-sm font-medium text-gray-500">{t('account_balance')}</label>
                 <p className="text-2xl font-bold text-primary-600">
                   {formatCurrency(profile.balance)}
                 </p>
@@ -134,7 +134,7 @@ const ClientDashboard = () => {
           <div className="p-6 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-900 flex items-center">
               <TrendingUp className="h-5 w-5 mr-2" />
-              Quick Actions
+              {t('quick_actions')}
             </h2>
           </div>
           <div className="p-6 space-y-4">
@@ -145,7 +145,7 @@ const ClientDashboard = () => {
               className="w-full btn-primary flex items-center justify-center py-3"
             >
               <Plus className="h-5 w-5 mr-2" />
-              New Transfer
+              {t('transfer_money')}
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -154,7 +154,7 @@ const ClientDashboard = () => {
               className="w-full btn-secondary flex items-center justify-center py-3"
             >
               <RefreshCw className="h-5 w-5 mr-2" />
-              Refresh Data
+              {t('refresh_data')}
             </motion.button>
           </div>
         </motion.div>
@@ -169,7 +169,7 @@ const ClientDashboard = () => {
           <div className="p-6 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-900 flex items-center">
               <CreditCard className="h-5 w-5 mr-2" />
-              Recent Transactions
+              {t('transaction_history')}
             </h2>
           </div>
           {transactions.length > 0 ? (
@@ -177,10 +177,10 @@ const ClientDashboard = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('type')}</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('amount')}</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('status')}</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('date')}</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -217,7 +217,7 @@ const ClientDashboard = () => {
           ) : (
             <div className="text-center py-8">
               <DollarSign className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500">No transactions yet.</p>
+              <p className="text-gray-500">{t('no_transactions_yet')}</p>
             </div>
           )}
         </motion.div>

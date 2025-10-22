@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import i18n from '../i18n';
+import api from '../api';
+import { useAuth } from './AuthContext';
 
 const LanguageContext = createContext();
 
@@ -13,6 +15,7 @@ export const useLanguage = () => {
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('en');
+  const { user, isAuthenticated } = useAuth();
 
   useEffect(() => {
     // Get language from localStorage or browser language
@@ -42,7 +45,7 @@ export const LanguageProvider = ({ children }) => {
     }
   }, []);
 
-  const changeLanguage = (newLanguage) => {
+  const changeLanguage = async (newLanguage) => {
     if (['en', 'fr', 'ar'].includes(newLanguage)) {
       setLanguage(newLanguage);
       i18n.changeLanguage(newLanguage);
@@ -55,6 +58,15 @@ export const LanguageProvider = ({ children }) => {
       } else {
         document.documentElement.dir = 'ltr';
         document.documentElement.lang = newLanguage;
+      }
+      
+      // If user is authenticated, send language preference to backend
+      if (isAuthenticated && user) {
+        try {
+          await api.patch(`/api/users/profile/${user.id}/`, { language: newLanguage });
+        } catch (error) {
+          console.error('Failed to update user language preference:', error);
+        }
       }
     }
   };

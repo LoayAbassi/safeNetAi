@@ -23,16 +23,11 @@ logger = get_email_logger()
 # Default language
 DEFAULT_LANGUAGE = 'en'
 
-# User language preferences (in a real app, this would be stored in the database)
-USER_LANGUAGES = {}
+# Remove the global USER_LANGUAGES dictionary since we now store language in the database
 
-def set_user_language(user_id, language):
-    """Set user's preferred language"""
-    USER_LANGUAGES[user_id] = language if language in ['en', 'fr', 'ar'] else DEFAULT_LANGUAGE
-
-def get_user_language(user_id):
-    """Get user's preferred language"""
-    return USER_LANGUAGES.get(user_id, DEFAULT_LANGUAGE)
+def get_user_language(user):
+    """Get user's preferred language from the database"""
+    return getattr(user, 'language', DEFAULT_LANGUAGE) if user else DEFAULT_LANGUAGE
 
 def generate_otp():
     """Generate a 6-digit OTP"""
@@ -252,7 +247,7 @@ def send_html_email(subject, html_content, recipient_list, text_content=None):
 def send_transaction_notification(user, transaction, status, risk_level="LOW"):
     """Send rich HTML transaction notification email"""
     try:
-        logger.info(f"Sending transaction notification to {user.email} for transaction {transaction.id}")
+        logger.info(f"Sending transaction notification to {user.email} for transaction {transaction.id} using language: {get_user_language(user)}")
         
         # Prepare context
         context = {
@@ -266,6 +261,13 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
             'risk_score': getattr(transaction, 'risk_score', 0),  # Add risk_score with default
             'dashboard_url': f"{settings.SITE_BASE_URL}/client-dashboard"
         }
+        
+        # Get user's preferred language
+        user_language = get_user_language(user)
+        
+        # Get template based on language
+        template = get_transaction_notification_template(user_language)
+        subject = template['subject'].format(status=status.title())
         
         # Generate HTML content
         html_content = get_html_email_template('transaction_created', context)
@@ -295,7 +297,7 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
         
         # Send email
         success = send_html_email(
-            subject=f"SafeNetAi - Transaction {status.title()}",
+            subject=subject,
             html_content=html_content,
             recipient_list=[user.email],
             text_content=text_content
@@ -351,7 +353,7 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
 def send_enhanced_fraud_alert_email(profile, fraud_alert):
     """Send enhanced HTML fraud alert email"""
     try:
-        logger.info(f"Sending enhanced fraud alert email to {profile.user.email}")
+        logger.info(f"Sending enhanced fraud alert email to {profile.user.email} using language: {get_user_language(profile.user)}")
         
         # Prepare context
         context = {
@@ -365,6 +367,13 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
             'dashboard_url': f"{settings.SITE_BASE_URL}/client-dashboard"
         }
         
+        # Get user's preferred language
+        user_language = get_user_language(profile.user)
+        
+        # Get template based on language
+        template = get_fraud_alert_template(user_language)
+        subject = template['subject']
+        
         # Generate HTML content
         html_content = get_html_email_template('fraud_alert', context)
         
@@ -374,7 +383,7 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
         
         Hello {context['user_name']},
         
-        We detected unusual activity on your account.
+        We detected unusual activity on your account that requires your attention.
         
         Transaction Details:
         - ID: #{fraud_alert.transaction.id}
@@ -384,9 +393,7 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
         - Risk Score: {fraud_alert.risk_score}%
         - Triggers: {', '.join(fraud_alert.triggers)}
         
-        Please review this transaction and contact support if you don't recognize this activity.
-        
-        View your dashboard: {context['dashboard_url']}
+        Review your dashboard: {context['dashboard_url']}
         
         Best regards,
         SafeNetAi Security Team
@@ -394,7 +401,7 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
         
         # Send email
         success = send_html_email(
-            subject="SafeNetAi - Security Alert - Unusual Activity Detected",
+            subject=subject,
             html_content=html_content,
             recipient_list=[profile.user.email],
             text_content=text_content
@@ -446,6 +453,9 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
 
 def send_otp_email(user, otp, language='en'):
     """Send elegant HTML OTP email to user with comprehensive logging"""
+    # Log the language being used for this email
+    logger.info(f"Sending OTP email to {user.email} using language: {language}")
+    
     template = get_otp_email_template(language)
     subject = template['subject']
     
@@ -623,10 +633,13 @@ def send_fraud_alert_email(profile, fraud_alert):
     # Use the enhanced version
     return send_enhanced_fraud_alert_email(profile, fraud_alert)
 
-def create_otp_for_user(user, language='en'):
+def create_otp_for_user(user, language=None):
     """Create and send OTP for user with comprehensive logging"""
     try:
         logger.info(f"Creating OTP for user {user.email}")
+        
+        # Use provided language or get from user preference
+        user_language = language or get_user_language(user)
         
         # Delete any existing unused OTPs for this user
         deleted_count = EmailOTP.objects.filter(user=user, used=False).delete()[0]
@@ -643,7 +656,7 @@ def create_otp_for_user(user, language='en'):
         logger.info(f"Created OTP {otp.otp} for user {user.email}, expires at {otp.expires_at}")
         
         # Send email
-        success = send_otp_email(user, otp.otp, language)
+        success = send_otp_email(user, otp.otp, user_language)
         
         if success:
             logger.info(f"OTP created and sent successfully for user {user.email}")
@@ -675,17 +688,20 @@ def create_otp_for_user(user, language='en'):
         )
         return None
 
-def resend_otp_email(user, language='en'):
+def resend_otp_email(user, language=None):
     """Resend OTP email to user"""
     try:
         logger.info(f"Attempting to resend OTP for user {user.email}")
+        
+        # Use provided language or get from user preference
+        user_language = language or get_user_language(user)
         
         # Check if user has a valid unused OTP
         existing_otp = EmailOTP.objects.filter(user=user, used=False).first()
         
         if existing_otp and existing_otp.expires_at > timezone.now():
             logger.info(f"Resending existing OTP {existing_otp.otp} for user {user.email}")
-            success = send_otp_email(user, existing_otp.otp, language)
+            success = send_otp_email(user, existing_otp.otp, user_language)
             if success:
                 log_system_event(
                     "OTP resent successfully",
@@ -696,7 +712,7 @@ def resend_otp_email(user, language='en'):
             return success
         else:
             logger.info(f"No valid OTP found for user {user.email}, creating new one")
-            return create_otp_for_user(user, language) is not None
+            return create_otp_for_user(user, user_language) is not None
             
     except Exception as e:
         logger.error(f"Error resending OTP for user {user.email}: {e}")
@@ -711,7 +727,12 @@ def resend_otp_email(user, language='en'):
 def send_security_otp_email(user, otp_code, transaction):
     """Send elegant security OTP email for high-risk transactions"""
     try:
-        subject = f"🔒 Security Verification Required - Transaction #{transaction.id}"
+        # Get user's preferred language
+        user_language = get_user_language(user)
+        logger.info(f"Sending security OTP email to {user.email} using language: {user_language}")
+        
+        template = get_security_otp_email_template(user_language)
+        subject = template['subject'].format(transaction_id=transaction.id)
         
         # Create elegant HTML content for transaction OTP
         html_content = f"""
@@ -908,11 +929,16 @@ def send_security_otp_email(user, otp_code, transaction):
         return False
         
         # Send email
-        send_html_email(subject, html_content, [user.email])
+        success = send_html_email(
+            subject=subject,
+            html_content=html_content,
+            recipient_list=[user.email],
+            text_content=text_content
+        )
         
-        logger.info(f"Security OTP email sent to {user.email} for transaction {transaction.id}")
-        return True
-        
-    except Exception as e:
-        logger.error(f"Failed to send security OTP email: {e}")
-        return False
+        if success:
+            logger.info(f"Security OTP email sent to {user.email} for transaction {transaction.id}")
+            return True
+        else:
+            logger.error(f"Failed to send security OTP email to {user.email}")
+            return False

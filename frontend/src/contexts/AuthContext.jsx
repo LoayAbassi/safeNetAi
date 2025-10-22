@@ -63,7 +63,10 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await api.post('/api/auth/login/', { email, password });
+      // Get current language from localStorage
+      const currentLanguage = localStorage.getItem('language') || 'en';
+      
+      const response = await api.post('/api/auth/login/', { email, password, language: currentLanguage });
       const { access_token, refresh_token, user: userData } = response.data;
       
       // Store tokens and user data
@@ -89,10 +92,13 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await api.post('/api/auth/register/', userData);
+      // Add current language to registration data
+      const currentLanguage = localStorage.getItem('language') || 'en';
+      const registrationData = { ...userData, language: currentLanguage };
+      
+      const response = await api.post('/api/auth/register/', registrationData);
       return { success: true, message: response.data.message };
     } catch (error) {
-      console.error('❌ Registration failed:', error);
       return { 
         success: false, 
         error: error.response?.data?.error || 'Registration failed' 

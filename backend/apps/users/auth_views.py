@@ -20,6 +20,12 @@ def login_view(request):
     if serializer.is_valid():
         user = serializer.validated_data['user']
         
+        # Update user's language preference if provided
+        language = request.data.get('language')
+        if language and language in ['en', 'fr', 'ar']:
+            user.language = language
+            user.save()
+        
         # Log successful login
         log_user_action(
             action="LOGIN",
@@ -42,7 +48,8 @@ def login_view(request):
                 'last_name': user.last_name,
                 'is_staff': user.is_staff,
                 'is_superuser': user.is_superuser,
-                'role': 'admin' if user.is_superuser else 'client'
+                'role': 'admin' if user.is_superuser else 'client',
+                'language': user.language
             }
         })
     else:
@@ -62,6 +69,12 @@ def register_view(request):
     serializer = UserRegistrationSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.save()
+        
+        # Update user's language preference if provided
+        language = request.data.get('language')
+        if language and language in ['en', 'fr', 'ar']:
+            user.language = language
+            user.save()
         
         # Log successful registration
         log_user_action(

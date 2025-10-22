@@ -4,3 +4,8 @@
 [2025-10-22 14:15:26] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 325
 [2025-10-22 14:15:28] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
 [2025-10-22 14:16:14] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 326
+[2025-10-22 14:53:10] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 327
+[2025-10-22 16:24:24] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-10-22 16:24:26] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 328
+[2025-10-22 16:24:59] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 328 using language: fr
+[2025-10-22 16:25:00] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com

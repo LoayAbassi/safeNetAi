@@ -37,6 +37,14 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
     
+    # Language preference
+    LANGUAGE_CHOICES = [
+        ('en', 'English'),
+        ('fr', 'Français'),
+        ('ar', 'العربية'),
+    ]
+    language = models.CharField(max_length=2, choices=LANGUAGE_CHOICES, default='en')
+    
     # Email verification fields
     is_email_verified = models.BooleanField(default=False)
     
