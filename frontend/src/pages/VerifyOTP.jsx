@@ -10,6 +10,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const VerifyOTP = () => {
   const [otp, setOtp] = useState('');
@@ -18,6 +19,7 @@ const VerifyOTP = () => {
   const { verifyOTP } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useLanguage();
   
   const email = location.state?.email || '';
 
@@ -50,9 +52,9 @@ const VerifyOTP = () => {
         body: JSON.stringify({ email }),
       });
       
-      setError('OTP resent successfully! Please check your email.');
+      setError(t('otp_resent_success'));
     } catch (error) {
-      setError('Failed to resend OTP. Please try again.');
+      setError(t('otp_resent_failed'));
     }
     
     setLoading(false);
@@ -73,7 +75,7 @@ const VerifyOTP = () => {
             transition={{ delay: 0.2 }}
             className="text-3xl font-bold text-gray-900"
           >
-            Verify Your Email
+            {t('verify_email')}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -81,7 +83,7 @@ const VerifyOTP = () => {
             transition={{ delay: 0.3 }}
             className="mt-2 text-sm text-gray-600"
           >
-            Please enter the 6-digit verification code sent to your email
+            {t('enter_verification_code')}
           </motion.p>
         </div>
 
@@ -116,7 +118,7 @@ const VerifyOTP = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="otp" className="block text-sm font-medium text-gray-700 mb-2">
-                Verification Code
+                {t('verification_code')}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -135,7 +137,7 @@ const VerifyOTP = () => {
                   autoFocus
                 />
               </div>
-              <p className="mt-1 text-sm text-gray-500">Enter the 6-digit code from your email</p>
+              <p className="mt-1 text-sm text-gray-500">{t('enter_6_digit_code')}</p>
             </div>
             
             <motion.button
@@ -150,7 +152,7 @@ const VerifyOTP = () => {
               ) : (
                 <>
                   <CheckCircle className="h-5 w-5 mr-2" />
-                  Verify OTP
+                  {t('verify_otp')}
                 </>
               )}
             </motion.button>
@@ -164,7 +166,7 @@ const VerifyOTP = () => {
               className="btn-secondary w-full flex justify-center items-center py-3"
             >
               <RefreshCw className="h-5 w-5 mr-2" />
-              Resend OTP
+              {t('resend_otp')}
             </motion.button>
           </form>
 
@@ -176,7 +178,7 @@ const VerifyOTP = () => {
               className="text-primary-600 hover:text-primary-500 text-sm font-medium transition-colors duration-200 flex items-center justify-center mx-auto"
             >
               <ArrowLeft className="h-4 w-4 mr-1" />
-              Back to Login
+              {t('back_to_login')}
             </motion.button>
           </div>
         </motion.div>

@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, Mail, Lock, AlertCircle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const handleChange = (e) => {
     setFormData({
@@ -53,7 +55,7 @@ const Login = () => {
             transition={{ delay: 0.2 }}
             className="text-3xl font-bold text-gray-900"
           >
-            Welcome to SafeNetAi
+            {t('welcome')}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -61,7 +63,7 @@ const Login = () => {
             transition={{ delay: 0.3 }}
             className="mt-2 text-sm text-gray-600"
           >
-            Sign in to your account
+            {t('sign_in')}
           </motion.p>
         </div>
 
@@ -85,7 +87,7 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
+                {t('email_address')}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -107,7 +109,7 @@ const Login = () => {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                {t('password')}
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -148,7 +150,7 @@ const Login = () => {
               {loading ? (
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
               ) : (
-                'Sign In'
+                t('sign_in_button')
               )}
             </motion.button>
           </form>
@@ -158,7 +160,7 @@ const Login = () => {
               to="/register"
               className="text-primary-600 hover:text-primary-500 text-sm font-medium transition-colors duration-200"
             >
-              Don't have an account? Sign up
+              {t('dont_have_account')}
             </Link>
           </div>
         </motion.div>

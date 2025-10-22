@@ -1,0 +1,127 @@
+[2025-10-21 17:25:04] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-21 19:20:04] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-21 19:20:38] [INFO] [django.server] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+[2025-10-21 19:20:39] [WARNING] [django.request] Bad Request: /api/auth/login/
+[2025-10-21 19:20:39] [WARNING] [django.server] "POST /api/auth/login/ HTTP/1.1" 400 44
+[2025-10-21 19:20:50] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 638
+[2025-10-21 19:20:50] [INFO] [django.server] "OPTIONS /api/admin/dashboard/stats/ HTTP/1.1" 200 0
+[2025-10-21 19:20:50] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-10-21 19:20:50] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-10-21 19:20:50] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 19:20:50] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 19:20:50] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 19:20:50] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 19:20:50] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 19:20:50] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 19:20:50] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 19:20:50] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 19:20:54] [INFO] [django.server] "OPTIONS /api/admin/clients/ HTTP/1.1" 200 0
+[2025-10-21 19:20:55] [INFO] [django.server] "OPTIONS /api/admin/clients/ HTTP/1.1" 200 0
+[2025-10-21 19:20:55] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-21 19:20:55] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-21 19:20:57] [INFO] [django.server] "OPTIONS /api/admin/transactions/ HTTP/1.1" 200 0
+[2025-10-21 19:20:57] [INFO] [django.server] "OPTIONS /api/admin/transactions/ HTTP/1.1" 200 0
+[2025-10-21 19:20:57] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 10436
+[2025-10-21 19:20:57] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 10436
+[2025-10-21 19:20:59] [INFO] [django.server] "OPTIONS /api/admin/fraud-alerts/ HTTP/1.1" 200 0
+[2025-10-21 19:20:59] [INFO] [django.server] "OPTIONS /api/admin/fraud-alerts/ HTTP/1.1" 200 0
+[2025-10-21 19:20:59] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 12026
+[2025-10-21 19:20:59] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 12026
+[2025-10-21 19:21:09] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 19:21:09] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 19:21:09] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 19:21:09] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 19:21:09] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 19:21:09] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 19:21:09] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 19:21:09] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 19:21:24] [INFO] [django.server] "OPTIONS /api/admin/thresholds/ HTTP/1.1" 200 0
+[2025-10-21 19:21:24] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-10-21 19:21:24] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-10-21 19:21:24] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-21 19:21:24] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-21 19:21:24] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-21 19:21:24] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-21 19:21:30] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 19:21:30] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 19:21:30] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 19:21:30] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 19:21:30] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 19:21:30] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 19:21:30] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 19:21:30] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 20:06:01] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-21 20:06:31] [WARNING] [django.request] Bad Request: /api/auth/login/
+[2025-10-21 20:06:31] [WARNING] [django.server] "POST /api/auth/login/ HTTP/1.1" 400 44
+[2025-10-21 20:06:35] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 638
+[2025-10-21 20:06:35] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 20:06:35] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 20:06:36] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 20:06:36] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 20:06:36] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 20:06:36] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 20:06:36] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 20:06:36] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 20:06:59] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-21 20:06:59] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-21 20:07:07] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 20:07:07] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 20:07:07] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 20:07:07] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 20:07:07] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 20:07:07] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 20:07:07] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 20:07:07] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 20:07:10] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-21 20:07:10] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-21 20:07:13] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 10436
+[2025-10-21 20:07:13] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 10436
+[2025-10-21 20:07:15] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 12026
+[2025-10-21 20:07:16] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 12026
+[2025-10-21 20:07:18] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 20:07:18] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 20:07:18] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 20:07:18] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 20:07:18] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-21 20:07:18] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-21 20:07:18] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-21 20:07:18] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-21 20:07:32] [INFO] [django.server] "GET /admin/ HTTP/1.1" 302 0
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4170
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /static/admin/css/login.css HTTP/1.1" 200 951
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+[2025-10-21 20:07:33] [INFO] [django.server] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+[2025-10-21 20:07:33] [WARNING] [django.request] Not Found: /favicon.ico
+[2025-10-21 20:07:33] [WARNING] [django.server] "GET /favicon.ico HTTP/1.1" 404 3746
+[2025-10-21 20:07:43] [INFO] [django.server] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-10-21 20:07:43] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16257
+[2025-10-21 20:07:43] [INFO] [django.server] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+[2025-10-21 20:07:43] [INFO] [django.server] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[2025-10-21 20:07:43] [INFO] [django.server] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[2025-10-21 20:07:43] [INFO] [django.server] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /admin/users/user/ HTTP/1.1" 200 50666
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[2025-10-21 20:07:47] [INFO] [django.server] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+[2025-10-21 20:08:03] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 647
+[2025-10-21 20:08:40] [WARNING] [django.request] Bad Request: /api/auth/login/
+[2025-10-21 20:08:40] [WARNING] [django.server] "POST /api/auth/login/ HTTP/1.1" 400 44
+[2025-10-21 20:08:45] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 647
