@@ -8,3 +8,7 @@
 [2025-10-22 14:15:26] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 325, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
 [2025-10-22 14:16:13] [ERROR] [ai] Error making ML prediction for transaction 326: X has 9 features, but StandardScaler is expecting 7 features as input.
 [2025-10-22 14:16:13] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 326, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:53:09] [ERROR] [ai] Error making ML prediction for transaction 327: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-22 14:53:09] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 327, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 16:24:24] [ERROR] [ai] Error making ML prediction for transaction 328: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-22 16:24:24] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 328, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}

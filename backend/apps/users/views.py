@@ -2,9 +2,10 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .serializers import ClientProfileSerializer, AdminClientProfileSerializer
+from .serializers import ClientProfileSerializer, AdminClientProfileSerializer, UserLanguageSerializer
 from apps.risk.models import ClientProfile
 from django.db import models
+from .models import User
 
 class ClientProfileViewSet(viewsets.ReadOnlyModelViewSet):
     """Client profile viewset for authenticated users"""
@@ -42,6 +43,15 @@ class ClientProfileViewSet(viewsets.ReadOnlyModelViewSet):
                 {'detail': 'Profile not found'}, 
                 status=status.HTTP_404_NOT_FOUND
             )
+    
+    @action(detail=False, methods=['patch'], permission_classes=[permissions.IsAuthenticated])
+    def update_language(self, request):
+        """Update user's language preference"""
+        serializer = UserLanguageSerializer(request.user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Language updated successfully'})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class AdminClientProfileViewSet(viewsets.ModelViewSet):
     """Admin viewset for managing client profiles"""

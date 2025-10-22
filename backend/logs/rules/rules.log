@@ -124,3 +124,89 @@
 [2025-10-22 14:16:13] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
 [2025-10-22 14:16:13] [INFO] [rules] ML Location features: Home=128.61km, LastVerified=0.00km, Effective=0.00km
 [2025-10-22 14:16:14] [INFO] [rules] Fraud alert already exists for transaction 326: ID 155
+[2025-10-22 14:53:07] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 14:53:07] [INFO] [rules] Starting risk assessment for transaction 327
+[2025-10-22 14:53:07] [INFO] [rules] Transaction details: Amount=12000.00 DZD, Type=transfer, Client=loay abassi
+[2025-10-22 14:53:07] [WARNING] [rules] Rule 1 triggered: Large transfer: 12000.00 DZD > 5000.0 DZD
+[2025-10-22 14:53:07] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 327 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 327, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: 12000.00 DZD > 5000.0 DZD"]}
+[2025-10-22 14:53:07] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 327:
+[2025-10-22 14:53:07] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-10-22 14:53:07] [INFO] [rules]   📍 Current transaction location: (34.7275264, 10.7446272)
+[2025-10-22 14:53:07] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-10-22 14:53:07] [INFO] [rules]   📏 Distance from home: 128.61km
+[2025-10-22 14:53:07] [INFO] [rules]   📏 Distance from last verified: 0.00km
+[2025-10-22 14:53:07] [INFO] [rules]   🎯 Effective distance: 0.00km (minimum = safest path)
+[2025-10-22 14:53:07] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-10-22 14:53:07] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-10-22 14:53:07] [INFO] [rules] ✅ LOCATION APPROVED: Effective distance 0.00km (closest to LAST_VERIFIED) is within 60.0km threshold
+[2025-10-22 14:53:07] [INFO] [rules] Rule evaluation: Effective Distance Validation - APPROVED | Transaction: 327 | Status: NOT_TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Effective Distance Validation - APPROVED", "transaction_id": 327, "triggered": false, "risk_score": 30, "triggers": ["\u2705 Location approved by effective distance: 0.00km \u2264 60.0km", "Distance from home: 128.61km", "Distance from last verified: 0.00km", "Effective distance (minimum): 0.00km", "Approved by: LAST_VERIFIED location"]}
+[2025-10-22 14:53:07] [WARNING] [rules] Rule 5 triggered: Statistical outlier: z-score 2.43 > 2.0
+[2025-10-22 14:53:07] [INFO] [rules] Risk assessment completed: Score=45, Triggers=2, Requires OTP=False, Decision=Monitor
+[2025-10-22 14:53:07] [INFO] [rules] Creating fraud alert for transaction 327: Medium risk, score 45
+[2025-10-22 14:53:07] [INFO] [rules] Fraud alert created: ID 156
+[2025-10-22 14:53:07] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 14:53:07] [INFO] [rules] Starting risk assessment for transaction 327
+[2025-10-22 14:53:07] [INFO] [rules] Transaction details: Amount=12000.00 DZD, Type=transfer, Client=loay abassi
+[2025-10-22 14:53:07] [WARNING] [rules] Rule 1 triggered: Large transfer: 12000.00 DZD > 5000.0 DZD
+[2025-10-22 14:53:07] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 327 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 327, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: 12000.00 DZD > 5000.0 DZD"]}
+[2025-10-22 14:53:07] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 327:
+[2025-10-22 14:53:07] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-10-22 14:53:07] [INFO] [rules]   📍 Current transaction location: (34.7275264, 10.7446272)
+[2025-10-22 14:53:07] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-10-22 14:53:07] [INFO] [rules]   📏 Distance from home: 128.61km
+[2025-10-22 14:53:07] [INFO] [rules]   📏 Distance from last verified: 0.00km
+[2025-10-22 14:53:07] [INFO] [rules]   🎯 Effective distance: 0.00km (minimum = safest path)
+[2025-10-22 14:53:07] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-10-22 14:53:07] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-10-22 14:53:07] [INFO] [rules] ✅ LOCATION APPROVED: Effective distance 0.00km (closest to LAST_VERIFIED) is within 60.0km threshold
+[2025-10-22 14:53:07] [INFO] [rules] Rule evaluation: Effective Distance Validation - APPROVED | Transaction: 327 | Status: NOT_TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Effective Distance Validation - APPROVED", "transaction_id": 327, "triggered": false, "risk_score": 30, "triggers": ["\u2705 Location approved by effective distance: 0.00km \u2264 60.0km", "Distance from home: 128.61km", "Distance from last verified: 0.00km", "Effective distance (minimum): 0.00km", "Approved by: LAST_VERIFIED location"]}
+[2025-10-22 14:53:07] [WARNING] [rules] Rule 5 triggered: Statistical outlier: z-score 2.43 > 2.0
+[2025-10-22 14:53:07] [INFO] [rules] Risk assessment completed: Score=45, Triggers=2, Requires OTP=False, Decision=Monitor
+[2025-10-22 14:53:09] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 14:53:09] [INFO] [rules] ML Location features: Home=128.61km, LastVerified=0.00km, Effective=0.00km
+[2025-10-22 14:53:09] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 14:53:09] [INFO] [rules] ML Location features: Home=128.61km, LastVerified=0.00km, Effective=0.00km
+[2025-10-22 14:53:10] [INFO] [rules] Fraud alert already exists for transaction 327: ID 156
+[2025-10-22 16:24:23] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 16:24:23] [INFO] [rules] Starting risk assessment for transaction 328
+[2025-10-22 16:24:23] [INFO] [rules] Transaction details: Amount=12000.00 DZD, Type=transfer, Client=loay abassi
+[2025-10-22 16:24:23] [WARNING] [rules] Rule 1 triggered: Large transfer: 12000.00 DZD > 5000.0 DZD
+[2025-10-22 16:24:23] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 328 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 328, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: 12000.00 DZD > 5000.0 DZD"]}
+[2025-10-22 16:24:23] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 328:
+[2025-10-22 16:24:23] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-10-22 16:24:23] [INFO] [rules]   📍 Current transaction location: (34.7275264, 10.7446272)
+[2025-10-22 16:24:23] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-10-22 16:24:23] [INFO] [rules]   📏 Distance from home: 128.61km
+[2025-10-22 16:24:23] [INFO] [rules]   📏 Distance from last verified: 0.00km
+[2025-10-22 16:24:23] [INFO] [rules]   🎯 Effective distance: 0.00km (minimum = safest path)
+[2025-10-22 16:24:23] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-10-22 16:24:23] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-10-22 16:24:23] [INFO] [rules] ✅ LOCATION APPROVED: Effective distance 0.00km (closest to LAST_VERIFIED) is within 60.0km threshold
+[2025-10-22 16:24:23] [INFO] [rules] Rule evaluation: Effective Distance Validation - APPROVED | Transaction: 328 | Status: NOT_TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Effective Distance Validation - APPROVED", "transaction_id": 328, "triggered": false, "risk_score": 30, "triggers": ["\u2705 Location approved by effective distance: 0.00km \u2264 60.0km", "Distance from home: 128.61km", "Distance from last verified: 0.00km", "Effective distance (minimum): 0.00km", "Approved by: LAST_VERIFIED location"]}
+[2025-10-22 16:24:23] [WARNING] [rules] Rule 5 triggered: Statistical outlier: z-score 2.43 > 2.0
+[2025-10-22 16:24:23] [INFO] [rules] Risk assessment completed: Score=45, Triggers=2, Requires OTP=False, Decision=Monitor
+[2025-10-22 16:24:23] [INFO] [rules] Creating fraud alert for transaction 328: Medium risk, score 45
+[2025-10-22 16:24:23] [INFO] [rules] Fraud alert created: ID 157
+[2025-10-22 16:24:23] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 16:24:23] [INFO] [rules] Starting risk assessment for transaction 328
+[2025-10-22 16:24:23] [INFO] [rules] Transaction details: Amount=12000.00 DZD, Type=transfer, Client=loay abassi
+[2025-10-22 16:24:23] [WARNING] [rules] Rule 1 triggered: Large transfer: 12000.00 DZD > 5000.0 DZD
+[2025-10-22 16:24:23] [INFO] [rules] Rule evaluation: Large Withdrawal/Transfer | Transaction: 328 | Status: TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Large Withdrawal/Transfer", "transaction_id": 328, "triggered": true, "risk_score": 30, "triggers": ["Large transfer: 12000.00 DZD > 5000.0 DZD"]}
+[2025-10-22 16:24:23] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 328:
+[2025-10-22 16:24:23] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-10-22 16:24:23] [INFO] [rules]   📍 Current transaction location: (34.7275264, 10.7446272)
+[2025-10-22 16:24:23] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-10-22 16:24:23] [INFO] [rules]   📏 Distance from home: 128.61km
+[2025-10-22 16:24:23] [INFO] [rules]   📏 Distance from last verified: 0.00km
+[2025-10-22 16:24:23] [INFO] [rules]   🎯 Effective distance: 0.00km (minimum = safest path)
+[2025-10-22 16:24:23] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-10-22 16:24:23] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-10-22 16:24:23] [INFO] [rules] ✅ LOCATION APPROVED: Effective distance 0.00km (closest to LAST_VERIFIED) is within 60.0km threshold
+[2025-10-22 16:24:23] [INFO] [rules] Rule evaluation: Effective Distance Validation - APPROVED | Transaction: 328 | Status: NOT_TRIGGERED | Risk Score: 30 | Data: {"rule_name": "Effective Distance Validation - APPROVED", "transaction_id": 328, "triggered": false, "risk_score": 30, "triggers": ["\u2705 Location approved by effective distance: 0.00km \u2264 60.0km", "Distance from home: 128.61km", "Distance from last verified: 0.00km", "Effective distance (minimum): 0.00km", "Approved by: LAST_VERIFIED location"]}
+[2025-10-22 16:24:23] [WARNING] [rules] Rule 5 triggered: Statistical outlier: z-score 2.43 > 2.0
+[2025-10-22 16:24:23] [INFO] [rules] Risk assessment completed: Score=45, Triggers=2, Requires OTP=False, Decision=Monitor
+[2025-10-22 16:24:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 16:24:24] [INFO] [rules] ML Location features: Home=128.61km, LastVerified=0.00km, Effective=0.00km
+[2025-10-22 16:24:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-10-22 16:24:24] [INFO] [rules] ML Location features: Home=128.61km, LastVerified=0.00km, Effective=0.00km
+[2025-10-22 16:24:26] [INFO] [rules] Fraud alert already exists for transaction 328: ID 157

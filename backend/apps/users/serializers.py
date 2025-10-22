@@ -189,3 +189,14 @@ class AdminClientProfileSerializer(serializers.ModelSerializer):
                  'avg_amount', 'std_amount', 'created_at', 'updated_at']
         read_only_fields = ['bank_account_number', 'avg_amount', 'std_amount', 
                            'created_at', 'updated_at']
+
+
+class UserLanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['language']
+        
+    def update(self, instance, validated_data):
+        instance.language = validated_data.get('language', instance.language)
+        instance.save()
+        return instance

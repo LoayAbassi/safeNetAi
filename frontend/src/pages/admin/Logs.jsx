@@ -74,7 +74,7 @@ const Logs = () => {
       const response = await api.get('/api/system/logs/stats/');
       setStats(response.data);
     } catch (err) {
-      console.error('Failed to fetch log stats:', err);
+      // Removed console.error for production
     }
   };
 
@@ -83,7 +83,7 @@ const Logs = () => {
       const response = await api.get('/api/system/info/');
       setSystemInfo(response.data);
     } catch (err) {
-      console.error('Failed to fetch system info:', err);
+      // Removed console.error for production
     }
   };
 
