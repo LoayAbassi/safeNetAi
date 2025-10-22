@@ -19,31 +19,19 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        console.log('🔐 Initializing auth state...');
         const accessToken = localStorage.getItem('access_token');
         const userData = localStorage.getItem('user_data');
         
-        console.log('📦 Stored tokens:', { 
-          hasAccessToken: !!accessToken, 
-          hasUserData: !!userData 
-        });
-        
         if (accessToken && userData) {
-          console.log('✅ Found stored tokens, setting up auth...');
           // Set the token in axios headers
           api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
           
           // Parse user data
           const parsedUser = JSON.parse(userData);
-          console.log('👤 Parsed user data:', parsedUser);
           setUser(parsedUser);
           setIsAuthenticated(true);
-          console.log('✅ Auth state restored from localStorage');
-        } else {
-          console.log('❌ No stored tokens found');
         }
       } catch (error) {
-        console.error('❌ Error initializing auth:', error);
         // Clear invalid data
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
@@ -51,7 +39,6 @@ export const AuthProvider = ({ children }) => {
         delete api.defaults.headers.common['Authorization'];
       } finally {
         setLoading(false);
-        console.log('🏁 Auth initialization complete');
       }
     };
 
@@ -60,7 +47,6 @@ export const AuthProvider = ({ children }) => {
 
   const refreshAuthToken = async (refreshToken) => {
     try {
-      console.log('🔄 Refreshing auth token...');
       const response = await api.post('/api/auth/refresh/', { refresh: refreshToken });
       const { access } = response.data;
       
@@ -68,10 +54,8 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('access_token', access);
       api.defaults.headers.common['Authorization'] = `Bearer ${access}`;
       
-      console.log('✅ Token refreshed successfully');
       return true;
     } catch (error) {
-      console.error('❌ Token refresh failed:', error);
       logout();
       return false;
     }
@@ -79,11 +63,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      console.log('🔐 Attempting login...');
       const response = await api.post('/api/auth/login/', { email, password });
       const { access_token, refresh_token, user: userData } = response.data;
-      
-      console.log('✅ Login successful, storing tokens...');
       
       // Store tokens and user data
       localStorage.setItem('access_token', access_token);
@@ -97,10 +78,8 @@ export const AuthProvider = ({ children }) => {
       setUser(userData);
       setIsAuthenticated(true);
       
-      console.log('✅ Auth state updated, user logged in');
       return { success: true, user: userData };
     } catch (error) {
-      console.error('❌ Login failed:', error);
       return { 
         success: false, 
         error: error.response?.data?.error || 'Login failed' 
@@ -123,11 +102,8 @@ export const AuthProvider = ({ children }) => {
 
   const verifyOTP = async (email, otp) => {
     try {
-      console.log('🔐 Verifying OTP...');
       const response = await api.post('/api/auth/verify-otp/', { email, otp });
       const { access_token, refresh_token, user: userData } = response.data;
-      
-      console.log('✅ OTP verified, storing tokens...');
       
       // Store tokens and user data
       localStorage.setItem('access_token', access_token);
@@ -141,10 +117,8 @@ export const AuthProvider = ({ children }) => {
       setUser(userData);
       setIsAuthenticated(true);
       
-      console.log('✅ Auth state updated after OTP verification');
       return { success: true, user: userData };
     } catch (error) {
-      console.error('❌ OTP verification failed:', error);
       return { 
         success: false, 
         error: error.response?.data?.error || 'OTP verification failed' 
@@ -153,8 +127,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    console.log('🚪 Logging out, clearing tokens...');
-    
     // Clear tokens and user data
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
@@ -166,8 +138,6 @@ export const AuthProvider = ({ children }) => {
     // Reset state
     setUser(null);
     setIsAuthenticated(false);
-    
-    console.log('✅ Logout complete');
   };
 
   const updateUser = (newUserData) => {

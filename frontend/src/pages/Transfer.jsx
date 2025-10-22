@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import api from '../api';
 import OTPVerification from '../components/OTPVerification';
+import { useTranslation } from 'react-i18next';
 
 const Transfer = () => {
   const [formData, setFormData] = useState({
@@ -29,9 +30,12 @@ const Transfer = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [pendingTransaction, setPendingTransaction] = useState(null);
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('ar-DZ', {
+    const locale = i18n.language === 'ar' ? 'ar-DZ' : 
+                  i18n.language === 'fr' ? 'fr-FR' : 'en-US';
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: 'DZD',
       minimumFractionDigits: 2
@@ -50,14 +54,8 @@ const Transfer = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
-          console.log('Location captured for transaction:', {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-            accuracy: position.coords.accuracy
-          });
         },
         (error) => {
-          console.log('Geolocation error:', error);
           setError('Location access is required for secure transactions. Please enable location services and refresh the page.');
           setCurrentLocation({ lat: 0, lng: 0 });
         },
@@ -185,9 +183,9 @@ const Transfer = () => {
               className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
             >
               <ArrowLeft className="h-5 w-5 mr-2" />
-              Back to Dashboard
+              {t('back_to_dashboard')}
             </motion.button>
-            <h1 className="text-2xl font-bold text-gray-900">Create Transfer</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{t('transfer')}</h1>
           </div>
 
           {/* Security Notice */}
@@ -198,10 +196,10 @@ const Transfer = () => {
           >
             <div className="flex items-center">
               <Shield className="h-5 w-5 text-blue-500 mr-2" />
-              <span className="text-blue-800 text-sm font-medium">Security Notice</span>
+              <span className="text-blue-800 text-sm font-medium">{t('security_notice')}</span>
             </div>
             <p className="text-blue-700 text-xs mt-1">
-              High-risk transactions require additional verification via email OTP for your security.
+              {t('high_risk_transactions')}
             </p>
           </motion.div>
 
@@ -233,7 +231,7 @@ const Transfer = () => {
             {/* Transaction Type */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Transaction Type
+                {t('transaction_type')}
               </label>
               <select
                 name="transaction_type"
@@ -241,16 +239,16 @@ const Transfer = () => {
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
               >
-                <option value="deposit">Deposit</option>
-                <option value="withdraw">Withdraw</option>
-                <option value="transfer">Transfer</option>
+                <option value="deposit">{t('deposit')}</option>
+                <option value="withdraw">{t('withdraw')}</option>
+                <option value="transfer">{t('transfer')}</option>
               </select>
             </div>
 
             {/* Amount */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Amount (DZD)
+                {t('amount_dzd')}
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -276,7 +274,7 @@ const Transfer = () => {
                 transition={{ duration: 0.3 }}
               >
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Recipient Account Number
+                  {t('recipient_account')}
                 </label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -297,29 +295,28 @@ const Transfer = () => {
             <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
               <div className="flex items-center mb-2">
                 <MapPin className="h-5 w-5 text-blue-600 mr-2" />
-                <span className="text-sm font-medium text-blue-900">Location-Based Security</span>
+                <span className="text-sm font-medium text-blue-900">{t('location_security')}</span>
               </div>
               
               {currentLocation ? (
                 <div>
                   <div className="flex items-center text-sm text-blue-700 mb-1">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                    <span className="font-medium">Location verified</span>
+                    <span className="font-medium">{t('location_verified')}</span>
                   </div>
                   <p className="text-xs text-blue-600 mb-2">
-                    Coordinates: {currentLocation.lat.toFixed(4)}, {currentLocation.lng.toFixed(4)}
+                    {t('coordinates')}: {currentLocation.lat.toFixed(4)}, {currentLocation.lng.toFixed(4)}
                   </p>
                   <div className="bg-blue-100 rounded p-2">
                     <p className="text-xs text-blue-800">
-                      🔒 Your location helps protect against unauthorized transactions.
-                      If you're far from your home address, additional verification may be required.
+                      🔒 {t('location_protection')}
                     </p>
                   </div>
                 </div>
               ) : (
                 <div className="flex items-center text-sm text-amber-700">
                   <div className="w-2 h-2 bg-amber-500 rounded-full mr-2 animate-pulse"></div>
-                  <span>Getting location for enhanced security...</span>
+                  <span>{t('getting_location')}</span>
                 </div>
               )}
             </div>
@@ -337,7 +334,7 @@ const Transfer = () => {
               ) : (
                 <Send className="h-5 w-5 mr-2" />
               )}
-              {loading ? 'Processing...' : 'Create Transaction'}
+              {loading ? t('processing') : t('create_transaction')}
             </motion.button>
           </form>
         </motion.div>

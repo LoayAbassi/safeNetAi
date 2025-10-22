@@ -10,9 +10,29 @@ from django.utils import timezone
 from datetime import timedelta
 from .models import EmailOTP
 from apps.utils.logger import get_email_logger, log_system_event
+from .email_templates import (
+    get_otp_email_template,
+    get_security_otp_email_template,
+    get_transaction_notification_template,
+    get_fraud_alert_template
+)
 
 # Set up logger
 logger = get_email_logger()
+
+# Default language
+DEFAULT_LANGUAGE = 'en'
+
+# User language preferences (in a real app, this would be stored in the database)
+USER_LANGUAGES = {}
+
+def set_user_language(user_id, language):
+    """Set user's preferred language"""
+    USER_LANGUAGES[user_id] = language if language in ['en', 'fr', 'ar'] else DEFAULT_LANGUAGE
+
+def get_user_language(user_id):
+    """Get user's preferred language"""
+    return USER_LANGUAGES.get(user_id, DEFAULT_LANGUAGE)
 
 def generate_otp():
     """Generate a 6-digit OTP"""
@@ -424,9 +444,10 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
         )
         return False
 
-def send_otp_email(user, otp):
+def send_otp_email(user, otp, language='en'):
     """Send elegant HTML OTP email to user with comprehensive logging"""
-    subject = "SafeNetAi - Email Verification OTP"
+    template = get_otp_email_template(language)
+    subject = template['subject']
     
     # Create elegant HTML content
     html_content = f"""
@@ -435,7 +456,7 @@ def send_otp_email(user, otp):
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SafeNetAi - Email Verification</title>
+        <title>{template['title']}</title>
         <style>
             body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; margin: 0; padding: 0; background-color: #f8fafc; }}
             .container {{ max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }}
@@ -461,49 +482,49 @@ def send_otp_email(user, otp):
         <div class="container">
             <div class="header">
                 <div class="logo">🔐</div>
-                <h1>Email Verification</h1>
-                <p>Secure your SafeNetAi account</p>
+                <h1>{template['title']}</h1>
+                <p>{template['greeting'].format(user_name=user.first_name or 'User')}</p>
             </div>
             
             <div class="content">
-                <h2 style="color: #2d3748; margin-bottom: 20px;">Hello {user.first_name or 'User'}!</h2>
+                <h2 style="color: #2d3748; margin-bottom: 20px;">{template['greeting'].format(user_name=user.first_name or 'User')}!</h2>
                 
                 <p style="color: #4a5568; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
-                    Welcome to SafeNetAi! Please use the verification code below to complete your email verification and activate your account.
+                    {template['message']}
                 </p>
                 
                 <div class="otp-container">
-                    <div class="otp-label">Your Verification Code</div>
+                    <div class="otp-label">{template['code_label']}</div>
                     <div class="otp-code">{otp}</div>
                 </div>
                 
                 <div class="timer">
-                    <strong>⏰ This code expires in {settings.EMAIL_TOKEN_TTL_HOURS} hours</strong>
+                    <strong>⏰ {template['expires_in'].format(hours=settings.EMAIL_TOKEN_TTL_HOURS)}</strong>
                 </div>
                 
                 <div class="instructions">
-                    <h3>How to verify your email:</h3>
+                    <h3>{template['instructions_title']}</h3>
                     <ul>
-                        <li>Copy the 6-digit code above</li>
-                        <li>Return to the SafeNetAi verification page</li>
-                        <li>Enter the code in the verification field</li>
-                        <li>Click "Verify" to complete the process</li>
+                        <li>{template['instructions'][0]}</li>
+                        <li>{template['instructions'][1]}</li>
+                        <li>{template['instructions'][2]}</li>
+                        <li>{template['instructions'][3]}</li>
                     </ul>
                 </div>
                 
                 <div class="security-note">
-                    <strong>🔒 Security Notice:</strong> If you didn't request this verification, please ignore this email. Your account security is our top priority.
+                    <strong>🔒 {template['security_notice']}</strong>
                 </div>
                 
                 <p style="color: #718096; font-size: 14px; margin-top: 40px;">
-                    Need help? Contact our support team at support@safenetai.com
+                    {template['support']}
                 </p>
             </div>
             
             <div class="footer">
                 <p><strong>&copy; 2025 SafeNetAi. All rights reserved.</strong></p>
-                <p>Advanced AI-Powered Financial Security</p>
-                <p style="font-size: 12px; margin-top: 15px; opacity: 0.8;">This is an automated message, please do not reply.</p>
+                <p>{template['footer']}</p>
+                <p style="font-size: 12px; margin-top: 15px; opacity: 0.8;">{template['auto_message']}</p>
             </div>
         </div>
     </body>
@@ -512,18 +533,17 @@ def send_otp_email(user, otp):
     
     # Text fallback
     text_content = f"""
-    SafeNetAi - Email Verification
+    {template['title']}
     
-    Hello {user.first_name or 'User'},
+    {template['greeting'].format(user_name=user.first_name or 'User')},
     
-    Your email verification OTP is: {otp}
+    {template['code_label']}: {otp}
     
-    This OTP will expire in {settings.EMAIL_TOKEN_TTL_HOURS} hours.
+    {template['expires_in'].format(hours=settings.EMAIL_TOKEN_TTL_HOURS)}.
     
-    If you didn't request this verification, please ignore this email.
+    {template['security_notice']}.
     
-    Best regards,
-    SafeNetAi Team
+    {template['footer']}
     """
     
     try:
@@ -603,7 +623,7 @@ def send_fraud_alert_email(profile, fraud_alert):
     # Use the enhanced version
     return send_enhanced_fraud_alert_email(profile, fraud_alert)
 
-def create_otp_for_user(user):
+def create_otp_for_user(user, language='en'):
     """Create and send OTP for user with comprehensive logging"""
     try:
         logger.info(f"Creating OTP for user {user.email}")
@@ -623,7 +643,7 @@ def create_otp_for_user(user):
         logger.info(f"Created OTP {otp.otp} for user {user.email}, expires at {otp.expires_at}")
         
         # Send email
-        success = send_otp_email(user, otp.otp)
+        success = send_otp_email(user, otp.otp, language)
         
         if success:
             logger.info(f"OTP created and sent successfully for user {user.email}")
@@ -655,7 +675,7 @@ def create_otp_for_user(user):
         )
         return None
 
-def resend_otp_email(user):
+def resend_otp_email(user, language='en'):
     """Resend OTP email to user"""
     try:
         logger.info(f"Attempting to resend OTP for user {user.email}")
@@ -665,7 +685,7 @@ def resend_otp_email(user):
         
         if existing_otp and existing_otp.expires_at > timezone.now():
             logger.info(f"Resending existing OTP {existing_otp.otp} for user {user.email}")
-            success = send_otp_email(user, existing_otp.otp)
+            success = send_otp_email(user, existing_otp.otp, language)
             if success:
                 log_system_event(
                     "OTP resent successfully",
@@ -676,7 +696,7 @@ def resend_otp_email(user):
             return success
         else:
             logger.info(f"No valid OTP found for user {user.email}, creating new one")
-            return create_otp_for_user(user) is not None
+            return create_otp_for_user(user, language) is not None
             
     except Exception as e:
         logger.error(f"Error resending OTP for user {user.email}: {e}")

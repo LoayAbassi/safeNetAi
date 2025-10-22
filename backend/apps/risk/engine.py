@@ -59,7 +59,7 @@ class RiskEngine:
         Returns: (risk_score, triggers, requires_otp, decision)
         """
         logger.info(f"Starting risk assessment for transaction {transaction.id}")
-        logger.info(f"Transaction details: Amount=${transaction.amount}, Type={transaction.transaction_type}, Client={transaction.client.full_name}")
+        logger.info(f"Transaction details: Amount={transaction.amount} DZD, Type={transaction.transaction_type}, Client={transaction.client.full_name}")
         
         # Initialize variables
         risk_score = 0
@@ -74,7 +74,7 @@ class RiskEngine:
         if (transaction.transaction_type in ['withdraw', 'transfer'] and 
             transaction.amount > large_withdrawal_threshold):
             risk_score += 30
-            trigger_msg = f"Large {transaction.transaction_type}: ${transaction.amount} > ${large_withdrawal_threshold}"
+            trigger_msg = f"Large {transaction.transaction_type}: {transaction.amount} DZD > {large_withdrawal_threshold} DZD"
             triggers.append(trigger_msg)
             logger.warning(f"Rule 1 triggered: {trigger_msg}")
             
@@ -116,7 +116,7 @@ class RiskEngine:
             post_balance = client.balance - transaction.amount
             if post_balance < low_balance_threshold:
                 risk_score += 20
-                trigger_msg = f"Low balance after transaction: ${post_balance} < ${low_balance_threshold}"
+                trigger_msg = f"Low balance after transaction: {post_balance} DZD < {low_balance_threshold} DZD"
                 triggers.append(trigger_msg)
                 logger.warning(f"Rule 3 triggered: {trigger_msg}")
                 

@@ -51,7 +51,7 @@ api.interceptors.response.use(
           localStorage.removeItem('user_data');
           window.location.href = '/login';
         }
-      } catch (refreshError) {
+      } catch (_error) {
         // Refresh token is invalid, redirect to login
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');

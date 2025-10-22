@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../api';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
@@ -21,6 +22,18 @@ const Dashboard = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const { t, i18n } = useTranslation();
+
+  const formatCurrency = (amount) => {
+    const locale = i18n.language === 'ar' ? 'ar-DZ' : 
+                  i18n.language === 'fr' ? 'fr-FR' : 'en-US';
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: 'DZD',
+      minimumFractionDigits: 2
+    }).format(amount);
+  };
 
   useEffect(() => {
     fetchData();
@@ -142,13 +155,10 @@ const Dashboard = () => {
                 <div className="pt-4 border-t border-gray-200">
                   <label className="text-sm font-medium text-gray-500">Balance</label>
                   <p className="text-2xl font-bold text-primary-600">
-                    {new Intl.NumberFormat('ar-DZ', {
-                      style: 'currency',
-                      currency: 'DZD',
-                      minimumFractionDigits: 2
-                    }).format(profile.balance)}
+                    {formatCurrency(profile.balance)}
                   </p>
                 </div>
+
               </div>
             )}
           </motion.div>
@@ -225,11 +235,8 @@ const Dashboard = () => {
                           <span className="capitalize">{transaction.transaction_type}</span>
                         </td>
                         <td className="table-cell font-medium">
-                          {new Intl.NumberFormat('ar-DZ', {
-                            style: 'currency',
-                            currency: 'DZD',
-                            minimumFractionDigits: 2
-                          }).format(transaction.amount)}
+                          {formatCurrency(transaction.amount)}
+
                         </td>
                         <td className="table-cell">
                           <span className={`badge ${

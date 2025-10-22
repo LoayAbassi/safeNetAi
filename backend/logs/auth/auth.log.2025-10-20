@@ -1,0 +1,2 @@
+[2025-10-20 16:50:54] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
+[2025-10-20 17:07:46] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "abassi.loay@gmail.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { LanguageProvider } from './contexts/LanguageContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import VerifyOTP from './pages/VerifyOTP';
-import Dashboard from './pages/Dashboard';
 import ClientDashboard from './pages/ClientDashboard';
 import Transfer from './pages/Transfer';
 import AdminDashboard from './pages/admin/Dashboard';
@@ -14,6 +14,7 @@ import Transactions from './pages/admin/Transactions';
 import FraudAlerts from './pages/admin/FraudAlerts';
 import Rules from './pages/admin/Rules';
 import Logs from './pages/admin/Logs';
+import Homepage from './pages/Homepage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import './styles/globals.css';
@@ -53,7 +54,7 @@ const RoleBasedRedirect = () => {
 };
 
 // Layout Component with Navbar and Sidebar
-const Layout = ({ children }) => {
+const Layout = ({ children, showSidebar = true }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -71,7 +72,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar isOpen={isSidebarOpen} />
+      {showSidebar && <Sidebar isOpen={isSidebarOpen} />}
       <div className="flex-1 flex flex-col overflow-hidden">
         <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
         <main className="flex-1 overflow-x-hidden overflow-y-auto">
@@ -82,15 +83,62 @@ const Layout = ({ children }) => {
   );
 };
 
+// Public Layout Component with Navbar only (no sidebar)
+const PublicLayout = ({ children }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+      <main className="flex-1">
+        {children}
+      </main>
+    </div>
+  );
+};
+
 // Main App Component
 const AppContent = () => {
   return (
     <Router>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/verify-otp" element={<VerifyOTP />} />
+        {/* Public Routes with Navbar */}
+        <Route 
+          path="/" 
+          element={
+            <PublicLayout>
+              <Homepage />
+            </PublicLayout>
+          } 
+        />
+        <Route 
+          path="/login" 
+          element={
+            <PublicLayout>
+              <Login />
+            </PublicLayout>
+          } 
+        />
+        <Route 
+          path="/register" 
+          element={
+            <PublicLayout>
+              <Register />
+            </PublicLayout>
+          } 
+        />
+        <Route 
+          path="/verify-otp" 
+          element={
+            <PublicLayout>
+              <VerifyOTP />
+            </PublicLayout>
+          } 
+        />
         
         {/* Role-based redirect */}
         <Route 
@@ -187,8 +235,7 @@ const AppContent = () => {
         />
         
         {/* Default Route */}
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
@@ -199,7 +246,9 @@ const App = () => {
   return (
     <ErrorBoundary>
       <AuthProvider>
-        <AppContent />
+        <LanguageProvider>
+          <AppContent />
+        </LanguageProvider>
       </AuthProvider>
     </ErrorBoundary>
   );

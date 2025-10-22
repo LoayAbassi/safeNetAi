@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  User, 
-  DollarSign, 
   CreditCard, 
   TrendingUp, 
-  AlertTriangle,
-  RefreshCw,
-  Plus
+  Plus, 
+  RefreshCw, 
+  DollarSign,
+  User,
+  AlertTriangle
 } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
 import api from '../api';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '../contexts/AuthContext';
 
 const ClientDashboard = () => {
   const { user } = useAuth();
@@ -20,6 +21,7 @@ const ClientDashboard = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     fetchData();
@@ -41,6 +43,16 @@ const ClientDashboard = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const formatCurrency = (amount) => {
+    const locale = i18n.language === 'ar' ? 'ar-DZ' : 
+                  i18n.language === 'fr' ? 'fr-FR' : 'en-US';
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: 'DZD',
+      minimumFractionDigits: 2
+    }).format(amount);
   };
 
   if (loading) {
@@ -105,11 +117,7 @@ const ClientDashboard = () => {
               <div className="pt-4 border-t border-gray-200">
                 <label className="text-sm font-medium text-gray-500">Balance</label>
                 <p className="text-2xl font-bold text-primary-600">
-                  {new Intl.NumberFormat('ar-DZ', {
-                    style: 'currency',
-                    currency: 'DZD',
-                    minimumFractionDigits: 2
-                  }).format(profile.balance)}
+                  {formatCurrency(profile.balance)}
                 </p>
               </div>
             </div>
@@ -188,11 +196,7 @@ const ClientDashboard = () => {
                         <span className="capitalize">{transaction.transaction_type}</span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap font-medium">
-                        {new Intl.NumberFormat('ar-DZ', {
-                          style: 'currency',
-                          currency: 'DZD',
-                          minimumFractionDigits: 2
-                        }).format(transaction.amount)}
+                        {formatCurrency(transaction.amount)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
