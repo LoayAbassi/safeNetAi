@@ -22,11 +22,9 @@ wheels/
 PIPFILE.lock
 
 # Django
-*.log
+
 media/
-staticfiles/
-db.sqlite3
-.env
+
 
 # Virtual Environment
 venv/
@@ -88,11 +86,10 @@ wheels/
 PIPFILE.lock
 
 # Django
-*.log
+
 media/
 staticfiles/
-db.sqlite3
-.env
+
 
 # Virtual Environment
 venv/
