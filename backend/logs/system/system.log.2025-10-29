@@ -1,0 +1,57 @@
+[2025-10-29 16:54:00] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 200 1991
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/css/rtl.css HTTP/1.1" 200 4772
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[2025-10-29 16:56:21] [INFO] [django.server] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[2025-10-29 16:56:21] [WARNING] [django.request] Not Found: /favicon.ico
+[2025-10-29 16:56:21] [WARNING] [django.server] "GET /favicon.ico HTTP/1.1" 404 3746
+[2025-10-29 16:56:27] [INFO] [django.server] "POST /admin/logout/ HTTP/1.1" 200 3752
+[2025-10-29 16:56:30] [INFO] [django.server] "GET /admin/ HTTP/1.1" 302 0
+[2025-10-29 16:56:30] [INFO] [django.server] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4167
+[2025-10-29 16:56:30] [INFO] [django.server] "GET /static/admin/css/login.css HTTP/1.1" 200 951
+[2025-10-29 16:56:36] [INFO] [django.server] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-10-29 16:56:36] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650
+[2025-10-29 16:56:54] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650
+[2025-10-29 16:57:01] [WARNING] [django.request] Not Found: /
+[2025-10-29 16:57:01] [WARNING] [django.server] "GET / HTTP/1.1" 404 3695
+[2025-10-29 16:58:42] [WARNING] [django.request] Unauthorized: /api/client/
+[2025-10-29 16:58:42] [WARNING] [django.server] "GET /api/client/ HTTP/1.1" 401 5119
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+[2025-10-29 16:58:42] [INFO] [django.server] "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+[2025-10-29 16:58:59] [WARNING] [django.request] Method Not Allowed: /api/auth/login/
+[2025-10-29 16:58:59] [WARNING] [django.server] "GET /api/auth/login/ HTTP/1.1" 405 5687
+[2025-10-29 17:55:14] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-29 18:07:01] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-29 18:08:27] [INFO] [django.server] "GET /api/admin HTTP/1.1" 301 0
+[2025-10-29 18:08:27] [WARNING] [django.request] Unauthorized: /api/admin/
+[2025-10-29 18:08:27] [WARNING] [django.server] "GET /api/admin/ HTTP/1.1" 401 58
+[2025-10-29 18:08:36] [WARNING] [django.request] Not Found: /api
+[2025-10-29 18:08:36] [WARNING] [django.server] "GET /api HTTP/1.1" 404 3722
+[2025-10-29 18:08:52] [INFO] [django.server] "GET /admin HTTP/1.1" 301 0
+[2025-10-29 18:08:52] [INFO] [django.server] "GET /admin/ HTTP/1.1" 302 0
+[2025-10-29 18:08:52] [INFO] [django.server] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4167
+[2025-10-29 18:09:08] [WARNING] [django.request] Not Found: /api/me/accounts
+[2025-10-29 18:09:08] [WARNING] [django.server] "GET /api/me/accounts HTTP/1.1" 404 3758
+[2025-10-29 18:09:13] [WARNING] [django.request] Not Found: /api/
+[2025-10-29 18:09:13] [WARNING] [django.server] "GET /api/ HTTP/1.1" 404 3725
+[2025-10-29 18:09:16] [WARNING] [django.request] Not Found: /
+[2025-10-29 18:09:16] [WARNING] [django.server] "GET / HTTP/1.1" 404 3695
