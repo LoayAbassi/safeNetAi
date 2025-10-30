@@ -241,3 +241,26 @@
 [2025-10-30 17:55:59] [WARNING] [django.request] Not Found: /
 [2025-10-30 17:55:59] [WARNING] [django.server] "GET / HTTP/1.1" 404 3695
 [2025-10-30 18:09:20] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 18:09:22] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650
+[2025-10-30 18:09:36] [WARNING] [django.request] Not Found: /api/docs
+[2025-10-30 18:09:36] [WARNING] [django.server] "GET /api/docs HTTP/1.1" 404 3737
+[2025-10-30 18:09:43] [WARNING] [django.request] Not Found: /api/system
+[2025-10-30 18:09:43] [WARNING] [django.server] "GET /api/system HTTP/1.1" 404 3743
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /api/client HTTP/1.1" 301 0
+[2025-10-30 18:10:17] [WARNING] [django.request] Unauthorized: /api/client/
+[2025-10-30 18:10:17] [WARNING] [django.server] "GET /api/client/ HTTP/1.1" 401 5119
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+[2025-10-30 18:10:34] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650
+[2025-10-30 18:16:27] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\urls.py changed, reloading.
+[2025-10-30 18:16:28] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
