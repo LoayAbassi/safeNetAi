@@ -237,3 +237,7 @@
 [2025-10-30 17:08:55] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 332, "risk_score": 115, "triggers": ["Large transfer: 20000.00 DZD > 5000.0 DZD", "\u26a0\ufe0f Effective distance violation: 213.55km > 60.0km threshold", "Statistical outlier: z-score 4.90 > 2.0"], "ml_score": 0.5, "user_id": 71, "distance_violation": false, "otp_reasons": ["Business rules triggered: 3", "High risk score: 115", "Risk engine explicit requirement"], "reason": "risk_rules"}
 [2025-10-30 17:08:55] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 492
 [2025-10-30 17:10:36] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:55:52] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:55:59] [WARNING] [django.request] Not Found: /
+[2025-10-30 17:55:59] [WARNING] [django.server] "GET / HTTP/1.1" 404 3695
+[2025-10-30 18:09:20] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
