@@ -87,7 +87,7 @@ PIPFILE.lock
 # Django
 
 media/
-staticfiles/
+
 
 
 # Virtual Environment
