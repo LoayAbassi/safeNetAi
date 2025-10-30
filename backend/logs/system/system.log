@@ -213,3 +213,27 @@
 [2025-10-22 16:27:44] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3224
 [2025-10-22 16:27:44] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
 [2025-10-22 16:27:44] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3224
+[2025-10-30 17:06:07] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:06:46] [INFO] [django.server] "GET /admin/users/user/1/change/ HTTP/1.1" 302 0
+[2025-10-30 17:06:46] [INFO] [django.server] "GET /admin/login/?next=/admin/users/user/1/change/ HTTP/1.1" 200 4207
+[2025-10-30 17:06:51] [INFO] [django.server] "POST /admin/login/?next=/admin/users/user/1/change/ HTTP/1.1" 302 0
+[2025-10-30 17:06:52] [INFO] [django.server] "GET /admin/users/user/1/change/ HTTP/1.1" 200 30182
+[2025-10-30 17:06:52] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 14010
+[2025-10-30 17:07:01] [INFO] [django.server] "GET /admin/transactions/fraudalert/ HTTP/1.1" 200 32660
+[2025-10-30 17:07:02] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 14010
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4097
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4097
+[2025-10-30 17:08:16] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:08:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:51] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-10-30 17:08:51] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:51] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:51] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 332, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-30 17:08:55] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 332, "otp_code": "474971"}
+[2025-10-30 17:08:55] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 332, "otp_id": 41}
+[2025-10-30 17:08:55] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 332, "risk_score": 115, "triggers": ["Large transfer: 20000.00 DZD > 5000.0 DZD", "\u26a0\ufe0f Effective distance violation: 213.55km > 60.0km threshold", "Statistical outlier: z-score 4.90 > 2.0"], "ml_score": 0.5, "user_id": 71, "distance_violation": false, "otp_reasons": ["Business rules triggered: 3", "High risk score: 115", "Risk engine explicit requirement"], "reason": "risk_rules"}
+[2025-10-30 17:08:55] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 492
+[2025-10-30 17:10:36] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
