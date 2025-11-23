@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 [2025-11-23 13:33:02] [INFO] [auth] User action: LOGIN | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+=======
+[2025-10-22 14:12:52] [WARNING] [auth] Security event: Failed login attempt | IP: 127.0.0.1 | Data: {"email": "admin@safenetai.com", "errors": {"non_field_errors": ["Invalid credentials"]}, "ip_address": "127.0.0.1"}
+[2025-10-22 14:12:57] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-10-22 14:13:39] [INFO] [auth] User action: LOGIN | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-10-22 14:52:04] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-10-22 14:52:51] [INFO] [auth] User action: LOGIN | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-10-22 16:19:36] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-10-22 16:20:03] [INFO] [auth] User action: LOGIN | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-10-22 16:20:40] [INFO] [auth] User action: LOGIN | User ID: 1 | Email: admin@safenetai.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+[2025-10-22 16:24:13] [INFO] [auth] User action: LOGIN | User ID: 71 | Email: abassi.loay@gmail.com | Status: SUCCESS | Data: {"ip_address": "127.0.0.1"}
+>>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3

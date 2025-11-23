@@ -4,7 +4,12 @@ from rest_framework.response import Response
 from django.db import transaction
 from django.utils import timezone
 from decimal import Decimal
+from django.db import transaction
+from django.utils import timezone
+from decimal import Decimal
 from .serializers import (
+    TransactionSerializer, CreateTransactionSerializer, AdminTransactionSerializer,
+    FraudAlertSerializer, AdminFraudAlertSerializer
     TransactionSerializer, CreateTransactionSerializer, AdminTransactionSerializer,
     FraudAlertSerializer, AdminFraudAlertSerializer
 )
@@ -28,7 +33,9 @@ logger = get_transactions_logger()
 
 class TransactionViewSet(viewsets.ModelViewSet):
     """Transaction viewset for clients"""
+    """Transaction viewset for clients"""
     serializer_class = TransactionSerializer
+    permission_classes = [permissions.IsAuthenticated]
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
@@ -37,9 +44,15 @@ class TransactionViewSet(viewsets.ModelViewSet):
             return Transaction.objects.filter(client=client_profile)
         except ClientProfile.DoesNotExist:
             return Transaction.objects.none()
+        try:
+            client_profile = ClientProfile.objects.get(user=self.request.user)
+            return Transaction.objects.filter(client=client_profile)
+        except ClientProfile.DoesNotExist:
+            return Transaction.objects.none()
     
     def get_serializer_class(self):
         if self.action == 'create':
+            return CreateTransactionSerializer
             return CreateTransactionSerializer
         return TransactionSerializer
     
@@ -558,7 +571,9 @@ class TransactionViewSet(viewsets.ModelViewSet):
 
 class FraudAlertViewSet(viewsets.ReadOnlyModelViewSet):
     """Fraud alert viewset for clients"""
+    """Fraud alert viewset for clients"""
     serializer_class = FraudAlertSerializer
+    permission_classes = [permissions.IsAuthenticated]
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
@@ -567,8 +582,37 @@ class FraudAlertViewSet(viewsets.ReadOnlyModelViewSet):
             return FraudAlert.objects.filter(transaction__client=client_profile)
         except ClientProfile.DoesNotExist:
             return FraudAlert.objects.none()
+        try:
+            client_profile = ClientProfile.objects.get(user=self.request.user)
+            return FraudAlert.objects.filter(transaction__client=client_profile)
+        except ClientProfile.DoesNotExist:
+            return FraudAlert.objects.none()
 
 class AdminTransactionViewSet(viewsets.ReadOnlyModelViewSet):
+    """Admin transaction viewset"""
+    serializer_class = AdminTransactionSerializer
+    permission_classes = [permissions.IsAdminUser]
+    queryset = Transaction.objects.all()
+    
+    def get_queryset(self):
+        queryset = Transaction.objects.all()
+        
+        # Filter by client
+        client_id = self.request.query_params.get('client_id', None)
+        if client_id:
+            queryset = queryset.filter(client_id=client_id)
+        
+        # Filter by status
+        status_filter = self.request.query_params.get('status', None)
+        if status_filter:
+            queryset = queryset.filter(status=status_filter)
+        
+        # Filter by transaction type
+        transaction_type = self.request.query_params.get('transaction_type', None)
+        if transaction_type:
+            queryset = queryset.filter(transaction_type=transaction_type)
+        
+        return queryset
     """Admin transaction viewset"""
     serializer_class = AdminTransactionSerializer
     permission_classes = [permissions.IsAdminUser]

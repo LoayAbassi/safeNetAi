@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2025-11-23 13:33:19] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
 [2025-11-23 13:33:21] [ERROR] [email_service] Error sending HTML email: (550, b'The from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved. Visit https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to see the Sender Identity requirements')
 [2025-11-23 13:33:21] [ERROR] [email_service] Failed to send security OTP email to abassi.loay@gmail.com
@@ -6,3 +7,18 @@
 [2025-11-23 14:18:22] [ERROR] [email_service] Failed to send security OTP email to abassi.loay@gmail.com
 [2025-11-23 14:36:39] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
 [2025-11-23 14:36:42] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 335
+=======
+[2025-10-22 14:14:41] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 324
+[2025-10-22 14:15:06] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 324
+[2025-10-22 14:15:08] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-10-22 14:15:26] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 325
+[2025-10-22 14:15:28] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-10-22 14:16:14] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 326
+[2025-10-22 14:53:10] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 327
+[2025-10-22 16:24:24] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-10-22 16:24:26] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 328
+[2025-10-22 16:24:59] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 328 using language: fr
+[2025-10-22 16:25:00] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-10-30 17:08:51] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: ar
+[2025-10-30 17:08:55] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 332
+>>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3

@@ -1,7 +1,12 @@
 import os
 import logging
+import logging
 from datetime import timedelta
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -9,6 +14,8 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
+DEBUG = os.getenv("DEBUG", "1") == "1"
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 DEBUG = os.getenv("DEBUG", "1") == "1"
 ALLOWED_HOSTS = ["*"]
@@ -27,6 +34,7 @@ INSTALLED_APPS = [
     "apps.risk",
     "apps.transactions",
     "apps.system",
+    "apps.system",
 ]
 
 MIDDLEWARE = [
@@ -36,6 +44,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "apps.users.middleware.UserLanguageMiddleware",
     "apps.users.middleware.UserLanguageMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -79,6 +88,21 @@ else:
     DATABASES = {
         "default": dj_database_url.parse(DATABASE_URL)
     }
+# Database configuration
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///db.sqlite3")
+if DATABASE_URL.startswith("sqlite:///"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+else:
+    # For PostgreSQL or other databases
+    import dj_database_url
+    DATABASES = {
+        "default": dj_database_url.parse(DATABASE_URL)
+    }
 
 AUTH_PASSWORD_VALIDATORS = []
 
@@ -90,6 +114,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Custom User Model
 # Custom User Model
 AUTH_USER_MODEL = "users.User"
 
