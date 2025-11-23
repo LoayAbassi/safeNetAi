@@ -12,7 +12,7 @@ from .models import Transaction, FraudAlert
 from apps.risk.models import ClientProfile
 from apps.risk.engine import RiskEngine, haversine_distance
 from apps.risk.ml import FraudMLModel
-from apps.users.email_service import send_fraud_alert_email, send_transaction_notification
+from apps.users.email_service import send_fraud_alert_email, send_transaction_notification_async
 from apps.transactions.services import create_transaction_otp, verify_transaction_otp, resend_transaction_otp
 from apps.utils.logger import get_transactions_logger, log_transaction, log_system_event
 from rest_framework.decorators import api_view, permission_classes
@@ -317,7 +317,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
                     # Send transaction notification email
                     if transaction_obj.client.user:
                         risk_level = "MEDIUM" if risk_score >= 50 else "LOW"
-                        send_transaction_notification(
+                        send_transaction_notification_async(
                             transaction_obj.client.user, 
                             transaction_obj, 
                             "COMPLETED", 
@@ -642,13 +642,13 @@ class AdminFraudAlertViewSet(viewsets.ModelViewSet):
                 
                 # Send transaction notification email
                 if transaction_obj.client.user:
-                    send_transaction_notification(
+                    send_transaction_notification_async(
                         transaction_obj.client.user, 
                         transaction_obj, 
                         "APPROVED", 
                         "REVIEWED"
                     )
-                
+
                 logger.info(f"Fraud alert {pk} approved, transaction {transaction_obj.id} completed")
                 
                 return Response({'message': 'Transaction approved and completed'})
@@ -680,13 +680,13 @@ class AdminFraudAlertViewSet(viewsets.ModelViewSet):
             
             # Send transaction notification email
             if transaction_obj.client.user:
-                send_transaction_notification(
+                send_transaction_notification_async(
                     transaction_obj.client.user, 
                     transaction_obj, 
                     "REJECTED", 
                     "BLOCKED"
                 )
-            
+
             logger.info(f"Fraud alert {pk} rejected, transaction {transaction_obj.id} failed")
             
             return Response({'message': 'Transaction rejected and failed'})
@@ -812,23 +812,23 @@ def send_security_otp(request):
             }
         )
         
-        # Send OTP via email (in production, this would be SMS or push notification)
+        # Send OTP via email asynchronously (in production, this would be SMS or push notification)
         try:
-            from apps.users.email_service import send_security_otp_email
-            send_security_otp_email(request.user, otp, transaction)
+            from apps.users.email_service import send_security_otp_email_async
+            send_security_otp_email_async(request.user, otp, transaction)
         except Exception as e:
             logger.warning(f"Failed to send security OTP email: {e}")
         
         logger.info(f"Security OTP sent for transaction {transaction_id}")
         
         return Response({
-            'message': 'Security OTP sent successfully',
-            'expires_at': expires_at.isoformat()
+            'message': 'Security code sent to your email. Please check your inbox.',
+            'transaction_id': transaction_id
         })
         
     except Exception as e:
         logger.error(f"Error sending security OTP: {e}")
-        return Response({'error': 'Failed to send OTP'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({'error': 'Failed to send security code'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -889,7 +889,8 @@ def verify_security_otp(request):
                 # Send transaction notification email
                 if transaction.client.user:
                     risk_level = "HIGH" if transaction.risk_score >= 70 else "MEDIUM"
-                    send_transaction_notification(
+                    from apps.users.email_service import send_transaction_notification_async
+                    send_transaction_notification_async(
                         transaction.client.user, 
                         transaction, 
                         "COMPLETED", 

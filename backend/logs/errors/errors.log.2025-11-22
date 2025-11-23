@@ -1,0 +1,20 @@
+[2025-10-22 14:14:32] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 101.17km exceeds 60.0km threshold for transaction 324
+[2025-10-22 14:14:32] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 324 requires mandatory OTP
+[2025-10-22 14:14:32] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 101.17km exceeds 60.0km threshold for transaction 324
+[2025-10-22 14:14:32] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 324 requires mandatory OTP
+[2025-10-22 14:14:39] [ERROR] [ai] Error making ML prediction for transaction 324: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-22 14:14:39] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 324, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:15:26] [ERROR] [ai] Error making ML prediction for transaction 325: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-22 14:15:26] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 325, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:16:13] [ERROR] [ai] Error making ML prediction for transaction 326: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-22 14:16:13] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 326, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:53:09] [ERROR] [ai] Error making ML prediction for transaction 327: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-22 14:53:09] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 327, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 16:24:24] [ERROR] [ai] Error making ML prediction for transaction 328: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-22 16:24:24] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 328, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-30 17:08:44] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 213.55km exceeds 60.0km threshold for transaction 332
+[2025-10-30 17:08:44] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 332 requires mandatory OTP
+[2025-10-30 17:08:44] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 213.55km exceeds 60.0km threshold for transaction 332
+[2025-10-30 17:08:44] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 332 requires mandatory OTP
+[2025-10-30 17:08:51] [ERROR] [ai] Error making ML prediction for transaction 332: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-10-30 17:08:51] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 332, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}

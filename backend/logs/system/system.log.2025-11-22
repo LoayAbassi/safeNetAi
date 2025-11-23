@@ -1,0 +1,268 @@
+[2025-10-22 14:11:30] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-22 14:12:51] [INFO] [django.server] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+[2025-10-22 14:12:52] [WARNING] [django.request] Bad Request: /api/auth/login/
+[2025-10-22 14:12:52] [WARNING] [django.server] "POST /api/auth/login/ HTTP/1.1" 400 44
+[2025-10-22 14:12:58] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 638
+[2025-10-22 14:12:58] [INFO] [django.server] "OPTIONS /api/admin/dashboard/stats/ HTTP/1.1" 200 0
+[2025-10-22 14:12:58] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-10-22 14:12:58] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-10-22 14:12:58] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 14:12:58] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-22 14:12:58] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 14:12:58] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 240
+[2025-10-22 14:12:58] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 14:12:58] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-22 14:12:58] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 14:12:58] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8198
+[2025-10-22 14:13:39] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 647
+[2025-10-22 14:13:39] [INFO] [django.server] "OPTIONS /api/client/profile/me/ HTTP/1.1" 200 0
+[2025-10-22 14:13:39] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-10-22 14:13:39] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-10-22 14:13:40] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:13:40] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 1754
+[2025-10-22 14:13:40] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:13:40] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 1754
+[2025-10-22 14:14:09] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 1754
+[2025-10-22 14:14:09] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 1754
+[2025-10-22 14:14:09] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:14:09] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:14:12] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:14:12] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 1754
+[2025-10-22 14:14:32] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:14:32] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:14:39] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-10-22 14:14:39] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:14:39] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:14:39] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 324, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:14:41] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 324, "otp_code": "729472"}
+[2025-10-22 14:14:41] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 324, "otp_id": 34}
+[2025-10-22 14:14:41] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 324, "risk_score": 70, "triggers": ["\u26a0\ufe0f Effective distance violation: 101.17km > 60.0km threshold"], "ml_score": 0.5, "user_id": 71, "distance_violation": false, "otp_reasons": ["Business rules triggered: 1", "High risk score: 70", "Risk engine explicit requirement"], "reason": "risk_rules"}
+[2025-10-22 14:14:41] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 404
+[2025-10-22 14:15:06] [INFO] [django.server] "OPTIONS /api/client/transactions/324/verify_otp/ HTTP/1.1" 200 0
+[2025-10-22 14:15:06] [INFO] [system] System event: Transaction OTP verified successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 324, "otp_id": 34}
+[2025-10-22 14:15:08] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 324, "status": "COMPLETED", "risk_level": "HIGH", "risk_score": 70}
+[2025-10-22 14:15:08] [INFO] [django.server] "POST /api/client/transactions/324/verify_otp/ HTTP/1.1" 200 114
+[2025-10-22 14:15:12] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:15:12] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:15:12] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2049
+[2025-10-22 14:15:12] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2049
+[2025-10-22 14:15:26] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:15:26] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:15:26] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-10-22 14:15:26] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:15:26] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:15:26] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 325, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:15:28] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 325, "status": "COMPLETED", "risk_level": "LOW", "risk_score": 20}
+[2025-10-22 14:15:28] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 107
+[2025-10-22 14:16:13] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:16:13] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:16:13] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-10-22 14:16:13] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:16:13] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:16:13] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 326, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:16:14] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 326, "otp_code": "624404"}
+[2025-10-22 14:16:14] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 326, "otp_id": 35}
+[2025-10-22 14:16:14] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 326, "risk_score": 65, "triggers": ["Large transfer: 12000.00 DZD > 5000.0 DZD", "Statistical outlier: z-score 2.43 > 2.0"], "ml_score": 0.5, "user_id": 71, "distance_violation": false, "otp_reasons": ["Business rules triggered: 2"], "reason": "risk_rules"}
+[2025-10-22 14:16:14] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 366
+[2025-10-22 14:16:36] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:16:36] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2639
+[2025-10-22 14:16:36] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:16:36] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2639
+[2025-10-22 14:51:16] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-22 14:51:25] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:51:25] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:51:25] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2639
+[2025-10-22 14:51:25] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2639
+[2025-10-22 14:52:04] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 638
+[2025-10-22 14:52:04] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 14:52:04] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 245
+[2025-10-22 14:52:04] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 14:52:04] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8242
+[2025-10-22 14:52:04] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 14:52:04] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 245
+[2025-10-22 14:52:04] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 14:52:04] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8242
+[2025-10-22 14:52:17] [INFO] [django.server] "OPTIONS /api/admin/clients/ HTTP/1.1" 200 0
+[2025-10-22 14:52:17] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-22 14:52:17] [INFO] [django.server] "GET /api/admin/clients/ HTTP/1.1" 200 23933
+[2025-10-22 14:52:19] [INFO] [django.server] "OPTIONS /api/admin/transactions/ HTTP/1.1" 200 0
+[2025-10-22 14:52:19] [INFO] [django.server] "OPTIONS /api/admin/transactions/ HTTP/1.1" 200 0
+[2025-10-22 14:52:19] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 11321
+[2025-10-22 14:52:19] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 11321
+[2025-10-22 14:52:20] [INFO] [django.server] "OPTIONS /api/admin/fraud-alerts/ HTTP/1.1" 200 0
+[2025-10-22 14:52:20] [INFO] [django.server] "OPTIONS /api/admin/fraud-alerts/ HTTP/1.1" 200 0
+[2025-10-22 14:52:20] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 13087
+[2025-10-22 14:52:20] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 13087
+[2025-10-22 14:52:21] [INFO] [django.server] "OPTIONS /api/admin/thresholds/ HTTP/1.1" 200 0
+[2025-10-22 14:52:21] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-10-22 14:52:21] [INFO] [django.server] "OPTIONS /api/admin/rules/ HTTP/1.1" 200 0
+[2025-10-22 14:52:21] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-22 14:52:21] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-22 14:52:21] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-22 14:52:21] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-22 14:52:28] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 13087
+[2025-10-22 14:52:28] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 13087
+[2025-10-22 14:52:29] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-22 14:52:29] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-22 14:52:29] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-22 14:52:29] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-22 14:52:51] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 647
+[2025-10-22 14:52:51] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:52:51] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 14:52:51] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2639
+[2025-10-22 14:52:51] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2639
+[2025-10-22 14:53:07] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:53:07] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:53:09] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-10-22 14:53:09] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:53:09] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 14:53:09] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 327, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 14:53:10] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 327, "otp_code": "114082"}
+[2025-10-22 14:53:10] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 327, "otp_id": 36}
+[2025-10-22 14:53:10] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 327, "risk_score": 65, "triggers": ["Large transfer: 12000.00 DZD > 5000.0 DZD", "Statistical outlier: z-score 2.43 > 2.0"], "ml_score": 0.5, "user_id": 71, "distance_violation": false, "otp_reasons": ["Business rules triggered: 2"], "reason": "risk_rules"}
+[2025-10-22 14:53:10] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 366
+[2025-10-22 15:02:26] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\models.py changed, reloading.
+[2025-10-22 15:02:27] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-22 16:16:08] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-22 16:19:13] [INFO] [django.server] "OPTIONS /api/users/profile/71/ HTTP/1.1" 200 0
+[2025-10-22 16:19:13] [WARNING] [django.request] Not Found: /api/users/profile/71/
+[2025-10-22 16:19:13] [WARNING] [django.server] "PATCH /api/users/profile/71/ HTTP/1.1" 404 3778
+[2025-10-22 16:19:20] [WARNING] [django.request] Not Found: /api/users/profile/71/
+[2025-10-22 16:19:20] [WARNING] [django.server] "PATCH /api/users/profile/71/ HTTP/1.1" 404 3778
+[2025-10-22 16:19:35] [INFO] [django.server] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+[2025-10-22 16:19:36] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 654
+[2025-10-22 16:19:36] [INFO] [django.server] "OPTIONS /api/admin/dashboard/stats/ HTTP/1.1" 200 0
+[2025-10-22 16:19:36] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-10-22 16:19:36] [INFO] [django.server] "OPTIONS /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 0
+[2025-10-22 16:19:36] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 16:19:36] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 244
+[2025-10-22 16:19:36] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 16:19:36] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 244
+[2025-10-22 16:19:36] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 16:19:36] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8241
+[2025-10-22 16:19:36] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 16:19:36] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8241
+[2025-10-22 16:19:49] [INFO] [django.server] "OPTIONS /api/users/profile/1/ HTTP/1.1" 200 0
+[2025-10-22 16:19:49] [WARNING] [django.request] Not Found: /api/users/profile/1/
+[2025-10-22 16:19:49] [WARNING] [django.server] "PATCH /api/users/profile/1/ HTTP/1.1" 404 3775
+[2025-10-22 16:19:51] [WARNING] [django.request] Not Found: /api/users/profile/1/
+[2025-10-22 16:19:51] [WARNING] [django.server] "PATCH /api/users/profile/1/ HTTP/1.1" 404 3775
+[2025-10-22 16:20:03] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 663
+[2025-10-22 16:20:03] [INFO] [django.server] "OPTIONS /api/client/profile/me/ HTTP/1.1" 200 0
+[2025-10-22 16:20:03] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-10-22 16:20:03] [INFO] [django.server] "OPTIONS /api/client/transactions/ HTTP/1.1" 200 0
+[2025-10-22 16:20:03] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:20:03] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:20:03] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2927
+[2025-10-22 16:20:03] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2927
+[2025-10-22 16:20:07] [WARNING] [django.request] Not Found: /api/users/profile/71/
+[2025-10-22 16:20:07] [WARNING] [django.server] "PATCH /api/users/profile/71/ HTTP/1.1" 404 3778
+[2025-10-22 16:20:11] [WARNING] [django.request] Not Found: /api/users/profile/71/
+[2025-10-22 16:20:11] [WARNING] [django.server] "PATCH /api/users/profile/71/ HTTP/1.1" 404 3778
+[2025-10-22 16:20:40] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 654
+[2025-10-22 16:20:40] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 16:20:40] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 244
+[2025-10-22 16:20:40] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 16:20:40] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8241
+[2025-10-22 16:20:40] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 16:20:40] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 244
+[2025-10-22 16:20:40] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 16:20:40] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8241
+[2025-10-22 16:20:49] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 11609
+[2025-10-22 16:20:49] [INFO] [django.server] "GET /api/admin/transactions/ HTTP/1.1" 200 11609
+[2025-10-22 16:20:53] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 13619
+[2025-10-22 16:20:53] [INFO] [django.server] "GET /api/admin/fraud-alerts/ HTTP/1.1" 200 13619
+[2025-10-22 16:20:58] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-22 16:20:58] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-22 16:20:58] [INFO] [django.server] "GET /api/admin/thresholds/ HTTP/1.1" 200 1090
+[2025-10-22 16:20:58] [INFO] [django.server] "GET /api/admin/rules/ HTTP/1.1" 200 574
+[2025-10-22 16:21:08] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 16:21:08] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 244
+[2025-10-22 16:21:08] [INFO] [system] Dashboard stats requested by admin admin@safenetai.com
+[2025-10-22 16:21:08] [INFO] [django.server] "GET /api/admin/dashboard/stats/ HTTP/1.1" 200 244
+[2025-10-22 16:21:08] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 16:21:08] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8241
+[2025-10-22 16:21:08] [INFO] [system] Recent activity requested by admin admin@safenetai.com
+[2025-10-22 16:21:08] [INFO] [django.server] "GET /api/admin/dashboard/recent_activity/ HTTP/1.1" 200 8241
+[2025-10-22 16:24:13] [INFO] [django.server] "POST /api/auth/login/ HTTP/1.1" 200 663
+[2025-10-22 16:24:13] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:24:13] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:24:13] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2927
+[2025-10-22 16:24:13] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 2927
+[2025-10-22 16:24:23] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 16:24:23] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 16:24:24] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-10-22 16:24:24] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 16:24:24] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-22 16:24:24] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 328, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-22 16:24:26] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 328, "otp_code": "508703"}
+[2025-10-22 16:24:26] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 328, "otp_id": 37}
+[2025-10-22 16:24:26] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 328, "risk_score": 65, "triggers": ["Large transfer: 12000.00 DZD > 5000.0 DZD", "Statistical outlier: z-score 2.43 > 2.0"], "ml_score": 0.5, "user_id": 71, "distance_violation": false, "otp_reasons": ["Business rules triggered: 2"], "reason": "risk_rules"}
+[2025-10-22 16:24:26] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 366
+[2025-10-22 16:24:59] [INFO] [django.server] "OPTIONS /api/client/transactions/328/verify_otp/ HTTP/1.1" 200 0
+[2025-10-22 16:24:59] [INFO] [system] System event: Transaction OTP verified successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 328, "otp_id": 37}
+[2025-10-22 16:25:00] [INFO] [system] System event: Transaction notification sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 328, "status": "COMPLETED", "risk_level": "MEDIUM", "risk_score": 65}
+[2025-10-22 16:25:00] [INFO] [django.server] "POST /api/client/transactions/328/verify_otp/ HTTP/1.1" 200 114
+[2025-10-22 16:25:04] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:25:04] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:25:04] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3224
+[2025-10-22 16:25:04] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3224
+[2025-10-22 16:27:41] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\apps\users\middleware.py changed, reloading.
+[2025-10-22 16:27:43] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-22 16:27:44] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:27:44] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3224
+[2025-10-22 16:27:44] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-22 16:27:44] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 3224
+[2025-10-30 17:06:07] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:06:46] [INFO] [django.server] "GET /admin/users/user/1/change/ HTTP/1.1" 302 0
+[2025-10-30 17:06:46] [INFO] [django.server] "GET /admin/login/?next=/admin/users/user/1/change/ HTTP/1.1" 200 4207
+[2025-10-30 17:06:51] [INFO] [django.server] "POST /admin/login/?next=/admin/users/user/1/change/ HTTP/1.1" 302 0
+[2025-10-30 17:06:52] [INFO] [django.server] "GET /admin/users/user/1/change/ HTTP/1.1" 200 30182
+[2025-10-30 17:06:52] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 14010
+[2025-10-30 17:07:01] [INFO] [django.server] "GET /admin/transactions/fraudalert/ HTTP/1.1" 200 32660
+[2025-10-30 17:07:02] [INFO] [django.server] "GET /admin/jsi18n/ HTTP/1.1" 200 14010
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4097
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
+[2025-10-30 17:07:14] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 4097
+[2025-10-30 17:08:16] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:08:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:44] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:51] [INFO] [system] System event: ML model loaded successfully | Component: fraud_ml_model | Severity: INFO | Data: {"model_path": "C:\\Users\\HP\\Desktop\\projects\\safeNetAi\\backend\\models\\fraud_isolation.joblib"}
+[2025-10-30 17:08:51] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:51] [INFO] [system] System event: RiskEngine initialized | Component: risk_engine | Severity: INFO | Data: {"thresholds_count": 13, "rules_count": 4}
+[2025-10-30 17:08:51] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 332, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-10-30 17:08:55] [INFO] [system] System event: Security OTP email sent successfully | Component: email_service | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 332, "otp_code": "474971"}
+[2025-10-30 17:08:55] [INFO] [system] System event: Transaction OTP created and sent successfully | Component: transactions | Severity: INFO | Data: {"user_email": "abassi.loay@gmail.com", "user_id": 71, "transaction_id": 332, "otp_id": 41}
+[2025-10-30 17:08:55] [WARNING] [system] System event: Transaction requires OTP verification due to risk rules or AI assessment | Component: transactions | Severity: WARNING | Data: {"transaction_id": 332, "risk_score": 115, "triggers": ["Large transfer: 20000.00 DZD > 5000.0 DZD", "\u26a0\ufe0f Effective distance violation: 213.55km > 60.0km threshold", "Statistical outlier: z-score 4.90 > 2.0"], "ml_score": 0.5, "user_id": 71, "distance_violation": false, "otp_reasons": ["Business rules triggered: 3", "High risk score: 115", "Risk engine explicit requirement"], "reason": "risk_rules"}
+[2025-10-30 17:08:55] [INFO] [django.server] "POST /api/client/transactions/ HTTP/1.1" 201 492
+[2025-10-30 17:10:36] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:55:52] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 17:55:59] [WARNING] [django.request] Not Found: /
+[2025-10-30 17:55:59] [WARNING] [django.server] "GET / HTTP/1.1" 404 3695
+[2025-10-30 18:09:20] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 18:09:22] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650
+[2025-10-30 18:09:36] [WARNING] [django.request] Not Found: /api/docs
+[2025-10-30 18:09:36] [WARNING] [django.server] "GET /api/docs HTTP/1.1" 404 3737
+[2025-10-30 18:09:43] [WARNING] [django.request] Not Found: /api/system
+[2025-10-30 18:09:43] [WARNING] [django.server] "GET /api/system HTTP/1.1" 404 3743
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /api/client HTTP/1.1" 301 0
+[2025-10-30 18:10:17] [WARNING] [django.request] Unauthorized: /api/client/
+[2025-10-30 18:10:17] [WARNING] [django.server] "GET /api/client/ HTTP/1.1" 401 5119
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+[2025-10-30 18:10:17] [INFO] [django.server] "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+[2025-10-30 18:10:18] [INFO] [django.server] "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+[2025-10-30 18:10:34] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650
+[2025-10-30 18:16:27] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\urls.py changed, reloading.
+[2025-10-30 18:16:28] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 19:22:25] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-10-30 19:22:36] [INFO] [django.server] "GET /admin/ HTTP/1.1" 200 16650

@@ -1,5 +1,6 @@
 import os
 import smtplib
+import threading
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText as MIMETextHTML
@@ -244,6 +245,22 @@ def send_html_email(subject, html_content, recipient_list, text_content=None):
         logger.error(f"Error sending HTML email: {e}")
         return False
 
+def send_html_email_async(subject, html_content, recipient_list, text_content=None):
+    """Send HTML email asynchronously to prevent blocking API responses"""
+    def send_email():
+        try:
+            send_html_email(subject, html_content, recipient_list, text_content)
+        except Exception as e:
+            logger.error(f"Error in async email sending: {e}")
+    
+    # Start email sending in a separate thread
+    email_thread = threading.Thread(target=send_email)
+    email_thread.daemon = True  # Thread will die when main process dies
+    email_thread.start()
+    
+    # Return immediately without waiting for email to be sent
+    return True
+
 def send_transaction_notification(user, transaction, status, risk_level="LOW"):
     """Send rich HTML transaction notification email"""
     try:
@@ -295,8 +312,8 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
         SafeNetAi Team
         """
         
-        # Send email
-        success = send_html_email(
+        # Send email asynchronously
+        success = send_html_email_async(
             subject=subject,
             html_content=html_content,
             recipient_list=[user.email],
@@ -350,6 +367,22 @@ def send_transaction_notification(user, transaction, status, risk_level="LOW"):
         )
         return False
 
+def send_transaction_notification_async(user, transaction, status, risk_level="LOW"):
+    """Send transaction notification email asynchronously to prevent blocking API responses"""
+    def send_email():
+        try:
+            send_transaction_notification(user, transaction, status, risk_level)
+        except Exception as e:
+            logger.error(f"Error in async transaction notification sending: {e}")
+    
+    # Start email sending in a separate thread
+    email_thread = threading.Thread(target=send_email)
+    email_thread.daemon = True  # Thread will die when main process dies
+    email_thread.start()
+    
+    # Return immediately without waiting for email to be sent
+    return True
+
 def send_enhanced_fraud_alert_email(profile, fraud_alert):
     """Send enhanced HTML fraud alert email"""
     try:
@@ -399,8 +432,8 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
         SafeNetAi Security Team
         """
         
-        # Send email
-        success = send_html_email(
+        # Send email asynchronously
+        success = send_html_email_async(
             subject=subject,
             html_content=html_content,
             recipient_list=[profile.user.email],
@@ -431,7 +464,9 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
                 {
                     "user_email": profile.user.email,
                     "user_id": profile.user.id,
-                    "transaction_id": fraud_alert.transaction.id
+                    "transaction_id": fraud_alert.transaction.id,
+                    "risk_level": fraud_alert.level,
+                    "risk_score": fraud_alert.risk_score
                 }
             )
             return False
@@ -450,6 +485,22 @@ def send_enhanced_fraud_alert_email(profile, fraud_alert):
             }
         )
         return False
+
+def send_enhanced_fraud_alert_email_async(profile, fraud_alert):
+    """Send enhanced fraud alert email asynchronously to prevent blocking API responses"""
+    def send_email():
+        try:
+            send_enhanced_fraud_alert_email(profile, fraud_alert)
+        except Exception as e:
+            logger.error(f"Error in async fraud alert email sending: {e}")
+    
+    # Start email sending in a separate thread
+    email_thread = threading.Thread(target=send_email)
+    email_thread.daemon = True  # Thread will die when main process dies
+    email_thread.start()
+    
+    # Return immediately without waiting for email to be sent
+    return True
 
 def send_otp_email(user, otp, language='en'):
     """Send elegant HTML OTP email to user with comprehensive logging"""
@@ -538,7 +589,6 @@ def send_otp_email(user, otp, language='en'):
             </div>
         </div>
     </body>
-    </html>
     """
     
     # Text fallback
@@ -573,8 +623,8 @@ def send_otp_email(user, otp, language='en'):
             logger.error("EMAIL_HOST not configured")
             return False
         
-        # Send HTML email instead of plain text
-        success = send_html_email(
+        # Send HTML email asynchronously
+        success = send_html_email_async(
             subject=subject,
             html_content=html_content,
             recipient_list=[user.email],
@@ -628,10 +678,26 @@ def send_otp_email(user, otp, language='en'):
         )
         return False
 
+def send_otp_email_async(user, otp, language='en'):
+    """Send OTP email asynchronously to prevent blocking API responses"""
+    def send_email():
+        try:
+            send_otp_email(user, otp, language)
+        except Exception as e:
+            logger.error(f"Error in async OTP email sending: {e}")
+    
+    # Start email sending in a separate thread
+    email_thread = threading.Thread(target=send_email)
+    email_thread.daemon = True  # Thread will die when main process dies
+    email_thread.start()
+    
+    # Return immediately without waiting for email to be sent
+    return True
+
 def send_fraud_alert_email(profile, fraud_alert):
     """Send fraud alert email to client with logging"""
-    # Use the enhanced version
-    return send_enhanced_fraud_alert_email(profile, fraud_alert)
+    # Use the enhanced version asynchronously
+    return send_enhanced_fraud_alert_email_async(profile, fraud_alert)
 
 def create_otp_for_user(user, language=None):
     """Create and send OTP for user with comprehensive logging"""
@@ -645,19 +711,19 @@ def create_otp_for_user(user, language=None):
         deleted_count = EmailOTP.objects.filter(user=user, used=False).delete()[0]
         if deleted_count > 0:
             logger.info(f"Deleted {deleted_count} existing unused OTPs for user {user.email}")
-        
+
         # Create new OTP
         otp = EmailOTP.objects.create(
             user=user,
             otp=generate_otp(),
             expires_at=timezone.now() + timedelta(hours=settings.EMAIL_TOKEN_TTL_HOURS)
         )
-        
+
         logger.info(f"Created OTP {otp.otp} for user {user.email}, expires at {otp.expires_at}")
-        
-        # Send email
-        success = send_otp_email(user, otp.otp, user_language)
-        
+
+        # Send email asynchronously
+        success = send_otp_email_async(user, otp.otp, user_language)
+
         if success:
             logger.info(f"OTP created and sent successfully for user {user.email}")
             log_system_event(
@@ -701,7 +767,43 @@ def resend_otp_email(user, language=None):
         
         if existing_otp and existing_otp.expires_at > timezone.now():
             logger.info(f"Resending existing OTP {existing_otp.otp} for user {user.email}")
-            success = send_otp_email(user, existing_otp.otp, user_language)
+            success = send_otp_email_async(user, existing_otp.otp, user_language)
+            if success:
+                log_system_event(
+                    "OTP resent successfully",
+                    "email_service",
+                    "INFO",
+                    {"user_email": user.email, "user_id": user.id, "otp_id": existing_otp.id}
+                )
+            return success
+        else:
+            logger.info(f"No valid OTP found for user {user.email}, creating new one")
+            return create_otp_for_user(user, user_language) is not None
+            
+    except Exception as e:
+        logger.error(f"Error resending OTP for user {user.email}: {e}")
+        log_system_event(
+            "Error resending OTP",
+            "email_service",
+            "ERROR",
+            {"user_email": user.email, "user_id": user.id, "error": str(e)}
+        )
+        return False
+
+def resend_otp(user, language=None):
+    """Resend OTP to user with comprehensive logging"""
+    try:
+        logger.info(f"Resending OTP to user {user.email}")
+        
+        # Use provided language or get from user preference
+        user_language = language or get_user_language(user)
+        
+        # Check if user has a valid unused OTP
+        existing_otp = EmailOTP.objects.filter(user=user, used=False).first()
+        
+        if existing_otp and existing_otp.expires_at > timezone.now():
+            logger.info(f"Resending existing OTP {existing_otp.otp} for user {user.email}")
+            success = send_otp_email_async(user, existing_otp.otp, user_language)
             if success:
                 log_system_event(
                     "OTP resent successfully",
@@ -927,18 +1029,19 @@ def send_security_otp_email(user, otp_code, transaction):
             }
         )
         return False
-        
-        # Send email
-        success = send_html_email(
-            subject=subject,
-            html_content=html_content,
-            recipient_list=[user.email],
-            text_content=text_content
-        )
-        
-        if success:
-            logger.info(f"Security OTP email sent to {user.email} for transaction {transaction.id}")
-            return True
-        else:
-            logger.error(f"Failed to send security OTP email to {user.email}")
-            return False
+
+def send_security_otp_email_async(user, otp_code, transaction):
+    """Send security OTP email asynchronously to prevent blocking API responses"""
+    def send_email():
+        try:
+            send_security_otp_email(user, otp_code, transaction)
+        except Exception as e:
+            logger.error(f"Error in async security OTP email sending: {e}")
+    
+    # Start email sending in a separate thread
+    email_thread = threading.Thread(target=send_email)
+    email_thread.daemon = True  # Thread will die when main process dies
+    email_thread.start()
+    
+    # Return immediately without waiting for email to be sent
+    return True
