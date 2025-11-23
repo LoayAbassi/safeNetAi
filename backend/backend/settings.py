@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     "apps.risk",
     "apps.transactions",
     "apps.system",
-    "apps.system",
 ]
 
 MIDDLEWARE = [
