@@ -462,3 +462,11 @@
 [2025-11-23 16:50:42] [INFO] [django.server] "GET /api/client/profile/me/ HTTP/1.1" 200 467
 [2025-11-23 16:50:42] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 6408
 [2025-11-23 16:50:42] [INFO] [django.server] "GET /api/client/transactions/ HTTP/1.1" 200 6408
+[2025-11-23 17:16:31] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\settings.py changed, reloading.
+[2025-11-23 17:16:32] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-11-23 17:16:37] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\settings.py changed, reloading.
+[2025-11-23 17:16:38] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-11-23 17:16:43] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\settings.py changed, reloading.
+[2025-11-23 17:16:44] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader
+[2025-11-23 17:16:56] [INFO] [django.utils.autoreload] C:\Users\HP\Desktop\projects\safeNetAi\backend\backend\settings.py changed, reloading.
+[2025-11-23 17:16:57] [INFO] [django.utils.autoreload] Watching for file changes with StatReloader

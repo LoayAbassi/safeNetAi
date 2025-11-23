@@ -140,7 +140,8 @@ EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'False').lower() == 'true'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'apikey')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+EMAIL_HOST_PASSWORD = "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"
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'abassi.loay23@gmail.com')
 
 # Site configuration
