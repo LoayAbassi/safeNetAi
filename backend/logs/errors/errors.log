@@ -51,3 +51,35 @@
 [2025-10-30 17:08:51] [ERROR] [ai] Error making ML prediction for transaction 332: X has 9 features, but StandardScaler is expecting 7 features as input.
 [2025-10-30 17:08:51] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 332, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
 >>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 336
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 336 requires mandatory OTP
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 336
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 336 requires mandatory OTP
+[2025-11-23 16:19:24] [ERROR] [ai] Error making ML prediction for transaction 336: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-11-23 16:19:24] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 336, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-11-23 16:19:25] [ERROR] [email_service] Error sending HTML email: Connection unexpectedly closed
+[2025-11-23 16:19:25] [ERROR] [email_service] Failed to send security OTP email to abassi.loay@gmail.com
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 337
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 337 requires mandatory OTP
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 337
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 337 requires mandatory OTP
+[2025-11-23 16:22:33] [ERROR] [ai] Error making ML prediction for transaction 337: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-11-23 16:22:33] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 337, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-11-23 16:23:45] [ERROR] [transactions] Error completing transaction after OTP verification: name 'send_transaction_notification' is not defined
+[2025-11-23 16:23:45] [ERROR] [django.request] Internal Server Error: /api/client/transactions/337/verify_otp/
+[2025-11-23 16:23:45] [ERROR] [django.server] "POST /api/client/transactions/337/verify_otp/ HTTP/1.1" 500 42
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 338
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 338 requires mandatory OTP
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 338
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 338 requires mandatory OTP
+[2025-11-23 16:24:51] [ERROR] [ai] Error making ML prediction for transaction 338: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-11-23 16:24:51] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 338, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}
+[2025-11-23 16:27:01] [ERROR] [transactions] Error completing transaction after OTP verification: name 'send_transaction_notification' is not defined
+[2025-11-23 16:27:01] [ERROR] [django.request] Internal Server Error: /api/client/transactions/338/verify_otp/
+[2025-11-23 16:27:01] [ERROR] [django.server] "POST /api/client/transactions/338/verify_otp/ HTTP/1.1" 500 42
+[2025-11-23 16:49:22] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 339
+[2025-11-23 16:49:22] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 339 requires mandatory OTP
+[2025-11-23 16:49:23] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 339
+[2025-11-23 16:49:23] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 339 requires mandatory OTP
+[2025-11-23 16:49:24] [ERROR] [ai] Error making ML prediction for transaction 339: X has 9 features, but StandardScaler is expecting 7 features as input.
+[2025-11-23 16:49:24] [ERROR] [system] System event: Error making ML prediction | Component: fraud_ml_model | Severity: ERROR | Data: {"transaction_id": 339, "error": "X has 9 features, but StandardScaler is expecting 7 features as input."}

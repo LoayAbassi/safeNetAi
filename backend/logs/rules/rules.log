@@ -414,3 +414,199 @@
 [2025-10-30 17:08:51] [INFO] [rules] ML Location features: Home=213.55km, LastVerified=232.32km, Effective=213.55km
 [2025-10-30 17:08:55] [INFO] [rules] Fraud alert already exists for transaction 332: ID 161
 >>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3
+[2025-11-23 16:19:23] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:19:23] [INFO] [rules] Starting risk assessment for transaction 336
+[2025-11-23 16:19:23] [INFO] [rules] Transaction details: Amount=250.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:19:23] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 336:
+[2025-11-23 16:19:23] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:19:23] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:19:23] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:19:23] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:19:23] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:19:23] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:19:23] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:19:23] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:19:23] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:19:23] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:19:23] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:19:23] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:19:23] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:19:23] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 336 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 336, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 336
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 336 requires mandatory OTP
+[2025-11-23 16:19:23] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:19:23] [INFO] [rules] Creating fraud alert for transaction 336: Medium risk, score 50
+[2025-11-23 16:19:23] [INFO] [rules] Fraud alert created: ID 165
+[2025-11-23 16:19:23] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:19:23] [INFO] [rules] Starting risk assessment for transaction 336
+[2025-11-23 16:19:23] [INFO] [rules] Transaction details: Amount=250.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:19:23] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 336:
+[2025-11-23 16:19:23] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:19:23] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:19:23] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:19:23] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:19:23] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:19:23] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:19:23] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:19:23] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:19:23] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:19:23] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:19:23] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:19:23] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:19:23] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:19:23] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 336 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 336, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 336
+[2025-11-23 16:19:23] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 336 requires mandatory OTP
+[2025-11-23 16:19:23] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:19:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:19:24] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:19:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:19:24] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:19:24] [INFO] [rules] Fraud alert already exists for transaction 336: ID 165
+[2025-11-23 16:22:32] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:22:32] [INFO] [rules] Starting risk assessment for transaction 337
+[2025-11-23 16:22:32] [INFO] [rules] Transaction details: Amount=250.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:22:32] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 337:
+[2025-11-23 16:22:32] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:22:32] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:22:32] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:22:32] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:22:32] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:22:32] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:22:32] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:22:32] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:22:32] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:22:32] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:22:32] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:22:32] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:22:32] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:22:32] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 337 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 337, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 337
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 337 requires mandatory OTP
+[2025-11-23 16:22:32] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:22:32] [INFO] [rules] Creating fraud alert for transaction 337: Medium risk, score 50
+[2025-11-23 16:22:32] [INFO] [rules] Fraud alert created: ID 166
+[2025-11-23 16:22:32] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:22:32] [INFO] [rules] Starting risk assessment for transaction 337
+[2025-11-23 16:22:32] [INFO] [rules] Transaction details: Amount=250.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:22:32] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 337:
+[2025-11-23 16:22:32] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:22:32] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:22:32] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:22:32] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:22:32] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:22:32] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:22:32] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:22:32] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:22:32] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:22:32] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:22:32] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:22:32] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:22:32] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:22:32] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 337 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 337, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 337
+[2025-11-23 16:22:32] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 337 requires mandatory OTP
+[2025-11-23 16:22:32] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:22:33] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:22:33] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:22:33] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:22:33] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:22:33] [INFO] [rules] Fraud alert already exists for transaction 337: ID 166
+[2025-11-23 16:24:50] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:24:50] [INFO] [rules] Starting risk assessment for transaction 338
+[2025-11-23 16:24:50] [INFO] [rules] Transaction details: Amount=200.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:24:50] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 338:
+[2025-11-23 16:24:50] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:24:50] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:24:50] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:24:50] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:24:50] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:24:50] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:24:50] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:24:50] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:24:50] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:24:50] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:24:50] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:24:50] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:24:50] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:24:50] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 338 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 338, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 338
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 338 requires mandatory OTP
+[2025-11-23 16:24:50] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:24:50] [INFO] [rules] Creating fraud alert for transaction 338: Medium risk, score 50
+[2025-11-23 16:24:50] [INFO] [rules] Fraud alert created: ID 167
+[2025-11-23 16:24:50] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:24:50] [INFO] [rules] Starting risk assessment for transaction 338
+[2025-11-23 16:24:50] [INFO] [rules] Transaction details: Amount=200.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:24:50] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 338:
+[2025-11-23 16:24:50] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:24:50] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:24:50] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:24:50] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:24:50] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:24:50] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:24:50] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:24:50] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:24:50] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:24:50] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:24:50] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:24:50] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:24:50] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:24:50] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 338 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 338, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 338
+[2025-11-23 16:24:50] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 338 requires mandatory OTP
+[2025-11-23 16:24:50] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:24:51] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:24:51] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:24:51] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:24:51] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:24:51] [INFO] [rules] Fraud alert already exists for transaction 338: ID 167
+[2025-11-23 16:49:22] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:49:22] [INFO] [rules] Starting risk assessment for transaction 339
+[2025-11-23 16:49:22] [INFO] [rules] Transaction details: Amount=200.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:49:22] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 339:
+[2025-11-23 16:49:22] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:49:22] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:49:22] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:49:22] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:49:22] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:49:22] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:49:22] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:49:22] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:49:22] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:49:22] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:49:22] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:49:22] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:49:22] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:49:22] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 339 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 339, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:49:22] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 339
+[2025-11-23 16:49:22] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 339 requires mandatory OTP
+[2025-11-23 16:49:22] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:49:22] [INFO] [rules] Creating fraud alert for transaction 339: Medium risk, score 50
+[2025-11-23 16:49:22] [INFO] [rules] Fraud alert created: ID 168
+[2025-11-23 16:49:23] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:49:23] [INFO] [rules] Starting risk assessment for transaction 339
+[2025-11-23 16:49:23] [INFO] [rules] Transaction details: Amount=200.00 DZD, Type=transfer, Client=loay abassi
+[2025-11-23 16:49:23] [INFO] [rules] 🎯 Enhanced Distance-Based Risk Analysis for Transaction 339:
+[2025-11-23 16:49:23] [INFO] [rules]   📍 Home location: (34.931003, 9.357500)
+[2025-11-23 16:49:23] [INFO] [rules]   📍 Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:49:23] [INFO] [rules]   📍 Last verified location: (34.727526, 10.744627)
+[2025-11-23 16:49:23] [INFO] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:49:23] [INFO] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:49:23] [INFO] [rules]   🎯 Effective distance: 115.30km (minimum = safest path)
+[2025-11-23 16:49:23] [INFO] [rules]   🏆 Closest reference point: LAST_VERIFIED
+[2025-11-23 16:49:23] [INFO] [rules]   🚧 Distance threshold: 60.0km
+[2025-11-23 16:49:23] [WARNING] [rules] Rule 4 triggered: ⚠️ Effective distance violation: 115.30km > 60.0km threshold
+[2025-11-23 16:49:23] [WARNING] [rules] ❌ LOCATION VIOLATION: Effective distance 115.30km exceeds 60.0km threshold
+[2025-11-23 16:49:23] [WARNING] [rules]   📏 Distance from home: 134.27km
+[2025-11-23 16:49:23] [WARNING] [rules]   📏 Distance from last verified: 115.30km
+[2025-11-23 16:49:23] [WARNING] [rules]   🚫 Both distances exceed threshold - OTP REQUIRED
+[2025-11-23 16:49:23] [INFO] [rules] Rule evaluation: Effective Distance Violation - OTP REQUIRED | Transaction: 339 | Status: TRIGGERED | Risk Score: 50 | Data: {"rule_name": "Effective Distance Violation - OTP REQUIRED", "transaction_id": 339, "triggered": true, "risk_score": 50, "triggers": ["\u274c EFFECTIVE DISTANCE VIOLATION: 115.30km > 60.0km", "Distance from home: 134.27km", "Distance from last verified: 115.30km", "Effective distance (minimum): 115.30km", "Both distances exceed threshold \u2192 OTP REQUIRED"]}
+[2025-11-23 16:49:23] [CRITICAL] [rules] 🔐 MANDATORY OTP REQUIRED: Effective distance 115.30km exceeds 60.0km threshold for transaction 339
+[2025-11-23 16:49:23] [CRITICAL] [rules] 🔐 Effective distance-based OTP enforcement: Transaction 339 requires mandatory OTP
+[2025-11-23 16:49:23] [INFO] [rules] Risk assessment completed: Score=50, Triggers=1, Requires OTP=True, Decision=Monitor
+[2025-11-23 16:49:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:49:24] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:49:24] [INFO] [rules] RiskEngine initialized with 13 thresholds and 4 rules
+[2025-11-23 16:49:24] [INFO] [rules] ML Location features: Home=134.27km, LastVerified=115.30km, Effective=115.30km
+[2025-11-23 16:49:24] [INFO] [rules] Fraud alert already exists for transaction 339: ID 168

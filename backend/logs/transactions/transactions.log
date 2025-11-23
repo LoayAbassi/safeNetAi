@@ -194,3 +194,108 @@
 [2025-10-30 17:08:55] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 332
 [2025-10-30 17:08:55] [INFO] [transactions] Transaction requires OTP verification: ID 332, Risk score: 115, Triggers: 3, ML score: 0.500
 >>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3
+[2025-11-23 16:19:23] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-11-23 16:19:23] [INFO] [transactions] Client profile found: loay abassi
+[2025-11-23 16:19:23] [INFO] [transactions] Location validation passed: (33.865728, 10.0466688)
+[2025-11-23 16:19:23] [INFO] [transactions] Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:19:23] [INFO] [transactions] Preserved last known location: (34.727526, 10.744627)
+[2025-11-23 16:19:23] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(34.931003, 9.357500), Current transaction=(33.865728, 10.0466688), Last verified=(34.727526, 10.744627)
+[2025-11-23 16:19:23] [INFO] [transactions] Transaction created: ID 336, Amount: 250.00, Type: transfer
+[2025-11-23 16:19:23] [INFO] [transactions] Transaction location stored: (33.865728, 10.0466688)
+[2025-11-23 16:19:23] [INFO] [transactions] Risk assessment: Score=50, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold'], Requires OTP=True, Decision=Monitor
+[2025-11-23 16:19:24] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 70
+[2025-11-23 16:19:24] [INFO] [transactions] Transaction details: ID=336, Client=loay abassi, Type=transfer, Amount=250.00 DZD, Risk Score=70, Decision=Monitor, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold']
+[2025-11-23 16:19:24] [INFO] [transactions] Transaction | ID: 336 | Amount: 250.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 336, "amount": "250.00", "transaction_type": "transfer", "user_id": 71, "status": "CREATED", "risk_level": "Score_70"}
+[2025-11-23 16:19:24] [INFO] [transactions] OTP decision for transaction 336: Required=True, Reasons=['Business rules triggered: 1', 'High risk score: 70', 'Risk engine explicit requirement']
+[2025-11-23 16:19:24] [INFO] [transactions] Creating transaction OTP for transaction 336, user abassi.loay@gmail.com
+[2025-11-23 16:19:24] [INFO] [transactions] Created transaction OTP 424520 for transaction 336, expires at 2025-11-23 15:29:24.924365+00:00
+[2025-11-23 16:19:24] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 336
+[2025-11-23 16:19:24] [INFO] [transactions] Transaction requires OTP verification: ID 336, Risk score: 70, Triggers: 1, ML score: 0.500
+[2025-11-23 16:22:32] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-11-23 16:22:32] [INFO] [transactions] Client profile found: loay abassi
+[2025-11-23 16:22:32] [INFO] [transactions] Location validation passed: (33.865728, 10.0466688)
+[2025-11-23 16:22:32] [INFO] [transactions] Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:22:32] [INFO] [transactions] Preserved last known location: (34.727526, 10.744627)
+[2025-11-23 16:22:32] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(34.931003, 9.357500), Current transaction=(33.865728, 10.0466688), Last verified=(34.727526, 10.744627)
+[2025-11-23 16:22:32] [INFO] [transactions] Transaction created: ID 337, Amount: 250.00, Type: transfer
+[2025-11-23 16:22:32] [INFO] [transactions] Transaction location stored: (33.865728, 10.0466688)
+[2025-11-23 16:22:32] [INFO] [transactions] Risk assessment: Score=50, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold'], Requires OTP=True, Decision=Monitor
+[2025-11-23 16:22:33] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 70
+[2025-11-23 16:22:33] [INFO] [transactions] Transaction details: ID=337, Client=loay abassi, Type=transfer, Amount=250.00 DZD, Risk Score=70, Decision=Monitor, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold']
+[2025-11-23 16:22:33] [INFO] [transactions] Transaction | ID: 337 | Amount: 250.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 337, "amount": "250.00", "transaction_type": "transfer", "user_id": 71, "status": "CREATED", "risk_level": "Score_70"}
+[2025-11-23 16:22:33] [INFO] [transactions] OTP decision for transaction 337: Required=True, Reasons=['Business rules triggered: 1', 'High risk score: 70', 'Risk engine explicit requirement']
+[2025-11-23 16:22:33] [INFO] [transactions] Creating transaction OTP for transaction 337, user abassi.loay@gmail.com
+[2025-11-23 16:22:33] [INFO] [transactions] Created transaction OTP 430446 for transaction 337, expires at 2025-11-23 15:32:33.938748+00:00
+[2025-11-23 16:22:33] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 337
+[2025-11-23 16:22:33] [INFO] [transactions] Transaction requires OTP verification: ID 337, Risk score: 70, Triggers: 1, ML score: 0.500
+[2025-11-23 16:23:45] [INFO] [transactions] Verifying transaction OTP for transaction 337, user abassi.loay@gmail.com
+[2025-11-23 16:23:45] [INFO] [transactions] Transaction OTP verified successfully for transaction 337
+[2025-11-23 16:23:45] [INFO] [transactions] 🔐 OTP SUCCESS: Updated last known location to (33.865728, 10.046669) for user abassi.loay@gmail.com after successful OTP verification
+[2025-11-23 16:23:45] [INFO] [transactions] Updating balances for transaction 337
+[2025-11-23 16:23:45] [INFO] [transactions] Current balance: 699966900.00, Amount: 250.00
+[2025-11-23 16:23:45] [INFO] [transactions] Transfer (sender): New balance = 699966650.00
+[2025-11-23 16:23:45] [WARNING] [transactions] Recipient account 11111111 not found for transfer
+[2025-11-23 16:23:45] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-11-23 16:23:45] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=4728.57142857143, std_amount=4301.06773644282, transaction_count=7
+[2025-11-23 16:23:45] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 699966650.00 DZD
+[2025-11-23 16:23:45] [INFO] [transactions] Transaction 337 completed after OTP verification
+[2025-11-23 16:23:45] [ERROR] [transactions] Error completing transaction after OTP verification: name 'send_transaction_notification' is not defined
+[2025-11-23 16:24:50] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-11-23 16:24:50] [INFO] [transactions] Client profile found: loay abassi
+[2025-11-23 16:24:50] [INFO] [transactions] Location validation passed: (33.865728, 10.0466688)
+[2025-11-23 16:24:50] [INFO] [transactions] Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:24:50] [INFO] [transactions] Preserved last known location: (34.727526, 10.744627)
+[2025-11-23 16:24:50] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(34.931003, 9.357500), Current transaction=(33.865728, 10.0466688), Last verified=(34.727526, 10.744627)
+[2025-11-23 16:24:50] [INFO] [transactions] Transaction created: ID 338, Amount: 200.00, Type: transfer
+[2025-11-23 16:24:50] [INFO] [transactions] Transaction location stored: (33.865728, 10.0466688)
+[2025-11-23 16:24:50] [INFO] [transactions] Risk assessment: Score=50, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold'], Requires OTP=True, Decision=Monitor
+[2025-11-23 16:24:51] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 70
+[2025-11-23 16:24:51] [INFO] [transactions] Transaction details: ID=338, Client=loay abassi, Type=transfer, Amount=200.00 DZD, Risk Score=70, Decision=Monitor, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold']
+[2025-11-23 16:24:51] [INFO] [transactions] Transaction | ID: 338 | Amount: 200.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 338, "amount": "200.00", "transaction_type": "transfer", "user_id": 71, "status": "CREATED", "risk_level": "Score_70"}
+[2025-11-23 16:24:51] [INFO] [transactions] OTP decision for transaction 338: Required=True, Reasons=['Business rules triggered: 1', 'High risk score: 70', 'Risk engine explicit requirement']
+[2025-11-23 16:24:51] [INFO] [transactions] Creating transaction OTP for transaction 338, user abassi.loay@gmail.com
+[2025-11-23 16:24:51] [INFO] [transactions] Created transaction OTP 903740 for transaction 338, expires at 2025-11-23 15:34:51.835092+00:00
+[2025-11-23 16:24:51] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 338
+[2025-11-23 16:24:51] [INFO] [transactions] Transaction requires OTP verification: ID 338, Risk score: 70, Triggers: 1, ML score: 0.500
+[2025-11-23 16:27:01] [INFO] [transactions] Verifying transaction OTP for transaction 338, user abassi.loay@gmail.com
+[2025-11-23 16:27:01] [INFO] [transactions] Transaction OTP verified successfully for transaction 338
+[2025-11-23 16:27:01] [INFO] [transactions] 🔐 OTP SUCCESS: Updated last known location to (33.865728, 10.046669) for user abassi.loay@gmail.com after successful OTP verification
+[2025-11-23 16:27:01] [INFO] [transactions] Updating balances for transaction 338
+[2025-11-23 16:27:01] [INFO] [transactions] Current balance: 699966900.00, Amount: 200.00
+[2025-11-23 16:27:01] [INFO] [transactions] Transfer (sender): New balance = 699966700.00
+[2025-11-23 16:27:01] [WARNING] [transactions] Recipient account 20 not found for transfer
+[2025-11-23 16:27:01] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-11-23 16:27:01] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=4728.57142857143, std_amount=4301.06773644282, transaction_count=7
+[2025-11-23 16:27:01] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 699966700.00 DZD
+[2025-11-23 16:27:01] [INFO] [transactions] Transaction 338 completed after OTP verification
+[2025-11-23 16:27:01] [ERROR] [transactions] Error completing transaction after OTP verification: name 'send_transaction_notification' is not defined
+[2025-11-23 16:27:11] [INFO] [transactions] Verifying transaction OTP for transaction 338, user abassi.loay@gmail.com
+[2025-11-23 16:27:11] [WARNING] [transactions] No valid OTP found for transaction 338, user abassi.loay@gmail.com
+[2025-11-23 16:49:22] [INFO] [transactions] Creating transaction for user abassi.loay@gmail.com
+[2025-11-23 16:49:22] [INFO] [transactions] Client profile found: loay abassi
+[2025-11-23 16:49:22] [INFO] [transactions] Location validation passed: (33.865728, 10.0466688)
+[2025-11-23 16:49:22] [INFO] [transactions] Current transaction location: (33.865728, 10.0466688)
+[2025-11-23 16:49:22] [INFO] [transactions] Preserved last known location: (34.727526, 10.744627)
+[2025-11-23 16:49:22] [INFO] [transactions] Location tracking: User=abassi.loay@gmail.com, Home=(34.931003, 9.357500), Current transaction=(33.865728, 10.0466688), Last verified=(34.727526, 10.744627)
+[2025-11-23 16:49:22] [INFO] [transactions] Transaction created: ID 339, Amount: 200.00, Type: transfer
+[2025-11-23 16:49:22] [INFO] [transactions] Transaction location stored: (33.865728, 10.0466688)
+[2025-11-23 16:49:23] [INFO] [transactions] Risk assessment: Score=50, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold'], Requires OTP=True, Decision=Monitor
+[2025-11-23 16:49:24] [INFO] [transactions] ML score: 0.5, Contribution: 20, Final risk score: 70
+[2025-11-23 16:49:24] [INFO] [transactions] Transaction details: ID=339, Client=loay abassi, Type=transfer, Amount=200.00 DZD, Risk Score=70, Decision=Monitor, Triggers=['⚠️ Effective distance violation: 115.30km > 60.0km threshold']
+[2025-11-23 16:49:24] [INFO] [transactions] Transaction | ID: 339 | Amount: 200.00 DZD | Type: transfer | Status: CREATED | Data: {"transaction_id": 339, "amount": "200.00", "transaction_type": "transfer", "user_id": 71, "status": "CREATED", "risk_level": "Score_70"}
+[2025-11-23 16:49:24] [INFO] [transactions] OTP decision for transaction 339: Required=True, Reasons=['Business rules triggered: 1', 'High risk score: 70', 'Risk engine explicit requirement']
+[2025-11-23 16:49:24] [INFO] [transactions] Creating transaction OTP for transaction 339, user abassi.loay@gmail.com
+[2025-11-23 16:49:24] [INFO] [transactions] Created transaction OTP 521027 for transaction 339, expires at 2025-11-23 15:59:24.101449+00:00
+[2025-11-23 16:49:24] [INFO] [transactions] Transaction OTP created and sent successfully for transaction 339
+[2025-11-23 16:49:24] [INFO] [transactions] Transaction requires OTP verification: ID 339, Risk score: 70, Triggers: 1, ML score: 0.500
+[2025-11-23 16:50:37] [INFO] [transactions] Verifying transaction OTP for transaction 339, user abassi.loay@gmail.com
+[2025-11-23 16:50:38] [INFO] [transactions] Transaction OTP verified successfully for transaction 339
+[2025-11-23 16:50:38] [INFO] [transactions] 🔐 OTP SUCCESS: Updated last known location to (33.865728, 10.046669) for user abassi.loay@gmail.com after successful OTP verification
+[2025-11-23 16:50:38] [INFO] [transactions] Updating balances for transaction 339
+[2025-11-23 16:50:38] [INFO] [transactions] Current balance: 699966900.00, Amount: 200.00
+[2025-11-23 16:50:38] [INFO] [transactions] Transfer (sender): New balance = 699966700.00
+[2025-11-23 16:50:38] [WARNING] [transactions] Recipient account 20 not found for transfer
+[2025-11-23 16:50:38] [INFO] [transactions] Updating statistics for client loay abassi
+[2025-11-23 16:50:38] [INFO] [transactions] Statistics updated for loay abassi: avg_amount=4728.57142857143, std_amount=4301.06773644282, transaction_count=7
+[2025-11-23 16:50:38] [INFO] [transactions] Balance update completed for client loay abassi. New balance: 699966700.00 DZD
+[2025-11-23 16:50:38] [INFO] [transactions] Transaction 339 completed after OTP verification

@@ -4,12 +4,7 @@ from rest_framework.response import Response
 from django.db import transaction
 from django.utils import timezone
 from decimal import Decimal
-from django.db import transaction
-from django.utils import timezone
-from decimal import Decimal
 from .serializers import (
-    TransactionSerializer, CreateTransactionSerializer, AdminTransactionSerializer,
-    FraudAlertSerializer, AdminFraudAlertSerializer
     TransactionSerializer, CreateTransactionSerializer, AdminTransactionSerializer,
     FraudAlertSerializer, AdminFraudAlertSerializer
 )
@@ -17,7 +12,7 @@ from .models import Transaction, FraudAlert
 from apps.risk.models import ClientProfile
 from apps.risk.engine import RiskEngine, haversine_distance
 from apps.risk.ml import FraudMLModel
-from apps.users.email_service import send_fraud_alert_email, send_transaction_notification_async
+from apps.users.email_service import send_fraud_alert_email, send_transaction_notification, send_transaction_notification_async
 from apps.transactions.services import create_transaction_otp, verify_transaction_otp, resend_transaction_otp
 from apps.utils.logger import get_transactions_logger, log_transaction, log_system_event
 from rest_framework.decorators import api_view, permission_classes
@@ -355,7 +350,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
                     
                     # Send transaction notification email
                     if transaction_obj.client.user:
-                        send_transaction_notification(
+                        send_transaction_notification_async(
                             transaction_obj.client.user, 
                             transaction_obj, 
                             "COMPLETED", 
@@ -430,7 +425,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
                         # Send transaction notification email
                         if transaction_obj.client.user:
                             risk_level = "HIGH" if transaction_obj.risk_score >= 70 else "MEDIUM"
-                            send_transaction_notification(
+                            send_transaction_notification_async(
                                 transaction_obj.client.user, 
                                 transaction_obj, 
                                 "COMPLETED", 

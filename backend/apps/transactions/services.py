@@ -41,14 +41,8 @@ def create_transaction_otp(transaction, user):
         
         logger.info(f"Created transaction OTP {otp.otp} for transaction {transaction.id}, expires at {otp.expires_at}")
         
-<<<<<<< HEAD
         # Send security OTP email asynchronously
         success = send_security_otp_email_async(user, otp.otp, transaction)
-=======
-        # Send security OTP email
-        from apps.users.email_service import send_security_otp_email
-        success = send_security_otp_email(user, otp.otp, transaction)
->>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3
         
         if success:
             logger.info(f"Transaction OTP created and sent successfully for transaction {transaction.id}")
@@ -221,13 +215,8 @@ def resend_transaction_otp(transaction_id, user):
         if existing_otp and not existing_otp.is_expired():
             logger.info(f"Resending existing transaction OTP {existing_otp.otp} for transaction {transaction_id}")
             # Get transaction for email template
-<<<<<<< HEAD
             from apps.users.email_service import send_security_otp_email_async
             success = send_security_otp_email_async(user, existing_otp.otp, existing_otp.transaction)
-=======
-            from apps.users.email_service import send_security_otp_email
-            success = send_security_otp_email(user, existing_otp.otp, existing_otp.transaction)
->>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3
             if success:
                 log_system_event(
                     "Transaction OTP resent successfully",
@@ -249,15 +238,9 @@ def resend_transaction_otp(transaction_id, user):
                 transaction = Transaction.objects.get(id=transaction_id)
                 return create_transaction_otp(transaction, user) is not None
             except Transaction.DoesNotExist:
-<<<<<<< HEAD
                 logger.error(f"Transaction {transaction_id} not found when trying to resend OTP")
                 return False
                 
-=======
-                logger.error(f"Transaction {transaction_id} not found")
-                return False
-            
->>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3
     except Exception as e:
         logger.error(f"Error resending transaction OTP for transaction {transaction_id}: {e}")
         log_system_event(

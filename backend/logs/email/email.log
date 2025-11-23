@@ -22,3 +22,14 @@
 [2025-10-30 17:08:51] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: ar
 [2025-10-30 17:08:55] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 332
 >>>>>>> 3ab812be2863f699c62ef86afe4333f2e0b2a4f3
+[2025-11-23 16:19:24] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-11-23 16:19:25] [ERROR] [email_service] Error sending HTML email: Connection unexpectedly closed
+[2025-11-23 16:19:25] [ERROR] [email_service] Failed to send security OTP email to abassi.loay@gmail.com
+[2025-11-23 16:22:33] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-11-23 16:22:35] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 337
+[2025-11-23 16:24:51] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-11-23 16:24:53] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 338
+[2025-11-23 16:49:24] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-11-23 16:49:25] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 339
+[2025-11-23 16:50:38] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 339 using language: fr
+[2025-11-23 16:50:38] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
