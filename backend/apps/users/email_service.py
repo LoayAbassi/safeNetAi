@@ -17,6 +17,9 @@ from .email_templates import (
     get_transaction_notification_template,
     get_fraud_alert_template
 )
+# Import SendGrid
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 # Set up logger
 logger = get_email_logger()
@@ -217,32 +220,30 @@ def get_html_email_template(template_name, context):
     return templates.get(template_name, '')
 
 def send_html_email(subject, html_content, recipient_list, text_content=None):
-    """Send HTML email with fallback text content"""
+    """Send HTML email with fallback text content using SendGrid API"""
     try:
-        msg = MIMEMultipart('alternative')
-        msg['Subject'] = subject
-        msg['From'] = settings.DEFAULT_FROM_EMAIL
-        msg['To'] = ', '.join(recipient_list)
+        # Create SendGrid message
+        message = Mail(
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to_emails=recipient_list,  # SendGrid API can handle a list of recipients
+            subject=subject,
+            html_content=html_content
+        )
         
-        # Add text version
+        # Add plain text content if provided
         if text_content:
-            text_part = MIMEText(text_content, 'plain')
-            msg.attach(text_part)
+            message.plain_text_content = text_content
         
-        # Add HTML version
-        html_part = MIMETextHTML(html_content, 'html')
-        msg.attach(html_part)
+        # Send email using SendGrid API
+        sg = SendGridAPIClient(api_key=settings.SENDGRID_API_KEY)
+        response = sg.send(message)
         
-        # Send email
-        with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
-            if settings.EMAIL_USE_TLS:
-                server.starttls()
-            server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-            server.send_message(msg)
-        
+        # Log successful sending
+        logger.info(f"Email sent successfully via SendGrid API to {', '.join(recipient_list)} with status code {response.status_code}")
         return True
+        
     except Exception as e:
-        logger.error(f"Error sending HTML email: {e}")
+        logger.error(f"Error sending HTML email via SendGrid API: {e}")
         return False
 
 def send_html_email_async(subject, html_content, recipient_list, text_content=None):

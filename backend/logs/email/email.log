@@ -33,3 +33,19 @@
 [2025-11-23 16:49:25] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 339
 [2025-11-23 16:50:38] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 339 using language: fr
 [2025-11-23 16:50:38] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-11-23 17:36:37] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 340 using language: fr
+[2025-11-23 17:36:37] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-11-23 17:36:47] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-11-23 17:36:49] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 341
+[2025-11-23 17:37:44] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-11-23 17:37:46] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 342
+[2025-11-23 17:38:22] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 342 using language: fr
+[2025-11-23 17:38:22] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-11-23 18:17:46] [INFO] [email_service] Email sent successfully via SendGrid API to test@example.com with status code 202
+[2025-11-23 18:17:46] [INFO] [email_service] Email sent successfully via SendGrid API to test@example.com with status code 202
+[2025-11-23 18:22:30] [INFO] [email_service] Sending security OTP email to abassi.loay@gmail.com using language: fr
+[2025-11-23 18:22:31] [INFO] [email_service] Email sent successfully via SendGrid API to abassi.loay@gmail.com with status code 202
+[2025-11-23 18:22:31] [INFO] [email_service] Security OTP email sent successfully to abassi.loay@gmail.com for transaction 343
+[2025-11-23 18:24:40] [INFO] [email_service] Sending transaction notification to abassi.loay@gmail.com for transaction 343 using language: fr
+[2025-11-23 18:24:40] [INFO] [email_service] Transaction notification sent successfully to abassi.loay@gmail.com
+[2025-11-23 18:24:41] [INFO] [email_service] Email sent successfully via SendGrid API to abassi.loay@gmail.com with status code 202
